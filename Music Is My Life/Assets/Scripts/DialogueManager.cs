@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite_DialogueBox;
     [SerializeField] private TMP_Text txt_Dialogue;
 
+
     private bool isDialogue = false;
 
     private int count = 0;
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
         sprite_DialogueBox.gameObject.SetActive(true);
         txt_Dialogue.gameObject.SetActive(true);
 
+
         count = 0;
         isDialogue = true;
         NextDialogue();
@@ -37,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     {
         sprite_DialogueBox.gameObject.SetActive(false);
         txt_Dialogue.gameObject.SetActive(false);
+      
 
         isDialogue = false;
     }
@@ -62,6 +65,7 @@ public class DialogueManager : MonoBehaviour
                     NextDialogue();
                 else
                     HideDialogue();
+
             }
         }
     }
