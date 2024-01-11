@@ -212,7 +212,7 @@ RectTransform:
   m_GameObject: {fileID: 79939893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0625, y: 1, z: 1}
+  m_LocalScale: {x: 0.86743164, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2106934502}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 464329853}
   - component: {fileID: 464329852}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: "\uB2E4\uC774\uC5BC\uB85C\uADF8txt"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ RectTransform:
   m_GameObject: {fileID: 464329850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06525, y: 0.058128875, z: 1}
+  m_LocalScale: {x: 0.06447516, y: 0.058128875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79939897}
@@ -828,7 +828,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076600832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -839,7 +839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -174}
   m_SizeDelta: {x: 215.7831, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076600834
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 2106934502}
   - component: {fileID: 2106934503}
   m_Layer: 5
-  m_Name: Square
+  m_Name: "\uB2E4\uC774\uC5BC\uB85C\uADF8 "
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
