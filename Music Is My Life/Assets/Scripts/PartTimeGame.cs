@@ -45,9 +45,9 @@ public class PartTimeGame : MonoBehaviour
         turn = 0;
         int index = 0;   //현재 생성된 키보드 오브젝트가 몇번째로 생성됐는지 나타내는 index변수
 
-        for (float i = -6.0f; i <= 6.0f; i += xOffset) // -6 -4.5 -3 -1.5 0 1.5 3 4.5 6 총 9개 생성
+        for (float i = 0; i < 9; i++) // 키보드 총 9개 생성
         {
-            float xPos = i; // 스폰될 오브젝트의 x좌표
+            float xPos = 1.5f*i-6f; // 스폰될 오브젝트의 x좌표 -6, -4.5, -3, -1.5, 0, 1.5, 3, 4.5, 6 
             Vector3 spawnPosition = new Vector3(xPos, 0, 0); //스폰좌표를 vector3로 설정
             int randNum = Random.Range(0, possibleKeys.Length);
             GameObject selectedPrefab = keyBoardPrefabs[randNum]; // 키보드 이미지 프리팹 중에서 랜덤으로 하나 오브젝트 뽑음
