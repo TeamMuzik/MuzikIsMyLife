@@ -82,6 +82,8 @@ public class PartTimeGame : MonoBehaviour
             spawnedKeyboards.Clear();
             StageNumPanel.SetActive(false);
             EndStagePanel.SetActive(true);
+            moneyNumText.SetText(money.ToString());
+            GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         }
         if (turn == 9)
         {

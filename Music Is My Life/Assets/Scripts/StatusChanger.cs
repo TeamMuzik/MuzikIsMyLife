@@ -7,6 +7,7 @@ public class StatusChanger : MonoBehaviour
     {
         int money = PlayerPrefs.GetInt("Money");
         int balance = money + income;
+        Debug.Log(balance);
         if (balance < 0)
             throw new Exception("돈이 정수 범위를 벗어남");
         PlayerPrefs.SetInt("Money", balance);
