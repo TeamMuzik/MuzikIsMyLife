@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PartTimeGame_KeyBoard : MonoBehaviour
+public class PartTimeGameKeyBoard : MonoBehaviour
 {
     public KeyCode assignedKey; //객체의 key
     public Sprite KeyBoard_0; //좌
