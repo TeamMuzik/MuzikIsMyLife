@@ -3,11 +3,24 @@ using TMPro;
 
 public class StatusController : MonoBehaviour
 {
+    public TMP_Text dday;
+    public TMP_Text date;
     public TMP_Text status;
 
     void Start()
     {
+        DdayText();
+        DateText();
         StatusText();
+    }
+
+    public void DdayText()
+    {
+        dday.text = "D-" + PlayerPrefs.GetInt("Dday");
+    }
+    public void DateText()
+    {
+        date.text = PlayerPrefs.GetString("Date");
     }
 
     public void StatusText()
