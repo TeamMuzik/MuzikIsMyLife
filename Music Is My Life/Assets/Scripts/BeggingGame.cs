@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class BeggingGame : MonoBehaviour
 {
@@ -8,53 +7,48 @@ public class BeggingGame : MonoBehaviour
     public TMP_Text message;
     public GameObject finishBtn; // 필드로 버튼 오브젝트 받음
     public int income;
-    public int count;
-    public bool isStart = true;
+    public int newMoney;
+    public int turnLeft;
 
     public void BegForMoney() // 우선 대화창을 누르면 가능
     {
-        if (count == -1 || count == 5) // 구걸 게임 종료
-        {
-            finishBtn.SetActive(true); // 나가기 버튼 
-            if (count == -1)
-                finishBtn.GetComponent<SceneMove>().targetScene = "Ending-Rich";
-            else
-                finishBtn.GetComponent<SceneMove>().targetScene = "Main";
+        if (turnLeft == 0) // 버튼 클릭하지 못하도록
             return;
-        }
-        Debug.Log("함수 실행");
         float p = Random.value;
         if (p < 0.01f)
         {
-            income = 2000000000;
+            newMoney = 2000000000;
             message.text = "20억을 얻었습니다!";
-            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + income);
-            moneyStatus.text = "획득한 돈: " + income + "\n보유한 돈:" + PlayerPrefs.GetInt("Money");
-            Debug.Log("1%의 확률 성공!");
-            count = -1;
-            return;
+            income += newMoney;
+            moneyStatus.text = "획득한 돈: " + income;
+                Debug.Log("1%의 확률 성공!");
+            turnLeft = 0;
+            finishBtn.GetComponent<SceneMove>().targetScene = "Ending-Rich";
         }
         else
         {
-            income = Random.Range(2, 11) * 5000;
-            message.text = income + "원을 얻었습니다.\n";
-            moneyStatus.text = "획득한 돈: " + income + "\n보유한 돈:" + PlayerPrefs.GetInt("Money");
-            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + income);
-            Debug.Log("돈: " + PlayerPrefs.GetInt("Money") + "->" + PlayerPrefs.GetInt("Money") + income + "원을 얻었습니다.");
-            count++;
+            newMoney = Random.Range(2, 11) * 5000;
+            message.text = newMoney + "원을 얻었습니다.\n";
+            income += newMoney;
+            moneyStatus.text = "획득한 돈: " + income;
+                Debug.Log("income: " + income + " | newMoney:" + newMoney + " | turnLeft: " + turnLeft);
+            turnLeft--;
+        }
+        if (turnLeft == 0) // 엔딩 남 or 5회 진행함 -> 구걸 게임 종료
+        {
+            StatusChanger.EarnMoney(income);
+            finishBtn.SetActive(true); // 나가기 버튼 활성화
         }
     }
     void Start()
     {
         income = 0;
-        count = 0;
+        newMoney = 0;
+        turnLeft = 5;
         message.text = "구걸을 시작합니다.";
-        moneyStatus.text = "획득한 돈: "+ income + "\n보유한 돈:" + PlayerPrefs.GetInt("Money");
+        moneyStatus.text = "획득한 돈: "+ income;
         finishBtn.SetActive(false); // 나가기 버튼 비활성화
-        if (isStart == false)
-            StatusChanger.updateDay();
-        else
-            isStart = true;
+        finishBtn.GetComponent<SceneMove>().targetScene = "Main";
     }
 
 }

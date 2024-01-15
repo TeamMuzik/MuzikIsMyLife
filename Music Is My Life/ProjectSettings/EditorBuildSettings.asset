@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MG-Jjirasi.unity
     guid: 7ab7ec5c5d88342bc8b69c737c4e3a25
+  - enabled: 1
+    path: Assets/Scenes/Ending-Rich.unity
+    guid: 367cb66686cb2404a99972300db6ee23
   m_configObjects: {}
