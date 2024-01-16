@@ -15,24 +15,24 @@ public class BeggingGame : MonoBehaviour
         if (turnLeft == 0) // 버튼 클릭하지 못하도록
             return;
         float p = Random.value;
-        if (p < 0.01f)
+        if (p < 0.02f) // 2%의 확률로 20억
         {
+            turnLeft = 0;
             newMoney = 2000000000;
             message.text = "20억을 얻었습니다!";
             income += newMoney;
             moneyStatus.text = "획득한 돈: " + income;
                 Debug.Log("1%의 확률 성공!");
-            turnLeft = 0;
             finishBtn.GetComponent<SceneMove>().targetScene = "Ending-Rich";
         }
         else
         {
+            turnLeft--;
             newMoney = Random.Range(2, 11) * 5000;
             message.text = newMoney + "원을 얻었습니다.\n";
             income += newMoney;
             moneyStatus.text = "획득한 돈: " + income;
                 Debug.Log("income: " + income + " | newMoney:" + newMoney + " | turnLeft: " + turnLeft);
-            turnLeft--;
         }
         if (turnLeft == 0) // 엔딩 남 or 5회 진행함 -> 구걸 게임 종료
         {
