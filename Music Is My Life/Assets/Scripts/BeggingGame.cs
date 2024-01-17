@@ -6,9 +6,21 @@ public class BeggingGame : MonoBehaviour
     public TMP_Text moneyStatus;
     public TMP_Text message;
     public GameObject finishBtn; // 필드로 버튼 오브젝트 받음
+
     private int income;
     private int newMoney;
     private int turn;
+
+    void Start()
+    {
+        income = 0;
+        newMoney = 0;
+        turn = 5; // 5에서 0까지 감소
+        message.text = "구걸을 시작합니다.";
+        moneyStatus.text = "획득한 돈: " + income;
+        finishBtn.SetActive(false); // 나가기 버튼 비활성화
+        finishBtn.GetComponent<SceneMove>().targetScene = "Main";
+    }
 
     public void BegForMoney() // 우선 대화창을 누르면 가능
     {
@@ -41,15 +53,4 @@ public class BeggingGame : MonoBehaviour
             finishBtn.SetActive(true); // 나가기 버튼 활성화
         }
     }
-    void Start()
-    {
-        income = 0;
-        newMoney = 0;
-        turn = 5; // 5에서 0까지 감소
-        message.text = "구걸을 시작합니다.";
-        moneyStatus.text = "획득한 돈: "+ income;
-        finishBtn.SetActive(false); // 나가기 버튼 비활성화
-        finishBtn.GetComponent<SceneMove>().targetScene = "Main";
-    }
-
 }
