@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class StatusChanger : MonoBehaviour
@@ -63,10 +64,10 @@ public class StatusChanger : MonoBehaviour
         // Dday
         int nextDday = PlayerPrefs.GetInt("Dday") - 1;
         PlayerPrefs.SetInt("Dday", nextDday);
-        // 날짜가 마지막인지 확인 필요
-        /*if (nextDday == 0)
+        if (nextDday == 0)
         {
-            // 엔딩 분기점으로 이동?
-        }*/
+            // 원래는 엔딩 분기점으로 이동해야
+            SceneManager.LoadScene("TempEnding");
+        }
     }
 }
