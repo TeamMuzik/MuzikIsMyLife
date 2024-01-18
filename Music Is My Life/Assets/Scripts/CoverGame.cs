@@ -22,7 +22,7 @@ public class CoverGame : MonoBehaviour
         turn = 5; // 5에서 0까지 감소
         /* 장비 버프에 따라 rate를 변경하는 코드 */
 
-        message.text = "커버곡 연주를 시작합니다.";
+        message.text = "커버곡 연주를 시작합니다.\n(클릭해서 시작)";
         subsStatus.text = "구독자수: " + totalSubs;
         fameStatus.text = "획득한 명성: " + newFame;
         finishBtn.SetActive(false); // 나가기 버튼 비활성화
@@ -42,8 +42,8 @@ public class CoverGame : MonoBehaviour
                 newFame++;
                 fameStatus.text = "획득한 명성: " + newFame;
             }
-            Debug.Log("Coroutine이 1.2초 기다림, turn: " + turn);
-            yield return new WaitForSeconds(1.2f); // 1.2초 기다림
+            Debug.Log("Coroutine이 0.5초 기다림, turn: " + turn);
+            yield return new WaitForSeconds(0.5f); // 특정 시간 동안 기다림, 테스트용으로 0.5초
         }
         PlayerPrefs.SetInt("Subscribers", totalSubs); // 구독자수 업데이트
         StatusChanger.UpdateFame(newFame); // 명성 증가
