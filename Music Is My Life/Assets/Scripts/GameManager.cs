@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Confidence", 0); // 뻔뻔지수
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
         PlayerPrefs.SetInt("Dday", 15); // 디데이 (1 빼고 시작할 예정)
+        
+        // Cover Game
+        PlayerPrefs.SetInt("Subscribers", 0);
     }
     public void QuitGame() // 게임 종료 버튼이 생긴다면 사용
     {

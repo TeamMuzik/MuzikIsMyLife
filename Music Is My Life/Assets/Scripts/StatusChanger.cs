@@ -67,7 +67,7 @@ public class StatusChanger : MonoBehaviour
         if (nextDday == 0)
         {
             // 원래는 엔딩 분기점으로 이동해야
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene("TempEnding");
         }
     }
 }
