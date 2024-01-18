@@ -6,7 +6,6 @@ public class StatusController : MonoBehaviour
     public TMP_Text dday;
     public TMP_Text date;
     public TMP_Text status;
-    public bool isStart = true;
 
     void Start()
     {
