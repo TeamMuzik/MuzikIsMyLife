@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
-
 public class Dialogue
 {
     [TextArea]
@@ -16,20 +15,15 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite_DialogueBox;
     [SerializeField] private TMP_Text txt_Dialogue;
-
-
     private bool isDialogue = false;
-
     private int count = 0;
-
+    public Button Next;
     [SerializeField] private Dialogue[] dialogues;
 
     public void ShowDialogue()
     {
         sprite_DialogueBox.gameObject.SetActive(true);
         txt_Dialogue.gameObject.SetActive(true);
-
-
         count = 0;
         isDialogue = true;
         NextDialogue();
@@ -39,34 +33,36 @@ public class DialogueManager : MonoBehaviour
     {
         sprite_DialogueBox.gameObject.SetActive(false);
         txt_Dialogue.gameObject.SetActive(false);
-      
-
+        Next.gameObject.SetActive(false);
         isDialogue = false;
     }
 
     private void NextDialogue()
     {
-        txt_Dialogue.text = dialogues[count].dialogue;
-        count++;
+        if (count < dialogues.Length)
+        {
+            txt_Dialogue.text = dialogues[count].dialogue;
+            count++;
+        }
+        else
+        {
+            HideDialogue();
+        }
+    }
+
+    // 추가된 함수: 버튼을 통해 호출될 함수
+    public void OnNextButtonClick()
+    {
+        if (isDialogue)
+        {
+            NextDialogue();
+        }
     }
 
     void Start()
     {
-      ShowDialogue();
+        ShowDialogue();
     }
 
-    void Update()
-    {
-        if (isDialogue)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (count < dialogues.Length)
-                    NextDialogue();
-                else
-                    HideDialogue();
-
-            }
-        }
-    }
+    // Update 함수는 사용하지 않음
 }
