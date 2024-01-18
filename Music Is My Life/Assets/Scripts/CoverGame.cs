@@ -14,7 +14,6 @@ public class CoverGame : MonoBehaviour
     private int newFame;
     private int turn;
     private int rate = 500; // 처음 초기 증가율 (명)
-    private IEnumerator coroutine;
 
     void Start()
     {
@@ -27,13 +26,11 @@ public class CoverGame : MonoBehaviour
         subsStatus.text = "구독자수: " + totalSubs;
         fameStatus.text = "획득한 명성: " + newFame;
         finishBtn.SetActive(false); // 나가기 버튼 비활성화
+        Debug.Log("CoverGame 씬 시작");
     }
-    
-    public void AddSubcribers()
-    {
-        if (turn == 0) // 버튼 클릭하지 못하도록
-            return;
 
+    public IEnumerator CoverCouroutine() // 커버 게임 코루틴
+    {
         while (turn-- > 0)
         {
             newSubs = Random.Range(1, 11) * rate; // 랜덤하게 구독자수 증가
@@ -45,20 +42,18 @@ public class CoverGame : MonoBehaviour
                 newFame++;
                 fameStatus.text = "획득한 명성: " + newFame;
             }
-            coroutine = WaitAndPrint(2.0f);
-            StartCoroutine(coroutine);
+            Debug.Log("Coroutine이 2초 기다림, turn: " + turn);
+            yield return new WaitForSeconds(2.0f); // 2초 기다림
         }
         StatusChanger.UpdateFame(newFame); // 명성 증가
-
         finishBtn.SetActive(true); // 나가기 버튼 활성화 (클릭 시 Main으로)
+        Debug.Log("명성 증가량: " + newFame + "& 나가기 버튼 활성화");
+        yield break; // 코루틴 끝내기
+    }
+    public void AddSubcribers()
+    {
+        if (turn == 5) // turn이 4 이하이면 버튼 클릭하지 못하도록
+            StartCoroutine(CoverCouroutine()); // 코루틴 시작
     }
 
-    private IEnumerator WaitAndPrint(float waitTime)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(waitTime);
-            // 애니메이션 반복 실행
-        }
-    }
 }
