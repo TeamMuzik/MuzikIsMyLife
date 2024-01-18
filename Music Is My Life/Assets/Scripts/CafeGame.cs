@@ -27,14 +27,11 @@ public class CafeGame : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            if (i < 3)
-            {
-                float xPos = 1.5f * i - 5;
-                Vector3 spawnPosition = new Vector3(xPos, 3, 0);
-                GameObject FruitsObj = Instantiate(TotalOrder[i], spawnPosition, Quaternion.identity);
-                CafeGameFruits objIndex = FruitsObj.GetComponent<CafeGameFruits>();
-                objIndex.GetIndex(index++);
-            }
+            float xPos = 1.5f * i - 5;
+            Vector3 spawnPosition = new Vector3(xPos, 3, 0);
+            GameObject FruitsObj = Instantiate(TotalOrder[i], spawnPosition, Quaternion.identity);
+            CafeGameFruits objIndex = FruitsObj.GetComponent<CafeGameFruits>();
+            objIndex.GetIndex(index++);
         }
     }
 }
