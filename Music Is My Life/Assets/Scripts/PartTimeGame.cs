@@ -73,8 +73,9 @@ public class PartTimeGame : MonoBehaviour
 
     void Update()
     {
-        if (stageNum > 5)
+        if (stageNum == 6)
         {
+            stageNum++;
             foreach (GameObject keyboard in spawnedKeyboards)
             {
                 Destroy(keyboard);
