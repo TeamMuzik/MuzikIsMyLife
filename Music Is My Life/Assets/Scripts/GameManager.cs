@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll(); // 초기화 시 기존 데이터 모두 삭제
         PlayerPrefs.SetInt("Money", 0); // 돈
-        PlayerPrefs.SetInt("Fame", 0); // 명성
+        PlayerPrefs.SetInt("MyFame", 0); // 내 명성
+        PlayerPrefs.SetInt("BandFame", 0); // 야옹의 명성 (추후 교체 필요)
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetInt("Confidence", 0); // 뻔뻔지수
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)

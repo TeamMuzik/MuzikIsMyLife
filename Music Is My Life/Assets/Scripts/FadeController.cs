@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class FadeController : MonoBehaviour // 캔버스 전체를 페이드인 or 페이드아웃
+public class FadeController : MonoBehaviour // Panel 불투명도 조절해 페이드인 or 페이드아웃
 {
     public bool isFadeIn; // true=FadeIn, false=FadeOut
-    public GameObject panel; // Panel 오브젝트를 Inspector에서 할당
+    public GameObject panel; // Panel 오브젝트 Inspector에서 할당
     private Action onCompleteCallback; // FadeIn 또는 FadeOut 다음에 진행할 함수
 
     void Start()
