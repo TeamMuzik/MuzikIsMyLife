@@ -11,7 +11,7 @@ public class StatusController : MonoBehaviour
     {
         //추후 GameManager 등 통해 처음인지 파악 필요함
         StatusChanger.UpdateDay(); // 날짜 업데이트
-        if (PlayerPrefs.GetInt("Dday") == 0)
+        if (PlayerPrefs.GetInt("Dday") <= 0)
         {
             GoToEnding();
         }
