@@ -10,7 +10,7 @@ public class FunitureController : MonoBehaviour
     public void DefaultFunitureSetting()
     {
         // 정한 가구명으로...
-        string[] defaultFurnitureStrings = { "회색 방", "정리되지 않은 침대", "갈색 수납장", "갈색 책상", "캐릭터-앉기", "의자" };
+        string[] defaultFurnitureStrings = { "회색 방", "정리되지 않은 침대", "갈색 수납장", "갈색 책상", "캐릭터-앉기", "보라 쿠션 의자" };
         foreach(string furnitureName in defaultFurnitureStrings)
         {
             PlayerPrefs.SetInt($"{furnitureName}_IsOwned", 1);
