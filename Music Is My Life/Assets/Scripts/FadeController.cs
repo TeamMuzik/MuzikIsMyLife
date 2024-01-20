@@ -45,7 +45,6 @@ public class FadeController : MonoBehaviour // Panel 불투명도 조절해 페�
             panel.GetComponent<CanvasRenderer>().SetAlpha(Mathf.Lerp(1f, 0f, elapsedTime / fadedTime));
             
             elapsedTime += Time.deltaTime;
-            Debug.Log("Fade In 중...");
             yield return null;
         }
         Debug.Log("Fade In 끝");
@@ -64,7 +63,6 @@ public class FadeController : MonoBehaviour // Panel 불투명도 조절해 페�
             panel.GetComponent<CanvasRenderer>().SetAlpha(Mathf.Lerp(0f, 1f, elapsedTime / fadedTime));
 
             elapsedTime += Time.deltaTime;
-            Debug.Log("Fade Out 중...");
             yield return null;
         }
 
