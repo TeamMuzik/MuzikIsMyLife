@@ -8,6 +8,7 @@ public class CoverGame : MonoBehaviour
     public TMP_Text fameStatus;
     public TMP_Text message;
     public GameObject finishBtn; // 필드로 버튼 오브젝트 받음
+
     private int totalSubs = 0; // PlayerPrefs에 넣지 않고, 이 스크립트가 불러와진 가장 처음에 초기화
     private int newSubs;
     private int newFame;
@@ -46,7 +47,7 @@ public class CoverGame : MonoBehaviour
             yield return new WaitForSeconds(0.5f); // 특정 시간 동안 기다림, 테스트용으로 0.5초
         }
         PlayerPrefs.SetInt("Subscribers", totalSubs); // 구독자수 업데이트
-        StatusChanger.UpdateFame(newFame); // 명성 증가
+        StatusChanger.UpdateMyFame(newFame); // 명성 증가
         finishBtn.SetActive(true); // 나가기 버튼 활성화 (클릭 시 Main으로)
         Debug.Log("명성 증가량: " + newFame + "& 나가기 버튼 활성화");
         yield break; // 코루틴 끝내기

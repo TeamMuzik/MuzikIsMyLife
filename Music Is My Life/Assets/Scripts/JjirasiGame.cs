@@ -72,7 +72,7 @@ public class JjirasiGame : MonoBehaviour
         {
             Hide();
             incfameTxt.text = "증가한 명성: " + FameNum.ToString();
-            StatusChanger.UpdateFame(FameNum);
+            StatusChanger.UpdateBandFame(FameNum);
         }
     }
 }
