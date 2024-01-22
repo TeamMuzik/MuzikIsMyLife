@@ -3,6 +3,7 @@ using TMPro;
 
 public class StatusController : MonoBehaviour
 {
+    public TMP_Text playerName;
     public TMP_Text dday;
     public TMP_Text date;
     public TMP_Text status;
@@ -15,6 +16,7 @@ public class StatusController : MonoBehaviour
         {
             GoToEnding();
         }
+        NameText(); // 플레이어 이름
         DdayText();
         DateText();
         StatusText();
@@ -44,6 +46,10 @@ public class StatusController : MonoBehaviour
             sceneMove.targetScene = "Ending-Normal";
         }
         sceneMove.ChangeScene();
+    }
+    public void NameText()
+    {
+        playerName.text = PlayerPrefs.GetString("PlayerName") + "의 상태";
     }
 
     public void DdayText()
