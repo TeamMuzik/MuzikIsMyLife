@@ -16,9 +16,9 @@ public class JjirasiGame : MonoBehaviour
     public TMP_Text text_Timer;
     public Button Jjirasi;
     public Button Main;
-
-
-
+    public GameObject jjirasi;
+    private bool isClicked = false;
+    private Animator animator;
 
     void Start()
     {
@@ -30,48 +30,49 @@ public class JjirasiGame : MonoBehaviour
         LimitTime = 10;
         incfameTxt.gameObject.SetActive(false);
         Main.gameObject.SetActive(false);
-
+        animator = jjirasi.GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-
 
     public void Click()
     {
         ClickNum++;
-        clickTxt.text ="클릭 수 :"+ ClickNum.ToString();
+        clickTxt.text = "클릭 수 :" + ClickNum.ToString();
         Debug.Log("ClickNum: " + ClickNum);
 
         FameNum = ClickNum / 10; // FameNum을 Click 함수에서 갱신합니다.
-        fameTxt.text = "명성 : "+FameNum.ToString();
+        fameTxt.text = "명성 : " + FameNum.ToString();
         Debug.Log("FameNum: " + FameNum);
 
+        if (!isClicked)
+        {
+            animator.SetBool("Click", true);
+            isClicked = true;
+        }
     }
+
     private void Hide()
     {
-      clickTxt.gameObject.SetActive(false);
-      fameTxt.gameObject.SetActive(false);
-      text_Timer.gameObject.SetActive(false);
-      Jjirasi.gameObject.SetActive(false);
-      Main.gameObject.SetActive(true);
-      incfameTxt.gameObject.SetActive(true);
-
+        clickTxt.gameObject.SetActive(false);
+        fameTxt.gameObject.SetActive(false);
+        text_Timer.gameObject.SetActive(false);
+        Jjirasi.gameObject.SetActive(false);
+        Main.gameObject.SetActive(true);
+        incfameTxt.gameObject.SetActive(true);
+        jjirasi.gameObject.SetActive(false);
     }
+
     void Update()
     {
-      PlayerPrefs.SetInt("Fame",FameNum);
-      if(LimitTime>0)
-      {
-        LimitTime -= Time.deltaTime;
-        text_Timer.text = "남은 시간 : "+ Mathf.Round(LimitTime);
-      }
-
-      else{
-        Hide();
-        incfameTxt.text = "증가한 명성: " + FameNum.ToString();
-
-      }
+        if (LimitTime > 0)
+        {
+            LimitTime -= Time.deltaTime;
+            text_Timer.text = "남은 시간 : " + Mathf.Round(LimitTime);
+        }
+        else
+        {
+            Hide();
+            incfameTxt.text = "증가한 명성: " + FameNum.ToString();
+            StatusChanger.UpdateBandFame(FameNum);
+        }
     }
-
-
 }

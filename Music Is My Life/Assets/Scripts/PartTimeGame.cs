@@ -24,12 +24,12 @@ public class PartTimeGame : MonoBehaviour
     [SerializeField]
     private GameObject StageNumPanel;
 
-    int money = 250000;
+    int money = 25;
 
     private void Start()
     {
         stageNum = 1;
-        money = 250000;
+        money = 25;
         SpawnKeyBoards();
         StageNumPanel.SetActive(true);
 
@@ -66,15 +66,16 @@ public class PartTimeGame : MonoBehaviour
 
     public void moneyManager()
     {
-        money -= 50000;
+        money -= 5;
         Debug.Log("money = " + money);
-        moneyNumText.SetText(money.ToString());
+        moneyNumText.SetText(money.ToString() + "만원");
     }
 
     void Update()
     {
-        if (stageNum > 5)
+        if (stageNum == 6)
         {
+            stageNum++;
             foreach (GameObject keyboard in spawnedKeyboards)
             {
                 Destroy(keyboard);
@@ -82,8 +83,9 @@ public class PartTimeGame : MonoBehaviour
             spawnedKeyboards.Clear();
             StageNumPanel.SetActive(false);
             EndStagePanel.SetActive(true);
-            moneyNumText.SetText(money.ToString());
-            GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
+            moneyNumText.SetText(money.ToString()+"만원");
+            StatusChanger.EarnMoney(money);
+            //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         }
         if (turn == 9)
         {

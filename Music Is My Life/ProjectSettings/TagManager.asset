@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PartTimeGame
   - StatusChanger
+  - DialogWindow
+  - TextBlock
   layers:
   - Default
   - TransparentFX

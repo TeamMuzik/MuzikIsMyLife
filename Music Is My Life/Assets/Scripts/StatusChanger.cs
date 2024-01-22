@@ -3,7 +3,7 @@ using System;
 
 public class StatusChanger : MonoBehaviour
 {
-    public void earnMoney(int income)
+    public static void EarnMoney(int income)
     {
         int money = PlayerPrefs.GetInt("Money");
         int balance = money + income;
@@ -13,7 +13,7 @@ public class StatusChanger : MonoBehaviour
         PlayerPrefs.SetInt("Money", balance);
     }
 
-    public bool spendMoney(int price) // 양수로 보냄
+    public static bool SpendMoney(int price) // 양수로 보냄
     {
         int money = PlayerPrefs.GetInt("Money");
         int balance = money - price;
@@ -26,16 +26,25 @@ public class StatusChanger : MonoBehaviour
         }
     }
 
-    public void updateFame(int change) // 음수, 양수 둘다 가능
+    public static void UpdateMyFame(int change) // 음수, 양수 둘다 가능
     {
-        int fame = PlayerPrefs.GetInt("Fame");
-        fame = fame + change;
-        if (fame < 0)
-            fame = 0; // 최소 0
-        PlayerPrefs.SetInt("Fame", fame);
+        int myFame = PlayerPrefs.GetInt("MyFame");
+        myFame = myFame + change;
+        if (myFame < 0)
+            myFame = 0; // 최소 0
+        PlayerPrefs.SetInt("MyFame", myFame);
     }
 
-    public void updateStress(int change)
+    public static void UpdateBandFame(int change) // 음수, 양수 둘다 가능
+    {
+        int bandFame = PlayerPrefs.GetInt("BandFame");
+        bandFame = bandFame + change;
+        if (bandFame < 0)
+            bandFame = 0; // 최소 0
+        PlayerPrefs.SetInt("BandFame", bandFame);
+    }
+
+    public void UpdateStress(int change)
     {
         int stress = PlayerPrefs.GetInt("Stress");
         stress = stress + change;
@@ -44,7 +53,7 @@ public class StatusChanger : MonoBehaviour
         PlayerPrefs.SetInt("Stress", stress);
     }
 
-    public void updateConfidence(int change)
+    public static void UpdateConfidence(int change)
     {
         int confid = PlayerPrefs.GetInt("Confidence");
         confid = confid + change;
@@ -53,20 +62,15 @@ public class StatusChanger : MonoBehaviour
         PlayerPrefs.SetInt("Confidence", confid);
     }
 
-    public void updateDay()
+    public static void UpdateDay()
     {
         // Date
         string savedDate = PlayerPrefs.GetString("Date");
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트
-        string updatedDate = nextDate.ToString("yyyy/MM/dd");
+        string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
         // Dday
         int nextDday = PlayerPrefs.GetInt("Dday") - 1;
         PlayerPrefs.SetInt("Dday", nextDday);
-        // 날짜가 마지막인지 확인 필요
-        /*if (nextDday == 0)
-        {
-            // 엔딩 분기점으로 이동?
-        }*/
     }
 }

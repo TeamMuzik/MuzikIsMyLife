@@ -1,30 +1,65 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class CoverGame : MonoBehaviour
 {
-    int subs; //구독자수
-    public TMP_Text msg;
+    public TMP_Text subsStatus;
+    public TMP_Text fameStatus;
+    public TMP_Text dialTitle;
+    public TMP_Text dialContent;
+    public GameObject scorePanel; // 점수판
+    public TMP_Text resultContent; // 점수 결과
 
-    public void AddSubcribers()
-    {
-        //subs = PlayerPrefs.GetInt("Subscribers", 0); //구독자수
-        int newSubs = Random.Range(1, 11) * 500;
-        int totalSubs = subs + newSubs;
-        //PlayerPrefs.SetInt("Subscribers", subs);
-        msg.text = "구독자 수가 " + newSubs + "명 증가하여\n" + totalSubs + "명이 되었습니다.\n";
-        if (totalSubs / 5000 > subs / 5000)
-        {
-            PlayerPrefs.SetInt("Fame", PlayerPrefs.GetInt("Fame") + 1);
-            msg.text += "명성이 1 증가했습니다.\n";
-        }
-        subs += newSubs;
-    }
+    private int totalSubs; // PlayerPrefs에서 가져옴
+    private int newSubs;
+    private int newFame;
+    private int turn;
+    private int rate = 500; // 처음 초기 증가율 (명)
+
     void Start()
     {
-        subs = 0;
-        //PlayerPrefs.SetInt("Subscribers", subs);
-        msg.text = "";
+        totalSubs = PlayerPrefs.GetInt("Subscribers");
+        newSubs = 0;
+        newFame = 0;
+        turn = 5; // 5에서 0까지 감소
+        /* 장비 버프에 따라 rate를 변경하는 코드 */
+        dialTitle.text = "";
+        dialContent.text = "커버곡 연주를 시작합니다.\n(클릭해서 시작)";
+        subsStatus.text = "구독자수: " + totalSubs;
+        fameStatus.text = "획득한 명성: " + newFame;
+        scorePanel.SetActive(false); // 결과 보기 비활성화
+        Debug.Log("CoverGame 씬 시작");
+    }
+
+    public IEnumerator CoverCouroutine() // 커버 게임 코루틴
+    {
+        dialTitle.text = "야옹의 곡을 기타 커버중...";
+        while (turn-- > 0)
+        {
+            newSubs = Random.Range(1, 11) * rate; // 랜덤하게 구독자수 증가
+            dialContent.text = "구독자 수가 " + newSubs + "명 증가하였습니다.";
+            totalSubs += newSubs; // 구독자수 증가
+            subsStatus.text = "구독자수: " + totalSubs;
+            if (totalSubs / 3000 > (totalSubs - newSubs) / 3000) // 3000 단위가 바뀌었는지 확인하기 위해
+            {
+                newFame++;
+                fameStatus.text = "획득한 명성: " + newFame;
+            }
+            Debug.Log("Coroutine이 0.5초 기다림, turn: " + turn);
+            yield return new WaitForSeconds(0.5f); // 특정 시간 동안 기다림, 테스트용으로 0.5초
+        }
+        PlayerPrefs.SetInt("Subscribers", totalSubs); // 구독자수 업데이트
+        StatusChanger.UpdateMyFame(newFame); // 명성 증가
+        resultContent.text = "획득한 명성: " + newFame + "\n누적 명성: " + PlayerPrefs.GetInt("MyFame");
+        scorePanel.SetActive(true); // 나가기 버튼 활성화 (클릭 시 Main으로)
+        Debug.Log("명성 증가량: " + newFame + ", 점수판 활성화");
+        yield break; // 코루틴 끝내기
+    }
+    public void StartCoverGame()
+    {
+        if (turn == 5) // turn이 4 이하이면 버튼 클릭하지 못하도록
+            StartCoroutine(CoverCouroutine()); // 코루틴 시작
     }
 
 }
