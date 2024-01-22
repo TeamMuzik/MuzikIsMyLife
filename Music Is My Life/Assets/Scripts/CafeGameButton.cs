@@ -50,54 +50,54 @@ public class CafeGameButton : MonoBehaviour
         {
             clickedObjectNames.Add(clickedObject.name+"(Clone)");
         }
-
+        
         if (Order1Names.SetEquals(clickedObjectNames))
         {
             Debug.Log("맞음");
-            cafeGameInstance.Destroy(cafeGameInstance.Order1);
-            cafeGameInstance.BoxManager();
-            cafeGameInstance.SpawnFruits_1();
+            cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
+            cafeGameInstance.ClearClickedObj();
             cafeGameInstance.moneyManager();
+            CafeGameTimer.order1Time = 0f;
             return;
         }
 
         if (Order2Names.SetEquals(clickedObjectNames))
         {
             Debug.Log("맞음");
-            cafeGameInstance.Destroy(cafeGameInstance.Order2);
-            cafeGameInstance.BoxManager();
-            cafeGameInstance.SpawnFruits_2();
+            cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
+            cafeGameInstance.ClearClickedObj();
             cafeGameInstance.moneyManager();
+            CafeGameTimer.order2Time = 0f;
             return;
         }
 
         if (Order3Names.SetEquals(clickedObjectNames))
         {
             Debug.Log("맞음");
-            cafeGameInstance.Destroy(cafeGameInstance.Order3);
-            cafeGameInstance.BoxManager();
-            cafeGameInstance.SpawnFruits_3();
+            cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
+            cafeGameInstance.ClearClickedObj();
             cafeGameInstance.moneyManager();
+            CafeGameTimer.order3Time = 0f;
             return;
         }
 
         if (Order4Names.SetEquals(clickedObjectNames))
         {
             Debug.Log("맞음");
-            cafeGameInstance.Destroy(cafeGameInstance.Order4);
-            cafeGameInstance.BoxManager();
-            cafeGameInstance.SpawnFruits_4();
+            cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
+            cafeGameInstance.ClearClickedObj();
             cafeGameInstance.moneyManager();
+            CafeGameTimer.order4Time = 0f;
             return;
         }
 
         if (Order5Names.SetEquals(clickedObjectNames))
         {
             Debug.Log("맞음");
-            cafeGameInstance.Destroy(cafeGameInstance.Order5);
-            cafeGameInstance.BoxManager();
-            cafeGameInstance.SpawnFruits_5();
+            cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
+            cafeGameInstance.ClearClickedObj();
             cafeGameInstance.moneyManager();
+            CafeGameTimer.order5Time = 0f;
             return;
         }
     }

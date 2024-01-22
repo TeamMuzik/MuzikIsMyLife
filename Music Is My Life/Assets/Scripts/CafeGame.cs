@@ -7,6 +7,7 @@ public class CafeGame : MonoBehaviour
 {
     public GameObject[] FruitsPrefabs;
     public GameObject[] BoxPrefabs;
+    public GameObject[] FruitsButton;
     // public List<List<GameObject>> TotalOrder = new List<List<GameObject>>();
 
     public List<GameObject> Order1 = new List<GameObject>();
@@ -23,7 +24,7 @@ public class CafeGame : MonoBehaviour
     private GameObject BoxObj4;
     private GameObject BoxObj5;
 
-    private int money = 0;
+    public int money = 0;
     
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
@@ -49,30 +50,9 @@ public class CafeGame : MonoBehaviour
                 GameObject clickedObject = hit.collider.gameObject;
                 TotalClickedFruits.Add(clickedObject);
             }
+            
         }
     }
-    // public void SpawnFruits()
-    // {
-    //     for (int i = 0; i < 5; i++)
-    //     {
-    //         int fruitCount = Random.Range(3, 6);
-    //         float xPos = -5.5f + 2.25f * i;
-    //         for (int j = 0; j < fruitCount; j++)
-    //         {
-    //             float yPos = 3.5f - 1 * j;
-    //             Vector3 spawnPosition = new Vector3(xPos, yPos, 0);
-    //             int randNum = Random.Range(0, FruitsPrefabs.Length);
-    //             GameObject RandomFruit = FruitsPrefabs[randNum];
-    //             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
-    //             TotalOrder.Add(new List<GameObject>{FruitsObj});
-    //         }
-            
-    //         float yPosBox = 1.5f + 0.5f * (5 - fruitCount); 
-    //         Vector3 spawnPositionBox = new Vector3(xPos, yPosBox, 0);
-    //         GameObject BoxObj = BoxPrefabs[fruitCount - 3];
-    //         Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
-    //     }
-    // }
 
     public void SpawnFruits_1()
     {
@@ -178,13 +158,17 @@ public class CafeGame : MonoBehaviour
             Destroy(BoxObj5);
     }
 
-    public void Destroy(List<GameObject> OrderNum)
+    public void DestroyOrder(List<GameObject> OrderNum)
     {
         for (int i = 0; i < OrderNum.Count; i++)
         {
             Destroy(OrderNum[i]);
         }
-        OrderNum.Clear();
+        OrderNum.Clear();   
+    }
+
+    public void ClearClickedObj()
+    {
         TotalClickedFruits.Clear();
     }
 
@@ -193,4 +177,28 @@ public class CafeGame : MonoBehaviour
         money += 10000;
         moneyNumText.SetText(money.ToString());
     }
+
+    // 2차원 리스트로 과일 주문 5개 생성하기 - 근데 어려워서 포기 
+    // public void SpawnFruits() 
+    // {
+    //     for (int i = 0; i < 5; i++)
+    //     {
+    //         int fruitCount = Random.Range(3, 6);
+    //         float xPos = -5.5f + 2.25f * i;
+    //         for (int j = 0; j < fruitCount; j++)
+    //         {
+    //             float yPos = 3.5f - 1 * j;
+    //             Vector3 spawnPosition = new Vector3(xPos, yPos, 0);
+    //             int randNum = Random.Range(0, FruitsPrefabs.Length);
+    //             GameObject RandomFruit = FruitsPrefabs[randNum];
+    //             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
+    //             TotalOrder.Add(new List<GameObject>{FruitsObj});
+    //         }
+            
+    //         float yPosBox = 1.5f + 0.5f * (5 - fruitCount); 
+    //         Vector3 spawnPositionBox = new Vector3(xPos, yPosBox, 0);
+    //         GameObject BoxObj = BoxPrefabs[fruitCount - 3];
+    //         Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+    //     }
+    // }
 }
