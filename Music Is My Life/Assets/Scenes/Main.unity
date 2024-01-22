@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 197270532}
   - component: {fileID: 197270533}
   m_Layer: 0
-  m_Name: "\uC758\uC790_14"
+  m_Name: "14-\uC758\uC790"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uBCF4\uB77C \uCFE0\uC158 \uC758\uC790"
-  Category_Index: "\uC758\uC790_0"
+  Category_Index: CHAIR_0
   price: 0
   description: 
 --- !u!1 &228068574
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 228068576}
   - component: {fileID: 228068577}
   m_Layer: 0
-  m_Name: "\uCE90\uB9AD\uD130_20"
+  m_Name: "20-\uCE90\uB9AD\uD130"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uCE68\uB300\uC5D0 \uC549\uAE30"
-  Category_Index: "\uCE90\uB9AD\uD130_\uC549\uC740"
+  Category_Index: CHARACTER_0
   price: 0
   description: 
 --- !u!1 &251268670
@@ -1282,7 +1282,7 @@ GameObject:
   - component: {fileID: 452171259}
   - component: {fileID: 452171260}
   m_Layer: 0
-  m_Name: "\uCC45\uC0C1_22"
+  m_Name: "22-\uCC45\uC0C1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uCC45\uC0C1"
-  Category_Index: "\uCC45\uC0C1_0"
+  Category_Index: DESK_0
   price: 0
   description: 
 --- !u!1 &593245673
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 806084311}
   - component: {fileID: 806084312}
   m_Layer: 0
-  m_Name: "\uC218\uB0A9\uC7A5_22"
+  m_Name: "22-\uC218\uB0A9\uC7A5"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uC218\uB0A9\uC7A5"
-  Category_Index: "\uC218\uB0A9\uC7A5_0"
+  Category_Index: SHELF_0
   price: 0
   description: 
 --- !u!1 &811465670
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 1110701426}
   - component: {fileID: 1110701427}
   m_Layer: 0
-  m_Name: "\uCE68\uB300_\uC549\uC740_26"
+  m_Name: "26-\uCE68\uB300_\uC549\uC740"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3297,7 +3297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uC815\uB9AC\uB418\uC9C0 \uC54A\uC740 \uCE68\uB300"
-  Category_Index: "\uCE68\uB300_\uC549\uC740"
+  Category_Index: BED_0
   price: 0
   description: 
 --- !u!1 &1140157344
@@ -3388,7 +3388,7 @@ GameObject:
   - component: {fileID: 1194748836}
   - component: {fileID: 1194748837}
   m_Layer: 0
-  m_Name: "\uC74C\uD5A5\uC7A5\uBE44_18"
+  m_Name: "18-\uC74C\uD5A5\uC7A5\uBE44"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3474,7 +3474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uCD08\uBCF4 \uC74C\uD5A5\uC7A5\uBE44"
-  Category_Index: "\uC74C\uD5A5\uC7A5\uBE44_0"
+  Category_Index: SOUNDEQUIP_0
   price: 0
   description: 
 --- !u!1 &1396548685
@@ -3631,7 +3631,7 @@ GameObject:
   - component: {fileID: 1616301310}
   - component: {fileID: 1616301311}
   m_Layer: 0
-  m_Name: "\uBC29_30"
+  m_Name: "30-\uBC29"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uD68C\uC0C9 \uBC29"
-  Category_Index: "\uBC29_0"
+  Category_Index: ROOM_0
   price: 0
   description: 
 --- !u!1 &1622434888
@@ -3972,7 +3972,7 @@ GameObject:
   - component: {fileID: 1699842829}
   - component: {fileID: 1699842830}
   m_Layer: 0
-  m_Name: "\uB178\uD2B8\uBD81_16"
+  m_Name: "16-\uB178\uD2B8\uBD81"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4058,7 +4058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uC800\uAC00\uD615 \uB178\uD2B8\uBD81"
-  Category_Index: "\uB178\uD2B8\uBD81_0"
+  Category_Index: COMPUTER_0
   price: 0
   description: 
 --- !u!1 &1826536750
@@ -4356,7 +4356,7 @@ GameObject:
   - component: {fileID: 1932144116}
   - component: {fileID: 1932144117}
   m_Layer: 0
-  m_Name: "\uAE30\uD0C0_24"
+  m_Name: "24-\uAE30\uD0C0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4442,7 +4442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: "\uBE68\uAC04 \uAE30\uD0C0"
-  Category_Index: "\uAE30\uD0C0_0"
+  Category_Index: GUITAR_0
   price: 0
   description: 
 --- !u!1 &1987605155
