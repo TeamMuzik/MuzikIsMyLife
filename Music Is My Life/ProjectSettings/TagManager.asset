@@ -48,3 +48,6 @@ TagManager:
   - name: SmartPhone
     uniqueID: 3085095025
     locked: 0
+  - name: UI
+    uniqueID: 4177062817
+    locked: 0
