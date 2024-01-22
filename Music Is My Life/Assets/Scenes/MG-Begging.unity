@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 168373890}
   - component: {fileID: 168373889}
   - component: {fileID: 168373893}
+  - component: {fileID: 168373894}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -391,8 +392,18 @@ MonoBehaviour:
   moneyStatus: {fileID: 1963917336}
   message: {fileID: 1375448825}
   finishBtn: {fileID: 99627304}
-  income: 0
-  count: 0
+--- !u!114 &168373894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168373888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439a7e9b886938e44932d8333b22cee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &248110798
 GameObject:
   m_ObjectHideFlags: 0
