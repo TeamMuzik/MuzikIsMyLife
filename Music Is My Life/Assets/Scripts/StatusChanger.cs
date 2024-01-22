@@ -67,7 +67,7 @@ public class StatusChanger : MonoBehaviour
         // Date
         string savedDate = PlayerPrefs.GetString("Date");
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트
-        string updatedDate = nextDate.ToString("yyyy/MM/dd");
+        string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
         // Dday
         int nextDday = PlayerPrefs.GetInt("Dday") - 1;

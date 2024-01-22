@@ -1,12 +1,33 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public TMP_InputField nameInputField;
+
     void Start()
     {
         InitializeGamedata();
     }
 
+    public void SavePlayerName()
+    {
+        string playerName;
+        playerName = nameInputField.text; //안되면 ToString()
+        if (playerName.Length > 0 && playerName.Length < 11)
+        {
+            Debug.Log("PlayerName: "+playerName);
+            PlayerPrefs.SetString("PlayerName", playerName);
+            // 프롤로그로 씬 이동
+            SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+            sceneMove.targetScene = "Prologue";
+            sceneMove.ChangeScene();
+        }
+        else
+        {
+            Debug.Log("PlayerName이 1~10자가 아닙니다. " + playerName);
+        }
+    }
     public void InitializeGamedata()
     {
         PlayerPrefs.DeleteAll(); // 초기화 시 기존 데이터 모두 삭제

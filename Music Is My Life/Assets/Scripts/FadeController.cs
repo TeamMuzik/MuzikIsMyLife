@@ -38,7 +38,7 @@ public class FadeController : MonoBehaviour // Panel 불투명도 조절해 페�
     IEnumerator CoFadeIn()
     {
         float elapsedTime = 0f; // 누적 경과 시간
-        float fadedTime = 0.5f; // 총 소요 시간
+        float fadedTime = 0.3f; // 총 소요 시간
 
         while (elapsedTime <= fadedTime)
         {
