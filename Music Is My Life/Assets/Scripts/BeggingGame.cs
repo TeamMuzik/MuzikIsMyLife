@@ -28,23 +28,21 @@ public class BeggingGame : MonoBehaviour
             return;
 
         float p = Random.value;
-        if (p < 0.02f) // 2%의 확률로 20억
+        if (p < 0.05f) // 5%의 확률로 1조
         {
             turn = 0;
-            newMoney = 2000000000;
-            message.text = "20억을 얻었습니다!";
-            income += newMoney;
-            moneyStatus.text = "획득한 돈: " + income;
-            Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
+            message.text = "1조를 얻었습니다!";
+            moneyStatus.text = "획득한 돈: 1조 " + income +"만원";
+            Debug.Log("5%의 확률 성공. Ending-Rich를 봅니다.");
             finishBtn.GetComponent<SceneMove>().targetScene = "Ending-Rich";
         }
         else
         {
             turn--;
-            newMoney = Random.Range(2, 11) * 5000;
-            message.text = newMoney + "원을 얻었습니다.\n";
+            newMoney = Random.Range(1, 6);
+            message.text = newMoney + "만원을 얻었습니다.\n";
             income += newMoney;
-            moneyStatus.text = "획득한 돈: " + income;
+            moneyStatus.text = "획득한 돈: " + income + "만원";
             Debug.Log("income: " + income + " | newMoney:" + newMoney + " | turnLeft: " + turn);
         }
         if (turn == 0) // 엔딩 남 or 5회 진행함 -> 구걸 게임 종료

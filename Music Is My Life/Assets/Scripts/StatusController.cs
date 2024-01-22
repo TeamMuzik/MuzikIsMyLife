@@ -49,12 +49,12 @@ public class StatusController : MonoBehaviour
     }
     public void NameText()
     {
-        playerName.text = PlayerPrefs.GetString("PlayerName") + "의 상태";
+        playerName.text = PlayerPrefs.GetString("PlayerName");
     }
 
     public void DdayText()
     {
-        dday.text = "D-" + PlayerPrefs.GetInt("Dday");
+        dday.text = PlayerPrefs.GetInt("Dday")+"일차";
     }
     public void DateText()
     {
@@ -63,9 +63,9 @@ public class StatusController : MonoBehaviour
 
     public void StatusText()
     {
-        status.text = "돈: " + PlayerPrefs.GetInt("Money") + "원"
-                    + "\n내 명성: " + PlayerPrefs.GetInt("MyFame")
-                    + "\n야옹의 명성: " + PlayerPrefs.GetInt("BandFame")
-                    + "\n스트레스: " + PlayerPrefs.GetInt("Stress") + "%";
+        status.text = "돈: " + PlayerPrefs.GetInt("Money") + "만원"
+                    + "\n나의명성: " + PlayerPrefs.GetInt("MyFame")
+                    + "\n야옹의명성: " + PlayerPrefs.GetInt("BandFame")
+                    + "\n스트레스: " + PlayerPrefs.GetInt("Stress");
     }
 }

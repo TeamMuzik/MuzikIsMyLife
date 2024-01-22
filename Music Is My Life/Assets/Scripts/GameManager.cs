@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     {
         string playerName;
         playerName = nameInputField.text; //안되면 ToString()
-        if (playerName.Length > 0 && playerName.Length < 7)
+        if (playerName.Length > 0 && playerName.Length < 11)
         {
             Debug.Log("PlayerName: "+playerName);
             PlayerPrefs.SetString("PlayerName", playerName);
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("PlayerName이 1~6자가 아닙니다. " + playerName);
+            Debug.Log("PlayerName이 1~10자가 아닙니다. " + playerName);
         }
     }
     public void InitializeGamedata()
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("BandFame", 0); // 야옹의 명성 (추후 교체 필요)
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetInt("Confidence", 0); // 뻔뻔지수
-        PlayerPrefs.SetString("Date", "2024/02/18"); // 날짜 (하루 넘기고 시작할 예정)
+        PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
         PlayerPrefs.SetInt("Dday", 15); // 디데이 (1 빼고 시작할 예정)
         
         // Cover Game

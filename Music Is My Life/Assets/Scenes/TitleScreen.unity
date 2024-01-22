@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 293902662}
   - component: {fileID: 293902661}
   m_Layer: 5
-  m_Name: p.s.
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1~6\uC790 \uC0AC\uC774\uB85C \uC785\uB825"
+  m_text: "1~10\uC790 \uC0AC\uC774\uB85C \uC785\uB825"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
