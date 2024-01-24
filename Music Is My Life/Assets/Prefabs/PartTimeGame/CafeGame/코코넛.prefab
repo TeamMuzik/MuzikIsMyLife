@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5011691790538337479}
   - component: {fileID: 5011691790538337478}
   m_Layer: 0
-  m_Name: Lemon
+  m_Name: "\uCF54\uCF54\uB11B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6b16fbd5de2a2694281e8781b28c73e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2aa09f58f82dd44bb98d71c68746282, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

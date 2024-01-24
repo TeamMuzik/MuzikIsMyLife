@@ -29,6 +29,9 @@ public class CafeGame : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
 
+    [SerializeField]
+    private TextMeshProUGUI clickedObjectNameText;
+
     void Start()
     {
         SpawnFruits_1();
@@ -50,8 +53,14 @@ public class CafeGame : MonoBehaviour
                 GameObject clickedObject = hit.collider.gameObject;
                 TotalClickedFruits.Add(clickedObject);
             }
-            
         }
+
+        string allClickedObjectNames = "";
+        foreach (var FruitsObject in TotalClickedFruits)
+        {
+            allClickedObjectNames += FruitsObject.name + "\n";
+        }
+        clickedObjectNameText.SetText(allClickedObjectNames);
     }
 
     public void SpawnFruits_1()
