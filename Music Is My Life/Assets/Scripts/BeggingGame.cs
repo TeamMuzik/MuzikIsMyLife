@@ -19,7 +19,7 @@ public class BeggingGame : MonoBehaviour
         newMoney = 0;
         turn = 5; // 5에서 0까지 감소
         dialTitle.text = "";
-        dialContent.text = "구걸을 시작합니다.";
+        dialContent.text = "구걸을 시작합니다. (클릭해서 시작)";
         moneyStatus.text = "획득한 돈: " + income;
         scorePanel.SetActive(false); // 결과 보기 비활성화
     }
@@ -59,8 +59,6 @@ public class BeggingGame : MonoBehaviour
                 scorePanel.GetComponent<SceneMove>().targetScene = "Main";
                 scorePanel.SetActive(true); // 결과 보기
             }
-            else
-                throw new System.Exception("Turn 초기화 값이 잘못됨");
         }
     }
 }
