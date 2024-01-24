@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 256394266}
   - component: {fileID: 256394265}
   m_Layer: 0
-  m_Name: Coconut
+  m_Name: "\uCF54\uCF54\uB11B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 649388873}
   - component: {fileID: 649388872}
   m_Layer: 0
-  m_Name: Banana
+  m_Name: "\uBC14\uB098\uB098"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 749907748}
   - component: {fileID: 749907747}
   m_Layer: 0
-  m_Name: Peach
+  m_Name: "\uBCF5\uC22D\uC544"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 909784644}
   - component: {fileID: 909784643}
   m_Layer: 0
-  m_Name: GreenApple
+  m_Name: "\uCCAD\uC0AC\uACFC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2541,7 +2541,7 @@ GameObject:
   - component: {fileID: 1104889114}
   - component: {fileID: 1104889113}
   m_Layer: 0
-  m_Name: Blueberry
+  m_Name: "\uBE14\uB8E8\uBCA0\uB9AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 1475528835}
   - component: {fileID: 1475528834}
   m_Layer: 0
-  m_Name: Strawberry
+  m_Name: "\uB538\uAE30"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3815,7 +3815,7 @@ GameObject:
   - component: {fileID: 1537280220}
   - component: {fileID: 1537280219}
   m_Layer: 0
-  m_Name: Lemon
+  m_Name: "\uB808\uBAAC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3926,7 +3926,7 @@ GameObject:
   - component: {fileID: 1551657717}
   - component: {fileID: 1551657716}
   m_Layer: 0
-  m_Name: Cherry
+  m_Name: "\uCCB4\uB9AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4493,7 +4493,7 @@ GameObject:
   - component: {fileID: 1796283151}
   - component: {fileID: 1796283150}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: "\uC0AC\uACFC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4883,7 +4883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334.7, y: 172}
+  m_AnchoredPosition: {x: 334.7, y: 134}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968155560
@@ -4995,7 +4995,7 @@ GameObject:
   - component: {fileID: 2009943804}
   - component: {fileID: 2009943803}
   m_Layer: 0
-  m_Name: Kiwi
+  m_Name: "\uD0A4\uC704"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
