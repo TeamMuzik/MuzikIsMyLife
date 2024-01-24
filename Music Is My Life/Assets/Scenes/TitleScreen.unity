@@ -288,7 +288,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436987939}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -426,7 +426,7 @@ RectTransform:
   m_Children:
   - {fileID: 1715598056}
   m_Father: {fileID: 436987939}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -571,7 +571,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436987939}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -598,9 +598,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2F9\uC2E0\uC740 \uD574\uC678 \uB85D \uBC34\uB4DC \"\uC544\uC639\"\uC758
-    \uC5F4\uD608\uD32C\uC785\uB2C8\uB2E4.\n\uAC1C\uAC15\uAE4C\uC9C0 2\uC8FC, \uB0A8\uC740
-    \uC2DC\uAC04\uC744 \uC5B4\uB5BB\uAC8C \uBCF4\uB0BC\uAE4C\uC694?"
+  m_text: "\uB2F9\uC2E0\uC740 \uD574\uC678 \uB85D \uBC34\uB4DC \"\uC57C\uC639\"\uC758
+    \uC5F4\uD608\uD32C\uC785\uB2C8\uB2E4.\n\"\uC62C\uD574\uB294 \uADF8\uB4E4\uC744
+    \uAF2D \uB9CC\uB0A0 \uC218 \uC788\uAE38...!!\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -1031,9 +1031,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 534161018}
+  - {fileID: 238679586}
   - {fileID: 150713255}
   - {fileID: 208544928}
-  - {fileID: 238679586}
   - {fileID: 1926237582}
   m_Father: {fileID: 701309465}
   m_RootOrder: 6
