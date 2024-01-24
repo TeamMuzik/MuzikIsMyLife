@@ -60,7 +60,6 @@ public class PartTimeGameKeyBoard : MonoBehaviour
                     Destroy(keyboard);
                 }
                 PartTimeGame.spawnedKeyboards.Clear();
-                GameObject.FindWithTag("PartTimeGame").GetComponent<PartTimeGame>().moneyManager();
                 GameObject.FindWithTag("PartTimeGame").GetComponent<PartTimeGame>().increaseStageNum();
                 GameObject.FindWithTag("PartTimeGame").GetComponent<PartTimeGame>().SpawnKeyBoards();
             }

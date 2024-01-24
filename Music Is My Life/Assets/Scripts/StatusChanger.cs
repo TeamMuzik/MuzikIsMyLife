@@ -70,7 +70,7 @@ public class StatusChanger : MonoBehaviour
         string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
         // Dday
-        int nextDday = PlayerPrefs.GetInt("Dday") - 1;
+        int nextDday = PlayerPrefs.GetInt("Dday") + 1;
         PlayerPrefs.SetInt("Dday", nextDday);
     }
 }
