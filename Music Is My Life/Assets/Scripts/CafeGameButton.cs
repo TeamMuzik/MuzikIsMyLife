@@ -1,109 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CafeGameButton : MonoBehaviour
 {
     private CafeGame cafeGameInstance;
+    private CafeGameTimer cafeGameTimerInstance;
+    private PartTimeGame PartTimeGameInstance;
 
     void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
+        cafeGameTimerInstance = FindObjectOfType<CafeGameTimer>();
+        PartTimeGameInstance = FindObjectOfType<PartTimeGame>();
     }
 
     public void Checker()
     {
-        HashSet<string> Order1Names = new HashSet<string>();
-        HashSet<string> Order2Names = new HashSet<string>();
-        HashSet<string> Order3Names = new HashSet<string>();
-        HashSet<string> Order4Names = new HashSet<string>();
-        HashSet<string> Order5Names = new HashSet<string>(); //주문된 과일들의 이름 리스트
-
-        HashSet<string> clickedObjectNames = new HashSet<string>();//클릭된 과일들의 이름 리스트
-
-        foreach (var orderObject in cafeGameInstance.Order1)
+        if (cafeGameInstance.TotalClickedFruits.Count != 0) //블랜더가 비어있으면 함수를 불러오지 않음 (돈버그 방지)
         {
-            Order1Names.Add(orderObject.name);
+            CheckOrder(cafeGameInstance.Order1, ref CafeGameTimer.order1Time);
+            CheckOrder(cafeGameInstance.Order2, ref CafeGameTimer.order2Time);
+            CheckOrder(cafeGameInstance.Order3, ref CafeGameTimer.order3Time);
+            CheckOrder(cafeGameInstance.Order4, ref CafeGameTimer.order4Time);
+            CheckOrder(cafeGameInstance.Order5, ref CafeGameTimer.order5Time);
         }
+    }
 
-        foreach (var orderObject in cafeGameInstance.Order2)
-        {
-            Order2Names.Add(orderObject.name);
-        }
+    private void CheckOrder(List<GameObject> order, ref float orderTime)
+    {
+        //HashSet을 이용하여 순서에 상관없도록 함 
+        HashSet<string> orderNames = new HashSet<string>(order.ConvertAll(obj => obj.name)); //주문에 있는 과일 오브젝트의 이름을 HashSet에 저장
+        HashSet<string> clickedObjectNames = new HashSet<string>(cafeGameInstance.TotalClickedFruits.Select(obj => obj.name + "(Clone)")); //클릭한 과일 오브젝트의 이름 뒤에 클론을 붙여 HashSet에 저장
 
-        foreach (var orderObject in cafeGameInstance.Order3)
+        if (order.Count == cafeGameInstance.TotalClickedFruits.Count) //과일의 개수와 상관없이 종류만 똑같으면 check되던 버그 방지
         {
-            Order3Names.Add(orderObject.name);
-        }
-
-        foreach (var orderObject in cafeGameInstance.Order4)
-        {
-            Order4Names.Add(orderObject.name);
-        }
-
-        foreach (var orderObject in cafeGameInstance.Order5)
-        {
-            Order5Names.Add(orderObject.name);
-        }
-
-        foreach (var clickedObject in cafeGameInstance.TotalClickedFruits)
-        {
-            clickedObjectNames.Add(clickedObject.name+"(Clone)");
-        }
-        
-        if (Order1Names.SetEquals(clickedObjectNames))
-        {
-            Debug.Log("맞음");
-            cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
-            cafeGameInstance.ClearClickedObj();
-            cafeGameInstance.moneyManager();
-            CafeGameTimer.order1Time = 0f;
-            return;
-        }
-
-        if (Order2Names.SetEquals(clickedObjectNames))
-        {
-            Debug.Log("맞음");
-            cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
-            cafeGameInstance.ClearClickedObj();
-            cafeGameInstance.moneyManager();
-            CafeGameTimer.order2Time = 0f;
-            return;
-        }
-
-        if (Order3Names.SetEquals(clickedObjectNames))
-        {
-            Debug.Log("맞음");
-            cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
-            cafeGameInstance.ClearClickedObj();
-            cafeGameInstance.moneyManager();
-            CafeGameTimer.order3Time = 0f;
-            return;
-        }
-
-        if (Order4Names.SetEquals(clickedObjectNames))
-        {
-            Debug.Log("맞음");
-            cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
-            cafeGameInstance.ClearClickedObj();
-            cafeGameInstance.moneyManager();
-            CafeGameTimer.order4Time = 0f;
-            return;
-        }
-
-        if (Order5Names.SetEquals(clickedObjectNames))
-        {
-            Debug.Log("맞음");
-            cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
-            cafeGameInstance.ClearClickedObj();
-            cafeGameInstance.moneyManager();
-            CafeGameTimer.order5Time = 0f;
-            return;
+            if (orderNames.SetEquals(clickedObjectNames))
+            {
+                cafeGameInstance.DestroyOrder(order);
+                cafeGameInstance.ClearClickedObj();
+                cafeGameInstance.moneyManager();
+                cafeGameInstance.BoxManager();
+                orderTime = 0f;
+            }
         }
     }
 
     public void Garbage()
     {
         cafeGameInstance.TotalClickedFruits.Clear();
+    }
+
+    public void CafeGameGameStartButton()
+    {
+        cafeGameTimerInstance.TutorialPanel.SetActive(false);
+        cafeGameTimerInstance.StartPanel.SetActive(true);
+        cafeGameInstance.SpawnFruits_1();
+        cafeGameInstance.SpawnFruits_2();
+        cafeGameInstance.SpawnFruits_3();
+        cafeGameInstance.SpawnFruits_4();
+        cafeGameInstance.SpawnFruits_5();
+        cafeGameTimerInstance.startCoroutine();
+    }
+
+    public void PartTimeGameStartButton()
+    {
+        PartTimeGameInstance.TutorialPanel.SetActive(false);
+        PartTimeGameInstance.StartPanel.SetActive(true);
+        PartTimeGameInstance.SpawnKeyBoards();
     }
 }

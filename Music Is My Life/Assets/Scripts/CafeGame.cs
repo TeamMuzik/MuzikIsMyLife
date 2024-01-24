@@ -7,7 +7,6 @@ public class CafeGame : MonoBehaviour
 {
     public GameObject[] FruitsPrefabs;
     public GameObject[] BoxPrefabs;
-    public GameObject[] FruitsButton;
     // public List<List<GameObject>> TotalOrder = new List<List<GameObject>>();
 
     public List<GameObject> Order1 = new List<GameObject>();
@@ -28,17 +27,11 @@ public class CafeGame : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
-
     [SerializeField]
     private TextMeshProUGUI clickedObjectNameText;
 
     void Start()
     {
-        SpawnFruits_1();
-        SpawnFruits_2();
-        SpawnFruits_3();
-        SpawnFruits_4();
-        SpawnFruits_5();
         money = 0;
     }
     
