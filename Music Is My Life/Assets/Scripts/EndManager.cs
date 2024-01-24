@@ -24,7 +24,8 @@ public class EndManager : MonoBehaviour
           nextButton.gameObject.SetActive(false);
 
       }
-      else{ endButton.gameObject.SetActive(false);
+      else
+      { endButton.gameObject.SetActive(false);
 
         // 모든 일러스트를 비활성화
         for (int i = 1; i < illustrationObjects.Length; i++)

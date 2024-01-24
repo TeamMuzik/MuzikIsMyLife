@@ -25,6 +25,7 @@ public class OfficeGame : MonoBehaviour
     int level = 1; // Assuming a default value for level
     int score = 0;
     public TMP_Text scoreText;
+    public TMP_Text finalText;
 
     // Coroutine references
     Coroutine createBlockTextCoroutine;
@@ -32,6 +33,7 @@ public class OfficeGame : MonoBehaviour
 
     bool canInput = true;
     bool canDestroy = true;
+    bool gameOver = false;
 
     float gameTimer = 90.0f;// New variable to track whether the block can be destroyed
 
@@ -54,6 +56,7 @@ public class OfficeGame : MonoBehaviour
             InvokeRepeating("UpdateGameTimer", 1.0f, 1.0f);
             timer.text = "남은 시간: 1:30";
             Main.gameObject.SetActive(false);
+            finalText.gameObject.SetActive(false);
 
         }
         else
@@ -124,7 +127,7 @@ public class OfficeGame : MonoBehaviour
     if (rectTransform == null)
         yield break; // Skip if RectTransform is already destroyed
 
-    float duration = 3.0f / level;
+    float duration = 3.0f; // Change this value to set a fixed duration for the movement
     float elapsed = 0f;
 
     Vector2 startPosition = rectTransform.anchoredPosition;
@@ -160,6 +163,7 @@ public class OfficeGame : MonoBehaviour
         rectTransform.anchoredPosition = targetPosition;
     }
 }
+
 
 
     IEnumerator CheckInputField()
@@ -237,12 +241,12 @@ GameObject GetNextBlock(Vector2 position)
     return nextBlock;
 }
 
-
 void GetInputFieldText()
 {
+    bool isCorrectWord = false;
+
     for (int i = 0; i < blockTextList.Count; i++)
     {
-        // 수정된 부분: WordInputField.text 사용
         if (blockTextList[i] != null &&
             string.Equals(WordInputField.text, blockTextList[i].GetComponent<TMP_Text>().text, StringComparison.OrdinalIgnoreCase))
         {
@@ -250,17 +254,29 @@ void GetInputFieldText()
             wordList.Add(deleteTxt);
             tempList.Remove(deleteTxt);
             canInput = false;
-            canDestroy = true; // 다시 파괴 가능하도록 플래그 설정
+
+            // Correct word, so we don't set canDestroy to true here
             StartCoroutine(DestroyBlock(blockTextList[i])); // Destroy the block
-            score+=5;
+            score += 5;
             SetShowerScore();
+            isCorrectWord = true;
             break;
         }
     }
 
+    // Clear the text input field regardless of whether the word is correct or not
     WordInputField.text = "";
-    WordInputField.ActivateInputField();
+
+    // Activate the input field only if the word is incorrect
+    if (!isCorrectWord)
+    {
+        WordInputField.ActivateInputField();
+
+        // 오답이 입력되었을 때 다음 블록으로 이동
+        StartCoroutine(MoveNextBlock(Vector2.zero));
+    }
 }
+
 
 
 
@@ -299,19 +315,60 @@ void GetInputFieldText()
 
 
     // Update is called once per frame
+
     void Update()
-    { if(gameTimer > 0){
+{
+    if (gameTimer > 0)
+    {
+        TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
+        string timerText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
 
-          TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
-          string timerText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+        // Assuming you have a Text component to display the timer
+        timer.text = "남은 시간: " + timerText;
+    }
+    else
+    {
+        if (!gameOver) // 추가: 게임이 종료되지 않은 경우에만 처리
+        {
+            StopGame();
+            finalText.gameObject.SetActive(true);
+            int totalScore = score;
+            int earnedMoney = CalculateEarnedMoney(totalScore);
 
-          // Assuming you have a Text component to display the timer
-          timer.text = "남은 시간: " + timerText;
-      }
-      else
-      {
-        StopGame();
-      }
+            // StatusController의 정보 업데이트
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
+            StatusController statusController = FindObjectOfType<StatusController>();
 
+            // 결과를 화면에 표시
+            finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney;
+
+            gameOver = true; // 추가: 게임 종료 상태로 설정
+        }
     }
 }
+
+    int CalculateEarnedMoney(int totalScore)
+   {
+       if (totalScore >= 100 && totalScore < 150)
+       {
+           return 150000;
+       }
+       else if (totalScore >= 150 && totalScore < 200)
+       {
+           return 250000;
+       }
+       else if (totalScore >= 200 && totalScore < 250)
+       {
+           return 300000;
+       }
+       else if (totalScore >= 250 && totalScore <= 300)
+       {
+           return 400000;
+       }
+       else
+       {
+           return 0;
+       }
+   }
+
+  }
