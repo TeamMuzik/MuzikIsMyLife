@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-OpeningBand.unity
     guid: 27a8cc58046f771498bd68d77f2eb723
+  - enabled: 1
+    path: Assets/Scenes/Ending-End.unity
+    guid: ce717a77b80404c05a13c688de6d31c9
   m_configObjects: {}

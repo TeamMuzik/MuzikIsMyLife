@@ -33,7 +33,7 @@ public class OfficeGame : MonoBehaviour
     bool canInput = true;
     bool canDestroy = true;
 
-    float gameTimer = 5.0f;// New variable to track whether the block can be destroyed
+    float gameTimer = 90.0f;// New variable to track whether the block can be destroyed
 
     void Start()
     {
