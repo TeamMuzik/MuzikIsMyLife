@@ -54,6 +54,7 @@ public class CafeGame : MonoBehaviour
             allClickedObjectNames += FruitsObject.name + "\n";
         }
         clickedObjectNameText.SetText(allClickedObjectNames);
+        moneyNumText.SetText(money.ToString()+"만원");
     }
 
     public void SpawnFruits_1()
@@ -177,7 +178,6 @@ public class CafeGame : MonoBehaviour
     public void moneyManager()
     {
         money += 1;
-        moneyNumText.SetText(money.ToString()+"만원");
     }
 
     // 2차원 리스트로 과일 주문 5개 생성하기 - 근데 어려워서 포기 
