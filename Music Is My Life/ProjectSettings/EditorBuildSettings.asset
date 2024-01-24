@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MG-Partime.unity
     guid: 2863d2d1df04b02418869ba50e689598
   - enabled: 1
+    path: Assets/Scenes/MG-Cafe.unity
+    guid: 38b1bf0a8250dbe49b210e9ae26858a7
+  - enabled: 1
     path: Assets/Scenes/MG-Jjirasi.unity
     guid: 7ab7ec5c5d88342bc8b69c737c4e3a25
   - enabled: 1
@@ -47,4 +50,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-End.unity
     guid: ce717a77b80404c05a13c688de6d31c9
+   - enabled: 1
+    path: Assets/Scenes/MG-Office.unity
+    guid: 233da8aaa5f804a2c85320539837609c
+
   m_configObjects: {}

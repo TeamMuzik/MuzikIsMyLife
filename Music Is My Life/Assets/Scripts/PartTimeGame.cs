@@ -24,12 +24,12 @@ public class PartTimeGame : MonoBehaviour
     [SerializeField]
     private GameObject StageNumPanel;
 
-    int money = 250000;
+    int money = 25;
 
     private void Start()
     {
         stageNum = 1;
-        money = 250000;
+        money = 25;
         SpawnKeyBoards();
         StageNumPanel.SetActive(true);
 
@@ -53,7 +53,7 @@ public class PartTimeGame : MonoBehaviour
             GameObject selectedPrefab = keyBoardPrefabs[randNum]; // 키보드 이미지 프리팹 중에서 랜덤으로 하나 오브젝트 뽑음
             GameObject keyObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity); //뽑은 오브젝트 생성
             spawnedKeyboards.Add(keyObject);
-            PartTimeGame_KeyBoard keyScript = keyObject.GetComponent<PartTimeGame_KeyBoard>(); //생성된 오브젝트의 키보드 스크립트 가져오기
+            PartTimeGameKeyBoard keyScript = keyObject.GetComponent<PartTimeGameKeyBoard>(); //생성된 오브젝트의 키보드 스크립트 가져오기
             keyScript.SetKeySprite(possibleKeys[randNum], index++); //index 변수 증가
         }
     }
@@ -66,9 +66,8 @@ public class PartTimeGame : MonoBehaviour
 
     public void moneyManager()
     {
-        money -= 50000;
-        Debug.Log("money = " + money);
-        moneyNumText.SetText(money.ToString());
+        money -= 5;
+        moneyNumText.SetText(money.ToString() + "만원");
     }
 
     void Update()
@@ -83,7 +82,7 @@ public class PartTimeGame : MonoBehaviour
             spawnedKeyboards.Clear();
             StageNumPanel.SetActive(false);
             EndStagePanel.SetActive(true);
-            moneyNumText.SetText(money.ToString());
+            moneyNumText.SetText(money.ToString()+"만원");
             StatusChanger.EarnMoney(money);
             //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         }
