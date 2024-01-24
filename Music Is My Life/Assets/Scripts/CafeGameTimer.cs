@@ -59,14 +59,14 @@ public class CafeGameTimer : MonoBehaviour
 
             if(totalTime <= 0)
             {
+                StopAllCoroutines();
                 EndPanel.SetActive(true);
-                moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString());
+                moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString()+"만원");
+                StatusChanger.EarnMoney(cafeGameInstance.money);
                 for (int i = 0; i < cafeGameInstance.FruitsButton.Length; i++)
                 {
                     cafeGameInstance.FruitsButton[i].SetActive(false);
                 }
-
-                StopAllCoroutines();
             }
         }
     }

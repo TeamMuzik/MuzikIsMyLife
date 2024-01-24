@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cc2442c4aae2548be225fd46c67cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: MG-Partime
+  targetScene: MG-Cafe
 --- !u!114 &95305955
 MonoBehaviour:
   m_ObjectHideFlags: 0

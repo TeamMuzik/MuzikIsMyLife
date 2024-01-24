@@ -67,7 +67,6 @@ public class PartTimeGame : MonoBehaviour
     public void moneyManager()
     {
         money -= 5;
-        Debug.Log("money = " + money);
         moneyNumText.SetText(money.ToString() + "만원");
     }
 
