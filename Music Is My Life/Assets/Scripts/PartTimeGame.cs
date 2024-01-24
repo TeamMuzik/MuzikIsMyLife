@@ -20,19 +20,20 @@ public class PartTimeGame : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
     [SerializeField]
-    private GameObject EndStagePanel;
-    [SerializeField]
-    private GameObject StageNumPanel;
+    private TextMeshProUGUI moneyNumInGameText;
 
-    int money = 25;
+    [SerializeField]
+    private GameObject EndPanel;
+    public GameObject StartPanel;
+    public GameObject TutorialPanel;
+
+    int money = 0;
 
     private void Start()
     {
         stageNum = 1;
-        money = 25;
-        SpawnKeyBoards();
-        StageNumPanel.SetActive(true);
-
+        money = 0;
+        TutorialPanel.SetActive(true);
     }
 
     public void SpawnKeyBoards()
@@ -66,7 +67,7 @@ public class PartTimeGame : MonoBehaviour
 
     public void moneyManager()
     {
-        money -= 5;
+        money += 5;
         moneyNumText.SetText(money.ToString() + "만원");
     }
 
@@ -80,8 +81,8 @@ public class PartTimeGame : MonoBehaviour
                 Destroy(keyboard);
             }
             spawnedKeyboards.Clear();
-            StageNumPanel.SetActive(false);
-            EndStagePanel.SetActive(true);
+            StartPanel.SetActive(false);
+            EndPanel.SetActive(true);
             moneyNumText.SetText(money.ToString()+"만원");
             StatusChanger.EarnMoney(money);
             //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
@@ -90,30 +91,33 @@ public class PartTimeGame : MonoBehaviour
         {
             turn = 0;
             increaseStageNum();
+            moneyManager();
 
             if (stageNum < 6)
                 SpawnKeyBoards();
         }
 
-        // if (Timer.LimitTime < 0)
-        // {
-        //     StageNumPanel.SetActive(false);
-        //     EndStagePanel.SetActive(true);
-        //     stageNum = 1;
-        //     Timer.LimitTime = 15f;
-            
-        //     foreach (GameObject keyboard in spawnedKeyboards)
-        //     {
-        //         Destroy(keyboard);
-        //     }
-        //     spawnedKeyboards.Clear();
-        // }
-
-        // if (turn == 9)
-        // {
-        //     turn = 0;
-        //     increaseStageNum();
-        //     SpawnKeyBoards();
-        // }
+        moneyNumInGameText.SetText(money.ToString()+"만원");
     }
+
+    // if (Timer.LimitTime < 0)
+    // {
+    //     StageNumPanel.SetActive(false);
+    //     EndStagePanel.SetActive(true);
+    //     stageNum = 1;
+    //     Timer.LimitTime = 15f;
+            
+    //     foreach (GameObject keyboard in spawnedKeyboards)
+    //     {
+    //         Destroy(keyboard);
+    //     }
+    //     spawnedKeyboards.Clear();
+    // }
+
+    // if (turn == 9)
+    // {
+    //     turn = 0;
+    //     increaseStageNum();
+    //     SpawnKeyBoards();
+    // }
 }

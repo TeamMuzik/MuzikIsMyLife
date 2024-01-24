@@ -32,12 +32,19 @@ public class CafeGameTimer : MonoBehaviour
 
     [SerializeField]
     private GameObject EndPanel;
+    public GameObject StartPanel;
+    public GameObject TutorialPanel;
 
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
         Totaltime = 121;
         OrderTime = 16;
+        TutorialPanel.SetActive(true);
+    }
+
+    public void startCoroutine()
+    {
         StartCoroutine(StartTotalTimer());
         StartCoroutine(StartOrder1Timer());
         StartCoroutine(StartOrder2Timer());
@@ -61,12 +68,9 @@ public class CafeGameTimer : MonoBehaviour
             {
                 StopAllCoroutines();
                 EndPanel.SetActive(true);
+                StartPanel.SetActive(false);
                 moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString()+"만원");
                 StatusChanger.EarnMoney(cafeGameInstance.money);
-                for (int i = 0; i < cafeGameInstance.FruitsButton.Length; i++)
-                {
-                    cafeGameInstance.FruitsButton[i].SetActive(false);
-                }
             }
         }
     }
