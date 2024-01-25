@@ -340,7 +340,7 @@ void GetInputFieldText()
             StatusController statusController = FindObjectOfType<StatusController>();
 
             // 결과를 화면에 표시
-            finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney;
+            finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney+"0000원";
 
             gameOver = true; // 추가: 게임 종료 상태로 설정
         }
@@ -351,19 +351,19 @@ void GetInputFieldText()
    {
        if (totalScore >= 100 && totalScore < 150)
        {
-           return 150000;
+           return 15;
        }
        else if (totalScore >= 150 && totalScore < 200)
        {
-           return 250000;
+           return 25;
        }
        else if (totalScore >= 200 && totalScore < 250)
        {
-           return 300000;
+           return 30;
        }
        else if (totalScore >= 250 && totalScore <= 300)
        {
-           return 400000;
+           return 40;
        }
        else
        {
