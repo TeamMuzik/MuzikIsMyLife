@@ -71,6 +71,7 @@ public class CafeGameButton : MonoBehaviour
         PartTimeGameTimerInstance.TutorialPanel.SetActive(false);
         PartTimeGameTimerInstance.StartPanel.SetActive(true);
         PartTimeGameTimerInstance.StartCoroutine(PartTimeGameTimerInstance.StartTotalTimer());
+        PartTimeGameTimerInstance.StartCoroutine(PartTimeGameTimerInstance.StartStageTimer());
         PartTimeGameInstance.SpawnKeyBoards();
     }
 }

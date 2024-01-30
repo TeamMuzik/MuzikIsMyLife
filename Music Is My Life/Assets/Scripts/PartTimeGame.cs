@@ -136,12 +136,12 @@ public class PartTimeGame : MonoBehaviour
     public void moneyManager()
     {
         money += 5;
-        moneyNumText.SetText(money.ToString() + "만원");
+        moneyNumText.SetText(money.ToString() + " 만원");
     }
 
     void Update()
     {
-        moneyNumInGameText.SetText(money.ToString()+"만원");
+        moneyNumInGameText.SetText(money.ToString()+" 만원");
         
         if (PartTimeGameTimer.totalTime < 0)
         {
@@ -160,9 +160,8 @@ public class PartTimeGame : MonoBehaviour
         if (turn == 20)
         {
             turn = 0;
-            increaseStageNum();
+            PartTimeGameTimer.stageTime = 0;
             moneyManager();
-            SpawnKeyBoards();
 
             // if (stageNum < 6)
             //     SpawnKeyBoards();
