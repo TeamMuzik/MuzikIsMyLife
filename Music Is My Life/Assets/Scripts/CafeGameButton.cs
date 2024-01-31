@@ -8,12 +8,14 @@ public class CafeGameButton : MonoBehaviour
     private CafeGame cafeGameInstance;
     private CafeGameTimer cafeGameTimerInstance;
     private PartTimeGame PartTimeGameInstance;
+    private PartTimeGameTimer PartTimeGameTimerInstance;
 
     void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
         cafeGameTimerInstance = FindObjectOfType<CafeGameTimer>();
         PartTimeGameInstance = FindObjectOfType<PartTimeGame>();
+        PartTimeGameTimerInstance = FindObjectOfType<PartTimeGameTimer>();
     }
 
     public void Checker()
@@ -66,8 +68,10 @@ public class CafeGameButton : MonoBehaviour
 
     public void PartTimeGameStartButton()
     {
-        PartTimeGameInstance.TutorialPanel.SetActive(false);
-        PartTimeGameInstance.StartPanel.SetActive(true);
+        PartTimeGameTimerInstance.TutorialPanel.SetActive(false);
+        PartTimeGameTimerInstance.StartPanel.SetActive(true);
+        PartTimeGameTimerInstance.StartCoroutine(PartTimeGameTimerInstance.StartTotalTimer());
+        PartTimeGameTimerInstance.StartCoroutine(PartTimeGameTimerInstance.StartStageTimer());
         PartTimeGameInstance.SpawnKeyBoards();
     }
 }
