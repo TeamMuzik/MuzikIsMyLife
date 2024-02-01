@@ -73,8 +73,9 @@ public class PartTimeGame : MonoBehaviour
 
     void Update()
     {
-        if (stageNum > 5)
+        if (stageNum == 6)
         {
+            stageNum++;
             foreach (GameObject keyboard in spawnedKeyboards)
             {
                 Destroy(keyboard);
@@ -83,7 +84,8 @@ public class PartTimeGame : MonoBehaviour
             StageNumPanel.SetActive(false);
             EndStagePanel.SetActive(true);
             moneyNumText.SetText(money.ToString());
-            GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
+            StatusChanger.EarnMoney(money);
+            //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         }
         if (turn == 9)
         {
