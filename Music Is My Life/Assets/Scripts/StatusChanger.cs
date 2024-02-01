@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 
 public class StatusChanger : MonoBehaviour
@@ -27,13 +26,22 @@ public class StatusChanger : MonoBehaviour
         }
     }
 
-    public static void UpdateFame(int change) // 음수, 양수 둘다 가능
+    public static void UpdateMyFame(int change) // 음수, 양수 둘다 가능
     {
-        int fame = PlayerPrefs.GetInt("Fame");
-        fame = fame + change;
-        if (fame < 0)
-            fame = 0; // 최소 0
-        PlayerPrefs.SetInt("Fame", fame);
+        int myFame = PlayerPrefs.GetInt("MyFame");
+        myFame = myFame + change;
+        if (myFame < 0)
+            myFame = 0; // 최소 0
+        PlayerPrefs.SetInt("MyFame", myFame);
+    }
+
+    public static void UpdateBandFame(int change) // 음수, 양수 둘다 가능
+    {
+        int bandFame = PlayerPrefs.GetInt("BandFame");
+        bandFame = bandFame + change;
+        if (bandFame < 0)
+            bandFame = 0; // 최소 0
+        PlayerPrefs.SetInt("BandFame", bandFame);
     }
 
     public void UpdateStress(int change)
@@ -59,15 +67,10 @@ public class StatusChanger : MonoBehaviour
         // Date
         string savedDate = PlayerPrefs.GetString("Date");
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트
-        string updatedDate = nextDate.ToString("yyyy/MM/dd");
+        string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
         // Dday
-        int nextDday = PlayerPrefs.GetInt("Dday") - 1;
+        int nextDday = PlayerPrefs.GetInt("Dday") + 1;
         PlayerPrefs.SetInt("Dday", nextDday);
-        if (nextDday == 0)
-        {
-            // 원래는 엔딩 분기점으로 이동해야
-            SceneManager.LoadScene("TempEnding");
-        }
     }
 }

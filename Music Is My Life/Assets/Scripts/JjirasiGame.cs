@@ -18,37 +18,52 @@ public class JjirasiGame : MonoBehaviour
     public Button Main;
     public GameObject jjirasi;
     private bool isClicked = false;
-    private Animator animator;
+    public Image jjirasiImage; // 스프라이트 변경을 위한 Image 변수
+    public Sprite normalSprite; // 기본 스프라이트
+    public Sprite clickSprite; // 클릭 시 보여질 스프라이트
+
+
 
     void Start()
     {
         ClickNum = 0;
         FameNum = 0;
         clickTxt.text = "클릭 수 : 0";
-        fameTxt.text = "얻은 명성 : 0";
-        text_Timer.text = "남은 시간: 10";
-        LimitTime = 10;
+        fameTxt.text = "명성 : 0";
+        text_Timer.text = "남은 시간: 30";
+        LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
         Main.gameObject.SetActive(false);
-        animator = jjirasi.GetComponent<Animator>();
+        jjirasiImage.sprite = normalSprite;
+
     }
 
     public void Click()
-    {
-        ClickNum++;
-        clickTxt.text = "클릭 수 :" + ClickNum.ToString();
-        Debug.Log("ClickNum: " + ClickNum);
+  {
+      ClickNum++;
+      clickTxt.text = "클릭 수 : " + ClickNum.ToString();
+      Debug.Log("ClickNum: " + ClickNum);
 
-        FameNum = ClickNum / 10; // FameNum을 Click 함수에서 갱신합니다.
-        fameTxt.text = "명성 : " + FameNum.ToString();
-        Debug.Log("FameNum: " + FameNum);
+      FameNum = ClickNum / 10; // FameNum을 Click 함수에서 갱신합니다.
+      fameTxt.text = "명성 : " + FameNum.ToString();
+      Debug.Log("FameNum: " + FameNum);
 
-        if (!isClicked)
-        {
-            animator.SetBool("Click", true);
-            isClicked = true;
-        }
-    }
+      if (!isClicked)
+      {
+          jjirasiImage.sprite = clickSprite; // 클릭 시 스프라이트 변경
+          isClicked = true;
+          StartCoroutine(ResetSpriteAfterDelay(0.1f)); // 0.5초 후 스프라이트를 원래대로 되돌리기
+      }
+  }
+
+  IEnumerator ResetSpriteAfterDelay(float delay)
+  {
+      yield return new WaitForSeconds(delay);
+      jjirasiImage.sprite = normalSprite; // 기본 스프라이트로 되돌리기
+      isClicked = false; // 클릭 상태 초기화
+  }
+
+
 
     private void Hide()
     {
@@ -72,7 +87,8 @@ public class JjirasiGame : MonoBehaviour
         {
             Hide();
             incfameTxt.text = "증가한 명성: " + FameNum.ToString();
-            StatusChanger.UpdateFame(FameNum);
+            StatusChanger.UpdateBandFame(FameNum);
+            jjirasiImage.gameObject.SetActive(false);
         }
     }
 }
