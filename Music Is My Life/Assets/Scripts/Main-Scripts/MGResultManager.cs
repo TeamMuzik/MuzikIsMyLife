@@ -74,7 +74,7 @@ public class MGResultManager : MonoBehaviour
     }
     public static int BeggingDayResult()
     {
-        if (PlayerPrefs.GetInt("MyFame") >= 20) // 수치 변경 필요
+        if (PlayerPrefs.GetInt("MyFame") >= 20) // 내 명성이 20 이상일 경우
         {
             float p = Random.value;
             Debug.Log("확률: " + p);
@@ -83,6 +83,6 @@ public class MGResultManager : MonoBehaviour
                 return 1;
             }
         }
-        return 0;
+        return 2; // 알아보지 않음
     }
 }
