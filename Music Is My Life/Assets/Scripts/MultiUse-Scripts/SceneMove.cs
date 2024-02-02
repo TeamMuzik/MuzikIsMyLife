@@ -5,9 +5,17 @@ public class SceneMove : MonoBehaviour
 {
     public string targetScene;
     private FadeController fadeController;
+    private DayBehavior dayBehavior;
 
     public void ChangeScene()
     {
+        // 행동 저장
+        dayBehavior = gameObject.GetComponent<DayBehavior>();
+        if (dayBehavior != null)
+        {
+            dayBehavior.SaveTodayBehavior();
+        }
+        // 페이드인&아웃
         fadeController = FindObjectOfType<FadeController>();
         if (fadeController != null)
         {

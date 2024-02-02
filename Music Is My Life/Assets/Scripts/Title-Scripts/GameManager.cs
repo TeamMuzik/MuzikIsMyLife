@@ -43,8 +43,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Subscribers", 0);
         // 알바 연속
         PlayerPrefs.SetInt("PartTimeContinuity", 0);
-        // 어제 한 것
-        //PlayerPrefs.SetInt("Day0_Behavior", 0);
     }
     public void QuitGame() // 게임 종료 버튼
     {

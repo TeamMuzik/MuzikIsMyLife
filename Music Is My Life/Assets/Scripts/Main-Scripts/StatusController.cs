@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class StatusController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class StatusController : MonoBehaviour
     public TMP_Text dday;
     public TMP_Text date;
     public TMP_Text status;
+    public GameObject[] allAppsObj; // 알바만 넣었음
 
     void Start()
     {
@@ -20,15 +22,15 @@ public class StatusController : MonoBehaviour
         DdayText();
         DateText();
         StatusText();
+        SetAppsByYesterdayBehavior();
     }
-
     public void GoToEnding() // 엔딩으로
     {
         int money = PlayerPrefs.GetInt("Money");
         int myFame = PlayerPrefs.GetInt("MyFame");
         int bandFame = PlayerPrefs.GetInt("Fame");
 
-        SceneMove sceneMove = new SceneMove();
+        SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
         if (money > 2500000)
         {
             sceneMove.targetScene = "Ending-Expedition";
@@ -54,7 +56,7 @@ public class StatusController : MonoBehaviour
 
     public void DdayText()
     {
-        dday.text = PlayerPrefs.GetInt("Dday")+"일차";
+        dday.text = PlayerPrefs.GetInt("Dday") + "일차";
     }
     public void DateText()
     {
@@ -67,5 +69,34 @@ public class StatusController : MonoBehaviour
                     + "\n나의명성: " + PlayerPrefs.GetInt("MyFame")
                     + "\n야옹의명성: " + PlayerPrefs.GetInt("BandFame")
                     + "\n스트레스: " + PlayerPrefs.GetInt("Stress");
+    }
+
+    void SetAppsByYesterdayBehavior()
+    {
+        int yesterday = PlayerPrefs.GetInt("Dday") - 1;
+        if (yesterday > 0)
+        {
+            int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
+            foreach (GameObject appObj in allAppsObj)
+            {
+                Button button = appObj.GetComponent<Button>();
+                DayBehavior dayBehavior = appObj.GetComponent<DayBehavior>();
+                //SpriteRenderer loadingSpriteRender = appObj.GetComponentInChildren<SpriteRenderer>();
+                GameObject childObject = appObj.transform.Find("loading-image").gameObject; 
+                if (dayBehavior.behaviorId == ydBehaviorId)
+                {
+                    if (childObject != null)
+                        childObject.SetActive(true);
+                    button.interactable = false;
+                }
+                else
+                {
+                    if (childObject != null)
+                        childObject.SetActive(false);
+                    button.interactable = true;
+                }
+                Debug.Log("appObj:" + dayBehavior.behaviorId +" " + appObj.name);
+            }
+        }
     }
 }
