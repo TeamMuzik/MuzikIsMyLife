@@ -29,7 +29,7 @@ public class JjirasiGame : MonoBehaviour
     private bool eventTriggered = false;
     public GameObject eventUI; // 이벤트 UI
     public Slider duelSlider; // 대결 진행 바
-    public float systemIncreaseRate = 0.7f; // 시스템 증가율
+    public float systemIncreaseRate = 1000.0f; // 시스템 증가율
     private bool duelInProgress = false; // 대결 진행 중 플래그
     private float nextDuelTime = 0f; // 다음 대결까지 남은 시간
 
@@ -45,7 +45,7 @@ public class JjirasiGame : MonoBehaviour
         incfameTxt.gameObject.SetActive(false);
         Main.gameObject.SetActive(false);
         jjirasiImage.sprite = normalSprite;
-        eventTriggerTime = Random.Range(0, 30);
+        eventTriggerTime = Random.Range(0, 15);
         eventUI.SetActive(false);
         duelSlider.gameObject.SetActive(false);
         DuelClickTxt.gameObject.SetActive(false);
@@ -73,7 +73,7 @@ public class JjirasiGame : MonoBehaviour
         if (duelInProgress)
         {
             duelClicks++;
-            duelSlider.value += 0.1f;
+            duelSlider.value += 0.05f;
             int reward = duelClicks * 3;
             DuelClickTxt.text = reward.ToString(); // 대결 중 클릭 시 바 증가
         }
