@@ -14,4 +14,5 @@ public class DayBehavior : MonoBehaviour
             int count = PlayerPrefs.GetInt("PartTimeContinuity");
             PlayerPrefs.SetInt("PartTimeContinuity", count + 1);
         }
+    }
 }
