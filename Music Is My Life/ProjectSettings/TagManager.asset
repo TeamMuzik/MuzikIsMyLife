@@ -8,6 +8,7 @@ TagManager:
   - StatusChanger
   - DialogWindow
   - TextBlock
+  - app
   layers:
   - Default
   - TransparentFX
