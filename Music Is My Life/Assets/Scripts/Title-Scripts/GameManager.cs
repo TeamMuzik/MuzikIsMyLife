@@ -36,11 +36,15 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("BandFame", 0); // 야옹의 명성 (추후 교체 필요)
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
-        PlayerPrefs.SetInt("Dday", 0); // 디데이 (1 더하고 시작할 예정)
+        PlayerPrefs.SetInt("Dday", 0); // 몇일차인지
         // 뻔뻔지수
         PlayerPrefs.SetInt("Confidence", 0);
         // Cover Game
         PlayerPrefs.SetInt("Subscribers", 0);
+        // 알바 연속
+        PlayerPrefs.SetInt("PartTimeContinuity", 0);
+        // 어제 한 것
+        //PlayerPrefs.SetInt("Day0_Behavior", 0);
     }
     public void QuitGame() // 게임 종료 버튼
     {
