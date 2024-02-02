@@ -1027,7 +1027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uBCF4\uB77C \uCFE0\uC158 \uC758\uC790"
   Category_Index: CHAIR_0
-  price: 0
   description: 
 --- !u!1 &228068574
 GameObject:
@@ -1128,7 +1127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uCE68\uB300\uC5D0 \uC549\uAE30"
   Category_Index: CHARACTER_0
-  price: 0
   description: 
 --- !u!1 &251268670
 GameObject:
@@ -1476,7 +1474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uCC45\uC0C1"
   Category_Index: DESK_0
-  price: 0
   description: 
 --- !u!1 &593245673
 GameObject:
@@ -2117,7 +2114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uC218\uB0A9\uC7A5"
   Category_Index: SHELF_0
-  price: 0
   description: 
 --- !u!1 &811465670
 GameObject:
@@ -2353,7 +2349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC5B4\uC9C8\uB7EC\uC9C4 \uBC29\uBC14\uB2E5"
   Category_Index: FLOOR_0
-  price: 0
   description: 
 --- !u!1 &849953417
 GameObject:
@@ -3120,7 +3115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130\uB4E4"
   Category_Index: POSTERS_0
-  price: 0
   description: 
 --- !u!1 &1039719008
 GameObject:
@@ -3656,7 +3650,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC815\uB9AC\uB418\uC9C0 \uC54A\uC740 \uCE68\uB300"
   Category_Index: BED_0
-  price: 0
   description: 
 --- !u!1 &1140157344
 GameObject:
@@ -3833,7 +3826,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uCD08\uBCF4 \uC74C\uD5A5\uC7A5\uBE44"
   Category_Index: SOUNDEQUIP_0
-  price: 0
   description: 
 --- !u!1 &1373298147
 GameObject:
@@ -3941,7 +3933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1396548686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4256,7 +4248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD68C\uC0C9 \uBC29"
   Category_Index: ROOM_0
-  price: 0
   description: 
 --- !u!1 &1622434888
 GameObject:
@@ -4601,7 +4592,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC800\uAC00\uD615 \uB178\uD2B8\uBD81"
   Category_Index: COMPUTER_0
-  price: 0
   description: 
 --- !u!1 &1747714677
 GameObject:
@@ -5178,7 +5168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uBE68\uAC04 \uAE30\uD0C0"
   Category_Index: GUITAR_0
-  price: 0
   description: 
 --- !u!1 &1963733607
 GameObject:

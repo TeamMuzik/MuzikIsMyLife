@@ -7,7 +7,6 @@ public class FunitureController : MonoBehaviour
     public GameObject[] allFurnitureObj;
     private List<GameObject> ownedFurnitureObj = new List<GameObject>();
 
-
     void Start()
     {
         LoadAllFurnitureData();
@@ -19,7 +18,7 @@ public class FunitureController : MonoBehaviour
         {
             Furniture furniture = furnitureObj.GetComponent<Furniture>();
 
-            furniture.LoadFurnitureData();
+            furniture.LoadFurnitureStatus();
             Debug.Log("가구명: " + furniture.furnitureName + " | IsOwned: " + furniture.IsOwned + " | isEquipped: " + furniture.IsEquipped);
 
             if (furniture.IsOwned)
