@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("PlayerName이 1~10자가 아닙니다. " + playerName);
         }
     }
+
     public void InitializeGamedata()
     {
         PlayerPrefs.DeleteAll(); // 초기화 시 기존 데이터 모두 삭제
@@ -43,7 +44,21 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Subscribers", 0);
         // 알바 연속
         PlayerPrefs.SetInt("PartTimeContinuity", 0);
+        // 가구 세팅
+        DefaultFunitureSetting();
     }
+
+    public static void DefaultFunitureSetting()
+    {
+        // 정한 가구명으로...
+        string[] defaultFurnitureCI = { "ROOM_0", "BED_0", "GUITAR_0", "SHELF_0", "DESK_0", "CHARACTER_0", "SOUNDEQUIP_0", "COMPUTER_0", "CHAIR_0" };
+        foreach (string Category_Index in defaultFurnitureCI)
+        {
+            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
+            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 1);
+        }
+    }
+
     public void QuitGame() // 게임 종료 버튼
     {
         Application.Quit();

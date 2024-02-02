@@ -404,7 +404,6 @@ GameObject:
   - component: {fileID: 208544932}
   - component: {fileID: 208544931}
   - component: {fileID: 208544930}
-  - component: {fileID: 208544929}
   m_Layer: 5
   m_Name: HTP-CloseBtn
   m_TagString: Untagged
@@ -433,19 +432,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -220}
   m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &208544929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208544927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f08356622589ff489c64847177fd62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetGameObject: {fileID: 436987938}
 --- !u!114 &208544930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,10 +476,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 208544929}
-        m_TargetAssemblyTypeName: OnButtonToggle, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 436987938}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1017,7 +1003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &436987939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1597,7 +1583,6 @@ GameObject:
   - component: {fileID: 583098843}
   - component: {fileID: 583098842}
   - component: {fileID: 583098841}
-  - component: {fileID: 583098844}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -1670,17 +1655,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 583098844}
-        m_TargetAssemblyTypeName: OnButtonToggle, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 840565344}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &583098842
 MonoBehaviour:
@@ -1720,19 +1705,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583098839}
   m_CullTransparentMesh: 1
---- !u!114 &583098844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583098839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f08356622589ff489c64847177fd62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetGameObject: {fileID: 840565344}
 --- !u!1 &585253095
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &840565345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3249,7 +3221,6 @@ GameObject:
   - component: {fileID: 1792276963}
   - component: {fileID: 1792276962}
   - component: {fileID: 1792276961}
-  - component: {fileID: 1792276960}
   m_Layer: 5
   m_Name: Start-CloseBtn
   m_TagString: Untagged
@@ -3278,19 +3249,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -210}
   m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1792276960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792276958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f08356622589ff489c64847177fd62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetGameObject: {fileID: 840565344}
 --- !u!114 &1792276961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,10 +3293,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792276960}
-        m_TargetAssemblyTypeName: OnButtonToggle, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 840565344}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3621,7 +3579,6 @@ GameObject:
   - component: {fileID: 1927203525}
   - component: {fileID: 1927203524}
   - component: {fileID: 1927203523}
-  - component: {fileID: 1927203526}
   m_Layer: 5
   m_Name: HTPBtn
   m_TagString: Untagged
@@ -3694,17 +3651,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1927203526}
-        m_TargetAssemblyTypeName: OnButtonToggle, Assembly-CSharp
-        m_MethodName: ToggleObject
-        m_Mode: 1
+      - m_Target: {fileID: 436987938}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1927203524
 MonoBehaviour:
@@ -3744,19 +3701,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927203521}
   m_CullTransparentMesh: 1
---- !u!114 &1927203526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927203521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f08356622589ff489c64847177fd62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetGameObject: {fileID: 436987938}
 --- !u!1 &1973433253
 GameObject:
   m_ObjectHideFlags: 0

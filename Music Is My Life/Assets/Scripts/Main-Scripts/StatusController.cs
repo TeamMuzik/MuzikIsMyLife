@@ -81,7 +81,6 @@ public class StatusController : MonoBehaviour
             {
                 Button button = appObj.GetComponent<Button>();
                 DayBehavior dayBehavior = appObj.GetComponent<DayBehavior>();
-                //SpriteRenderer loadingSpriteRender = appObj.GetComponentInChildren<SpriteRenderer>();
                 GameObject childObject = appObj.transform.Find("loading-image").gameObject; 
                 if (dayBehavior.behaviorId == ydBehaviorId)
                 {
