@@ -1,16 +1,16 @@
 using UnityEngine;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerNameText : MonoBehaviour
 {
     public TMP_Text playerName;
 
     void Start()
     {
-        PlayerNameText();
+        GetPlayerNameText();
     }
 
-    public void PlayerNameText()
+    public void GetPlayerNameText()
     {
         playerName.text = PlayerPrefs.GetString("PlayerName");
     }

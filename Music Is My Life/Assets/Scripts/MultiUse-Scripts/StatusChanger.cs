@@ -44,12 +44,11 @@ public class StatusChanger : MonoBehaviour
         PlayerPrefs.SetInt("BandFame", bandFame);
     }
 
-    public void UpdateStress(int change)
+    public static void UpdateStress(int change)
     {
         int stress = PlayerPrefs.GetInt("Stress");
         stress = stress + change;
-        if (stress < 0)
-            stress = 0;  // 최소 0
+        // 스트레스는 음수 가능
         PlayerPrefs.SetInt("Stress", stress);
     }
 
@@ -73,4 +72,5 @@ public class StatusChanger : MonoBehaviour
         int nextDday = PlayerPrefs.GetInt("Dday") + 1;
         PlayerPrefs.SetInt("Dday", nextDday);
     }
+
 }
