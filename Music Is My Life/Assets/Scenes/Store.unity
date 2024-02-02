@@ -460,7 +460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAD6C\uB9E4"
+  m_text: "\uAD6C\uB9E4\uC0C1\uD0DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1641342248}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
         m_MethodName: BuyProduct
         m_Mode: 1
@@ -2208,6 +2208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1174432002}
   - component: {fileID: 1174432003}
+  - component: {fileID: 1174432004}
   m_Layer: 0
   m_Name: "Product_1_\uAE30\uD0C0_2"
   m_TagString: Untagged
@@ -2285,6 +2286,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1174432004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174432001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  furnitureName: 
+  Category_Index: 
+  description: 
+  price: 80
 --- !u!1 &1177852445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,7 +2639,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1985125567}
         m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
         m_MethodName: BuyProduct
         m_Mode: 1
@@ -3716,7 +3733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1641342247}
   - component: {fileID: 1641342249}
-  - component: {fileID: 1641342248}
   m_Layer: 0
   m_Name: "\uAE30\uD0C0_2"
   m_TagString: Untagged
@@ -3739,22 +3755,6 @@ Transform:
   m_Father: {fileID: 1174432002}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
---- !u!114 &1641342248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641342246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: 
-  description: 
-  price: 80
 --- !u!212 &1641342249
 SpriteRenderer:
   m_ObjectHideFlags: 0
