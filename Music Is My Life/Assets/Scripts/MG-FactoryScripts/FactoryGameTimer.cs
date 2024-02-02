@@ -10,6 +10,9 @@ public class FactoryGameTimer : MonoBehaviour
     // [SerializeField] private float StageTime;
     [SerializeField] private TMP_Text TotalTimerTxt;
     [SerializeField] private TMP_Text MistakeTimerTxt;
+    [SerializeField] private TMP_Text moneyNumInGameText;
+    [SerializeField] private TMP_Text resultText;
+    [SerializeField] private TMP_Text stressText;
     // [SerializeField] private TMP_Text StageTimerTxt;
     public static float totalTime;
     // public static float stageTime;
@@ -29,7 +32,6 @@ public class FactoryGameTimer : MonoBehaviour
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
         TotalTime = 61;
         // StageTime = 16;
-        TutorialPanel.SetActive(true);
     }
 
     public IEnumerator TotalTimer()
@@ -46,6 +48,23 @@ public class FactoryGameTimer : MonoBehaviour
             if(totalTime <= 0)
             {
                 StopAllCoroutines();
+                int result = MGResultManager.PartTimeDayResult();
+                switch (result)
+                {
+                    case 1:
+                        resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
+                        stressText.text = "스트레스 -20";
+                        break;
+                    case 2:
+                        resultText.text = "바쁜 하루였다...";
+                        stressText.text = "스트레스 +20";
+                        break;
+                    default:
+                        resultText.text = "오늘도 열심히 알바를 했다.";
+                        stressText.text = "스트레스 +10";
+                        break;
+                }
+                moneyNumInGameText.SetText(FactoryGameInstance.money.ToString()+" 만원");
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
                 StatusChanger.EarnMoney(FactoryGameInstance.money);
