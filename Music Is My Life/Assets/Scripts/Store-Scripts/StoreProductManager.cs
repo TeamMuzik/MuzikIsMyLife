@@ -9,6 +9,10 @@ public class StoreProductManager : MonoBehaviour
     public GameObject[] audioProducts; // 모든 상품
     public GameObject[] goodsProducts; // 모든 상품
 
+    private void Update()
+    {
+        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 변경
+    }
 
     void Start()
     {

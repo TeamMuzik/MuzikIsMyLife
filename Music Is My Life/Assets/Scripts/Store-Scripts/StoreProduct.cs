@@ -7,7 +7,6 @@ public class StoreProduct : Furniture // Furniture을 상속받음
     public int price; // 가격
     public bool replaceable;
     public TMP_Text priceText;
-    private StoreProductManager storeProductManager;
 
     private void Start()
     {
@@ -31,8 +30,6 @@ public class StoreProduct : Furniture // Furniture을 상속받음
             {
                 buttonText.text = "구매 완료"; // 텍스트를 변경하여 구매 완료로 설정
             }
-            storeProductManager = FindObjectOfType<StoreProductManager>();
-            storeProductManager.playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 변경
         }
         else
         {

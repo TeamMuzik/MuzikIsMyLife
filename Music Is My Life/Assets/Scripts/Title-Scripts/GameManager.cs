@@ -57,12 +57,9 @@ public class GameManager : MonoBehaviour
         SetFurnitureData(floorThings, 0);
 
         // 음향기기들
-        // 기타 (1~2), 컴퓨터 (1), 마이크 (1), 오인페 (1)
-        string[] audioProducts = { "GUITAR_1", "GUITAR_2", "COMPUTER_1", "MIC_1", "AUIN_1" };
+        // 기타 (1~2), 컴퓨터 (1), 마이크 (1), 이펙터 (1~6), 페달보드 (1), 오인페 (1)
+        string[] audioProducts = { "GUITAR_1", "GUITAR_2", "COMPUTER_1", "MIC_1", "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1", "AUIN_1" };
         SetFurnitureData(audioProducts, 0);
-        // 이펙터 (1~6), 페달보드 (1)
-        string[] effectors = { "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1" };
-        SetFurnitureData(effectors, 0);
 
         // 굿즈들
         // CD (1~14)

@@ -4,7 +4,6 @@ public class FunitureController : MonoBehaviour
 {
     public GameObject[] furnitureList;
     public GameObject[] replaceableList;
-    // public GameObject[] audioList;
     public GameObject[] posterList;
     public GameObject[] cdList;
     public GameObject[] lpList;

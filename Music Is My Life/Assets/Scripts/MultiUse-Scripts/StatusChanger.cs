@@ -6,8 +6,8 @@ public class StatusChanger : MonoBehaviour
     // 돈 벌음
     public static void EarnMoney(int income)
     {
-        if (income <= 0)
-            throw new ArgumentException("income 값이 0 이하입니다.");
+        if (income < 0)
+            throw new ArgumentException("income 값이 0 미만입니다.");
         int money = PlayerPrefs.GetInt("Money");
         int balance = money + income;
         Debug.Log(balance);
