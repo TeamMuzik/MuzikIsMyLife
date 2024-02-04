@@ -44,18 +44,36 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Subscribers", 0);
         // 알바 연속
         PlayerPrefs.SetInt("PartTimeContinuity", 0);
-        // 가구 세팅
-        DefaultFunitureSetting();
+        // 기본 가구 세팅 & 상점 구입 가능 물품 세팅
+        FunitureInitializeSetting();
     }
 
-    public static void DefaultFunitureSetting()
+    public static void FunitureInitializeSetting()
     {
-        // 정한 가구명으로...
-        string[] defaultFurnitureCI = { "ROOM_0", "BED_0", "GUITAR_0", "SHELF_0", "DESK_0", "CHARACTER_0", "SOUNDEQUIP_0", "COMPUTER_0", "CHAIR_0" };
-        foreach (string Category_Index in defaultFurnitureCI)
+        // 디폴트 가구들: index가 0
+        string[] defaultFurnitureCI = { "ROOM_0", "BED_0", "GUITAR_0", "SHELF_0", "DESK_0", "CHARACTER_0", "MIC_0", "COMPUTER_0", "CHAIR_0" };
+        ChangeFurnitureStatus(defaultFurnitureCI, 1);
+
+        // 음향기기들
+        string[] audioProductsCI = { "GUITAR_1", "GUITAR_2", "COMPUTER_1", "MIC_1", "AUIN_1" };
+        ChangeFurnitureStatus(audioProductsCI, 0);
+        string[] effectors = { "EFTR_1", "EFTR_2", "EFTR_3", "EFTR_4", "EFTR_5", "ETRF_6", "PDBD_1" };
+        ChangeFurnitureStatus(effectors, 0);
+
+        // 굿즈들
+        // CD들
+        string[] cdsCI = { "CD_1", "CD_2", "CD_3", "CD_4", "CD_5", "CD_6", "CD_7", "CD_8", "CD_9", "CD_10", "CD_11", "CD_12", "CD_13", "CD_14" };
+        ChangeFurnitureStatus(cdsCI, 0);
+        string[] lpsCI = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6", "LP_SHOP" };
+        ChangeFurnitureStatus(cdsCI, 0);
+    }
+
+    private static void ChangeFurnitureStatus(string[] furnitureNames, int stat)
+    {
+        foreach (string Category_Index in furnitureNames)
         {
-            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
-            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 1);
+            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", stat);
+            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
         }
     }
 

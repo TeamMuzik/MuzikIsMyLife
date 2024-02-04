@@ -18,7 +18,6 @@ public class StoreProductManager : MonoBehaviour
 
     public void LoadAllProductsData()
     {
-
         foreach (GameObject productObj in allProductObj)
         {
             StoreProduct product = productObj.GetComponent<StoreProduct>();
