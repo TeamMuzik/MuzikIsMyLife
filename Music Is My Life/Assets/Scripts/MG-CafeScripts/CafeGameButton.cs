@@ -18,7 +18,7 @@ public class CafeGameButton : MonoBehaviour
         FactoryGameTimerInstance = FindObjectOfType<FactoryGameTimer>();
     }
 
-    public void Checker()
+    public void Checker() //블랜더 클릭시 실행되는 함수
     {
         if (cafeGameInstance.TotalClickedFruits.Count != 0) //블랜더가 비어있으면 함수를 불러오지 않음 (돈버그 방지)
         {
@@ -30,7 +30,7 @@ public class CafeGameButton : MonoBehaviour
         }
     }
 
-    private void CheckOrder(List<GameObject> order, ref float orderTime)
+    private void CheckOrder(List<GameObject> order, ref float orderTime) //모든 오더들과 클릭한 과일을 비교함
     {
         //HashSet을 이용하여 순서에 상관없도록 함 
         HashSet<string> orderNames = new HashSet<string>(order.ConvertAll(obj => obj.name)); //주문에 있는 과일 오브젝트의 이름을 HashSet에 저장
@@ -41,9 +41,9 @@ public class CafeGameButton : MonoBehaviour
             if (orderNames.SetEquals(clickedObjectNames))
             {
                 cafeGameInstance.DestroyOrder(order);
-                cafeGameInstance.ClearClickedObj();
                 cafeGameInstance.moneyManager();
                 cafeGameInstance.BoxManager();
+                Garbage();
                 orderTime = 0f;
             }
         }
@@ -52,6 +52,12 @@ public class CafeGameButton : MonoBehaviour
     public void Garbage()
     {
         cafeGameInstance.TotalClickedFruits.Clear();
+
+        for (int i = 0; i < cafeGameInstance.TotalFruitImageObject.Count; i++)
+        {
+            Destroy(cafeGameInstance.TotalFruitImageObject[i]);
+        }
+        cafeGameInstance.TotalFruitImageObject.Clear();
     }
 
     public void CafeGameGameStartButton()
