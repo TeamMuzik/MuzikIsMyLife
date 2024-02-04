@@ -5,8 +5,13 @@ using TMPro;
 public class StoreProduct : Furniture // Furniture을 상속받음
 {
     public int price; // 가격
+    public TMP_Text priceText;
     private StoreProductManager storeProductManager;
-    private FunitureController funitureController;
+
+    private void Start()
+    {
+        priceText.text = price + "만원";
+    }
 
     public void BuyProduct()
     {

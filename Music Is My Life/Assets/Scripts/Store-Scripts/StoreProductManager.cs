@@ -6,17 +6,19 @@ using TMPro;
 public class StoreProductManager : MonoBehaviour
 {
     public TMP_Text playerMoney; // 플레이어가 보유 중인 돈
-    public GameObject[] allProductObj; // 모든 상품
+    public GameObject[] audioProducts; // 모든 상품
+    public GameObject[] goodsProducts; // 모든 상품
 
-    
+
     void Start()
     {
         playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원";
         // 음향기기와 굿즈에 판매할 아이템 종류랑 아이템 남은 개수 넣기
-        LoadAllProductsData();
+        LoadProductsData(audioProducts);
+        LoadProductsData(goodsProducts);
     }
 
-    public void LoadAllProductsData()
+    public void LoadProductsData(GameObject[] allProductObj)
     {
         foreach (GameObject productObj in allProductObj)
         {
