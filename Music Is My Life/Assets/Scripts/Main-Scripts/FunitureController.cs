@@ -1,43 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class FunitureController : MonoBehaviour
 {
-    public GameObject[] allFurnitureObj;
-    private List<GameObject> ownedFurnitureObj = new List<GameObject>();
-
-    public void DefaultFunitureSetting()
-    {
-        // 정한 가구명으로...
-        string[] defaultFurnitureCI = { "ROOM_0", "BED_0", "GUITAR_0", "SHELF_0", "DESK_0", "CHARACTER_0", "SOUNDEQUIP_0", "COMPUTER_0", "CHAIR_0"};
-        foreach(string Category_Index in defaultFurnitureCI)
-        {
-            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
-            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 1);
-        }
-    }
+    public GameObject[] furnitureList;
+    public GameObject[] replaceableList;
+    public GameObject[] posterList;
+    public GameObject[] cdList;
+    public GameObject[] lpList;
+    public GameObject[] effectorList;
 
     void Start()
     {
-        DefaultFunitureSetting();
-        LoadAllFurnitureData();
+        SetFurnitureObjects(furnitureList);
+        SetReplaceableFurnitureObjects(replaceableList);
+        SetFurnitureObjects(posterList);
+        SetFurnitureObjects(cdList);
+        SetFurnitureObjects(lpList);
+        SetFurnitureObjects(effectorList);
     }
 
-    public void LoadAllFurnitureData()
+    public void SetFurnitureObjects(GameObject[] allFurnitureObj)
     {
         foreach (GameObject furnitureObj in allFurnitureObj)
         {
             Furniture furniture = furnitureObj.GetComponent<Furniture>();
+            furniture.LoadFurnitureStatus();
 
-            furniture.LoadFurnitureData();
-            Debug.Log("가구명: " + furniture.furnitureName + " | IsOwned: " + furniture.IsOwned + " | isEquipped: " + furniture.IsEquipped);
-
-            if (furniture.IsOwned)
-            {
-                ownedFurnitureObj.Add(furnitureObj); // 나중에 보유 중인 가구 확인 위해
-            }
-            if (furniture.IsEquipped)
+            if (furniture.IsOwned && furniture.IsEquipped)
             {
                 furnitureObj.SetActive(true);
             }
@@ -48,4 +37,13 @@ public class FunitureController : MonoBehaviour
         }
     }
 
+    public void SetReplaceableFurnitureObjects(GameObject[] allRepFurnitureObj)
+    {
+        foreach (GameObject furnitureObj in allRepFurnitureObj)
+        {
+            ReplaceableThing thing = furnitureObj.GetComponent<ReplaceableThing>();
+            thing.setReplaceableThing();
+            furnitureObj.SetActive(true);
+        }
+    }
 }
