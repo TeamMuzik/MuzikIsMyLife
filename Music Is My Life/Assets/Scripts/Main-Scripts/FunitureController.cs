@@ -1,13 +1,14 @@
 using UnityEngine;
 
-
 public class FunitureController : MonoBehaviour
 {
     public GameObject[] furnitureList;
     public GameObject[] replaceableList;
+    // public GameObject[] audioList;
     public GameObject[] posterList;
     public GameObject[] cdList;
     public GameObject[] lpList;
+    public GameObject[] effectorList;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class FunitureController : MonoBehaviour
         SetFurnitureObjects(posterList);
         SetFurnitureObjects(cdList);
         SetFurnitureObjects(lpList);
+        SetFurnitureObjects(effectorList);
     }
 
     public void SetFurnitureObjects(GameObject[] allFurnitureObj)
@@ -40,10 +42,9 @@ public class FunitureController : MonoBehaviour
     {
         foreach (GameObject furnitureObj in allRepFurnitureObj)
         {
-            ReplaceableFurniture furniture = furnitureObj.GetComponent<ReplaceableFurniture>();
-            furniture.LoadFurnitureStatus();
+            ReplaceableThing thing = furnitureObj.GetComponent<ReplaceableThing>();
+            thing.setReplaceableThing();
             furnitureObj.SetActive(true);
-            // 교체는 따로 진행 - 상점 등...
         }
     }
 }

@@ -23,14 +23,14 @@ public class StoreProductManager : MonoBehaviour
         foreach (GameObject productObj in allProductObj)
         {
             StoreProduct product = productObj.GetComponent<StoreProduct>();
-
             product.LoadFurnitureStatus();
-            Debug.Log("상품명: " + product.furnitureName + " | 가격: " + product.price);
             Button button = product.GetComponentInChildren<Button>();
-            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI buttonText = product.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
             if (product.IsOwned)
             {
-                buttonText.text = "구매 완료";
+                buttonText.text = "SOLD OUT";
+                button.interactable = false;
             }
             else
             {

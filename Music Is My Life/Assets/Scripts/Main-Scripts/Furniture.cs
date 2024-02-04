@@ -5,8 +5,8 @@ public class Furniture : MonoBehaviour
     public string furnitureName; // 가구 이름
     public string Category_Index; // 가구 카테고리와 번호
     public string description; // 가구 설명
-    private bool isOwned; // 가구 보유 여부
-    private bool isEquipped; // 가구 장착 여부
+    [SerializeField] private bool isOwned; // 가구 보유 여부
+    [SerializeField] private bool isEquipped; // 가구 장착 여부
 
     public bool IsOwned
     {
