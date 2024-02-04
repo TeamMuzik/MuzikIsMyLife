@@ -9,18 +9,18 @@ public class SceneMove : MonoBehaviour
 
     public void ChangeScene()
     {
-        // 행동 저장
-        dayBehavior = gameObject.GetComponent<DayBehavior>();
-        if (dayBehavior != null)
-        {
-            dayBehavior.SaveTodayBehavior();
-        }
         // 페이드인&아웃
         fadeController = FindObjectOfType<FadeController>();
         if (fadeController != null)
         {
             fadeController.RegisterCallback(OnFadeOutComplete); // 페이드아웃 후 진행할 액션 등록
             fadeController.FadeOut(); // FadeOut 호출
+        }
+        // 행동 저장
+        dayBehavior = gameObject.GetComponent<DayBehavior>();
+        if (dayBehavior != null)
+        {
+            dayBehavior.SaveTodayBehavior();
         }
         else
         {
