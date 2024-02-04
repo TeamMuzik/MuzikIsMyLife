@@ -1,31 +1,27 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 
 public class FunitureController : MonoBehaviour
 {
-    public GameObject[] allFurnitureObj;
-    private List<GameObject> ownedFurnitureObj = new List<GameObject>();
+    public GameObject[] furnitureList;
+    public GameObject[] postersList;
+    public GameObject[] replaceableList;
 
     void Start()
     {
-        LoadAllFurnitureData();
+        SetFurnitureObjects(furnitureList);
+        SetFurnitureObjects(postersList);
+        SetReplaceableFurnitureObjects(replaceableList);
     }
 
-    public void LoadAllFurnitureData()
+    public void SetFurnitureObjects(GameObject[] allFurnitureObj)
     {
         foreach (GameObject furnitureObj in allFurnitureObj)
         {
             Furniture furniture = furnitureObj.GetComponent<Furniture>();
-
             furniture.LoadFurnitureStatus();
-            Debug.Log("가구명: " + furniture.furnitureName + " | IsOwned: " + furniture.IsOwned + " | isEquipped: " + furniture.IsEquipped);
 
-            if (furniture.IsOwned)
-            {
-                ownedFurnitureObj.Add(furnitureObj); // 나중에 보유 중인 가구 확인 위해
-            }
-            if (furniture.IsEquipped)
+            if (furniture.IsOwned && furniture.IsEquipped)
             {
                 furnitureObj.SetActive(true);
             }
@@ -36,4 +32,14 @@ public class FunitureController : MonoBehaviour
         }
     }
 
+    public void SetReplaceableFurnitureObjects(GameObject[] allRepFurnitureObj)
+    {
+        foreach (GameObject furnitureObj in allRepFurnitureObj)
+        {
+            ReplaceableFurniture furniture = furnitureObj.GetComponent<ReplaceableFurniture>();
+            furniture.LoadFurnitureStatus();
+            furnitureObj.SetActive(true);
+            // 교체는 따로 진행 - 상점 등...
+        }
+    }
 }

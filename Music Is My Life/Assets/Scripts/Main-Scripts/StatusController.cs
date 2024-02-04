@@ -9,6 +9,7 @@ public class StatusController : MonoBehaviour
     public TMP_Text date;
     public TMP_Text status;
     public GameObject[] allAppsObj; // 알바만 넣었음
+    public GameObject floorThing;
 
     void Start()
     {
@@ -23,7 +24,9 @@ public class StatusController : MonoBehaviour
         DateText();
         StatusText();
         SetAppsByYesterdayBehavior();
+        SetFloorThing(floorThing);
     }
+
     public void GoToEnding() // 엔딩으로
     {
         int money = PlayerPrefs.GetInt("Money");
@@ -71,6 +74,7 @@ public class StatusController : MonoBehaviour
                     + "\n스트레스: " + PlayerPrefs.GetInt("Stress");
     }
 
+    // 스마트폰에서 알바 앱 아이콘 비활성화
     void SetAppsByYesterdayBehavior()
     {
         int yesterday = PlayerPrefs.GetInt("Dday") - 1;
@@ -95,6 +99,32 @@ public class StatusController : MonoBehaviour
                     button.interactable = true;
                 }
                 Debug.Log("appObj:" + dayBehavior.behaviorId +" " + appObj.name);
+            }
+        }
+    }
+
+    // 전날 한 행동에 따라 바닥 물건 변경
+    public void SetFloorThing(GameObject floorThing)
+    {
+        int yesterday = PlayerPrefs.GetInt("Dday") - 1;
+        if (yesterday < 1)
+            return;
+        int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior"); // 어제 한 행동 확인
+        if (ydBehaviorId < 6)
+        {
+
+            ReplaceableFurniture furniture = floorThing.GetComponent<ReplaceableFurniture>(); // 스프라이트 가져오기
+            SpriteRenderer spriteRenderer = floorThing.GetComponent<SpriteRenderer>();
+
+            if (spriteRenderer != null && ydBehaviorId >= 0 && ydBehaviorId < furniture.availableSprites.Count)
+            {
+                // 선택한 인덱스에 해당하는 스프라이트 할당
+                spriteRenderer.sprite = furniture.availableSprites[ydBehaviorId];
+                // 교체할 때 데이터도 교체 필요
+            }
+            else
+            {
+                Debug.LogError("Sprite Renderer가 설정되지 않았거나, 인덱스가 잘못되었습니다.");
             }
         }
     }

@@ -38,5 +38,4 @@ public class Furniture : MonoBehaviour
         isOwned = PlayerPrefs.GetInt($"{Category_Index}_IsOwned", 0) == 1;
         isEquipped = PlayerPrefs.GetInt($"{Category_Index}_IsEquipped", 0) == 1;
     }
-
 }
