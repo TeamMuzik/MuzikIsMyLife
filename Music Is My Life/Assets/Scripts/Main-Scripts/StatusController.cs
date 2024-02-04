@@ -13,11 +13,16 @@ public class StatusController : MonoBehaviour
 
     void Start()
     {
-        //추후 GameManager 등 통해 처음인지 파악 필요함
         StatusChanger.UpdateDay(); // 날짜 업데이트
-        if (PlayerPrefs.GetInt("Dday") >= 15)
+        // 14일이 지나면 엔딩으로 이동
+        if (PlayerPrefs.GetInt("Dday") > 14)
         {
             GoToEnding();
+        }
+        // 스트레스가 100 이상일 경우 게임오버
+        if (PlayerPrefs.GetInt("Stress") >= 100)
+        {
+            GoToGameOver();
         }
         NameText(); // 플레이어 이름
         DdayText();
@@ -52,6 +57,14 @@ public class StatusController : MonoBehaviour
         }
         sceneMove.ChangeScene();
     }
+
+    public void GoToGameOver()
+    {
+        SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+        sceneMove.targetScene = "Ending-GameOver";
+        sceneMove.ChangeScene();
+    }
+
     public void NameText()
     {
         playerName.text = PlayerPrefs.GetString("PlayerName");
@@ -112,7 +125,6 @@ public class StatusController : MonoBehaviour
         int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior"); // 어제 한 행동 확인
         if (ydBehaviorId < 6)
         {
-
             ReplaceableFurniture furniture = floorThing.GetComponent<ReplaceableFurniture>(); // 스프라이트 가져오기
             SpriteRenderer spriteRenderer = floorThing.GetComponent<SpriteRenderer>();
 

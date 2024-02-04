@@ -4,14 +4,18 @@ using UnityEngine;
 public class FunitureController : MonoBehaviour
 {
     public GameObject[] furnitureList;
-    public GameObject[] postersList;
     public GameObject[] replaceableList;
+    public GameObject[] posterList;
+    public GameObject[] cdList;
+    public GameObject[] lpList;
 
     void Start()
     {
         SetFurnitureObjects(furnitureList);
-        SetFurnitureObjects(postersList);
         SetReplaceableFurnitureObjects(replaceableList);
+        SetFurnitureObjects(posterList);
+        SetFurnitureObjects(cdList);
+        SetFurnitureObjects(lpList);
     }
 
     public void SetFurnitureObjects(GameObject[] allFurnitureObj)

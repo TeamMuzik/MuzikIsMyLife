@@ -3,8 +3,11 @@ using System;
 
 public class StatusChanger : MonoBehaviour
 {
+    // 돈 벌음
     public static void EarnMoney(int income)
     {
+        if (income <= 0)
+            throw new ArgumentException("income 값이 0 이하입니다.");
         int money = PlayerPrefs.GetInt("Money");
         int balance = money + income;
         Debug.Log(balance);
@@ -13,8 +16,11 @@ public class StatusChanger : MonoBehaviour
         PlayerPrefs.SetInt("Money", balance);
     }
 
-    public static bool SpendMoney(int price) // 양수로 보냄
+    // 돈 소비함 (양수로 보냄)
+    public static bool SpendMoney(int price)
     {
+        if (price <= 0)
+            throw new ArgumentException("price 값이 0 이하입니다.");
         int money = PlayerPrefs.GetInt("Money");
         int balance = money - price;
         if (balance < 0)
@@ -26,43 +32,48 @@ public class StatusChanger : MonoBehaviour
         }
     }
 
-    public static void UpdateMyFame(int change) // 음수, 양수 둘다 가능
+    // 내 명성 업데이트: 최솟값 0. change는 음수, 양수 둘다 가능
+    public static void UpdateMyFame(int change)
     {
         int myFame = PlayerPrefs.GetInt("MyFame");
         myFame = myFame + change;
         if (myFame < 0)
-            myFame = 0; // 최소 0
+            myFame = 0;
         PlayerPrefs.SetInt("MyFame", myFame);
     }
 
-    public static void UpdateBandFame(int change) // 음수, 양수 둘다 가능
+    // 밴드 명성 업데이트: 최솟값 0. change는 음수, 양수 둘다 가능
+    public static void UpdateBandFame(int change)
     {
         int bandFame = PlayerPrefs.GetInt("BandFame");
         bandFame = bandFame + change;
         if (bandFame < 0)
-            bandFame = 0; // 최소 0
+            bandFame = 0;
         PlayerPrefs.SetInt("BandFame", bandFame);
     }
 
+    // 스트레스 업데이트: 최솟값 0. change는 음수, 양수 둘다 가능
     public static void UpdateStress(int change)
     {
         int stress = PlayerPrefs.GetInt("Stress");
         stress = stress + change;
-        // 스트레스는 음수 가능
+        if (stress < 0)
+            stress = 0;
         PlayerPrefs.SetInt("Stress", stress);
     }
 
-    public static void UpdateConfidence(int change)
-    {
-        int confid = PlayerPrefs.GetInt("Confidence");
-        confid = confid + change;
-        if (confid < 0)
-            confid = 0;  // 최소 0
-        PlayerPrefs.SetInt("Confidence", confid);
-    }
-
+    // 날짜 업데이트
     public static void UpdateDay()
     {
+        int yesterday = PlayerPrefs.GetInt("Dday");
+        if (yesterday > 0)
+        {
+            // 어제 한 행동이 상점이거나 나가기이면 날짜 업데이트 하지 않음
+            int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
+            if (ydBehaviorId > 5)
+                return;
+        }
+
         // Date
         string savedDate = PlayerPrefs.GetString("Date");
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트

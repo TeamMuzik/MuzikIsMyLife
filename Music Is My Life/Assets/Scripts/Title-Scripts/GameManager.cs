@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
         PlayerPrefs.SetInt("Dday", 0); // 몇일차인지
-        // 뻔뻔지수
-        PlayerPrefs.SetInt("Confidence", 0);
         // Cover Game
         PlayerPrefs.SetInt("Subscribers", 0);
         // 알바 연속
