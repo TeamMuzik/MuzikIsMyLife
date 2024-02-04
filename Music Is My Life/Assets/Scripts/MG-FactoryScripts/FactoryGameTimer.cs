@@ -31,6 +31,9 @@ public class FactoryGameTimer : MonoBehaviour
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
         TotalTime = 61;
+        TutorialPanel.SetActive(true);
+        StartPanel.SetActive(false);
+        EndPanel.SetActive(false);
         // StageTime = 16;
     }
 

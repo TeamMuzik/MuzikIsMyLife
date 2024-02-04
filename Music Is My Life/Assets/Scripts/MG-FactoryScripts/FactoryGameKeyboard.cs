@@ -8,18 +8,19 @@ public class FactoryGameKeyboard : MonoBehaviour
     private FactoryGameTimer FactoryGameTimerInstance;
     public KeyCode assignedKey; //객체의 key
 
-    public SpriteRenderer spriteRenderer;
-    public Sprite KeyBoard_0; //좌
-    public Sprite KeyBoard_1; //우
-    public Sprite KeyBoard_2; //하
-    public Sprite KeyBoard_3; //상
-    public Sprite SpaceSprite; //스페이스바
+    private SpriteRenderer spriteRenderer;
+    public Sprite LeftKeyboard; //좌
+    public Sprite RightKeyboard; //우
+    public Sprite DownKeyboard; //하
+    public Sprite UpKeyboard; //상
+    public Sprite SpaceKeyboard; //스페이스바
     public int objectIndex;
     public static int keyState = 0; //키보드가 눌렸는지 체크하는 변수
     public static bool allowControl = true;
 
-    public Color redColor = Color.red; // 빨간색
-    public Color whiteColor = Color.white; // 흰색
+    private Color redColor = Color.red;
+    private Color whiteColor = Color.white;
+    public Color blackColor = Color.black;
 
 
     public void Start()
@@ -37,19 +38,19 @@ public class FactoryGameKeyboard : MonoBehaviour
         switch (assignedKey)
         {
             case KeyCode.LeftArrow:
-                spriteRenderer.sprite = KeyBoard_0;
+                spriteRenderer.sprite = LeftKeyboard;
                 break;
             case KeyCode.RightArrow:
-                spriteRenderer.sprite = KeyBoard_1;
+                spriteRenderer.sprite = RightKeyboard;
                 break;
             case KeyCode.DownArrow:
-                spriteRenderer.sprite = KeyBoard_2;
+                spriteRenderer.sprite = DownKeyboard;
                 break;
             case KeyCode.UpArrow:
-                spriteRenderer.sprite = KeyBoard_3;
+                spriteRenderer.sprite = UpKeyboard;
                 break;
             case KeyCode.Space:
-                spriteRenderer.sprite = SpaceSprite;
+                spriteRenderer.sprite = SpaceKeyboard;
                 break;
         }
     }
@@ -66,20 +67,19 @@ public class FactoryGameKeyboard : MonoBehaviour
                 }
                 if (keyState == 1 && !Input.anyKeyDown) //한번 입력되고 다른 키가 입력되지 않을 때
                 {
-                    FactoryGame.turn++;
-                    Destroy(gameObject);
                     keyState = 0;
+                    FactoryGame.turn++;
+                    // StartCoroutine(SuccessChangeColor(gameObject));
+                    Destroy(gameObject);
                     if (FactoryGameTimerInstance.MistakePanel.activeSelf)
                     {
                         FactoryGameTimerInstance.MistakePanel.SetActive(false);
                     }
-                    
-
                 }
                 else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
                 {
                     keyState = 0;
-                    StartCoroutine(CoChangeImageColor());
+                    StartCoroutine(MistakeChangeColor());
                     allowControl = false;
                     StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
                     FactoryGameTimer.totalTime -= 4f;
@@ -93,7 +93,7 @@ public class FactoryGameKeyboard : MonoBehaviour
         }
         
     }
-    public IEnumerator CoChangeImageColor()
+    public IEnumerator MistakeChangeColor()
     {
         float elapsedTime = 0f; // 누적 경과 시간
         float fadedTime = 0.5f; // 총 소요 시간
@@ -106,4 +106,19 @@ public class FactoryGameKeyboard : MonoBehaviour
             yield return null;
         }
     }
+
+    // public IEnumerator SuccessChangeColor(GameObject keyObj)
+    // {
+    //     float elapsedTime = 0f; // 누적 경과 시간
+    //     float fadedTime = 0.5f; // 총 소요 시간
+    //     spriteRenderer = GetComponent<SpriteRenderer>();
+    //     while (elapsedTime <= fadedTime)
+    //     {
+    //         // 이미지 색상 변경
+    //         spriteRenderer.color = Color.Lerp(blackColor, whiteColor, elapsedTime / fadedTime);
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
+    //     Destroy(gameObject);
+    // }
 }

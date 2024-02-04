@@ -40,9 +40,11 @@ public class CafeGameTimer : MonoBehaviour
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
-        Totaltime = 121;
+        Totaltime = 61;
         OrderTime = 16;
         TutorialPanel.SetActive(true);
+        StartPanel.SetActive(false);
+        EndPanel.SetActive(false);
     }
 
     public void startCoroutine()

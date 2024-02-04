@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CafeGame : MonoBehaviour
 {
     public GameObject[] FruitsPrefabs;
     public GameObject[] BoxPrefabs;
-    // public List<List<GameObject>> TotalOrder = new List<List<GameObject>>();
 
     public List<GameObject> Order1 = new List<GameObject>();
     public List<GameObject> Order2 = new List<GameObject>();
@@ -16,6 +16,8 @@ public class CafeGame : MonoBehaviour
     public List<GameObject> Order5 = new List<GameObject>();
 
     public List<GameObject> TotalClickedFruits = new List<GameObject>();
+    public List<GameObject> TotalFruitImageObject = new List<GameObject>();
+    public VerticalLayoutGroup VerticalLayoutGroup;
 
     private GameObject BoxObj1;
     private GameObject BoxObj2;
@@ -27,8 +29,6 @@ public class CafeGame : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
-    [SerializeField]
-    private TextMeshProUGUI clickedObjectNameText;
 
     void Start()
     {
@@ -37,7 +37,7 @@ public class CafeGame : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) //클릭한 과일 인식
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity);
@@ -45,15 +45,16 @@ public class CafeGame : MonoBehaviour
             {
                 GameObject clickedObject = hit.collider.gameObject;
                 TotalClickedFruits.Add(clickedObject);
+
+                Sprite fruitSprite = clickedObject.GetComponent<SpriteRenderer>().sprite; //클릭한 과일의 스프라이트를 가져옴
+                GameObject fruitImageObject = new GameObject("FruitImage", typeof(RectTransform)); //RectTransform 컴포넌트를 가진 오브젝트 생성
+                fruitImageObject.AddComponent<Image>().sprite = fruitSprite; //생성된 오브젝트에 이미지 컴포넌트를 추가하고 클릭한 과일의 이미지를 넣음
+                RectTransform RectTransform = fruitImageObject.GetComponent<RectTransform>();
+                RectTransform.SetParent(VerticalLayoutGroup.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+                TotalFruitImageObject.Add(fruitImageObject); //생성된 오브젝트를 리스트에 추가
             }
         }
-
-        string allClickedObjectNames = "";
-        foreach (var FruitsObject in TotalClickedFruits)
-        {
-            allClickedObjectNames += FruitsObject.name + "\n";
-        }
-        clickedObjectNameText.SetText(allClickedObjectNames);
+        //벌은 돈
         moneyNumText.SetText(money.ToString()+"만원");
     }
 
@@ -161,24 +162,29 @@ public class CafeGame : MonoBehaviour
             Destroy(BoxObj5);
     }
 
-    public void DestroyOrder(List<GameObject> OrderNum)
+    public void DestroyOrder(List<GameObject> Order)
     {
-        for (int i = 0; i < OrderNum.Count; i++)
+        for (int i = 0; i < Order.Count; i++)
         {
-            Destroy(OrderNum[i]);
+            Destroy(Order[i]);
         }
-        OrderNum.Clear();   
-    }
-
-    public void ClearClickedObj()
-    {
-        TotalClickedFruits.Clear();
+        Order.Clear();   
     }
 
     public void moneyManager()
     {
         money += 1;
     }
+
+    // public void ClearClickedObj()
+    // {
+    //     TotalClickedFruits.Clear();
+    //     for (int i = 0; i < TotalFruitImageObject.Count; i++)
+    //     {
+    //         Destroy(TotalFruitImageObject[i]);
+    //     }
+    //     TotalFruitImageObject.Clear(); 
+    // }
 
     // 2차원 리스트로 과일 주문 5개 생성하기 - 근데 어려워서 포기 
     // public void SpawnFruits() 
