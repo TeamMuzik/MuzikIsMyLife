@@ -3330,6 +3330,7 @@ MonoBehaviour:
   - {fileID: 1616301308}
   - {fileID: 806084309}
   - {fileID: 452171257}
+  - {fileID: 1660312005}
   - {fileID: 197270530}
   - {fileID: 2010437507}
   - {fileID: 760326261}
@@ -7612,7 +7613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1660312006
 Transform:
   m_ObjectHideFlags: 0
