@@ -6584,7 +6584,7 @@ MonoBehaviour:
   description: 
   isOwned: 0
   isEquipped: 0
-  price: 200
+  price: 150
   replaceable: 1
   priceText: {fileID: 865786614}
 --- !u!212 &1694948073
