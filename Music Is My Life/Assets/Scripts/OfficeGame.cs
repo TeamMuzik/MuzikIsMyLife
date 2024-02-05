@@ -7,10 +7,13 @@ using System.Collections.Generic;
 
 public class OfficeGame : MonoBehaviour
 {
+
+
     TextAsset textFile;
     string[] lines;
     List<string> wordList = new List<string>();
 
+    public GameObject canvasGameObject;
     public TMP_InputField WordInputField;
     public TMP_Text WordInputFieldText;
     public TMP_Text timer;
@@ -38,8 +41,30 @@ public class OfficeGame : MonoBehaviour
 
     float gameTimer = 60.0f;
 
+    public GameObject[] blockers; // 스프라이트 객체들을 위한 배열
+    private float nextBlockerTime = 0f;
+    private float blockerDuration = 5f; // 스프라이트가 화면에 머무는 시간
+    private bool blockerActive = false;
+
     void Start()
     {
+
+      WordInputField.ActivateInputField();
+      canvasGameObject = GameObject.Find("Canvas");
+      if (canvasGameObject != null)
+        {
+            canvasGameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Canvas GameObject not found!");
+        }
+
+      foreach (GameObject blocker in blockers)
+    {
+        blocker.SetActive(false);
+    }
+
         textFile = Resources.Load("OfficeGameText") as TextAsset;
         if (textFile != null)
         {
@@ -65,6 +90,11 @@ public class OfficeGame : MonoBehaviour
         }
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
+        foreach (GameObject blocker in blockers)
+   {
+       blocker.SetActive(false);
+   }
+        SetNextBlockerTime();
     }
 
     void UpdateGameTimer()
@@ -105,7 +135,7 @@ public class OfficeGame : MonoBehaviour
                     }
                 }
 
-                StartCoroutine(MoveTextDown(tempRectTransform));
+                StartCoroutine(MoveTextDown(tempRectTransform, tempBlock));
 
                 yield return new WaitForSeconds(3.0f / level);
             }
@@ -116,8 +146,20 @@ public class OfficeGame : MonoBehaviour
         }
     }
 
-    IEnumerator MoveTextDown(RectTransform rectTransform)
+    IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block)
 {
+  if (rectTransform == null || block == null)
+   {
+     Debug.LogError("MoveTextDown: rectTransform or block is null");
+      yield break;
+   }
+
+    BlockBehavior blockBehavior = block.GetComponent<BlockBehavior>();
+    if (blockBehavior == null)
+    {
+        Debug.LogError("BlockBehavior component not found on the block");
+        yield break;
+    }
     if (rectTransform == null)
         yield break;
 
@@ -139,10 +181,10 @@ public class OfficeGame : MonoBehaviour
         elapsed += Time.deltaTime;
 
         // 단어가 화면 아래로 사라질 때만 생명을 깎습니다.
-        if (rectTransform.anchoredPosition.y <= -240.0f && !lifeReduced)
+        if (!block.GetComponent<BlockBehavior>().isDestroyedByAnswer && rectTransform.anchoredPosition.y <= -240.0f && !lifeReduced)
         {
             ReduceLife();
-            lifeReduced = true; // 생명을 한 번만 깎도록 설정
+            lifeReduced = true;
         }
 
         if (canInput && Input.GetKeyDown(KeyCode.Return) && canDestroy)
@@ -185,6 +227,19 @@ public class OfficeGame : MonoBehaviour
     IEnumerator DestroyBlock(GameObject block)
     {
         yield return null;
+        BlockBehavior blockBehavior = block.GetComponent<BlockBehavior>();
+        if (blockBehavior != null && blockBehavior.isDestroyedByAnswer)
+    {
+      blockTextList.Remove(block);
+
+      Vector2 positionBeforeDestroy = block.GetComponent<RectTransform>().anchoredPosition;
+
+      Destroy(block);
+
+      StartCoroutine(MoveNextBlock(positionBeforeDestroy));  // 정답에 의해 파괴된 경우 추가 처리 (생명 감소 없음)
+    }
+    else{
+
 
         if (block != null && !canInput)
         {
@@ -192,15 +247,13 @@ public class OfficeGame : MonoBehaviour
         }
 
         if (canDestroy && block != null)
-        {
-            blockTextList.Remove(block);
-
-            Vector2 positionBeforeDestroy = block.GetComponent<RectTransform>().anchoredPosition;
-
-            Destroy(block);
-
-            StartCoroutine(MoveNextBlock(positionBeforeDestroy));
-        }
+      {
+          blockTextList.Remove(block);
+          Vector2 positionBeforeDestroy = block.GetComponent<RectTransform>().anchoredPosition;
+          Destroy(block);
+          StartCoroutine(MoveNextBlock(positionBeforeDestroy));
+      }
+    }
 
         canInput = true;
         canDestroy = true;
@@ -208,21 +261,31 @@ public class OfficeGame : MonoBehaviour
 
     void ReduceLife()
     {
-        lives--;
-        livesText.text = "생명: " + lives;
+      lives--;
+      lives = Mathf.Max(lives, 0); // 생명이 0 이하로 떨어지지 않도록 함
+      livesText.text = "생명: " + lives;
 
-        if (lives <= 0)
-        {
-            GameOver();
+      if (lives <= 0)
+      {
+          GameOver();
         }
-    }
+}
+
 
     void GameOver()
     {
         gameOver = true;
-        StopAllCoroutines();
-        finalText.text = "게임 오버! 최종 점수: " + score;
+        StopGame();
         finalText.gameObject.SetActive(true);
+        int totalScore = score;
+        int earnedMoney = CalculateEarnedMoney(totalScore);
+
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
+        StatusController statusController = FindObjectOfType<StatusController>();
+
+        finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney + "0000원";
+
+        gameOver = true;
     }
 
     IEnumerator MoveNextBlock(Vector2 startPosition)
@@ -234,7 +297,7 @@ public class OfficeGame : MonoBehaviour
         if (nextBlock != null)
         {
             RectTransform nextRectTransform = nextBlock.GetComponent<RectTransform>();
-            StartCoroutine(MoveTextDown(nextRectTransform));
+            StartCoroutine(MoveTextDown(nextRectTransform, nextBlock));
         }
     }
     GameObject GetNextBlock(Vector2 position)
@@ -267,9 +330,14 @@ public class OfficeGame : MonoBehaviour
 
     for (int i = 0; i < blockTextList.Count; i++)
     {
-        if (blockTextList[i] != null &&
-            string.Equals(inputText, blockTextList[i].GetComponent<TMP_Text>().text.ToUpper(), StringComparison.OrdinalIgnoreCase))
+        if (blockTextList[i] != null && string.Equals(inputText, blockTextList[i].GetComponent<TMP_Text>().text.ToUpper(), StringComparison.OrdinalIgnoreCase))
         {
+            BlockBehavior blockBehavior = blockTextList[i].GetComponent<BlockBehavior>();
+            if (blockBehavior != null)
+            {
+                blockBehavior.isDestroyedByAnswer = true; // 정답에 의한 파괴로 설정
+            }
+
             string deleteTxt = blockTextList[i].GetComponent<TMP_Text>().text;
             wordList.Add(deleteTxt);
             tempList.Remove(deleteTxt);
@@ -288,7 +356,6 @@ public class OfficeGame : MonoBehaviour
     if (!isCorrectWord)
     {
         WordInputField.ActivateInputField();
-        StartCoroutine(MoveNextBlock(Vector2.zero));
     }
 }
 
@@ -330,6 +397,10 @@ public class OfficeGame : MonoBehaviour
             TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
             string timerText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
             timer.text = "남은 시간: " + timerText;
+            if (!WordInputField.isFocused)
+            {
+       WordInputField.ActivateInputField();
+     }
         }
         else
         {
@@ -348,7 +419,37 @@ public class OfficeGame : MonoBehaviour
                 gameOver = true;
             }
         }
+        if (Time.time >= nextBlockerTime && !blockerActive)
+        {
+            StartCoroutine(ActivateBlocker());
+        }
     }
+
+    private void SetNextBlockerTime()
+        {
+            // 다음 blocker 이벤트가 발생할 시간을 현재 시간 + 랜덤 추가 시간으로 설정
+            nextBlockerTime = Time.time + UnityEngine.Random.Range(10, 20); // 예: 10초에서 20초 사이
+        }
+
+        IEnumerator ActivateBlocker()
+        {
+            blockerActive = true;
+
+            // 랜덤하게 하나의 스프라이트 선택
+            GameObject selectedBlocker = blockers[UnityEngine.Random.Range(0, blockers.Length)];
+            selectedBlocker.SetActive(true);
+
+            // blockerDuration 동안 대기
+            yield return new WaitForSeconds(blockerDuration);
+
+            // 스프라이트 비활성화
+            selectedBlocker.SetActive(false);
+
+            blockerActive = false;
+
+            // 다음 blocker 이벤트 시간 설정
+            SetNextBlockerTime();
+        }
 
     int CalculateEarnedMoney(int totalScore)
     {
