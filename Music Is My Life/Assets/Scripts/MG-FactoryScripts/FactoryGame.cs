@@ -19,8 +19,7 @@ public class FactoryGame : MonoBehaviour
     private TextMeshProUGUI stageNumText;
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
-    [SerializeField]
-    private TextMeshProUGUI moneyNumInGameText;
+
     [SerializeField]
     private int RandNum = 0;
     public int money = 0;
@@ -114,7 +113,6 @@ public class FactoryGame : MonoBehaviour
 
     void Update()
     {
-        moneyNumInGameText.SetText(money.ToString()+" 만원");
         
         if (FactoryGameTimer.totalTime < 0)
         {

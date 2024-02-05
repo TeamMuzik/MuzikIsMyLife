@@ -21,6 +21,8 @@ public class CafeGameTimer : MonoBehaviour
 
     [SerializeField] private float Totaltime;
     [SerializeField] private float OrderTime;
+    [SerializeField] private TMP_Text resultText;
+    [SerializeField] private TMP_Text stressText;
 
     public static float totalTime;
 
@@ -38,9 +40,11 @@ public class CafeGameTimer : MonoBehaviour
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
-        Totaltime = 121;
+        Totaltime = 61;
         OrderTime = 16;
         TutorialPanel.SetActive(true);
+        StartPanel.SetActive(false);
+        EndPanel.SetActive(false);
     }
 
     public void startCoroutine()
@@ -67,6 +71,22 @@ public class CafeGameTimer : MonoBehaviour
             if(totalTime <= 0)
             {
                 StopAllCoroutines();
+                int result = MGResultManager.PartTimeDayResult();
+                switch (result)
+                {
+                    case 1:
+                        resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
+                        stressText.text = "스트레스 -20";
+                        break;
+                    case 2:
+                        resultText.text = "바쁜 하루였다...";
+                        stressText.text = "스트레스 +20";
+                        break;
+                    default:
+                        resultText.text = "오늘도 열심히 알바를 했다.";
+                        stressText.text = "스트레스 +10";
+                        break;
+                }
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
                 moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString()+"만원");
@@ -90,7 +110,8 @@ public class CafeGameTimer : MonoBehaviour
                 Order1TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
                 cafeGameInstance.BoxManager();
-                yield return new WaitForSeconds(2f);
+                int randNum = Random.Range(2, 5);
+                yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_1();
                 order1Time = OrderTime;
             }
@@ -112,7 +133,8 @@ public class CafeGameTimer : MonoBehaviour
                 Order2TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
                 cafeGameInstance.BoxManager();
-                yield return new WaitForSeconds(2f);
+                int randNum = Random.Range(2, 5);
+                yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_2();
                 order2Time = OrderTime;
             }
@@ -134,7 +156,8 @@ public class CafeGameTimer : MonoBehaviour
                 Order3TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
                 cafeGameInstance.BoxManager();
-                yield return new WaitForSeconds(2f);
+                int randNum = Random.Range(2, 5);
+                yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_3();
                 order3Time = OrderTime;
             }
@@ -156,7 +179,8 @@ public class CafeGameTimer : MonoBehaviour
                 Order4TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
                 cafeGameInstance.BoxManager();
-                yield return new WaitForSeconds(2f);
+                int randNum = Random.Range(2, 5);
+                yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_4();
                 order4Time = OrderTime;
             }
@@ -178,7 +202,8 @@ public class CafeGameTimer : MonoBehaviour
                 Order5TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
                 cafeGameInstance.BoxManager();
-                yield return new WaitForSeconds(2f);
+                int randNum = Random.Range(2, 5);
+                yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_5();
                 order5Time = OrderTime;
             }

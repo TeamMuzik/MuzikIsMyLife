@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bb4eb8dc19e704e4997c005d1a95d51d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1faf2970e2f3fe94381d3e2c41dfc31a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assignedKey: 32
-  KeyBoard_0: {fileID: -1352999725, guid: f4e84a64f8a3d4542ad76581970be2fb, type: 3}
-  KeyBoard_1: {fileID: 1053925332, guid: f4e84a64f8a3d4542ad76581970be2fb, type: 3}
-  KeyBoard_2: {fileID: 430893382, guid: f4e84a64f8a3d4542ad76581970be2fb, type: 3}
-  KeyBoard_3: {fileID: 237917942, guid: f4e84a64f8a3d4542ad76581970be2fb, type: 3}
-  SpaceSprite: {fileID: 21300000, guid: bb4eb8dc19e704e4997c005d1a95d51d, type: 3}
+  LeftKeyboard: {fileID: 21300000, guid: 352ce1c0fad97ab41bc03cbc4ce93c17, type: 3}
+  RightKeyboard: {fileID: 21300000, guid: 2e0642208ea10024aa9f523c9d864a7e, type: 3}
+  DownKeyboard: {fileID: 21300000, guid: 6a06e834e956cbd4fa0b1908422e13e5, type: 3}
+  UpKeyboard: {fileID: 21300000, guid: ef03049184c534e4e9868822cc0b9713, type: 3}
+  SpaceKeyboard: {fileID: 21300000, guid: 1faf2970e2f3fe94381d3e2c41dfc31a, type: 3}
+  objectIndex: 0
+  redColor: {r: 1, g: 0, b: 0, a: 1}
+  whiteColor: {r: 1, g: 1, b: 1, a: 1}

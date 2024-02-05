@@ -5,19 +5,29 @@ using UnityEngine;
 public class FactoryGameKeyboard : MonoBehaviour
 {
     private FactoryGame FactoryGameInstance;
-
+    private FactoryGameTimer FactoryGameTimerInstance;
     public KeyCode assignedKey; //객체의 key
-    public Sprite KeyBoard_0; //좌
-    public Sprite KeyBoard_1; //우
-    public Sprite KeyBoard_2; //하
-    public Sprite KeyBoard_3; //상
-    public Sprite SpaceSprite; //스페이스바
+
+    private SpriteRenderer spriteRenderer;
+    public Sprite LeftKeyboard; //좌
+    public Sprite RightKeyboard; //우
+    public Sprite DownKeyboard; //하
+    public Sprite UpKeyboard; //상
+    public Sprite SpaceKeyboard; //스페이스바
     public int objectIndex;
     public static int keyState = 0; //키보드가 눌렸는지 체크하는 변수
+    public static bool allowControl = true;
+
+    private Color redColor = Color.red;
+    private Color whiteColor = Color.white;
+    public Color blackColor = Color.black;
+
 
     public void Start()
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
+        FactoryGameTimerInstance = FindObjectOfType<FactoryGameTimer>();
+        allowControl = true;
     }
 
     public void SetKeySprite(KeyCode key, int index)
@@ -28,47 +38,87 @@ public class FactoryGameKeyboard : MonoBehaviour
         switch (assignedKey)
         {
             case KeyCode.LeftArrow:
-                spriteRenderer.sprite = KeyBoard_0;
+                spriteRenderer.sprite = LeftKeyboard;
                 break;
             case KeyCode.RightArrow:
-                spriteRenderer.sprite = KeyBoard_1;
+                spriteRenderer.sprite = RightKeyboard;
                 break;
             case KeyCode.DownArrow:
-                spriteRenderer.sprite = KeyBoard_2;
+                spriteRenderer.sprite = DownKeyboard;
                 break;
             case KeyCode.UpArrow:
-                spriteRenderer.sprite = KeyBoard_3;
+                spriteRenderer.sprite = UpKeyboard;
                 break;
             case KeyCode.Space:
-                spriteRenderer.sprite = SpaceSprite;
+                spriteRenderer.sprite = SpaceKeyboard;
                 break;
         }
     }
 
     void Update()
     {
-        if (objectIndex == FactoryGame.turn)
+        if (allowControl)
         {
-            if (Input.GetKeyDown(assignedKey))
+            if (objectIndex == FactoryGame.turn)
             {
-                keyState = 1;
-            }
-            if (keyState == 1 && !Input.anyKeyDown) //한번 입력되고 다른 키가 입력되지 않을 때
-            {
-                FactoryGame.turn++;
-                Destroy(gameObject);
-                keyState = 0;
-            }
-            else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
-            {
-                keyState = 0;
-                FactoryGameTimer.totalTime -= 5;
-                // foreach (GameObject keyboard in FactoryGameInstance.spawnedKeyboards)
-                // {
-                //     Destroy(keyboard);
-                // }
-                // FactoryGameInstance.spawnedKeyboards.Clear();
+                if (Input.GetKeyDown(assignedKey))
+                {
+                    keyState = 1;
+                }
+                if (keyState == 1 && !Input.anyKeyDown) //한번 입력되고 다른 키가 입력되지 않을 때
+                {
+                    keyState = 0;
+                    FactoryGame.turn++;
+                    // StartCoroutine(SuccessChangeColor(gameObject));
+                    Destroy(gameObject);
+                    if (FactoryGameTimerInstance.MistakePanel.activeSelf)
+                    {
+                        FactoryGameTimerInstance.MistakePanel.SetActive(false);
+                    }
+                }
+                else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
+                {
+                    keyState = 0;
+                    StartCoroutine(MistakeChangeColor());
+                    allowControl = false;
+                    StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
+                    FactoryGameTimer.totalTime -= 4f;
+                    // foreach (GameObject keyboard in FactoryGameInstance.spawnedKeyboards)
+                    // {
+                    //     Destroy(keyboard);
+                    // }
+                    // FactoryGameInstance.spawnedKeyboards.Clear();
+                }
             }
         }
+        
     }
+    public IEnumerator MistakeChangeColor()
+    {
+        float elapsedTime = 0f; // 누적 경과 시간
+        float fadedTime = 0.5f; // 총 소요 시간
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        while (elapsedTime <= fadedTime)
+        {
+            // 이미지 색상 변경
+            spriteRenderer.color = Color.Lerp(redColor, whiteColor, elapsedTime / fadedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    // public IEnumerator SuccessChangeColor(GameObject keyObj)
+    // {
+    //     float elapsedTime = 0f; // 누적 경과 시간
+    //     float fadedTime = 0.5f; // 총 소요 시간
+    //     spriteRenderer = GetComponent<SpriteRenderer>();
+    //     while (elapsedTime <= fadedTime)
+    //     {
+    //         // 이미지 색상 변경
+    //         spriteRenderer.color = Color.Lerp(blackColor, whiteColor, elapsedTime / fadedTime);
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
+    //     Destroy(gameObject);
+    // }
 }
