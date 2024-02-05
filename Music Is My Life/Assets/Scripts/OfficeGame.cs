@@ -148,11 +148,11 @@ public class OfficeGame : MonoBehaviour
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block)
 {
-  if (rectTransform == null || block == null)
-   {
-     Debug.LogError("MoveTextDown: rectTransform or block is null");
-      yield break;
-   }
+    if (rectTransform == null || block == null)
+    {
+        Debug.LogError("MoveTextDown: rectTransform or block is null");
+        yield break;
+    }
 
     BlockBehavior blockBehavior = block.GetComponent<BlockBehavior>();
     if (blockBehavior == null)
@@ -160,16 +160,12 @@ public class OfficeGame : MonoBehaviour
         Debug.LogError("BlockBehavior component not found on the block");
         yield break;
     }
-    if (rectTransform == null)
-        yield break;
 
     float duration = 3.0f;
     float elapsed = 0f;
-
     Vector2 startPosition = rectTransform.anchoredPosition;
     Vector2 targetPosition = new Vector2(startPosition.x, -250.0f);
 
-    // 생명이 이미 깎였는지 나타내는 변수
     bool lifeReduced = false;
 
     while (elapsed < duration)
@@ -180,37 +176,20 @@ public class OfficeGame : MonoBehaviour
         rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsed / duration);
         elapsed += Time.deltaTime;
 
-        // 단어가 화면 아래로 사라질 때만 생명을 깎습니다.
-        if (!block.GetComponent<BlockBehavior>().isDestroyedByAnswer && rectTransform.anchoredPosition.y <= -240.0f && !lifeReduced)
+        if (!blockBehavior.isDestroyedByAnswer && rectTransform.anchoredPosition.y <= -240.0f && !lifeReduced)
         {
             ReduceLife();
             lifeReduced = true;
         }
 
-        if (canInput && Input.GetKeyDown(KeyCode.Return) && canDestroy)
-        {
-            canDestroy = false;
-            StartCoroutine(DestroyBlock(rectTransform.gameObject));
-            yield break;
-        }
-
         yield return null;
     }
 
-    if (rectTransform != null)
+    if (rectTransform != null && !blockBehavior.isDestroyedByAnswer)
     {
         StartCoroutine(DestroyBlock(rectTransform.gameObject));
     }
-    else
-    {
-        // rectTransform이 null이 아니면서 여기까지 도달한 경우, 생명을 깎습니다.
-        if (!lifeReduced)
-        {
-            ReduceLife();
-        }
-    }
 }
-
 
     IEnumerator CheckInputField()
     {
@@ -324,40 +303,37 @@ public class OfficeGame : MonoBehaviour
     }
 
     void GetInputFieldText()
-{
-    bool isCorrectWord = false;
-    string inputText = WordInputField.text.ToUpper(); // 입력된 텍스트를 대문자로 변환
+  {
+      bool isCorrectWord = false;
+      string inputText = WordInputField.text.ToUpper(); // 입력된 텍스트를 대문자로 변환
 
-    for (int i = 0; i < blockTextList.Count; i++)
-    {
-        if (blockTextList[i] != null && string.Equals(inputText, blockTextList[i].GetComponent<TMP_Text>().text.ToUpper(), StringComparison.OrdinalIgnoreCase))
-        {
-            BlockBehavior blockBehavior = blockTextList[i].GetComponent<BlockBehavior>();
-            if (blockBehavior != null)
-            {
-                blockBehavior.isDestroyedByAnswer = true; // 정답에 의한 파괴로 설정
-            }
+      for (int i = 0; i < blockTextList.Count; i++)
+      {
+          if (blockTextList[i] != null && string.Equals(inputText, blockTextList[i].GetComponent<TMP_Text>().text.ToUpper(), StringComparison.OrdinalIgnoreCase))
+          {
+              BlockBehavior blockBehavior = blockTextList[i].GetComponent<BlockBehavior>();
+              if (blockBehavior != null)
+              {
+                  blockBehavior.isDestroyedByAnswer = true; // 정답에 의한 파괴로 설정
+              }
 
-            string deleteTxt = blockTextList[i].GetComponent<TMP_Text>().text;
-            wordList.Add(deleteTxt);
-            tempList.Remove(deleteTxt);
-            canInput = false;
+              string deleteTxt = blockTextList[i].GetComponent<TMP_Text>().text;
+              wordList.Add(deleteTxt);
+              tempList.Remove(deleteTxt);
 
-            StartCoroutine(DestroyBlock(blockTextList[i]));
-            score += 5;
-            SetShowerScore();
-            isCorrectWord = true;
-            break;
-        }
-    }
+              StartCoroutine(DestroyBlock(blockTextList[i]));
+              score += 5;
+              SetShowerScore();
+              isCorrectWord = true;
+              break;
+          }
+      }
 
-    WordInputField.text = "";
+      WordInputField.text = "";
+      WordInputField.ActivateInputField(); // 항상 입력 가능하도록 설정
+  }
 
-    if (!isCorrectWord)
-    {
-        WordInputField.ActivateInputField();
-    }
-}
+
 
 
     void SetShowerScore()
