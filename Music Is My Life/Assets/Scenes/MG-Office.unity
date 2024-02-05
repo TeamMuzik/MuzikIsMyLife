@@ -1260,7 +1260,7 @@ GameObject:
   - component: {fileID: 1475546588}
   - component: {fileID: 1475546587}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Blocking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2131,7 +2131,7 @@ GameObject:
   - component: {fileID: 1999398306}
   - component: {fileID: 1999398305}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
