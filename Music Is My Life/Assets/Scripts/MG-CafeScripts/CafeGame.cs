@@ -7,7 +7,7 @@ using TMPro;
 public class CafeGame : MonoBehaviour
 {
     public GameObject[] FruitsPrefabs;
-    public GameObject[] BoxPrefabs;
+    public GameObject[] ReceiptPrefabs;
 
     public List<GameObject> Order1 = new List<GameObject>();
     public List<GameObject> Order2 = new List<GameObject>();
@@ -19,13 +19,14 @@ public class CafeGame : MonoBehaviour
     public List<GameObject> TotalFruitImageObject = new List<GameObject>();
     public VerticalLayoutGroup VerticalLayoutGroup;
 
-    private GameObject BoxObj1;
-    private GameObject BoxObj2;
-    private GameObject BoxObj3;
-    private GameObject BoxObj4;
-    private GameObject BoxObj5;
+    private GameObject ReceiptObj1;
+    private GameObject ReceiptObj2;
+    private GameObject ReceiptObj3;
+    private GameObject ReceiptObj4;
+    private GameObject ReceiptObj5;
 
     public int money = 0;
+    private float yPosBox =2;
     
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
@@ -63,17 +64,16 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-5.5f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-5.6f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order1.Add(FruitsObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-5.5f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj1 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(-5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj1 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_2()
@@ -81,17 +81,16 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-3.25f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-3.1f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order2.Add(FruitsObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-3.25f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj2 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(-2.5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj2 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_3()
@@ -99,17 +98,16 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-1f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-0.6f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order3.Add(FruitsObj);
-        }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-1f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj3 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        } 
+        Vector3 spawnPositionBox = new Vector3(0f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj3 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_4()
@@ -117,17 +115,16 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(1.25f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(1.9f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order4.Add(FruitsObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(1.25f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj4 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(2.5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj4 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_5()
@@ -135,31 +132,30 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(3.5f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(4.4f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order5.Add(FruitsObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(3.5f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj5 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj5 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
-    public void BoxManager()
+    public void ReceiptManager()
     {
         if (Order1.Count == 0)
-            Destroy(BoxObj1);
+            Destroy(ReceiptObj1);
         if (Order2.Count == 0)
-            Destroy(BoxObj2);
+            Destroy(ReceiptObj2);
         if (Order3.Count == 0)
-            Destroy(BoxObj3);
+            Destroy(ReceiptObj3);
         if (Order4.Count == 0)
-            Destroy(BoxObj4);
+            Destroy(ReceiptObj4);
         if (Order5.Count == 0)
-            Destroy(BoxObj5);
+            Destroy(ReceiptObj5);
     }
 
     public void DestroyOrder(List<GameObject> Order)

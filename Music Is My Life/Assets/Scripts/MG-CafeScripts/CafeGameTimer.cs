@@ -40,8 +40,8 @@ public class CafeGameTimer : MonoBehaviour
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
-        Totaltime = 61;
-        OrderTime = 16;
+        Totaltime = 10000;
+        OrderTime = 10000;
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
@@ -109,7 +109,7 @@ public class CafeGameTimer : MonoBehaviour
             {
                 Order1TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_1();
@@ -132,7 +132,7 @@ public class CafeGameTimer : MonoBehaviour
             {
                 Order2TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_2();
@@ -155,7 +155,7 @@ public class CafeGameTimer : MonoBehaviour
             {
                 Order3TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_3();
@@ -178,7 +178,7 @@ public class CafeGameTimer : MonoBehaviour
             {
                 Order4TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_4();
@@ -201,7 +201,7 @@ public class CafeGameTimer : MonoBehaviour
             {
                 Order5TimerTxt.text = "";
                 cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_5();

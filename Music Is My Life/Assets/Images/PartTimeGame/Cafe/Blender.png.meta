@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95561adc5b6d6bf46991af6c1887ff05
+guid: fd95b5c4edf1f204cb8557a7068fabb0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 121, y: 0, z: 136, w: 0}
+  spriteBorder: {x: 63, y: 16, z: 48, w: 15}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -101,18 +101,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -120,10 +108,10 @@ TextureImporter:
       name: Blender_0
       rect:
         serializedVersion: 2
-        x: 141
+        x: 64
         y: 16
-        width: 245
-        height: 506
+        width: 168
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fe58e6512778a0478644fc95a44f746
-      internalID: -624791478
+      spriteID: d5ec13669df07b44fb0a2427cc537e73
+      internalID: -154420193
       vertices: []
       indices: 
       edges: []
@@ -148,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blender_0: -624791478
+      Blender_0: -154420193
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

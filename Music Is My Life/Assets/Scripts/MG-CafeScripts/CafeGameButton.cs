@@ -42,7 +42,7 @@ public class CafeGameButton : MonoBehaviour
             {
                 cafeGameInstance.DestroyOrder(order);
                 cafeGameInstance.moneyManager();
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 Garbage();
                 orderTime = 0f;
             }
