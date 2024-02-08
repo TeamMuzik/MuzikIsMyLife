@@ -40,8 +40,8 @@ public class CafeGameTimer : MonoBehaviour
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
-        Totaltime = 10000;
-        OrderTime = 10000;
+        Totaltime = 61;
+        OrderTime = 16;
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
@@ -108,7 +108,7 @@ public class CafeGameTimer : MonoBehaviour
             if(order1Time <= 0)
             {
                 Order1TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order1, cafeGameInstance.Order1Name);
                 cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
@@ -131,7 +131,7 @@ public class CafeGameTimer : MonoBehaviour
             if(order2Time <= 0)
             {
                 Order2TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order2, cafeGameInstance.Order2Name);
                 cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
@@ -154,7 +154,7 @@ public class CafeGameTimer : MonoBehaviour
             if(order3Time <= 0)
             {
                 Order3TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order3, cafeGameInstance.Order3Name);
                 cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
@@ -177,7 +177,7 @@ public class CafeGameTimer : MonoBehaviour
             if(order4Time <= 0)
             {
                 Order4TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order4, cafeGameInstance.Order4Name);
                 cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
@@ -200,7 +200,7 @@ public class CafeGameTimer : MonoBehaviour
             if(order5Time <= 0)
             {
                 Order5TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order5, cafeGameInstance.Order5Name);
                 cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
