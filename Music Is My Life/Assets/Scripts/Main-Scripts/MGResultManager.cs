@@ -72,17 +72,18 @@ public class MGResultManager : MonoBehaviour
             return 4;
         }
     }
-    public static int BeggingDayResult()
+
+    /*public static int BeggingDayResult()
     {
         if (PlayerPrefs.GetInt("MyFame") >= 20) // 내 명성이 20 이상일 경우
         {
             float p = Random.value;
             Debug.Log("확률: " + p);
-            if (p * 100 < PlayerPrefs.GetInt("MyFame")) // 내 명성의 확률로 팬이 알아봄
+            if (p * 100 < PlayerPrefs.GetInt("MyFame")) // 내 명성의 확률로 팬이 알아봄?
             {
                 return 1;
             }
         }
         return 2; // 알아보지 않음
-    }
+    }*/
 }

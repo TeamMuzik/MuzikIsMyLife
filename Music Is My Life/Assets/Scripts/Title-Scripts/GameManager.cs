@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Dday", 0); // 몇일차인지
 
         // Cover Game
-        PlayerPrefs.SetInt("Subscribers", 0); // 구독자수
-        PlayerPrefs.SetInt("Subs_Min", 500); // 구독자수 최소치
-        PlayerPrefs.SetInt("Subs_Max", 5000); // 구독자수 최대치
+        PlayerPrefs.SetInt("Subscribers", 0); // 구독자 수
+        PlayerPrefs.SetInt("Subs_Min", 500); // 구독자 수 최소치
+        PlayerPrefs.SetInt("Subs_Max", 5000); // 구독자 수 최대치
         PlayerPrefs.SetInt("Subs_Multiplier", 1); // 구독자 증가 배율
 
         // 알바 연속
