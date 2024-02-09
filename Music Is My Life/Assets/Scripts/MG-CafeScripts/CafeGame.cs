@@ -7,7 +7,7 @@ using TMPro;
 public class CafeGame : MonoBehaviour
 {
     public GameObject[] FruitsPrefabs;
-    public GameObject[] BoxPrefabs;
+    public GameObject[] ReceiptPrefabs;
 
     public List<GameObject> Order1 = new List<GameObject>();
     public List<GameObject> Order2 = new List<GameObject>();
@@ -15,18 +15,36 @@ public class CafeGame : MonoBehaviour
     public List<GameObject> Order4 = new List<GameObject>();
     public List<GameObject> Order5 = new List<GameObject>();
 
-    public List<GameObject> TotalClickedFruits = new List<GameObject>();
-    public List<GameObject> TotalFruitImageObject = new List<GameObject>();
-    public VerticalLayoutGroup VerticalLayoutGroup;
+    public List<GameObject> Order1Name = new List<GameObject>();
+    public List<GameObject> Order2Name = new List<GameObject>();
+    public List<GameObject> Order3Name = new List<GameObject>();
+    public List<GameObject> Order4Name = new List<GameObject>();
+    public List<GameObject> Order5Name = new List<GameObject>();
 
-    private GameObject BoxObj1;
-    private GameObject BoxObj2;
-    private GameObject BoxObj3;
-    private GameObject BoxObj4;
-    private GameObject BoxObj5;
+    public VerticalLayoutGroup Order1NameVertical;
+    public VerticalLayoutGroup Order2NameVertical;
+    public VerticalLayoutGroup Order3NameVertical;
+    public VerticalLayoutGroup Order4NameVertical;
+    public VerticalLayoutGroup Order5NameVertical;
+
+    public List<GameObject> TotalClickedFruits = new List<GameObject>();
+    public List<GameObject> TotalFruitImage = new List<GameObject>();
+    public List<GameObject> TotalFruitName = new List<GameObject>();
+
+    public VerticalLayoutGroup ClickFruitsVertical;
+    public VerticalLayoutGroup ClickNameVertical;
+
+    private GameObject ReceiptObj1;
+    private GameObject ReceiptObj2;
+    private GameObject ReceiptObj3;
+    private GameObject ReceiptObj4;
+    private GameObject ReceiptObj5;
 
     public int money = 0;
+    private float yPosBox =2;
     
+    public TMP_FontAsset customFont;
+
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
 
@@ -49,11 +67,34 @@ public class CafeGame : MonoBehaviour
                 Sprite fruitSprite = clickedObject.GetComponent<SpriteRenderer>().sprite; //클릭한 과일의 스프라이트를 가져옴
                 GameObject fruitImageObject = new GameObject("FruitImage", typeof(RectTransform)); //RectTransform 컴포넌트를 가진 오브젝트 생성
                 fruitImageObject.AddComponent<Image>().sprite = fruitSprite; //생성된 오브젝트에 이미지 컴포넌트를 추가하고 클릭한 과일의 이미지를 넣음
-                RectTransform RectTransform = fruitImageObject.GetComponent<RectTransform>();
-                RectTransform.SetParent(VerticalLayoutGroup.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
-                TotalFruitImageObject.Add(fruitImageObject); //생성된 오브젝트를 리스트에 추가
+                RectTransform RectTransform1 = fruitImageObject.GetComponent<RectTransform>();
+                RectTransform1.SetParent(ClickFruitsVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+                TotalFruitImage.Add(fruitImageObject); //생성된 오브젝트를 리스트에 추가
+
+                // 클릭한 과일 이름 생성
+                string FruitName = clickedObject.name;
+                GameObject FruitNameObj = new GameObject("FruitNameText");
+                FruitNameObj.AddComponent<TextMeshProUGUI>().text = FruitName;
+                TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+                textMeshPro.font = customFont;
+                textMeshPro.color = Color.black;
+                textMeshPro.fontSize = 63;
+                RectTransform rectTransform2 = FruitNameObj.GetComponent<RectTransform>();
+                rectTransform2.SetParent(ClickNameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+                rectTransform2.sizeDelta = new Vector2(260f, rectTransform2.sizeDelta.y);
+                TotalFruitName.Add(FruitNameObj);
+
             }
         }
+
+        //과일 이름 표시
+        // string allClickedObjectNames = "";
+        // foreach (var FruitsObject in TotalClickedFruits)
+        // {
+        //     allClickedObjectNames += FruitsObject.name + "\n";
+        // }
+        // clickedObjectNameText.SetText(allClickedObjectNames);
+
         //벌은 돈
         moneyNumText.SetText(money.ToString()+"만원");
     }
@@ -63,17 +104,27 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-5.5f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-5.6f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order1.Add(FruitsObj);
+
+            GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
+            FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
+            TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+            textMeshPro.font = customFont;
+            textMeshPro.color = Color.black;
+            textMeshPro.fontSize = 15;
+            RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
+            rectTransform.SetParent(Order1NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+            Order1Name.Add(FruitNameObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-5.5f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj1 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(-5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj1 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_2()
@@ -81,17 +132,27 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-3.25f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-3.1f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order2.Add(FruitsObj);
+
+            GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
+            FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
+            TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+            textMeshPro.font = customFont;
+            textMeshPro.color = Color.black;
+            textMeshPro.fontSize = 15;
+            RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
+            rectTransform.SetParent(Order2NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+            Order2Name.Add(FruitNameObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-3.25f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj2 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(-2.5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj2 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_3()
@@ -99,17 +160,27 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(-1f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(-0.6f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order3.Add(FruitsObj);
-        }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(-1f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj3 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+
+            GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
+            FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
+            TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+            textMeshPro.font = customFont;
+            textMeshPro.color = Color.black;
+            textMeshPro.fontSize = 15;
+            RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
+            rectTransform.SetParent(Order3NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+            Order3Name.Add(FruitNameObj);
+        } 
+        Vector3 spawnPositionBox = new Vector3(0f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj3 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_4()
@@ -117,17 +188,27 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(1.25f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(1.9f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order4.Add(FruitsObj);
+
+            GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
+            FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
+            TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+            textMeshPro.font = customFont;
+            textMeshPro.color = Color.black;
+            textMeshPro.fontSize = 15;
+            RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
+            rectTransform.SetParent(Order4NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+            Order4Name.Add(FruitNameObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(1.25f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj4 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(2.5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj4 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
     public void SpawnFruits_5()
@@ -135,40 +216,56 @@ public class CafeGame : MonoBehaviour
         int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            float yPos = 3.5f - 1*i;
-            Vector3 spawnPosition = new Vector3(3.5f, yPos, 0);
+            float yPos = 2.8f - 0.6f*i;
+            Vector3 spawnPosition = new Vector3(4.4f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order5.Add(FruitsObj);
+
+            GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
+            FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
+            TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+            textMeshPro.font = customFont;
+            textMeshPro.color = Color.black;
+            textMeshPro.fontSize = 15;
+            RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
+            rectTransform.SetParent(Order5NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+            Order5Name.Add(FruitNameObj);
         }
-        float yPosBox = 1.5f + 0.5f * (5 - fruitsCount); 
-        Vector3 spawnPositionBox = new Vector3(3.5f, yPosBox, 0);
-        GameObject BoxObj = BoxPrefabs[fruitsCount - 3];
-        BoxObj5 = Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
+        Vector3 spawnPositionBox = new Vector3(5f, yPosBox, 0);
+        GameObject ReceiptObj = ReceiptPrefabs[0];
+        ReceiptObj5 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
     }
 
-    public void BoxManager()
+    public void ReceiptManager()
     {
         if (Order1.Count == 0)
-            Destroy(BoxObj1);
+            Destroy(ReceiptObj1);
         if (Order2.Count == 0)
-            Destroy(BoxObj2);
+            Destroy(ReceiptObj2);
         if (Order3.Count == 0)
-            Destroy(BoxObj3);
+            Destroy(ReceiptObj3);
         if (Order4.Count == 0)
-            Destroy(BoxObj4);
+            Destroy(ReceiptObj4);
         if (Order5.Count == 0)
-            Destroy(BoxObj5);
+            Destroy(ReceiptObj5);
     }
 
-    public void DestroyOrder(List<GameObject> Order)
+    public void DestroyOrder(List<GameObject> Order, List<GameObject> OrderName)
     {
         for (int i = 0; i < Order.Count; i++)
         {
             Destroy(Order[i]);
         }
-        Order.Clear();   
+        Order.Clear();
+
+        for (int i = 0; i < OrderName.Count; i++)
+        {
+            Destroy(OrderName[i]);
+        }
+        OrderName.Clear();
     }
 
     public void moneyManager()
