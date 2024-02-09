@@ -108,8 +108,8 @@ public class CafeGameTimer : MonoBehaviour
             if(order1Time <= 0)
             {
                 Order1TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order1);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order1, cafeGameInstance.Order1Name);
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_1();
@@ -131,8 +131,8 @@ public class CafeGameTimer : MonoBehaviour
             if(order2Time <= 0)
             {
                 Order2TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order2);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order2, cafeGameInstance.Order2Name);
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_2();
@@ -154,8 +154,8 @@ public class CafeGameTimer : MonoBehaviour
             if(order3Time <= 0)
             {
                 Order3TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order3);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order3, cafeGameInstance.Order3Name);
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_3();
@@ -177,8 +177,8 @@ public class CafeGameTimer : MonoBehaviour
             if(order4Time <= 0)
             {
                 Order4TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order4);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order4, cafeGameInstance.Order4Name);
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_4();
@@ -200,8 +200,8 @@ public class CafeGameTimer : MonoBehaviour
             if(order5Time <= 0)
             {
                 Order5TimerTxt.text = "";
-                cafeGameInstance.DestroyOrder(cafeGameInstance.Order5);
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order5, cafeGameInstance.Order5Name);
+                cafeGameInstance.ReceiptManager();
                 int randNum = Random.Range(2, 5);
                 yield return new WaitForSeconds(randNum);
                 cafeGameInstance.SpawnFruits_5();

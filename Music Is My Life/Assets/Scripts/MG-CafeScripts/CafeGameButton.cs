@@ -10,6 +10,8 @@ public class CafeGameButton : MonoBehaviour
     private FactoryGame FactoryGameInstance;
     private FactoryGameTimer FactoryGameTimerInstance;
 
+    [SerializeField] private Sprite[] GarbageSprite;
+
     void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
@@ -22,15 +24,15 @@ public class CafeGameButton : MonoBehaviour
     {
         if (cafeGameInstance.TotalClickedFruits.Count != 0) //블랜더가 비어있으면 함수를 불러오지 않음 (돈버그 방지)
         {
-            CheckOrder(cafeGameInstance.Order1, ref CafeGameTimer.order1Time);
-            CheckOrder(cafeGameInstance.Order2, ref CafeGameTimer.order2Time);
-            CheckOrder(cafeGameInstance.Order3, ref CafeGameTimer.order3Time);
-            CheckOrder(cafeGameInstance.Order4, ref CafeGameTimer.order4Time);
-            CheckOrder(cafeGameInstance.Order5, ref CafeGameTimer.order5Time);
+            CheckOrder(cafeGameInstance.Order1, cafeGameInstance.Order1Name, ref CafeGameTimer.order1Time);
+            CheckOrder(cafeGameInstance.Order2, cafeGameInstance.Order2Name, ref CafeGameTimer.order2Time);
+            CheckOrder(cafeGameInstance.Order3, cafeGameInstance.Order3Name, ref CafeGameTimer.order3Time);
+            CheckOrder(cafeGameInstance.Order4, cafeGameInstance.Order4Name, ref CafeGameTimer.order4Time);
+            CheckOrder(cafeGameInstance.Order5, cafeGameInstance.Order5Name, ref CafeGameTimer.order5Time);
         }
     }
 
-    private void CheckOrder(List<GameObject> order, ref float orderTime) //모든 오더들과 클릭한 과일을 비교함
+    private void CheckOrder(List<GameObject> order, List<GameObject> orderName, ref float orderTime) //모든 오더들과 클릭한 과일을 비교함
     {
         //HashSet을 이용하여 순서에 상관없도록 함 
         HashSet<string> orderNames = new HashSet<string>(order.ConvertAll(obj => obj.name)); //주문에 있는 과일 오브젝트의 이름을 HashSet에 저장
@@ -40,9 +42,9 @@ public class CafeGameButton : MonoBehaviour
         {
             if (orderNames.SetEquals(clickedObjectNames))
             {
-                cafeGameInstance.DestroyOrder(order);
+                cafeGameInstance.DestroyOrder(order, orderName);
                 cafeGameInstance.moneyManager();
-                cafeGameInstance.BoxManager();
+                cafeGameInstance.ReceiptManager();
                 Garbage();
                 orderTime = 0f;
             }
@@ -53,11 +55,17 @@ public class CafeGameButton : MonoBehaviour
     {
         cafeGameInstance.TotalClickedFruits.Clear();
 
-        for (int i = 0; i < cafeGameInstance.TotalFruitImageObject.Count; i++)
+        for (int i = 0; i < cafeGameInstance.TotalFruitImage.Count; i++)
         {
-            Destroy(cafeGameInstance.TotalFruitImageObject[i]);
+            Destroy(cafeGameInstance.TotalFruitImage[i]);
         }
-        cafeGameInstance.TotalFruitImageObject.Clear();
+        cafeGameInstance.TotalFruitImage.Clear();
+
+        for (int i = 0; i < cafeGameInstance.TotalFruitName.Count; i++)
+        {
+            Destroy(cafeGameInstance.TotalFruitName[i]);
+        }
+        cafeGameInstance.TotalFruitName.Clear();
     }
 
     public void CafeGameGameStartButton()
