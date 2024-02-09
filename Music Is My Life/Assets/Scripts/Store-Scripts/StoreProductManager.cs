@@ -24,12 +24,12 @@ public class StoreProductManager : MonoBehaviour
 
     public void LoadProductsData(GameObject[] allProductObj)
     {
-        foreach (GameObject productObj in allProductObj)
+        foreach (GameObject slotObj in allProductObj)
         {
-            StoreProduct product = productObj.GetComponent<StoreProduct>();
+            StoreProduct product = slotObj.GetComponentInChildren<StoreProduct>();
             product.LoadFurnitureStatus();
-            Button button = product.GetComponentInChildren<Button>();
-            TextMeshProUGUI buttonText = product.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
+            Button button = slotObj.GetComponentInChildren<Button>();
+            TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
             Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
             if (product.IsOwned)
             {
@@ -38,7 +38,7 @@ public class StoreProductManager : MonoBehaviour
             }
             else
             {
-                buttonText.text = "구매하기";
+                buttonText.text = product.price + "만원";
             }
         }
     }

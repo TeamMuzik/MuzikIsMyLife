@@ -6,16 +6,10 @@ public class StoreProduct : Furniture // Furniture을 상속받음
 {
     public int price; // 가격
     public bool replaceable;
-    public TMP_Text priceText;
-
-    private void Start()
-    {
-        priceText.text = price + "만원";
-    }
+    public GameObject button;
 
     public void BuyProduct()
     {
-        Button button = GetComponentInChildren<Button>();
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         if (StatusChanger.SpendMoney(price)) // 물건 구매 시도
         {
