@@ -41,11 +41,11 @@ public class BeggingGame : MonoBehaviour
         {
             turn = -1;
             dialContent.text = "1조를 얻었습니다!";
-            moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 명성: " + myFame;
             Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
             // 1조의 경우 PlayerPrefs에는 저장하지 않음
             StatusChanger.EarnMoney(income);
-            resultContent.text = "번 돈: 1조 " + income + "만원\n" + "나의 자산: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+            moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+            resultContent.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
             scorePanel.GetComponent<SceneMove>().targetScene = "Ending-Rich";
             scorePanel.SetActive(true); // 결과 보기
         }
@@ -70,7 +70,7 @@ public class BeggingGame : MonoBehaviour
         if (turn == 0) // 부자 엔딩 나지 않고 5회 진행 -> 구걸 게임 종료
         {
             StatusChanger.EarnMoney(income);
-            resultContent.text = "번 돈: " + income + "만원\n" + "나의 자산: " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+            resultContent.text = "번 돈: " + income + "만원\n" + "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
             scorePanel.GetComponent<SceneMove>().targetScene = "Main";
             scorePanel.SetActive(true); // 결과 보기
         }
@@ -104,6 +104,6 @@ public class BeggingGame : MonoBehaviour
 
     public void SetMoneyStatusText() // status 텍스트 설정
     {
-        moneyStatus.text = "번 돈 : " + income + "만원\n" + "나의 명성: " + myFame;
+        moneyStatus.text = "번 돈 : " + income + "만원\n" + "나의 돈: " + (PlayerPrefs.GetInt("Money") + income) + "만원\n" + "나의 명성: " + myFame;
     }
 }
