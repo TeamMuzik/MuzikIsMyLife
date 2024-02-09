@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class CafeGame : MonoBehaviour
@@ -40,51 +41,101 @@ public class CafeGame : MonoBehaviour
     private GameObject ReceiptObj4;
     private GameObject ReceiptObj5;
 
+    [SerializeField] private GameObject BlenderBtn;
+    [SerializeField] private Sprite[] BlenderSprite;
+
     public int money = 0;
     private float yPosBox =2;
+
+    public int clickCount = 0;
     
     public TMP_FontAsset customFont;
 
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
 
+    public AudioClip successSound; // 성공 사운드 클립
+
+    private AudioSource audioSource;
+
     void Start()
     {
         money = 0;
+        clickCount = 0;
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) //클릭한 과일 인식
+        if (TotalClickedFruits.Count < 5)
         {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity);
-            if (hit.collider != null)
+            if (Input.GetMouseButtonDown(0)) //클릭한 과일 인식
             {
-                GameObject clickedObject = hit.collider.gameObject;
-                TotalClickedFruits.Add(clickedObject);
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity);
+                if (hit.collider != null)
+                {
+                    GameObject clickedObject = hit.collider.gameObject;
+                    TotalClickedFruits.Add(clickedObject);
+                    clickCount++;
 
-                Sprite fruitSprite = clickedObject.GetComponent<SpriteRenderer>().sprite; //클릭한 과일의 스프라이트를 가져옴
-                GameObject fruitImageObject = new GameObject("FruitImage", typeof(RectTransform)); //RectTransform 컴포넌트를 가진 오브젝트 생성
-                fruitImageObject.AddComponent<Image>().sprite = fruitSprite; //생성된 오브젝트에 이미지 컴포넌트를 추가하고 클릭한 과일의 이미지를 넣음
-                RectTransform RectTransform1 = fruitImageObject.GetComponent<RectTransform>();
-                RectTransform1.SetParent(ClickFruitsVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
-                TotalFruitImage.Add(fruitImageObject); //생성된 오브젝트를 리스트에 추가
+                    //클릭한 과일 이미지 생성
+                    Sprite fruitSprite = clickedObject.GetComponent<SpriteRenderer>().sprite; //클릭한 과일의 스프라이트를 가져옴
+                    GameObject fruitImageObject = new GameObject("FruitImage", typeof(RectTransform)); //RectTransform 컴포넌트를 가진 오브젝트 생성
+                    fruitImageObject.AddComponent<Image>().sprite = fruitSprite; //생성된 오브젝트에 이미지 컴포넌트를 추가하고 클릭한 과일의 이미지를 넣음
+                    RectTransform RectTransform1 = fruitImageObject.GetComponent<RectTransform>();
+                    RectTransform1.SetParent(ClickFruitsVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+                    TotalFruitImage.Add(fruitImageObject); //생성된 오브젝트를 리스트에 추가
 
-                // 클릭한 과일 이름 생성
-                string FruitName = clickedObject.name;
-                GameObject FruitNameObj = new GameObject("FruitNameText");
-                FruitNameObj.AddComponent<TextMeshProUGUI>().text = FruitName;
-                TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
-                textMeshPro.font = customFont;
-                textMeshPro.color = Color.black;
-                textMeshPro.fontSize = 63;
-                RectTransform rectTransform2 = FruitNameObj.GetComponent<RectTransform>();
-                rectTransform2.SetParent(ClickNameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
-                rectTransform2.sizeDelta = new Vector2(260f, rectTransform2.sizeDelta.y);
-                TotalFruitName.Add(FruitNameObj);
+                    // 클릭한 과일 이름 생성
+                    string FruitName = clickedObject.name;
+                    GameObject FruitNameObj = new GameObject("FruitNameText");
+                    FruitNameObj.AddComponent<TextMeshProUGUI>().text = FruitName;
+                    TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
+                    textMeshPro.font = customFont;
+                    textMeshPro.color = Color.black;
+                    textMeshPro.fontSize = 63;
+                    RectTransform rectTransform2 = FruitNameObj.GetComponent<RectTransform>();
+                    rectTransform2.SetParent(ClickNameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
+                    rectTransform2.sizeDelta = new Vector2(260f, rectTransform2.sizeDelta.y);
+                    TotalFruitName.Add(FruitNameObj);
+                }
+        }
+        moneyNumText.SetText(money.ToString()+"만원");
 
-            }
+        Image imageComponent = BlenderBtn.GetComponent<Image>();
+        switch(clickCount)
+        {
+            case 0:
+                imageComponent.sprite = BlenderSprite[0];
+                imageComponent.SetNativeSize();
+                break;
+            case 1:
+                imageComponent.sprite = BlenderSprite[1];
+                imageComponent.SetNativeSize();
+                break;
+            case 2:
+                imageComponent.sprite = BlenderSprite[2];
+                imageComponent.SetNativeSize();
+                break;
+            case 3:
+                imageComponent.sprite = BlenderSprite[3];
+                imageComponent.SetNativeSize();
+                break;
+            case 4:
+                imageComponent.sprite = BlenderSprite[4];
+                imageComponent.SetNativeSize();
+                break;
+            case 5:
+                imageComponent.sprite = BlenderSprite[5];
+                imageComponent.SetNativeSize();
+                break;
+        }
+
+        if(TotalClickedFruits.Count == 0)
+        {
+            imageComponent.sprite = BlenderSprite[0];
+            imageComponent.SetNativeSize();
         }
 
         //과일 이름 표시
@@ -94,9 +145,7 @@ public class CafeGame : MonoBehaviour
         //     allClickedObjectNames += FruitsObject.name + "\n";
         // }
         // clickedObjectNameText.SetText(allClickedObjectNames);
-
-        //벌은 돈
-        moneyNumText.SetText(money.ToString()+"만원");
+        }
     }
 
     public void SpawnFruits_1()
@@ -271,6 +320,12 @@ public class CafeGame : MonoBehaviour
     public void moneyManager()
     {
         money += 1;
+    }
+
+    public void PlaySuccessSound()
+    {
+        audioSource.clip = successSound;
+        audioSource.Play();
     }
 
     // public void ClearClickedObj()
