@@ -22,7 +22,7 @@ public class BeggingGame : MonoBehaviour
 
         SetMoneyStatusText();
         dialTitle.text = "";
-        dialContent.text = "구걸을 시작합니다. (클릭해서 시작)";
+        dialContent.text = "서울역에서 구걸을 한다. (클릭해서 진행)";
         scorePanel.SetActive(false); // 결과 보기 비활성화
     }
 
@@ -52,7 +52,7 @@ public class BeggingGame : MonoBehaviour
         else if (myFame >= 100 && p < 0.30f) // 명성이 100 이상이고 30%
         {
             Debug.Log("구걸 게임오버");
-            SceneManager.LoadScene("Ending-GameOver"); // 추후 Beggine Game만의 GameOver 씬으로 바꿔야 함
+            SceneManager.LoadScene("Ending-TooFamousToBeg"); // 추후 Beggine Game만의 GameOver 씬으로 바꿔야 함
         }
         else if (myFame >= 40 && p < 0.15f) // 명성이 40 이상이고 15%
         {
@@ -80,7 +80,7 @@ public class BeggingGame : MonoBehaviour
     {
         Debug.Log("팬을 만남");
         int increase = 5;
-        dialContent.text = "\"저 유튜브 잘보고 있어요...! 이것도 컨텐츠예요?\"\n" + "팬과 셀카를 같이 찍었다. 명성이 " + increase + " 상승했다.\n";
+        dialContent.text = "\"저 유튜브 잘보고 있어요...! 이것도 컨텐츠예요?\"\n" + "팬과 셀카를 같이 찍었다. (나의 명성 +" + increase + ")";
         myFame += increase;
         StatusChanger.UpdateMyFame(increase);
     }
@@ -89,7 +89,7 @@ public class BeggingGame : MonoBehaviour
     {
         Debug.Log("행인이 알아봄");
         int decrease = 5;
-        dialContent.text = "\"저 사람 그 커버 유튜버 아니야...? 뭐 하는 거지?\"\n" + "나는 황급히 자리를 피했다. 명성이 "+ decrease +" 하락했다.\n";
+        dialContent.text = "\"저 사람 그 커버 유튜버 아니야...? 뭐 하는 거지?\"\n" + "나는 황급히 자리를 피했다. (나의 명성 -" + decrease +")";
         myFame -= decrease;
         StatusChanger.UpdateMyFame(-decrease);
     }

@@ -38,10 +38,16 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
         PlayerPrefs.SetInt("Dday", 0); // 몇일차인지
+
         // Cover Game
-        PlayerPrefs.SetInt("Subscribers", 0);
+        PlayerPrefs.SetInt("Subscribers", 0); // 구독자수
+        PlayerPrefs.SetInt("Subs_Min", 500); // 구독자수 최소치
+        PlayerPrefs.SetInt("Subs_Max", 5000); // 구독자수 최대치
+        PlayerPrefs.SetInt("Subs_Multiplier", 1); // 구독자 증가 배율
+
         // 알바 연속
         PlayerPrefs.SetInt("PartTimeContinuity", 0);
+
         // 기본 가구 세팅 & 상점 구입 가능 물품 세팅
         FunitureInitializeSetting();
     }
