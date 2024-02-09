@@ -947,7 +947,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 168373893}
         m_TargetAssemblyTypeName: BeggingGame, Assembly-CSharp
-        m_MethodName: BegForMoney
+        m_MethodName: TryBegging
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

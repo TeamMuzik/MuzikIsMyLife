@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CafeGameButton : MonoBehaviour
 {
     private CafeGame cafeGameInstance;
     private CafeGameTimer cafeGameTimerInstance;
+    private CafeGameGarbage cafeGameGarbageInstance;
     private FactoryGame FactoryGameInstance;
     private FactoryGameTimer FactoryGameTimerInstance;
-
-    [SerializeField] private Sprite[] GarbageSprite;
 
     void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
         cafeGameTimerInstance = FindObjectOfType<CafeGameTimer>();
+        cafeGameGarbageInstance = FindObjectOfType<CafeGameGarbage>();
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
         FactoryGameTimerInstance = FindObjectOfType<FactoryGameTimer>();
     }
@@ -45,28 +47,17 @@ public class CafeGameButton : MonoBehaviour
                 cafeGameInstance.DestroyOrder(order, orderName);
                 cafeGameInstance.moneyManager();
                 cafeGameInstance.ReceiptManager();
-                Garbage();
+                cafeGameGarbageInstance.Garbage();
+                cafeGameInstance.clickCount = 0;
                 orderTime = 0f;
+                if (Input.GetMouseButtonUp(0))//좌클 마우스 입력을 뗄 때
+                {
+                    cafeGameInstance.PlaySuccessSound();
+                }
             }
         }
     }
-
-    public void Garbage()
-    {
-        cafeGameInstance.TotalClickedFruits.Clear();
-
-        for (int i = 0; i < cafeGameInstance.TotalFruitImage.Count; i++)
-        {
-            Destroy(cafeGameInstance.TotalFruitImage[i]);
-        }
-        cafeGameInstance.TotalFruitImage.Clear();
-
-        for (int i = 0; i < cafeGameInstance.TotalFruitName.Count; i++)
-        {
-            Destroy(cafeGameInstance.TotalFruitName[i]);
-        }
-        cafeGameInstance.TotalFruitName.Clear();
-    }
+    
 
     public void CafeGameGameStartButton()
     {
@@ -85,7 +76,6 @@ public class CafeGameButton : MonoBehaviour
         FactoryGameTimerInstance.TutorialPanel.SetActive(false);
         FactoryGameTimerInstance.StartPanel.SetActive(true);
         FactoryGameTimerInstance.StartCoroutine(FactoryGameTimerInstance.TotalTimer());
-        // FactoryGameTimerInstance.StartCoroutine(FactoryGameTimerInstance.StageTimer());
         FactoryGameInstance.SpawnKeyBoards();
     }
 }
