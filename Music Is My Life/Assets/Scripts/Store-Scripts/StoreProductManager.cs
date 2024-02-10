@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -17,9 +16,9 @@ public class StoreProductManager : MonoBehaviour
     void Start()
     {
         playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원";
-        // 음향기기와 굿즈에 판매할 아이템 종류랑 아이템 남은 개수 넣기
+
         LoadProductsData(audioProducts);
-        LoadProductsData(goodsProducts);
+        LoadGoodsProductsData(goodsProducts);
     }
 
     public void LoadProductsData(GameObject[] allProductObj)
@@ -30,8 +29,27 @@ public class StoreProductManager : MonoBehaviour
             product.LoadFurnitureStatus();
             Button button = slotObj.GetComponentInChildren<Button>();
             TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
-            if (product.IsOwned)
+            // Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
+            if (!product.SaleStatus()) // 판매중인지
+            {
+                buttonText.text = "SOLD OUT";
+                button.interactable = false;
+            }
+            else
+            {
+                buttonText.text = product.price + "만원";
+            }
+        }
+    }
+
+    public void LoadGoodsProductsData(GameObject[] allProductObj)
+    {
+        foreach (GameObject slotObj in allProductObj)
+        {
+            GoodsProduct product = slotObj.GetComponentInChildren<GoodsProduct>();
+            Button button = slotObj.GetComponentInChildren<Button>();
+            TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
+            if (!product.SaleStatus()) // 판매중인지
             {
                 buttonText.text = "SOLD OUT";
                 button.interactable = false;

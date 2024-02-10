@@ -25,7 +25,7 @@ public class StoreProduct : Furniture // Furniture을 상속받음
 
             if (buttonText != null)
             {
-                buttonText.text = "구매 완료"; // 텍스트를 변경하여 구매 완료로 설정
+                SetButtonTextAndColor("구매 완료", "#00FF40"); // 텍스트를 변경하여 구매 완료로 설정
                 button.interactable = false;
             }
         }
@@ -36,13 +36,18 @@ public class StoreProduct : Furniture // Furniture을 상속받음
             StartCoroutine(MapPriceTextAfterDelay());
         }
     }
+
+    public bool SaleStatus() // 판매 중인지
+    {
+        return !IsOwned;
+    }
+
     IEnumerator MapPriceTextAfterDelay()
     {
         yield return new WaitForSeconds(1f); // 1초 대기
-
-        // 1초 후에 가격으로 텍스트를 변경하고 검은색으로 설정
         SetButtonTextAndColor(price.ToString()+"만원", "#323232");
     }
+
     private void SetButtonTextAndColor(string text, string colorCode)
     {
         if (buttonText != null)
@@ -50,6 +55,32 @@ public class StoreProduct : Furniture // Furniture을 상속받음
             buttonText.text = text; // 텍스트 변경
             buttonText.color = ColorUtility.TryParseHtmlString(colorCode, out Color color) ? color : Color.black; // 컬러 코드를 Color로 변환하여 적용
         }
+    }
+
+    public void UpgradeForCover()
+    {
+        int subsMin = PlayerPrefs.GetInt("Subs_Min");
+        int subsMax = PlayerPrefs.GetInt("Subs_Max");
+        int subsMultiplier = PlayerPrefs.GetInt("Subs_Multiplier");
+
+        switch (price)
+        {
+            case 10:
+                PlayerPrefs.SetInt("Subs_Max", subsMax + 500);
+                break;
+            case 40:
+                PlayerPrefs.SetInt("Subs_Min", subsMin + 1500);
+                break;
+            case 100:
+                PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 2);
+                break;
+            case 150:
+                PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 3);
+                break;
+            default:
+                throw new System.Exception("음향기기 상품 가격으로  10/40/100/150이 아닌 값이 입력되었습니다.");
+        }
+        Debug.Log("음향기기 구입 -> 커버 구독자 수치 업데이트 완료");
     }
 
     public void ReplaceProduct()
