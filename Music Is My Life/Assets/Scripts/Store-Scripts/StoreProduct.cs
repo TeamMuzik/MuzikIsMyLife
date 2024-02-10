@@ -25,7 +25,7 @@ public class StoreProduct : Furniture // Furniture을 상속받음
 
             if (buttonText != null)
             {
-                SetButtonTextAndColor("구매 완료", "#00FF40"); // 텍스트를 변경하여 구매 완료로 설정
+                SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
                 button.interactable = false;
             }
         }
