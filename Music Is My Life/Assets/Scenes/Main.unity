@@ -2018,6 +2018,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 788914442}
+        m_TargetAssemblyTypeName: MainUpdateController, Assembly-CSharp
+        m_MethodName: UpdateAfterStore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &122237316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8334,6 +8346,7 @@ GameObject:
   - component: {fileID: 788914435}
   - component: {fileID: 788914434}
   - component: {fileID: 788914438}
+  - component: {fileID: 788914442}
   - component: {fileID: 788914439}
   - component: {fileID: 788914440}
   - component: {fileID: 788914441}
@@ -8550,6 +8563,20 @@ MonoBehaviour:
   goodsProducts:
   - {fileID: 19318152}
   - {fileID: 341339337}
+--- !u!114 &788914442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788914433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4fe81c5948e6c4caaf0cb99a19f7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  funitureController: {fileID: 788914440}
+  statusController: {fileID: 1622434891}
 --- !u!1 &790401163
 GameObject:
   m_ObjectHideFlags: 0
@@ -15871,7 +15898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1396548686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22047,7 +22074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureName: 
-  Category_Index: COMPUTER_2
+  Category_Index: COMPUTER_1
   description: 
   isOwned: 0
   isEquipped: 0
