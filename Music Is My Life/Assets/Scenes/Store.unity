@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &31804876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 40
   replaceable: 1
-  button: {fileID: 1466953071}
+  button: {fileID: 1466953073}
 --- !u!1 &326921190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &326921191
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4876,7 +4876,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 100
   replaceable: 1
-  button: {fileID: 1698213291}
+  button: {fileID: 1698213293}
 --- !u!1 &753970325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,7 +5319,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1756392393}
+  button: {fileID: 1756392395}
 --- !u!212 &764575874
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6611,7 +6611,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1024130569}
+  button: {fileID: 1024130571}
 --- !u!212 &1087376599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6851,7 +6851,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 2086955347}
+  button: {fileID: 2086955349}
 --- !u!212 &1101232676
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10546,7 +10546,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 150
   replaceable: 1
-  button: {fileID: 557617441}
+  button: {fileID: 557617443}
 --- !u!1 &1642136632
 GameObject:
   m_ObjectHideFlags: 0
@@ -11026,7 +11026,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1408216547}
+  button: {fileID: 1408216549}
 --- !u!212 &1723888587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11802,7 +11802,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1302178427}
+  button: {fileID: 1302178429}
 --- !u!212 &1858217976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12306,7 +12306,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 1
   replaceable: 0
-  button: {fileID: 987596139}
+  button: {fileID: 987596141}
 --- !u!1 &1945931334
 GameObject:
   m_ObjectHideFlags: 0
@@ -12411,7 +12411,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1368206247}
+  button: {fileID: 1368206249}
 --- !u!1 &1952223377
 GameObject:
   m_ObjectHideFlags: 0
@@ -12449,7 +12449,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 10
   replaceable: 0
-  button: {fileID: 1464429629}
+  button: {fileID: 1464429631}
 --- !u!212 &1952223379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12621,7 +12621,7 @@ MonoBehaviour:
   isEquipped: 1
   price: 40
   replaceable: 1
-  button: {fileID: 808251938}
+  button: {fileID: 808251940}
 --- !u!1 &1965626535
 GameObject:
   m_ObjectHideFlags: 0
@@ -12709,7 +12709,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 40
   replaceable: 0
-  button: {fileID: 83207364}
+  button: {fileID: 83207366}
 --- !u!212 &1986777189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12973,7 +12973,7 @@ MonoBehaviour:
   isEquipped: 0
   price: 4
   replaceable: 0
-  button: {fileID: 1311631757}
+  button: {fileID: 1311631759}
 --- !u!1 &2079227835
 GameObject:
   m_ObjectHideFlags: 0
