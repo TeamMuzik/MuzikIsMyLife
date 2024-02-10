@@ -431,8 +431,8 @@ Transform:
   m_Children:
   - {fileID: 1171812813}
   - {fileID: 1671775332}
-  - {fileID: 718130938}
   - {fileID: 885801721}
+  - {fileID: 718130938}
   m_Father: {fileID: 1214844802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4232,8 +4232,8 @@ Transform:
   m_Children:
   - {fileID: 2065061616}
   - {fileID: 917291098}
-  - {fileID: 1460081873}
   - {fileID: 1067066364}
+  - {fileID: 1460081873}
   m_Father: {fileID: 1214844802}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5178,8 +5178,8 @@ Transform:
   m_Children:
   - {fileID: 819636822}
   - {fileID: 1459107856}
-  - {fileID: 1186856781}
   - {fileID: 1635786301}
+  - {fileID: 1186856781}
   m_Father: {fileID: 1214844802}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7684,16 +7684,16 @@ RectTransform:
   m_GameObject: {fileID: 718130937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.010015164, y: 0.005210811, z: 0}
+  m_LocalScale: {x: 0.0100151645, y: 0.005210811, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1151772782}
   m_Father: {fileID: 19318153}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.77761513}
+  m_AnchoredPosition: {x: 0, y: -0.77761495}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718130939
@@ -8816,6 +8816,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   funitureController: {fileID: 788914440}
   statusController: {fileID: 1622434891}
+  roomPanel: {fileID: 742911502}
+  phonePanel: {fileID: 1396548685}
+  storePanel: {fileID: 1030334721}
 --- !u!1 &790401163
 GameObject:
   m_ObjectHideFlags: 0
@@ -10629,15 +10632,15 @@ RectTransform:
   m_GameObject: {fileID: 885801720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.010016977, y: 0.0050789225, z: 0}
+  m_LocalScale: {x: 0.010016977, y: 0.005078922, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 19318153}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.69}
+  m_AnchoredPosition: {x: 0.00000047683716, y: -0.68999994}
   m_SizeDelta: {x: 280, y: 160}
   m_Pivot: {x: 0.50148255, y: 0.5}
 --- !u!114 &885801722
@@ -11015,7 +11018,6 @@ GameObject:
   m_Component:
   - component: {fileID: 917291098}
   - component: {fileID: 917291097}
-  - component: {fileID: 917291096}
   - component: {fileID: 917291099}
   m_Layer: 0
   m_Name: "LP_\uC0C1\uC810"
@@ -11024,26 +11026,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &917291096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917291095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: LP_1
-  description: 
-  isOwned: 0
-  isEquipped: 0
-  price: 30
-  replaceable: 0
-  button: {fileID: 1460081874}
 --- !u!212 &917291097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11127,8 +11109,8 @@ MonoBehaviour:
   price: 30
   totalCount: 6
   index: 0
-  button: {fileID: 1460081874}
   description: {fileID: 1067066365}
+  button: {fileID: 1460081874}
 --- !u!1 &917730762
 GameObject:
   m_ObjectHideFlags: 0
@@ -13112,7 +13094,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 341339338}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14480,7 +14462,7 @@ RectTransform:
   m_GameObject: {fileID: 1171812812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.010016977, y: 0.0050789225, z: 0}
+  m_LocalScale: {x: 0.010016977, y: 0.005078922, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 19318153}
@@ -14488,7 +14470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.94037056}
+  m_AnchoredPosition: {x: 0.00000047683716, y: 0.94037056}
   m_SizeDelta: {x: 280, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171812814
@@ -14756,7 +14738,7 @@ RectTransform:
   m_Children:
   - {fileID: 1981080555}
   m_Father: {fileID: 431256734}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16935,7 +16917,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1459107856}
   - component: {fileID: 1459107855}
-  - component: {fileID: 1459107854}
   - component: {fileID: 1459107857}
   m_Layer: 0
   m_Name: "POSTER_\uC0C1\uC810"
@@ -16944,26 +16925,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1459107854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459107853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: PS_1
-  description: 
-  isOwned: 0
-  isEquipped: 0
-  price: 5
-  replaceable: 0
-  button: {fileID: 1186856782}
 --- !u!212 &1459107855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17047,8 +17008,8 @@ MonoBehaviour:
   price: 3
   totalCount: 10
   index: 0
-  button: {fileID: 1186856782}
   description: {fileID: 1635786302}
+  button: {fileID: 1186856782}
 --- !u!1 &1460081872
 GameObject:
   m_ObjectHideFlags: 0
@@ -17082,7 +17043,7 @@ RectTransform:
   m_Children:
   - {fileID: 375018078}
   m_Father: {fileID: 341339338}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18580,7 +18541,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 431256734}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19169,7 +19130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1671775332}
   - component: {fileID: 1671775331}
-  - component: {fileID: 1671775330}
   - component: {fileID: 1671775333}
   m_Layer: 0
   m_Name: "CD_\uC0C1\uC810"
@@ -19178,26 +19138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1671775330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671775329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: CD_1
-  description: 
-  isOwned: 0
-  isEquipped: 0
-  price: 15
-  replaceable: 0
-  button: {fileID: 718130939}
 --- !u!212 &1671775331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19258,8 +19198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671775329}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.275526, y: 0.94037163, z: 0}
-  m_LocalScale: {x: 1.4917088, y: 0.75634325, z: 0}
+  m_LocalPosition: {x: 2.2755258, y: 0.94037163, z: 0}
+  m_LocalScale: {x: 1.4917089, y: 0.75634325, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 19318153}
@@ -19281,8 +19221,8 @@ MonoBehaviour:
   price: 15
   totalCount: 14
   index: 0
-  button: {fileID: 718130939}
   description: {fileID: 885801722}
+  button: {fileID: 718130939}
 --- !u!1 &1673326084
 GameObject:
   m_ObjectHideFlags: 0
@@ -21259,7 +21199,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!222 &1879659117
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -4,9 +4,15 @@ public class MainUpdateController : MonoBehaviour
 {
     public FunitureController funitureController;
     public StatusController statusController;
+    public GameObject roomPanel;
+    public GameObject phonePanel;
+    public GameObject storePanel;
 
     void Start()
     {
+        roomPanel.SetActive(true);
+        phonePanel.SetActive(false);
+        storePanel.SetActive(false);
         StatusChanger.UpdateDay(); // 날짜 업데이트
         // 14일이 지나면 엔딩으로 이동
         if (PlayerPrefs.GetInt("Dday") > 14)
@@ -26,6 +32,7 @@ public class MainUpdateController : MonoBehaviour
     {
         funitureController.UpdateFurnitures();
         statusController.UpdateStatus();
+        phonePanel.SetActive(false);
     }
 
     public void GoToEnding() // 엔딩으로

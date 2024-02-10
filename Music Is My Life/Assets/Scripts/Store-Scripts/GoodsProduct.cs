@@ -9,8 +9,8 @@ public class GoodsProduct : MonoBehaviour
     public int price; // 가격
     public int totalCount; // 총 개수
     public int index; // 1~14, 1~6
-    public Button button;
     public TMP_Text description;
+    public Button button;
 
     private TextMeshProUGUI buttonText;
 
@@ -29,11 +29,12 @@ public class GoodsProduct : MonoBehaviour
         }
         if (StatusChanger.SpendMoney(price)) // 물건 구매 시도
         {
-            SaveGoodsProduct();
+            UpdateGoodsProductData();
 
             if (buttonText != null)
             {
-                SetButtonTextAndColor("구매 완료", "#00FF40"); // 텍스트를 변경하여 구매 완료로 설정
+                SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
+                description.text = "남은 개수: " + (totalCount - index) + "개";
                 StartCoroutine(MapPriceTextAfterDelay());
             }
             if (index == totalCount)
@@ -50,7 +51,7 @@ public class GoodsProduct : MonoBehaviour
     }
 
     // 구매에 대한 로직
-    public void SaveGoodsProduct()
+    public void UpdateGoodsProductData()
     {
         index++;
         string Category_Index = category + "_" + index;

@@ -8,17 +8,16 @@ public class StoreProductManager : MonoBehaviour
     public GameObject[] audioProducts; // 모든 상품
     public GameObject[] goodsProducts; // 모든 상품
 
-    private void Update()
-    {
-        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 변경
-    }
-
     void Start()
     {
         playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원";
 
         LoadProductsData(audioProducts);
         LoadGoodsProductsData(goodsProducts);
+    }
+    private void Update()
+    {
+        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 변경
     }
 
     public void LoadProductsData(GameObject[] allProductObj)
@@ -57,6 +56,7 @@ public class StoreProductManager : MonoBehaviour
             else
             {
                 buttonText.text = product.price + "만원";
+                button.interactable = true;
             }
         }
     }
