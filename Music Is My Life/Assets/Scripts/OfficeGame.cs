@@ -7,447 +7,202 @@ using System.Collections.Generic;
 
 public class OfficeGame : MonoBehaviour
 {
-
-
-    TextAsset textFile;
-    string[] lines;
-    List<string> wordList = new List<string>();
-
-    public GameObject canvasGameObject;
     public TMP_InputField WordInputField;
     public TMP_Text WordInputFieldText;
     public TMP_Text timer;
-
-    public GameObject pBlockText;
-    public GameObject Square;
-    public Transform BlockParent;
-    public Button Main;
-    List<GameObject> blockTextList = new List<GameObject>();
-    List<string> tempList = new List<string>();
-
-    int level = 1;
-    int score = 0;
-    int lives = 5;
-    public TMP_Text livesText;
     public TMP_Text scoreText;
-    public TMP_Text finalText;
+    public GameObject EndPanel, StartPanel;
+    public GameObject pBlockText;
+    public Transform BlockParent;
+    public GameObject[] blockers; // 방해 요소 배열
 
-    Coroutine createBlockTextCoroutine;
-    Coroutine checkInputFieldCoroutine;
-
-    bool canInput = true;
-    bool canDestroy = true;
-    bool gameOver = false;
-
-    float gameTimer = 60.0f;
-
-    public GameObject[] blockers; // 스프라이트 객체들을 위한 배열
-    private float nextBlockerTime = 0f;
-    private float blockerDuration = 5f; // 스프라이트가 화면에 머무는 시간
-    private bool blockerActive = false;
+    private GameObject canvasGameObject; // Added declaration here
+    private TextAsset textAsset;
+    private List<string> wordList = new List<string>();
+    private List<GameObject> blockTextList = new List<GameObject>();
+    private float gameTimer = 60.0f;
+    private int score = 0;
+    private bool gameEnded = false;
+    private float blockerInterval = 15f; // 방해 요소 활성화 간격
 
     void Start()
-    {
-
-      WordInputField.ActivateInputField();
-      canvasGameObject = GameObject.Find("Canvas");
-      if (canvasGameObject != null)
-        {
-            canvasGameObject.SetActive(true);
-        }
-        else
+{   canvasGameObject = GameObject.Find("Canvas"); // Initialize canvasGameObject
+        if (!canvasGameObject)
         {
             Debug.LogError("Canvas GameObject not found!");
         }
+    WordInputField.ActivateInputField();
+    canvasGameObject = GameObject.Find("Canvas");
+    if (!canvasGameObject)
+    {
+        Debug.LogError("Canvas GameObject not found!");
+    }
 
-      foreach (GameObject blocker in blockers)
+    textAsset = Resources.Load<TextAsset>("OfficeText");
+    if (textAsset != null)
+    {
+        string[] lines = textAsset.text.Split('\n');
+        foreach (string line in lines)
+        {
+            wordList.Add(line.Trim());
+        }
+    }
+
+    WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
+    EndPanel.SetActive(false);
+    StartPanel.SetActive(true);
+    StartCoroutine(CreateBlockTextRoutine());
+    StartCoroutine(ActivateBlockersRoutine());
+    InvokeRepeating("UpdateGameTimer", 1f, 1f);
+    scoreText.text = "점수: 0";
+    timer.text = "남은 시간: 00:00";
+
+    // 초기에 모든 블록커를 비활성화합니다.
+    foreach (GameObject blocker in blockers)
     {
         blocker.SetActive(false);
     }
+}
 
-        textFile = Resources.Load("OfficeGameText") as TextAsset;
-        if (textFile != null)
-        {
-            lines = textFile.text.Split("\n");
-            foreach (string words in lines)
-            {
-                string temp = words.Replace("\r", string.Empty);
-                wordList.Add(temp);
-            }
 
-            WordInputField.ActivateInputField();
-            createBlockTextCoroutine = StartCoroutine(CreateBlockText());
-            scoreText.text = "점수 : " + score.ToString();
-            InvokeRepeating("UpdateGameTimer", 1.0f, 1.0f);
-            timer.text = "남은 시간: 1:00";
-            Main.gameObject.SetActive(false);
-            finalText.gameObject.SetActive(false);
-            livesText.text = "생명: " + lives;
-        }
-        else
-        {
-            Debug.LogError("Failed to load 'OfficeGameText' file.");
-        }
-
-        WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
-        foreach (GameObject blocker in blockers)
-   {
-       blocker.SetActive(false);
-   }
-        SetNextBlockerTime();
-    }
-
-    void UpdateGameTimer()
+    IEnumerator CreateBlockTextRoutine()
     {
-        gameTimer -= 1.0f;
-        TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
-        string timerText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-        timer.text = "남은 시간: " + timerText;
-
-        if (gameTimer <= 0)
-        {
-            StopGame();
-        }
-    }
-    IEnumerator CreateBlockText()
-    {
-        while (true)
+        while (!gameEnded)
         {
             if (wordList.Count > 0)
             {
-                GameObject tempBlock = Instantiate(pBlockText, BlockParent);
-                TMP_Text tempTextComponent = tempBlock.GetComponentInChildren<TMP_Text>();
-
-                RectTransform tempRectTransform = tempBlock.GetComponent<RectTransform>();
-                tempRectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-300.0f, 300.0f), 400.0f);
-                tempTextComponent.text = wordList[UnityEngine.Random.Range(0, wordList.Count)];
-                tempBlock.tag = "TextBlock";
-
-                blockTextList.Add(tempBlock);
-
-                for (int i = 0; i < wordList.Count; i++)
-                {
-                    if (wordList[i] == tempTextComponent.text)
-                    {
-                        tempList.Add(tempTextComponent.text);
-                        wordList.Remove(tempTextComponent.text);
-                        break;
-                    }
-                }
-
-                StartCoroutine(MoveTextDown(tempRectTransform, tempBlock));
-
-                yield return new WaitForSeconds(3.0f / level);
-            }
-            else
-            {
-                yield return null;
+                CreateBlockText();
+                yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 5f));
             }
         }
     }
+    void CreateBlockText()
+    {
+        string selectedWord = wordList[UnityEngine.Random.Range(0, wordList.Count)];
+        GameObject block = Instantiate(pBlockText, BlockParent);
+        TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
+        textComponent.text = selectedWord;
 
-    IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block)
+        // Set color based on word length
+        textComponent.color = selectedWord.Length > 5 ? Color.red : Color.black;
+Debug.Log($"Word: {selectedWord}, Color set to: {textComponent.color}");
+
+
+        // Adjust the starting position here, for example, range for x and fixed y
+        RectTransform rectTransform = block.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-200.0f, 200.0f), 300.0f); // Example adjustment
+
+        blockTextList.Add(block);
+        StartCoroutine(MoveTextDown(rectTransform, block, selectedWord.Length > 5));
+    }
+
+    IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
 {
-    if (rectTransform == null || block == null)
+    float speed = 150f; // Adjusted speed
+    while (rectTransform != null && rectTransform.anchoredPosition.y > -250f && !gameEnded)
     {
-        Debug.LogError("MoveTextDown: rectTransform or block is null");
-        yield break;
-    }
-
-    BlockBehavior blockBehavior = block.GetComponent<BlockBehavior>();
-    if (blockBehavior == null)
-    {
-        Debug.LogError("BlockBehavior component not found on the block");
-        yield break;
-    }
-
-    float duration = 3.0f;
-    float elapsed = 0f;
-    Vector2 startPosition = rectTransform.anchoredPosition;
-    Vector2 targetPosition = new Vector2(startPosition.x, -250.0f);
-
-    bool lifeReduced = false;
-
-    while (elapsed < duration)
-    {
-        if (rectTransform == null)
-            yield break;
-
-        rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsed / duration);
-        elapsed += Time.deltaTime;
-
-        if (!blockBehavior.isDestroyedByAnswer && rectTransform.anchoredPosition.y <= -240.0f && !lifeReduced)
+        // Check if the GameObject still exists before accessing it
+        if (block != null)
         {
-            ReduceLife();
-            lifeReduced = true;
+            rectTransform.anchoredPosition += new Vector2(0, -speed * Time.deltaTime);
         }
-
-        yield return null;
+        else
+        {
+            // Exit the loop if the block has been destroyed
+            break;
+        }
+        yield return new WaitForEndOfFrame();
     }
 
-    if (rectTransform != null && !blockBehavior.isDestroyedByAnswer)
+    if (!gameEnded && block != null)
     {
-        StartCoroutine(DestroyBlock(rectTransform.gameObject));
+        gameTimer -= isHardWord ? 7 : 5;
+        DestroyBlock(block);
     }
 }
 
-    IEnumerator CheckInputField()
+
+    IEnumerator ActivateBlockersRoutine()
     {
-        while (true)
+        while (!gameEnded)
         {
-            yield return null;
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                GetInputFieldText();
-            }
+            yield return new WaitForSeconds(blockerInterval);
+            ActivateBlockers();
         }
     }
 
-    IEnumerator DestroyBlock(GameObject block)
+    void ActivateBlockers()
     {
-        yield return null;
-        BlockBehavior blockBehavior = block.GetComponent<BlockBehavior>();
-        if (blockBehavior != null && blockBehavior.isDestroyedByAnswer)
-    {
-      blockTextList.Remove(block);
-
-      Vector2 positionBeforeDestroy = block.GetComponent<RectTransform>().anchoredPosition;
-
-      Destroy(block);
-
-      StartCoroutine(MoveNextBlock(positionBeforeDestroy));  // 정답에 의해 파괴된 경우 추가 처리 (생명 감소 없음)
-    }
-    else{
-
-
-        if (block != null && !canInput)
+        foreach (GameObject blocker in blockers)
         {
-            ReduceLife();
+            blocker.SetActive(false);
         }
 
-        if (canDestroy && block != null)
-      {
-          blockTextList.Remove(block);
-          Vector2 positionBeforeDestroy = block.GetComponent<RectTransform>().anchoredPosition;
-          Destroy(block);
-          StartCoroutine(MoveNextBlock(positionBeforeDestroy));
-      }
-    }
-
-        canInput = true;
-        canDestroy = true;
-    }
-
-    void ReduceLife()
-    {
-      lives--;
-      lives = Mathf.Max(lives, 0); // 생명이 0 이하로 떨어지지 않도록 함
-      livesText.text = "생명: " + lives;
-
-      if (lives <= 0)
-      {
-          GameOver();
-        }
-}
-
-
-    void GameOver()
-    {
-        gameOver = true;
-        StopGame();
-        finalText.gameObject.SetActive(true);
-        int totalScore = score;
-        int earnedMoney = CalculateEarnedMoney(totalScore);
-
-        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
-        StatusController statusController = FindObjectOfType<StatusController>();
-
-        finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney + "0000원";
-
-        gameOver = true;
-    }
-
-    IEnumerator MoveNextBlock(Vector2 startPosition)
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        GameObject nextBlock = GetNextBlock(startPosition);
-
-        if (nextBlock != null)
-        {
-            RectTransform nextRectTransform = nextBlock.GetComponent<RectTransform>();
-            StartCoroutine(MoveTextDown(nextRectTransform, nextBlock));
-        }
-    }
-    GameObject GetNextBlock(Vector2 position)
-    {
-        GameObject nextBlock = null;
-        float closestDistance = float.MaxValue;
-
-        foreach (GameObject block in blockTextList)
-        {
-            if (block != null)
-            {
-                RectTransform rectTransform = block.GetComponent<RectTransform>();
-                float distance = Vector2.Distance(rectTransform.anchoredPosition, position);
-
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    nextBlock = block;
-                }
-            }
-        }
-
-        return nextBlock;
+        int index = UnityEngine.Random.Range(0, blockers.Length);
+        blockers[index].SetActive(true);
     }
 
     void GetInputFieldText()
-  {
-      bool isCorrectWord = false;
-      string inputText = WordInputField.text.ToUpper(); // 입력된 텍스트를 대문자로 변환
-
-      for (int i = 0; i < blockTextList.Count; i++)
-      {
-          if (blockTextList[i] != null && string.Equals(inputText, blockTextList[i].GetComponent<TMP_Text>().text.ToUpper(), StringComparison.OrdinalIgnoreCase))
-          {
-              BlockBehavior blockBehavior = blockTextList[i].GetComponent<BlockBehavior>();
-              if (blockBehavior != null)
-              {
-                  blockBehavior.isDestroyedByAnswer = true; // 정답에 의한 파괴로 설정
-              }
-
-              string deleteTxt = blockTextList[i].GetComponent<TMP_Text>().text;
-              wordList.Add(deleteTxt);
-              tempList.Remove(deleteTxt);
-
-              StartCoroutine(DestroyBlock(blockTextList[i]));
-              score += 5;
-              SetShowerScore();
-              isCorrectWord = true;
-              break;
-          }
-      }
-
-      WordInputField.text = "";
-      WordInputField.ActivateInputField(); // 항상 입력 가능하도록 설정
-  }
-
-
-
-
-    void SetShowerScore()
     {
-        scoreText.text = "점수 : " + score.ToString();
+        string inputText = WordInputField.text.ToUpper().Trim();
+        CheckInputAgainstBlocks(inputText);
+        WordInputField.text = ""; // 입력 필드 초기화
+        WordInputField.ActivateInputField();
     }
 
-    private void OnDisable()
+    void CheckInputAgainstBlocks(string input)
     {
-        if (createBlockTextCoroutine != null)
-            StopCoroutine(createBlockTextCoroutine);
-
-        if (checkInputFieldCoroutine != null)
-            StopCoroutine(checkInputFieldCoroutine);
-    }
-
-    void StopGame()
-    {
-        WordInputField.gameObject.SetActive(false);
-        WordInputFieldText.gameObject.SetActive(false);
-        timer.gameObject.SetActive(false);
-        BlockParent.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        Main.gameObject.SetActive(true);
-        Square.gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (gameOver)
+        foreach (GameObject block in new List<GameObject>(blockTextList))
         {
-            return;
-        }
-
-        if (gameTimer > 0)
-        {
-            TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
-            string timerText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-            timer.text = "남은 시간: " + timerText;
-            if (!WordInputField.isFocused)
+            TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
+            if (input.Equals(textComponent.text.ToUpper()))
             {
-       WordInputField.ActivateInputField();
-     }
-        }
-        else
-        {
-            if (!gameOver)
-            {
-                StopGame();
-                finalText.gameObject.SetActive(true);
-                int totalScore = score;
-                int earnedMoney = CalculateEarnedMoney(totalScore);
-
-                PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
-                StatusController statusController = FindObjectOfType<StatusController>();
-
-                finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney + "0000원";
-
-                gameOver = true;
+                bool isLongWord = textComponent.text.Length > 5;
+                score += isLongWord ? 10 : 5; // 긴 단어는 10점, 짧은 단어는 5점
+                blockTextList.Remove(block);
+                Destroy(block);
+                break;
             }
         }
-        if (Time.time >= nextBlockerTime && !blockerActive)
-        {
-            StartCoroutine(ActivateBlocker());
-        }
+
+        scoreText.text = "점수: " + score;
     }
 
-    private void SetNextBlockerTime()
-        {
-            // 다음 blocker 이벤트가 발생할 시간을 현재 시간 + 랜덤 추가 시간으로 설정
-            nextBlockerTime = Time.time + UnityEngine.Random.Range(10, 20); // 예: 10초에서 20초 사이
-        }
-
-        IEnumerator ActivateBlocker()
-        {
-            blockerActive = true;
-
-            // 랜덤하게 하나의 스프라이트 선택
-            GameObject selectedBlocker = blockers[UnityEngine.Random.Range(0, blockers.Length)];
-            selectedBlocker.SetActive(true);
-
-            // blockerDuration 동안 대기
-            yield return new WaitForSeconds(blockerDuration);
-
-            // 스프라이트 비활성화
-            selectedBlocker.SetActive(false);
-
-            blockerActive = false;
-
-            // 다음 blocker 이벤트 시간 설정
-            SetNextBlockerTime();
-        }
-
-    int CalculateEarnedMoney(int totalScore)
+    void DestroyBlock(GameObject block)
     {
-        if (totalScore >= 100 && totalScore < 150)
-        {
-            return 15;
-        }
-        else if (totalScore >= 150 && totalScore < 200)
-        {
-            return 25;
-        }
-        else if (totalScore >= 200 && totalScore < 250)
-        {
-            return 30;
-        }
-        else if (totalScore >= 250 && totalScore <= 300)
-        {
-            return 40;
-        }
-        else
-        {
-            return 0;
-        }
+        blockTextList.Remove(block);
+        Destroy(block);
+    }
+
+    void UpdateGameTimer()
+  {
+      if (!gameEnded)
+      {
+          gameTimer -= Time.deltaTime;
+          if (gameTimer <= 0)
+          {
+              gameTimer = 0;
+              gameEnded = true;
+              EndGame();
+          }
+
+          TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
+          timer.text = string.Format("남은 시간: {0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+      }
+  }
+
+  void Update()
+  {
+      if (!gameEnded)
+      {
+          UpdateGameTimer();
+      }
+  }
+
+    void EndGame()
+    {
+        EndPanel.SetActive(true);
+        StopAllCoroutines();
+        // 게임 종료 로직 처리
     }
 }
