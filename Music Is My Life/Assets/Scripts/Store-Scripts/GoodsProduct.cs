@@ -86,7 +86,7 @@ public class GoodsProduct : MonoBehaviour
         switch (price)
         {
             case 15:
-                stress = -15;
+                stress = -20;
                 break;
             case 30:
                 stress = -50;
