@@ -9127,6 +9127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoney: {fileID: 233746074}
+  playerStress: {fileID: 595043142}
   audioProducts:
   - {fileID: 535069784}
   - {fileID: 1821695491}

@@ -5,19 +5,20 @@ using TMPro;
 public class StoreProductManager : MonoBehaviour
 {
     public TMP_Text playerMoney; // 플레이어가 보유 중인 돈
+    public TMP_Text playerStress;
     public GameObject[] audioProducts; // 모든 상품
     public GameObject[] goodsProducts; // 모든 상품
 
     void Start()
     {
-        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원";
-
         LoadProductsData(audioProducts);
         LoadGoodsProductsData(goodsProducts);
     }
+
     private void Update()
     {
-        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 변경
+        playerMoney.text = "잔고: " + PlayerPrefs.GetInt("Money") + "만원"; // 내 잔고 업데이트
+        playerStress.text = "스트레스: " + PlayerPrefs.GetInt("Stress"); // 내 스트레스 업데이트 
     }
 
     public void LoadProductsData(GameObject[] allProductObj)
