@@ -38,8 +38,8 @@ public class StatusController : MonoBehaviour
     public void StatusText()
     {
         status.text = "돈: " + PlayerPrefs.GetInt("Money") + "만원"
-                    + "\n나의명성: " + PlayerPrefs.GetInt("MyFame")
-                    + "\n야옹의명성: " + PlayerPrefs.GetInt("BandFame")
+                    + "\n나의 명성: " + PlayerPrefs.GetInt("MyFame")
+                    + "\n야옹의 명성: " + PlayerPrefs.GetInt("BandFame")
                     + "\n스트레스: " + PlayerPrefs.GetInt("Stress");
     }
 
