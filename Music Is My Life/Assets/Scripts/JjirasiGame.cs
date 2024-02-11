@@ -49,9 +49,9 @@ public class JjirasiGame : MonoBehaviour
         FameNum = 0;
         clickTxt.text = "클릭 수 : 0";
         fameTxt.text = "명성 : 0";
-        text_Timer.text = "남은 시간: 60";
+        text_Timer.text = "남은 시간: 30";
 
-        LimitTime = 60;
+        LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
         Main.gameObject.SetActive(false);
         jjirasiImage.sprite = normalSprite;
@@ -64,7 +64,7 @@ public class JjirasiGame : MonoBehaviour
     // eventTriggerTime 초기화 함수 추가
     private void UpdateEventTriggerTime()
     {
-        eventTriggerTime = Random.Range(15, 45);
+        eventTriggerTime = Random.Range(10, 20);
         Debug.Log("Event Trigger Time: " + eventTriggerTime); // eventTriggerTime 값 확인을 위한 디버그 로그 추가
     }
 
