@@ -22,7 +22,7 @@ public class BeggingGame : MonoBehaviour
 
         SetMoneyStatusText();
         dialTitle.text = "";
-        dialContent.text = "서울역에서 구걸을 한다. (클릭해서 진행)";
+        dialContent.text = "서울역에서 구걸을 한다.\n(클릭해서 진행)";
         scorePanel.SetActive(false); // 결과 보기 비활성화
     }
 
@@ -44,11 +44,11 @@ public class BeggingGame : MonoBehaviour
             Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
             // 1조의 경우 PlayerPrefs에는 저장하지 않음
             StatusChanger.EarnMoney(income);
-            moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 명성: " + myFame;
+            moneyStatus.text = "번 돈: 1조 " + income + "만원 | " + "나의 명성: " + myFame;
             //moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
             //moneyStatus.text = "나의 돈: 1조 " + (PlayerPrefs.GetInt("Money") + income) + "만원 (+1조" + income + ")\n" + "나의 명성: " + myFame;
 
-            resultContent.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+            resultContent.text = "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + myFame;
             scorePanel.GetComponent<SceneMove>().targetScene = "Ending-Rich";
             scorePanel.SetActive(true); // 결과 보기
         }
@@ -109,7 +109,7 @@ public class BeggingGame : MonoBehaviour
 
     public void SetMoneyStatusText() // status 텍스트 설정
     {
-        moneyStatus.text = "번 돈 : " + income + "만원\n" + "나의 명성: " + myFame;
+        moneyStatus.text = "번 돈: " + income + "만원 | " + "나의 명성: " + myFame;
         //moneyStatus.text = "번 돈 : " + income + "만원\n" + "나의 돈: " + (PlayerPrefs.GetInt("Money") + income) + "만원\n" + "나의 명성: " + myFame;
         //moneyStatus.text = "나의 돈: " + (PlayerPrefs.GetInt("Money") + income) + "만원 (+" + income + "만원)\n" + "나의 명성: " + myFame;
     }
