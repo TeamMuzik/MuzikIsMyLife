@@ -45,7 +45,7 @@ public class StoreProduct : Furniture // Furniture을 상속받음
     IEnumerator MapPriceTextAfterDelay()
     {
         yield return new WaitForSeconds(1f); // 1초 대기
-        SetButtonTextAndColor(price.ToString()+"만원", "#323232");
+        SetButtonTextAndColor(price.ToString() + "만원", "#323232");
     }
 
     private void SetButtonTextAndColor(string text, string colorCode)

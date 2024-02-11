@@ -18,28 +18,38 @@ public class GoodsProduct : MonoBehaviour
     {
         index = PlayerPrefs.GetInt(category + "_CURRENT");
         description.text = "남은 개수: " + (totalCount - index) + "개";
+
+        if (index >= totalCount)
+        {
+            buttonText.text = "SOLD OUT";
+            button.interactable = false;
+            return;
+        }
     }
 
     public void BuyGoodsProduct()
     {
-        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         if (index >= totalCount)
         {
-            throw new System.Exception("굿즈의 index가 totalCount 범위를 넘어갔습니다.");
+            // throw new System.Exception("굿즈의 index가 totalCount 범위를 넘어갔습니다.");
+            return;
         }
+        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+
         if (StatusChanger.SpendMoney(price)) // 물건 구매 시도
         {
             UpdateGoodsProductData();
-
-            if (buttonText != null)
-            {
-                SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
-                description.text = "남은 개수: " + (totalCount - index) + "개";
-                StartCoroutine(MapPriceTextAfterDelay());
-            }
+            description.text = "남은 개수: " + (totalCount - index) + "개";
             if (index == totalCount)
             {
+                SetButtonTextAndColor("구매 완료", "#00B028");
+                buttonText.text = "SOLD OUT";
                 button.interactable = false;
+            }
+            else if (buttonText != null)
+            {
+                SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
+                StartCoroutine(MapPriceTextAfterDelay());
             }
         }
         else
