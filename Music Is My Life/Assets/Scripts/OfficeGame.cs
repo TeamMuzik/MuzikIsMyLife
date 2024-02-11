@@ -11,6 +11,9 @@ public class OfficeGame : MonoBehaviour
     public TMP_Text WordInputFieldText;
     public TMP_Text timer;
     public TMP_Text scoreText;
+    public TMP_Text resultText;
+    public TMP_Text stressText;
+    public TMP_Text finalText;
     public GameObject EndPanel, StartPanel;
     public GameObject pBlockText;
     public Transform BlockParent;
@@ -202,7 +205,34 @@ Debug.Log($"Word: {selectedWord}, Color set to: {textComponent.color}");
     void EndGame()
     {
         EndPanel.SetActive(true);
+        StartPanel.SetActive(false);
         StopAllCoroutines();
+        int result = MGResultManager.PartTimeDayResult();
+               switch (result)
+               {
+                   case 1:
+                       resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
+                       stressText.text = "스트레스 -20";
+                       break;
+                   case 2:
+                       resultText.text = "바쁜 하루였다...";
+                       stressText.text = "스트레스 +20";
+                       break;
+                   default:
+                       resultText.text = "오늘도 열심히 알바를 했다.";
+                       stressText.text = "스트레스 +10";
+                       break;
+                     }
+               finalText.gameObject.SetActive(true);
+               int totalScore = score;
+               int earnedMoney = totalScore/10;
+
+               PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
+               StatusController statusController = FindObjectOfType<StatusController>();
+
+               finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney + "만원";
+           }
+
         // 게임 종료 로직 처리
-    }
+
 }
