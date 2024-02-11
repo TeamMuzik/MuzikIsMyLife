@@ -25,11 +25,13 @@ public class StoreProductManager : MonoBehaviour
         foreach (GameObject slotObj in allProductObj)
         {
             StoreProduct product = slotObj.GetComponentInChildren<StoreProduct>();
+            // 가구 상태 세팅
             product.LoadFurnitureStatus();
+            // 버튼 세팅
             Button button = slotObj.GetComponentInChildren<Button>();
             TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
             // Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
-            if (!product.SaleStatus()) // 판매중인지
+            if (product.IsOwned) // 보유 중임
             {
                 buttonText.text = "SOLD OUT";
                 button.interactable = false;
@@ -38,6 +40,7 @@ public class StoreProductManager : MonoBehaviour
             {
                 buttonText.text = product.price + "만원";
             }
+            buttonText.color = ColorUtility.TryParseHtmlString("#323232", out Color color) ? color : Color.black;
         }
     }
 
@@ -46,9 +49,13 @@ public class StoreProductManager : MonoBehaviour
         foreach (GameObject slotObj in allProductObj)
         {
             GoodsProduct product = slotObj.GetComponentInChildren<GoodsProduct>();
+            // index, 개수 세팅
+            product.index = PlayerPrefs.GetInt(product.category + "_CURRENT");
+            product.description.text = "남은 개수: " + (product.totalCount - product.index) + "개";
+            // 버튼 세팅
             Button button = slotObj.GetComponentInChildren<Button>();
             TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
-            if (!product.SaleStatus()) // 판매중인지
+            if (product.index >= product.totalCount) // 모두 판매 완료
             {
                 buttonText.text = "SOLD OUT";
                 button.interactable = false;
@@ -58,6 +65,7 @@ public class StoreProductManager : MonoBehaviour
                 buttonText.text = product.price + "만원";
                 button.interactable = true;
             }
+            buttonText.color = ColorUtility.TryParseHtmlString("#323232", out Color color) ? color : Color.black;
         }
     }
 }
