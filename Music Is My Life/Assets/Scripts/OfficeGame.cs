@@ -169,10 +169,29 @@ return selectedWord;
         if (!gameEnded && block != null)
         {
             gameTimer -= isHardWord ? 7 : 5;
+            StartCoroutine(FlashTimer(2));
 
             DestroyBlock(block);
         }
     }
+
+    IEnumerator FlashTimer(float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            timer.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            timer.color = Color.white;
+            yield return new WaitForSeconds(0.2f);
+            timer.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            timer.color = Color.white;
+            yield return new WaitForSeconds(0.2f);
+            elapsed += 1f;
+        }
+    }
+
 
     IEnumerator ActivateBlockersRoutine()
     {
@@ -240,6 +259,7 @@ void DestroyBlock(GameObject block)
     blockTextList.Remove(block);
     Destroy(block);
 }
+
 
 
 
