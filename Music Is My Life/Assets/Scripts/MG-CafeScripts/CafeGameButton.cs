@@ -58,7 +58,6 @@ public class CafeGameButton : MonoBehaviour
         }
     }
     
-
     public void CafeGameGameStartButton()
     {
         cafeGameTimerInstance.TutorialPanel.SetActive(false);
