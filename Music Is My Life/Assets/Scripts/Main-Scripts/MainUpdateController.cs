@@ -42,15 +42,15 @@ public class MainUpdateController : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt("Fame");
 
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
-        if (money > 2500000)
+        if (money >= 2500000)
         {
             sceneMove.targetScene = "Ending-Expedition";
         }
-        else if (myFame > 100)
+        else if (myFame >= 100)
         {
             sceneMove.targetScene = "Ending-OpeningBand";
         }
-        else if (bandFame > 15)
+        else if (bandFame >= 15)
         {
             sceneMove.targetScene = "Ending-ConcertInKorea";
         }
