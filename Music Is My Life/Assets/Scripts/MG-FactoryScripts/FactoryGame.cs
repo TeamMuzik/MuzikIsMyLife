@@ -188,6 +188,7 @@ public class FactoryGame : MonoBehaviour
                     }
                     spawnedKeyboards.Clear();
                     SpawnKeyBoards();
+                    PlayMistakeSound();
                 }
             }
         }
