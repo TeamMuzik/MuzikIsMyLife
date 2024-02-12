@@ -29,7 +29,7 @@ public class OfficeGame : MonoBehaviour
     private float blockerInterval = 15f; // 방해 요소 활성화 간격
     private HashSet<string> activeWords = new HashSet<string>(); // 사용 중인 단어 집합
 
-     private bool isGameStarted = false;
+    private bool isGameStarted = false;
 
     void Start()
     {
@@ -56,96 +56,96 @@ public class OfficeGame : MonoBehaviour
         }
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
-         InitializeGame();
+        InitializeGame();
 
-        }
-
-        void InitializeGame()
-{
-    // 게임 초기화 및 설정
-    StartPanel.SetActive(true);
-    EndPanel.SetActive(false);
-    gameEnded = false;
-    gameTimer = 60.0f;
-    score = 0;
-    scoreText.text = "점수: " + score;
-
-    // 초기에 모든 블록커를 비활성화
-    foreach (GameObject blocker in blockers)
-    {
-        blocker.SetActive(false);
     }
 
-    // 입력 필드 활성화
-    WordInputField.ActivateInputField();
-
-
-    StartCoroutine(CreateBlockTextRoutine());
-    StartCoroutine(ActivateBlockersRoutine());
-    InvokeRepeating("UpdateGameTimer", 1f, 1f);
-
-    timer.text = "남은 시간: 60:00";
-
-
-    // 나머지 게임 시작 로직
-}
-IEnumerator CreateBlockTextRoutine()
-{
-float nextLongWordTime = 0f; // 긴 단어 생성을 위한 타이머
-while (!gameEnded)
-{
-    if (wordList.Count > 0)
+    void InitializeGame()
     {
-        // 현재 시간이 다음 긴 단어 생성 시간을 넘었는지 확인
-        if (Time.time >= nextLongWordTime)
+        // 게임 초기화 및 설정
+        StartPanel.SetActive(true);
+        EndPanel.SetActive(false);
+        gameEnded = false;
+        gameTimer = 60.0f;
+        score = 0;
+        scoreText.text = "점수: " + score;
+
+        // 초기에 모든 블록커를 비활성화
+        foreach (GameObject blocker in blockers)
         {
-            CreateBlockText(true); // 긴 단어 생성
-            nextLongWordTime = Time.time + 6f; // 다음 긴 단어 생성 시간 갱신
+            blocker.SetActive(false);
         }
-        else
-        {
-            CreateBlockText(false); // 짧은 단어 생성
-        }
-        yield return new WaitForSeconds(1.2f); // 항상 1초 대기 (짧은 단어 대기 시간)
+
+        // 입력 필드 활성화
+        WordInputField.ActivateInputField();
+
+
+        StartCoroutine(CreateBlockTextRoutine());
+        StartCoroutine(ActivateBlockersRoutine());
+        InvokeRepeating("UpdateGameTimer", 1f, 1f);
+
+        timer.text = "남은 시간: 60:00";
+
+
+        // 나머지 게임 시작 로직
     }
-}
-}
+    IEnumerator CreateBlockTextRoutine()
+    {
+        float nextLongWordTime = 0f; // 긴 단어 생성을 위한 타이머
+        while (!gameEnded)
+        {
+            if (wordList.Count > 0)
+            {
+                // 현재 시간이 다음 긴 단어 생성 시간을 넘었는지 확인
+                if (Time.time >= nextLongWordTime)
+                {
+                    CreateBlockText(true); // 긴 단어 생성
+                    nextLongWordTime = Time.time + 6f; // 다음 긴 단어 생성 시간 갱신
+                }
+                else
+                {
+                    CreateBlockText(false); // 짧은 단어 생성
+                }
+                yield return new WaitForSeconds(1.2f); // 항상 1초 대기 (짧은 단어 대기 시간)
+            }
+        }
+    }
 
 
 
-void CreateBlockText(bool isLongWord)
-{
-string selectedWord = GetUniqueWord(isLongWord);
-if (string.IsNullOrEmpty(selectedWord))
-{
-    return; // 유니크한 단어를 찾지 못한 경우 생성 중단
-}
+    void CreateBlockText(bool isLongWord)
+    {
+        string selectedWord = GetUniqueWord(isLongWord);
+        if (string.IsNullOrEmpty(selectedWord))
+        {
+            return; // 유니크한 단어를 찾지 못한 경우 생성 중단
+        }
 
-GameObject block = Instantiate(pBlockText, BlockParent);
-TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
-textComponent.text = selectedWord;
+        GameObject block = Instantiate(pBlockText, BlockParent);
+        TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
+        textComponent.text = selectedWord;
 
-textComponent.color = isLongWord ? Color.red : Color.black;
+        textComponent.color = isLongWord ? Color.red : Color.black;
 
-RectTransform rectTransform = block.GetComponent<RectTransform>();
-rectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-250.0f, 250.0f), 300.0f);
+        RectTransform rectTransform = block.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-250.0f, 250.0f), 300.0f);
 
-blockTextList.Add(block);
-StartCoroutine(MoveTextDown(rectTransform, block, isLongWord));
-}
+        blockTextList.Add(block);
+        StartCoroutine(MoveTextDown(rectTransform, block, isLongWord));
+    }
 
-string GetUniqueWord(bool isLongWord)
-{
-List<string> possibleWords = wordList.FindAll(word => isLongWord ? word.Length > 5 : word.Length <= 5 && !activeWords.Contains(word));
-if (possibleWords.Count == 0)
-{
-    return null; // 가능한 유니크한 단어가 없는 경우
-}
+    string GetUniqueWord(bool isLongWord)
+    {
+        List<string> possibleWords = wordList.FindAll(word => isLongWord ? word.Length > 5 : word.Length <= 5 && !activeWords.Contains(word));
+        if (possibleWords.Count == 0)
+        {
+            return null; // 가능한 유니크한 단어가 없는 경우
+        }
 
-string selectedWord = possibleWords[UnityEngine.Random.Range(0, possibleWords.Count)];
-activeWords.Add(selectedWord); // 선택된 단어를 활성화된 단어 목록에 추가
-return selectedWord;
-}
+        string selectedWord = possibleWords[UnityEngine.Random.Range(0, possibleWords.Count)];
+        activeWords.Add(selectedWord); // 선택된 단어를 활성화된 단어 목록에 추가
+        return selectedWord;
+    }
 
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
@@ -202,71 +202,71 @@ return selectedWord;
     }
 
     public void GetInputFieldText()
-{
-    string inputText = WordInputField.text.ToUpper().Trim();
-    Debug.Log($"Input Received: {inputText}"); // 입력 받은 데이터 로그 출력
-    CheckInputAgainstBlocks(inputText);
-    WordInputField.text = ""; // 입력 필드 초기화
-    WordInputField.ActivateInputField();
-}
-
-void CheckInputAgainstBlocks(string input)
-{
-    foreach (GameObject block in new List<GameObject>(blockTextList))
     {
-        TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
-        if (input.Equals(textComponent.text.ToUpper().Trim()))
-        {
-            bool isLongWord = textComponent.text.Length > 5;
-            score += isLongWord ? 10 : 5;
-            scoreText.text = "점수: " + score;
+        string inputText = WordInputField.text.ToUpper().Trim();
+        Debug.Log($"Input Received: {inputText}"); // 입력 받은 데이터 로그 출력
+        CheckInputAgainstBlocks(inputText);
+        WordInputField.text = ""; // 입력 필드 초기화
+        WordInputField.ActivateInputField();
+    }
 
-            blockTextList.Remove(block);
-            Destroy(block);
-            return; // 일치하는 첫 번째 블록을 찾으면 루프 종료
+    void CheckInputAgainstBlocks(string input)
+    {
+        foreach (GameObject block in new List<GameObject>(blockTextList))
+        {
+            TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
+            if (input.Equals(textComponent.text.ToUpper().Trim()))
+            {
+                bool isLongWord = textComponent.text.Length > 5;
+                score += isLongWord ? 10 : 5;
+                scoreText.text = "점수: " + score;
+
+                blockTextList.Remove(block);
+                Destroy(block);
+                return; // 일치하는 첫 번째 블록을 찾으면 루프 종료
+            }
         }
     }
-}
 
 
-void DestroyBlock(GameObject block)
-{
-    TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
-    if (textComponent != null)
+    void DestroyBlock(GameObject block)
     {
-        activeWords.Remove(textComponent.text); // 블록 제거 시 활성화된 단어 목록에서 제거
+        TMP_Text textComponent = block.GetComponentInChildren<TMP_Text>();
+        if (textComponent != null)
+        {
+            activeWords.Remove(textComponent.text); // 블록 제거 시 활성화된 단어 목록에서 제거
+        }
+
+        blockTextList.Remove(block);
+        Destroy(block);
     }
 
-    blockTextList.Remove(block);
-    Destroy(block);
-}
 
 
+    void UpdateGameTimer()
+    {
+        if (!gameEnded)
+        {
+            gameTimer -= 1; // 매 호출마다 1초 감소
+            if (gameTimer <= 0)
+            {
+                gameTimer = 0;
+                gameEnded = true;
+                EndGame();
+            }
 
-void UpdateGameTimer()
-{
-  if (!gameEnded)
-  {
-      gameTimer -= 1; // 매 호출마다 1초 감소
-      if (gameTimer <= 0)
-      {
-          gameTimer = 0;
-          gameEnded = true;
-          EndGame();
-      }
-
-      TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
-      timer.text = string.Format("남은 시간: {0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-  }
-}
+            TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
+            timer.text = string.Format("남은 시간: {0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+        }
+    }
 
 
     void Update()
     {
-      if (!gameEnded && isGameStarted) // 게임이 시작되었고, 아직 종료되지 않았을 때 타이머 업데이트
-      {
-          UpdateGameTimer();
-      }
+        if (!gameEnded && isGameStarted) // 게임이 시작되었고, 아직 종료되지 않았을 때 타이머 업데이트
+        {
+            UpdateGameTimer();
+        }
     }
 
     void EndGame()
