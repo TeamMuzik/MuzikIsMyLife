@@ -50,7 +50,7 @@ public class CafeGameButton : MonoBehaviour
                 cafeGameGarbageInstance.Garbage();
                 cafeGameInstance.clickCount = 0;
                 orderTime = 0f;
-                if (Input.GetMouseButtonUp(0))//좌클 마우스 입력을 뗄 때
+                if (Input.GetMouseButtonUp(0))//좌클 마우스 입력을 뗄 때 성공 사운드 재생
                 {
                     cafeGameInstance.PlaySuccessSound();
                 }
@@ -70,7 +70,7 @@ public class CafeGameButton : MonoBehaviour
         cafeGameTimerInstance.startCoroutine();
     }
 
-    public void PartTimeGameStartButton()
+    public void FactoryGameStartButton()
     {
         FactoryGameTimerInstance.TutorialPanel.SetActive(false);
         FactoryGameTimerInstance.StartPanel.SetActive(true);

@@ -45,5 +45,7 @@ public class CafeGameGarbage : MonoBehaviour, IPointerEnterHandler, IPointerExit
             Destroy(cafeGameInstance.TotalFruitName[i]);
         }
         cafeGameInstance.TotalFruitName.Clear();
+
+        cafeGameInstance.clickCount = 0;
     }
 }
