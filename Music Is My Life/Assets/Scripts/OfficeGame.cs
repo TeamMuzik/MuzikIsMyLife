@@ -243,22 +243,23 @@ void DestroyBlock(GameObject block)
 
 
 
-    void UpdateGameTimer()
-    {
-        if (!gameEnded)
-        {
-            gameTimer -= Time.deltaTime;
-            if (gameTimer <= 0)
-            {
-                gameTimer = 0;
-                gameEnded = true;
-                EndGame();
-            }
+void UpdateGameTimer()
+{
+  if (!gameEnded)
+  {
+      gameTimer -= 1; // 매 호출마다 1초 감소
+      if (gameTimer <= 0)
+      {
+          gameTimer = 0;
+          gameEnded = true;
+          EndGame();
+      }
 
-            TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
-            timer.text = string.Format("남은 시간: {0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-        }
-    }
+      TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimer);
+      timer.text = string.Format("남은 시간: {0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+  }
+}
+
 
     void Update()
     {
