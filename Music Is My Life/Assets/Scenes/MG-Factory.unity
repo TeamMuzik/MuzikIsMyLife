@@ -3077,6 +3077,7 @@ MonoBehaviour:
   - {fileID: 5982951125541301346, guid: 7a206cf5d1f224842b9c2d78e17f8012, type: 3}
   - {fileID: 5610677295042165430, guid: 81dfc54621a546c42b67c888b233ce65, type: 3}
   possibleKeys: 1401000013010000120100001101000020000000
+  spawnedKeyboards: []
   DollPrefab:
   - {fileID: 4213694459274050773, guid: a2bcec6b928e9cc49b17c8cbfedc30fc, type: 3}
   - {fileID: 2775283758735702338, guid: 7002374852716a64790f09962a9565f8, type: 3}
@@ -3108,7 +3109,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 275927b8a3971844cba9dc678daf8284, type: 3}
   - {fileID: 21300000, guid: 68304bc106b904d4bbc936f8d8a26f54, type: 3}
   - {fileID: 21300000, guid: 824ad0d6b5135ac4ebd063520a6401e8, type: 3}
-  spawnedKeyboards: []
+  backGround1: {fileID: 269578731}
+  backGround2: {fileID: 739743860}
   stageNumText: {fileID: 279943974}
   moneyNumText: {fileID: 480584023}
   successSound: {fileID: 8300000, guid: 323a57c9300d154418caa623e1fe4e27, type: 3}

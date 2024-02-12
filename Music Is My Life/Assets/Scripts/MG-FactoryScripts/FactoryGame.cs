@@ -6,22 +6,24 @@ using TMPro;
 public class FactoryGame : MonoBehaviour
 {
     private FactoryGameTimer FactoryGameTimerInstance;
+
     public GameObject[] keyBoardPrefabs; //키보드 이미지를 가진 오브젝트 리스트
     public KeyCode[] possibleKeys; //실제 입력할 키보드 리스트 (방향키, 스페이스바)
+    public List<GameObject> spawnedKeyboards = new List<GameObject>();
+
     private GameObject doll;
     public GameObject[] DollPrefab;
     public Sprite[] BearSprites;
     public Sprite[] CatSprites;
     public Sprite[] FoxSprites;
     public Sprite[] DogSprites;
-    public List<GameObject> spawnedKeyboards = new List<GameObject>();
-
+    
     [SerializeField]
     private TextMeshProUGUI stageNumText;
     [SerializeField]
     private TextMeshProUGUI moneyNumText;
 
-    public AudioClip successSound; // 성공 사운드 클립
+    public AudioClip successSound;
     public AudioClip mistakeSound;
     private AudioSource audioSource;
 
@@ -187,8 +189,11 @@ public class FactoryGame : MonoBehaviour
                         Destroy(keyboard);
                     }
                     spawnedKeyboards.Clear();
-                    SpawnKeyBoards();
                     PlayMistakeSound();
+                    if (FactoryGameTimer.totalTime > 0)
+                    {
+                        SpawnKeyBoards();
+                    }
                 }
             }
         }
@@ -198,6 +203,7 @@ public class FactoryGame : MonoBehaviour
             moneyManager();
             increaseStageNum();
             SpawnKeyBoards();
+            PlaySuccessSound();
         }
 
         moneyNumText.SetText(money.ToString() + "만원");
