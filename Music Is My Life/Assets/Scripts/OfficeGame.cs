@@ -14,10 +14,11 @@ public class OfficeGame : MonoBehaviour
     public TMP_Text resultText;
     public TMP_Text stressText;
     public TMP_Text finalText;
-    public GameObject EndPanel, StartPanel;
+    public GameObject EndPanel, StartPanel,TutorialPanel;
     public GameObject pBlockText;
     public Transform BlockParent;
     public GameObject[] blockers; // 방해 요소 배열
+    public Button StartButton;
 
     private GameObject canvasGameObject; // Added declaration here
     private TextAsset textAsset;
@@ -32,7 +33,9 @@ public class OfficeGame : MonoBehaviour
      private bool isGameStarted = false;
 
     void Start()
-    {
+    {   TutorialPanel.SetActive(true);
+        StartPanel.SetActive(false);
+        EndPanel.SetActive(false);
         canvasGameObject = GameObject.Find("Canvas"); // Initialize canvasGameObject
         if (!canvasGameObject)
         {
@@ -56,11 +59,11 @@ public class OfficeGame : MonoBehaviour
         }
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
-         InitializeGame();
+         
 
         }
 
-        void InitializeGame()
+      public void InitializeGame()
 {
     // 게임 초기화 및 설정
     StartPanel.SetActive(true);
