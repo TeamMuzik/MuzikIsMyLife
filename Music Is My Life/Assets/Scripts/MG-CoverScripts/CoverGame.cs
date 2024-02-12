@@ -54,9 +54,9 @@ public class CoverGame : MonoBehaviour
     {
         int divisor = 2500; // 명성 오르는 단위
 
-        dialTitle.text = "기타 연주중...";
         while (turn-- > 0)
         {
+            dialTitle.text = "   기타 연주중   ";
             newSubs = Random.Range(rangeStart, rangeEnd + 1) * unit * subsMultiplier; // 랜덤하게 구독자 수 증가
             int fameDiff = (totalSubs + newSubs) / divisor - totalSubs / divisor;
             if (fameDiff > 0) // divisor 단위가 바뀌는지 확인하기 위해
@@ -71,7 +71,14 @@ public class CoverGame : MonoBehaviour
             totalSubs += newSubs; // 구독자 수 증가
             subsStatus.text = "구독자 수: " + totalSubs + "명";
             Debug.Log("turn: " + turn + "증가한 구독자 수: " + newSubs + "증가한 명성: " + fameDiff);
-            yield return new WaitForSeconds(0.5f); // 특정 시간 동안 기다림, 테스트용으로 0.5초
+            // 코루틴
+            yield return new WaitForSeconds(0.2f);
+            dialTitle.text = "   기타 연주중.  ";
+            yield return new WaitForSeconds(0.2f); // 특정 시간 동안 기다림
+            dialTitle.text = "   기타 연주중.. ";
+            yield return new WaitForSeconds(0.2f); // 특정 시간 동안 기다림
+            dialTitle.text = "   기타 연주중...";
+            yield return new WaitForSeconds(0.2f);
         }
         CoverGameResult();
         yield break; // 코루틴 끝내기
