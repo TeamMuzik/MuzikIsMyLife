@@ -15,59 +15,62 @@ public class PrologueManager : MonoBehaviour
     private int currentStepIndex = 0; // 현재 단계 인덱스
 
     private void Start()
-{
-    foreach (var text in prologueTexts)
     {
-        if (text != null)
+        foreach (var text in prologueTexts)
         {
-            text.gameObject.SetActive(false);
+            if (text != null)
+            {
+                text.gameObject.SetActive(false);
+            }
         }
-    }
-    mainMenuButton.gameObject.SetActive(false); // 시작 시 버튼 비활성화
-    InitializeSteps();
-    StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
-}
-
-// 각 단계를 시간 간격을 두고 실행하는 코루틴
-IEnumerator ExecuteStepsOverTime()
-{
-    for (int i = 0; i < steps.Count; i++)
-    {
-        steps[i].Execute();
-
-        // 'ClearTextStep' 다음에 'ShowSpriteStep'가 바로 오는 경우 대기하지 않음
-        if (i < steps.Count - 1 && steps[i] is ClearTextStep && steps[i + 1] is ShowSpriteStep)
-        {
-            continue; // 대기 시간 없이 다음 단계로 진행
-        }
-
-        yield return new WaitForSeconds(1.0f); // 다른 경우에는 2초 대기
+        mainMenuButton.gameObject.SetActive(false); // 시작 시 버튼 비활성화
+        InitializeSteps();
+        StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
     }
 
-    // 모든 단계가 완료되면 추가 작업 수행
-    Debug.Log("프롤로그 완료");
-    mainMenuButton.gameObject.SetActive(true); // 예: 메인 메뉴 버튼 활성화
-}
+    // 각 단계를 시간 간격을 두고 실행하는 코루틴
+    IEnumerator ExecuteStepsOverTime()
+    {
+        for (int i = 0; i < steps.Count; i++)
+        {
+            steps[i].Execute();
+
+            // 'ClearTextStep' 다음에 'ShowSpriteStep'가 바로 오는 경우 대기하지 않음
+            if (i < steps.Count - 1 && steps[i] is ClearTextStep && steps[i + 1] is ShowSpriteStep)
+            {
+                continue; // 대기 시간 없이 다음 단계로 진행
+            }
+
+            yield return new WaitForSeconds(1.0f); // 다른 경우에는 1초 대기
+        }
+
+        // 모든 단계가 완료되면 추가 작업 수행
+        Debug.Log("프롤로그 완료");
+        mainMenuButton.gameObject.SetActive(true); // 예: 메인 메뉴 버튼 활성화
+    }
 
     private void InitializeSteps()
     {
+        // 사용자의 이름에 따라 조사를 붙이는 메소드
+        string caseMarker = KoreanPostposition.SubjectCaseMarkerEunNeun(PlayerPrefs.GetString("PlayerName"));
+        string playerName = PlayerPrefs.GetString("PlayerName");
         // 스프라이트와 텍스트 추가 단계 정의
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[0], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[1], imagePrefab));
-        steps.Add(new ShowTextStep(prologueTexts[0], "나는,\n\n'해외밴드' 야옹의 팬이다."));
+        steps.Add(new ShowTextStep(prologueTexts[0], "나 " + playerName + caseMarker + ",\n\n'해외 밴드' 야옹의 팬이다.")); // 플레이어 이름 출력
         steps.Add(new ClearTextStep(prologueTexts[0])); // 텍스트 2, 3 비활성화
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[2], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[3], imagePrefab));
-        steps.Add(new ShowTextStep(prologueTexts[1], "하\n\n지\n\n만\n\n ..."));
+        steps.Add(new ShowTextStep(prologueTexts[1], "하\n\n지\n\n만\n..."));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[4], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[5], imagePrefab));
-        steps.Add(new ShowTextStep(prologueTexts[2], "아무도\n\n야옹을\n\n모른다\n\n..."));
+        steps.Add(new ShowTextStep(prologueTexts[2], "아무도\n\n야옹을\n\n모른다\n..."));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[6], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[7], imagePrefab));
         steps.Add(new ClearTextStep(prologueTexts[1], prologueTexts[2])); // 텍스트 2, 3 비활성화
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[8], imagePrefab));
-        steps.Add(new ShowTextStep(prologueTexts[3], "그 어떤 역경이 닥치더라도 ..."));
-        steps.Add(new ShowTextStep(prologueTexts[4], "나는\n\n야옹 밴드를 보고 말겠다.."));
+        steps.Add(new ShowTextStep(prologueTexts[3], "그 어떤 역경이 닥치더라도..."));
+        steps.Add(new ShowTextStep(prologueTexts[4], "나는 꼭\n\n야옹 밴드를 보고 말겠다."));
         steps.Add(new ActivateButtonStep(mainMenuButton)); // 마지막 단계에서 버튼 활성화
     }
 

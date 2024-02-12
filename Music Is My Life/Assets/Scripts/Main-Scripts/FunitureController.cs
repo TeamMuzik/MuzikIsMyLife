@@ -9,7 +9,7 @@ public class FunitureController : MonoBehaviour
     public GameObject[] lpList;
     public GameObject[] effectorList;
 
-    void Start()
+    public void UpdateFurnitures()
     {
         SetFurnitureObjects(furnitureList);
         SetReplaceableFurnitureObjects(replaceableList);
