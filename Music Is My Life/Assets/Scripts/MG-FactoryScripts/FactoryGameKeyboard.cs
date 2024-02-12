@@ -75,16 +75,14 @@ public class FactoryGameKeyboard : MonoBehaviour
                     {
                         FactoryGameTimerInstance.MistakePanel.SetActive(false);
                     }
-                    FactoryGameInstance.PlaySuccessSound();
                 }
                 else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
                 {
                     keyState = 0;
-                    allowControl = false;
                     StartCoroutine(MistakeChangeColor());
+                    allowControl = false;
                     StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                    FactoryGameTimer.totalTime -= 2f;
-                    FactoryGameInstance.PlayMistakeSound();
+                    FactoryGameTimer.totalTime -= 4f;
                     // foreach (GameObject keyboard in FactoryGameInstance.spawnedKeyboards)
                     // {
                     //     Destroy(keyboard);

@@ -14,6 +14,7 @@ public class CoverGame : MonoBehaviour
 
     private int totalSubs; // PlayerPrefs에서 가져옴
     private int newSubs;
+    private int beforeMyFame;
     private int newFame;
     private int turn;
 
@@ -26,13 +27,14 @@ public class CoverGame : MonoBehaviour
     {
         totalSubs = PlayerPrefs.GetInt("Subscribers");
         newSubs = 0;
+        beforeMyFame = PlayerPrefs.GetInt("MyFame");
         newFame = 0;
         turn = 5; // 5에서 0까지 감소
 
         dialTitle.text = "";
         dialContent.text = "야옹의 곡을 기타 커버한다.\n(클릭 시 자동 진행)";
         subsStatus.text = "구독자 수: " + totalSubs + "명";
-        fameStatus.text = "나의 명성: " + PlayerPrefs.GetInt("MyFame");
+        fameStatus.text = "나의 명성: " + beforeMyFame;
         scorePanel.SetActive(false); // 결과 보기 비활성화
 
         // 음향기기 버프 적용
@@ -51,17 +53,16 @@ public class CoverGame : MonoBehaviour
     public IEnumerator CoverCouroutine() // 커버 게임 코루틴
     {
         int divisor = 2500; // 명성 오르는 단위
-        int beforeFame = PlayerPrefs.GetInt("MyFame");
 
-        dialTitle.text = "기타 연주중...";
         while (turn-- > 0)
         {
+            dialTitle.text = "   기타 연주중   ";
             newSubs = Random.Range(rangeStart, rangeEnd + 1) * unit * subsMultiplier; // 랜덤하게 구독자 수 증가
             int fameDiff = (totalSubs + newSubs) / divisor - totalSubs / divisor;
             if (fameDiff > 0) // divisor 단위가 바뀌는지 확인하기 위해
             {
                 newFame += fameDiff;
-                fameStatus.text = "나의 명성: " + PlayerPrefs.GetInt("MyFame") + " (+" + newFame + ")";
+                fameStatus.text = "나의 명성: " + (beforeMyFame + newFame) + " (+" + newFame + ")";
                 dialContent.text = "구독자가 " + newSubs + "명 늘었다.\n(나의 명성 +" + fameDiff+")";
             }
             else
@@ -70,7 +71,14 @@ public class CoverGame : MonoBehaviour
             totalSubs += newSubs; // 구독자 수 증가
             subsStatus.text = "구독자 수: " + totalSubs + "명";
             Debug.Log("turn: " + turn + "증가한 구독자 수: " + newSubs + "증가한 명성: " + fameDiff);
-            yield return new WaitForSeconds(0.5f); // 특정 시간 동안 기다림, 테스트용으로 0.5초
+            // 코루틴
+            yield return new WaitForSeconds(0.2f);
+            dialTitle.text = "   기타 연주중.  ";
+            yield return new WaitForSeconds(0.2f); // 특정 시간 동안 기다림
+            dialTitle.text = "   기타 연주중.. ";
+            yield return new WaitForSeconds(0.2f); // 특정 시간 동안 기다림
+            dialTitle.text = "   기타 연주중...";
+            yield return new WaitForSeconds(0.2f);
         }
         CoverGameResult();
         yield break; // 코루틴 끝내기
@@ -88,7 +96,7 @@ public class CoverGame : MonoBehaviour
         int result = MGResultManager.CoverDayResult();
         if (result == 1)
         {
-            resultDay.text = "너튜브 알고리즘으로 구독자가 많이 늘었다!\n" +
+            resultDay.text = "커버 영상이 알고리즘을 타서 조회수가 올랐다!\n" +
                 "(스트레스 -20, 나의 명성 +10, 야옹의 명성 +10)";
         }
         else if (result == 2)

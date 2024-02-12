@@ -101,11 +101,8 @@ public class CafeGame : MonoBehaviour
                     TotalFruitName.Add(FruitNameObj);
                 }
         }
-
-        //실시간 번 돈 나타내기
         moneyNumText.SetText(money.ToString()+"만원");
-        
-        //과일을 클릭한 횟수에 따라 블랜더의 이미지 변경
+
         Image imageComponent = BlenderBtn.GetComponent<Image>();
         switch(clickCount)
         {
@@ -135,11 +132,11 @@ public class CafeGame : MonoBehaviour
                 break;
         }
 
-        // if(TotalClickedFruits.Count == 0)
-        // {
-        //     imageComponent.sprite = BlenderSprite[0];
-        //     imageComponent.SetNativeSize();
-        // }
+        if(TotalClickedFruits.Count == 0)
+        {
+            imageComponent.sprite = BlenderSprite[0];
+            imageComponent.SetNativeSize();
+        }
 
         //과일 이름 표시
         // string allClickedObjectNames = "";
@@ -153,30 +150,27 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_1()
     {
-        int fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        int fruitsCount = Random.Range(3, 6);
         for (int i = 0; i < fruitsCount; i++)
         {
-            //과일 생성
             float yPos = 2.8f - 0.6f*i;
             Vector3 spawnPosition = new Vector3(-5.6f, yPos, 0);
             int randNum = Random.Range(0, FruitsPrefabs.Length);
             GameObject RandomFruit = FruitsPrefabs[randNum];
             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
             Order1.Add(FruitsObj);
-            //과일 이름 생성
-            string fruitName = FruitsObj.name.Replace("(Clone)", ""); //생성된 과일 오브젝트의 이름에서 클론을 떼고 저장
+
             GameObject FruitNameObj = new GameObject("FruitNameText");
+            string fruitName = FruitsObj.name.Replace("(Clone)", "");
             FruitNameObj.AddComponent<TextMeshProUGUI>().text = fruitName;
             TextMeshProUGUI textMeshPro = FruitNameObj.GetComponent<TextMeshProUGUI>();
             textMeshPro.font = customFont;
             textMeshPro.color = Color.black;
             textMeshPro.fontSize = 15;
-            //배치 버티컬 구조
             RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
             rectTransform.SetParent(Order1NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
             Order1Name.Add(FruitNameObj);
         }
-        //주문 영수증 오브젝트 생성
         Vector3 spawnPositionBox = new Vector3(-5f, yPosBox, 0);
         GameObject ReceiptObj = ReceiptPrefabs[0];
         ReceiptObj1 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);

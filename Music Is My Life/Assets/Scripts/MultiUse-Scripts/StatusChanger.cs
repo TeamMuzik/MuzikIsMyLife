@@ -36,7 +36,7 @@ public class StatusChanger : MonoBehaviour
     public static void UpdateMyFame(int change)
     {
         int myFame = PlayerPrefs.GetInt("MyFame");
-        myFame = myFame + change;
+        myFame += change;
         if (myFame < 0)
             myFame = 0;
         PlayerPrefs.SetInt("MyFame", myFame);
@@ -46,7 +46,7 @@ public class StatusChanger : MonoBehaviour
     public static void UpdateBandFame(int change)
     {
         int bandFame = PlayerPrefs.GetInt("BandFame");
-        bandFame = bandFame + change;
+        bandFame += change;
         if (bandFame < 0)
             bandFame = 0;
         PlayerPrefs.SetInt("BandFame", bandFame);
@@ -56,7 +56,7 @@ public class StatusChanger : MonoBehaviour
     public static void UpdateStress(int change)
     {
         int stress = PlayerPrefs.GetInt("Stress");
-        stress = stress + change;
+        stress += change;
         if (stress < 0)
             stress = 0;
         PlayerPrefs.SetInt("Stress", stress);
