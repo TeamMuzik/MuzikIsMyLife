@@ -14,8 +14,8 @@ public class MainUpdateController : MonoBehaviour
         phonePanel.SetActive(false);
         storePanel.SetActive(false);
         StatusChanger.UpdateDay(); // 날짜 업데이트
-        // 14일이 지나면 15일: 엔딩으로 이동
-        if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
+        // 14일이 지나면 엔딩으로 이동
+        if (PlayerPrefs.GetInt("Dday") > 14)
         {
             GoToEnding();
         }

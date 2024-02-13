@@ -148,8 +148,7 @@ public class JjirasiGame : MonoBehaviour
             ClickNum++;
             clickTxt.text = "클릭 수 : " + ClickNum.ToString();
             Debug.Log("ClickNum: " + ClickNum);
-            // GameManager의 InitializeGamedata에 PlayerPrefs.SetInt("JjirasiClick", 0); 추가
-            PlayerPrefs.SetInt("JjirasiClick", PlayerPrefs.GetInt("JjirasiClick") + 1);
+
             UpdateFame();
         }
 
