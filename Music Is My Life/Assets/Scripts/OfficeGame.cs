@@ -59,7 +59,7 @@ public class OfficeGame : MonoBehaviour
         }
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
-         
+
 
         }
 
@@ -153,7 +153,7 @@ return selectedWord;
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
-        float speed = 100f; // Adjusted speed
+        float speed = 90f; // Adjusted speed
         while (rectTransform != null && rectTransform.anchoredPosition.y > -250f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it
@@ -311,8 +311,12 @@ void UpdateGameTimer()
     void EndGame()
     {
         EndPanel.SetActive(true);
-        StartPanel.SetActive(false);
+
         StopAllCoroutines();
+        foreach (GameObject blocker in blockers)
+    {
+        blocker.SetActive(false);
+    }
         int result = MGResultManager.PartTimeDayResult();
         switch (result)
         {
@@ -336,6 +340,6 @@ void UpdateGameTimer()
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
         StatusController statusController = FindObjectOfType<StatusController>();
 
-        finalText.text = "점수: " + score + "   얻은 돈:" + earnedMoney + "만원";
+        finalText.text = "점수: " + score + "\n\n얻은 돈:" + earnedMoney + "만원";
     }
 }
