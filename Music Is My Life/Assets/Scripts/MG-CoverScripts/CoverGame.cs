@@ -96,22 +96,22 @@ public class CoverGame : MonoBehaviour
         int result = MGResultManager.CoverDayResult();
         if (result == 1)
         {
-            resultDay.text = "커버 영상이 알고리즘을 타서 조회수가 올랐다!\n" +
+            resultDay.text = "인기 급상승 동영상에 올라갔다!!\n" +
                 "(스트레스 -20, 나의 명성 +10, 야옹의 명성 +10)";
         }
         else if (result == 2)
         {
-            resultDay.text = "커버 영상에 칭찬글이 달렸다!\n" +
+            resultDay.text = "응원 댓글이 많이 달렸다!\n" +
                 "(스트레스 -10)";
         }
         else if (result == 3)
         {
-            resultDay.text = "커버 영상에 악플이 달렸다...\n" +
-                "(스트레스 +10)";
+            resultDay.text = "악플이 많이 달렸다...\n" +
+                "(스트레스 +20)";
         }
         else
         {
-            resultDay.text = "커버 영상을 올리니 뿌듯하다!\n";
+            resultDay.text = "커버 영상을 올리니까 뿌듯하다!\n";
         }
     }
 

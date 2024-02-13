@@ -48,25 +48,15 @@ public class FactoryGameTimer : MonoBehaviour
             TotalTimerTxt.text = minute.ToString("00") + ":" + second.ToString("00");
             yield return null;
 
-            if(totalTime <= 0)
+            if (totalTime <= 0)
             {
                 StopAllCoroutines();
-                int result = MGResultManager.PartTimeDayResult();
-                switch (result)
-                {
-                    case 1:
-                        resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
-                        stressText.text = "스트레스 -20";
-                        break;
-                    case 2:
-                        resultText.text = "바쁜 하루였다...";
-                        stressText.text = "스트레스 +20";
-                        break;
-                    default:
-                        resultText.text = "오늘도 열심히 알바를 했다.";
-                        stressText.text = "스트레스 +10";
-                        break;
-                }
+
+                // 알바 결과 매핑
+                (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
+                resultText.text = resultRes;
+                stressText.text = stressRes;
+
                 moneyNumInGameText.SetText(FactoryGameInstance.money.ToString()+" 만원");
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
