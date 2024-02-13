@@ -66,27 +66,35 @@ public class MGResultManager : MonoBehaviour
         return (resultRes, stressRes);
     }
 
-    public static (string, string) JjirasiDayResult()
+    public static (string, string) JjirasiDayResult(bool won)
     {
         string resultRes, stressRes;
         int stressDiff;
 
-        float p = Random.value;
-        Debug.Log("찌라시 하루 결과 | 확률: " + p);
-        if (p < 0.10f) // 10%의 확률로 좋은 결과
+        if (!won) // 자르반 84세에게 졌을 때
         {
-            resultRes = "사람들이 찌라시를 잘 받아줬다.";
-            stressDiff = -10;
-        }
-        else if (p < 0.30f) // 20%의 확률로 안 좋은 결과
-        {
-            resultRes = "경찰 단속에 걸렸다...";
+            resultRes = "패배했다...";
             stressDiff = 20;
         }
         else
         {
-            resultRes = "사람들이 찌라시를 잘 받아주지 않았다...";
-            stressDiff = 10;
+            float p = Random.value;
+            Debug.Log("찌라시 하루 결과 | 확률: " + p);
+            if (p < 0.10f) // 10%의 확률로 좋은 결과
+            {
+                resultRes = "사람들이 찌라시를 잘 받아줬다.";
+                stressDiff = -10;
+            }
+            else if (p < 0.30f) // 20%의 확률로 안 좋은 결과
+            {
+                resultRes = "경찰 단속에 걸렸다...";
+                stressDiff = 20;
+            }
+            else
+            {
+                resultRes = "사람들이 찌라시를 잘 받아주지 않았다...";
+                stressDiff = 10;
+            }
         }
         StatusChanger.UpdateStress(stressDiff);
         if (stressDiff > 0)
