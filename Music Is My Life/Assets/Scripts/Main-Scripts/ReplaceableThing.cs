@@ -7,7 +7,7 @@ public class ReplaceableThing : MonoBehaviour
     public int index;
     public List<Sprite> availableSprites; // 가구의 여러 스프라이트를 저장하는 리스트
 
-    public void setReplaceableThing()
+    public void SetReplaceableThing()
     {
         index = PlayerPrefs.GetInt(category + "_CURRENT");
         // Sprite Renderer 컴포넌트 찾기
