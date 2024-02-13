@@ -38,12 +38,16 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Stress", 0); // 스트레스
         PlayerPrefs.SetString("Date", "2023/12/31"); // 날짜 (하루 넘기고 시작할 예정)
         PlayerPrefs.SetInt("Dday", 0); // 몇일차인지
+        PlayerPrefs.SetInt("EndDday", 15); // 15일차에 종료
 
         // Cover Game
         PlayerPrefs.SetInt("Subscribers", 0); // 구독자 수
         PlayerPrefs.SetInt("Subs_Min", 500); // 구독자 수 최소치
         PlayerPrefs.SetInt("Subs_Max", 5000); // 구독자 수 최대치
         PlayerPrefs.SetInt("Subs_Multiplier", 1); // 구독자 증가 배율
+
+        // Jjirasi Game
+        PlayerPrefs.SetInt("JjirasiClick", 0);
 
         // 알바 연속
         PlayerPrefs.SetInt("PartTimeContinuity", 0);
