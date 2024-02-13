@@ -79,7 +79,7 @@ public class StatusController : MonoBehaviour
         if (yesterday < 1)
             return;
         int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior"); // 어제 한 행동 확인
-        if (ydBehaviorId < 6)
+        if (ydBehaviorId != -1 && ydBehaviorId < 6)
         {
             ReplaceableThing thing = floorThing.GetComponent<ReplaceableThing>(); // 스프라이트 가져오기
             SpriteRenderer spriteRenderer = floorThing.GetComponent<SpriteRenderer>();

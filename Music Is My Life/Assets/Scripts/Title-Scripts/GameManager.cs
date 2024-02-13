@@ -54,6 +54,13 @@ public class GameManager : MonoBehaviour
 
         // 기본 가구 세팅 & 상점 구입 가능 물품 세팅
         FunitureInitializeSetting();
+        
+        // DayBehavior 초기화
+        int endDday = PlayerPrefs.GetInt("EndDday");
+        for (int d = 1; d < endDday; d++)
+        {
+            PlayerPrefs.SetInt("Day" + d + "_Behavior", -1); // -1로 초기화함
+        }
     }
 
     public static void FunitureInitializeSetting()
