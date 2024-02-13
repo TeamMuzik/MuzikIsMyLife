@@ -5,10 +5,10 @@ public class MGResultManager : MonoBehaviour
     public static (string, string) PartTimeDayResult(int behaviorId)
     {
         string resultRes, stressRes;
-        int stressDiff = 0;
+        int stressDiff;
 
         float p = Random.value;
-        Debug.Log("알바 결과 확률: " + p);
+        Debug.Log("알바 하루 결과 | 확률: " + p);
 
         if (p < 0.05f) // 5%의 확률로 가장 좋은 결과
         {
@@ -51,11 +51,11 @@ public class MGResultManager : MonoBehaviour
             stressDiff = 10;
 
         }
-        if (PlayerPrefs.GetInt("PartTimeContinuity") == 3) // 3일 연속으로 알바를 한 경우
+        // 3일 연속으로 알바를 한 경우 스트레스 5 추가됨
+        if (PlayerPrefs.GetInt("PartTimeContinuity") == 3)
         {
             PlayerPrefs.SetInt("PartTimeContinuity", 0); // 0회로 초기화
             resultRes += "\n3일 연속으로 알바를 했더니 힘들다...";
-            // 스트레스 5 추가
             stressDiff += 5;
         }
         StatusChanger.UpdateStress(stressDiff);
@@ -66,31 +66,48 @@ public class MGResultManager : MonoBehaviour
         return (resultRes, stressRes);
     }
 
-    public static int JjirasiDayResult()
+    public static (string, string) JjirasiDayResult(bool won)
     {
-        float p = Random.value;
-        Debug.Log("확률: " + p);
-        if (p < 0.10f) // 10%의 확률로 좋은 결과
+        string resultRes, stressRes;
+        int stressDiff;
+
+        if (!won) // 자르반 84세에게 졌을 때
         {
-            StatusChanger.UpdateStress(-10);
-            return 1;
-        }
-        else if (p < 0.30f) // 20%의 확률로 안 좋은 결과
-        {
-            StatusChanger.UpdateStress(+20);
-            return 2;
+            resultRes = "패배했다...";
+            stressDiff = 20;
         }
         else
         {
-            StatusChanger.UpdateStress(+10);
-            return 3;
+            float p = Random.value;
+            Debug.Log("찌라시 하루 결과 | 확률: " + p);
+            if (p < 0.10f) // 10%의 확률로 좋은 결과
+            {
+                resultRes = "사람들이 찌라시를 잘 받아줬다.";
+                stressDiff = -10;
+            }
+            else if (p < 0.30f) // 20%의 확률로 안 좋은 결과
+            {
+                resultRes = "경찰 단속에 걸렸다...";
+                stressDiff = 20;
+            }
+            else
+            {
+                resultRes = "사람들이 찌라시를 잘 받아주지 않았다...";
+                stressDiff = 10;
+            }
         }
+        StatusChanger.UpdateStress(stressDiff);
+        if (stressDiff > 0)
+            stressRes = "(스트레스 +" + stressDiff + ")";
+        else
+            stressRes = "(스트레스 " + stressDiff + ")";
+        return (resultRes, stressRes);
     }
 
     public static int CoverDayResult()
     {
         float p = Random.value;
-        Debug.Log("확률: " + p);
+        Debug.Log("커버 하루 결과 | 확률: " + p);
         if (p < 0.05f) // 5%의 확률로 가장 좋은 결과
         {
             StatusChanger.UpdateStress(-20);
@@ -113,18 +130,4 @@ public class MGResultManager : MonoBehaviour
             return 4;
         }
     }
-
-    /*public static int BeggingDayResult()
-    {
-        if (PlayerPrefs.GetInt("MyFame") >= 20) // 내 명성이 20 이상일 경우
-        {
-            float p = Random.value;
-            Debug.Log("확률: " + p);
-            if (p * 100 < PlayerPrefs.GetInt("MyFame")) // 내 명성의 확률로 팬이 알아봄?
-            {
-                return 1;
-            }
-        }
-        return 2; // 알아보지 않음
-    }*/
 }
