@@ -153,7 +153,7 @@ return selectedWord;
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
-        float speed = 120f; // Adjusted speed
+        float speed = 100f; // Adjusted speed
         while (rectTransform != null && rectTransform.anchoredPosition.y > -250f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it
