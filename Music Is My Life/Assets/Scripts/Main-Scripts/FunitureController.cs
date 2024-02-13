@@ -42,7 +42,7 @@ public class FunitureController : MonoBehaviour
         foreach (GameObject furnitureObj in allRepFurnitureObj)
         {
             ReplaceableThing thing = furnitureObj.GetComponent<ReplaceableThing>();
-            thing.setReplaceableThing();
+            thing.SetReplaceableThing();
             furnitureObj.SetActive(true);
         }
     }
