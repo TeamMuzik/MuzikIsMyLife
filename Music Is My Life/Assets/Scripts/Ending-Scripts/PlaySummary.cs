@@ -43,8 +43,9 @@ public class PlaySummary : MonoBehaviour
         int endDday = PlayerPrefs.GetInt("EndDday");
         for (int d = 1; d < endDday; d++)
         {
-            PlayerPrefs.GetInt("Day" + d + "_Behavior");
-            switch (d)
+            int behavior = PlayerPrefs.GetInt("Day" + d + "_Behavior");
+            Debug.Log("Day" + d + "_Behavior: " + behavior);
+            switch (behavior)
             {
                 case 0:
                     cafeCount++;
@@ -63,6 +64,8 @@ public class PlaySummary : MonoBehaviour
                     break;
                 case 5:
                     jjirasiCount++;
+                    break;
+                default:
                     break;
             }
         }
