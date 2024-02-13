@@ -7,9 +7,6 @@ using TMPro;
 public class CafeGameTimer : MonoBehaviour
 {
     private CafeGame cafeGameInstance;
-    
-    [SerializeField]
-    private TextMeshProUGUI moneyNumTextInEnd;
 
     [SerializeField] private TMP_Text TotalTimerTxt;
     
@@ -21,6 +18,7 @@ public class CafeGameTimer : MonoBehaviour
 
     [SerializeField] private float Totaltime;
     [SerializeField] private float OrderTime;
+    
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text stressText;
 
@@ -36,6 +34,9 @@ public class CafeGameTimer : MonoBehaviour
     private GameObject EndPanel;
     public GameObject StartPanel;
     public GameObject TutorialPanel;
+
+    [SerializeField]
+    private TextMeshProUGUI ContentInScorePanel;
 
     private void Start()
     {
@@ -76,10 +77,10 @@ public class CafeGameTimer : MonoBehaviour
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(0);
                 resultText.text = resultRes;
                 stressText.text = stressRes;
+                ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
-                moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString()+"만원");
                 StatusChanger.EarnMoney(cafeGameInstance.money);
             }
         }
