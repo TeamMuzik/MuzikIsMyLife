@@ -50,7 +50,7 @@ public class MainUpdateController : MonoBehaviour
         {
             sceneMove.targetScene = "Ending-OpeningBand";
         }
-        else if (bandFame >= 15)
+        else if (bandFame >= 300)
         {
             sceneMove.targetScene = "Ending-ConcertInKorea";
         }
