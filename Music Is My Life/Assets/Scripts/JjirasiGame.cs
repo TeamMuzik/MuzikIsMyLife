@@ -203,7 +203,7 @@ IEnumerator DuelTimer()
 
      else if (duelInProgress)
         {
-            duelSlider.value += 0.03f;
+            duelSlider.value += 0.04f;
         }
     else
         {
