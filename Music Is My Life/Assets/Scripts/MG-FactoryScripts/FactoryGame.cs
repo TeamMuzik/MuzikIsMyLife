@@ -181,26 +181,28 @@ public class FactoryGame : MonoBehaviour
                     spriteRenderer.sprite = DogSprites[turn];
                     break;
             }
-
-            if (doll.transform.position.x > 9)
+            if (FactoryGameTimer.totalTime > 0)
             {
-                Destroy(doll);
-                if (turn < RandNum)
+                if (doll.transform.position.x > 9)
                 {
-                    StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                    FactoryGameTimer.totalTime -= 4f;
-                    foreach (GameObject keyboard in spawnedKeyboards)
+                    Destroy(doll);
+                    if (turn < RandNum)
                     {
-                        Destroy(keyboard);
+                        StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
+                        FactoryGameTimer.totalTime -= 4f;
+                        foreach (GameObject keyboard in spawnedKeyboards)
+                        {
+                            Destroy(keyboard);
+                        }
+                        spawnedKeyboards.Clear();
+                        PlayMistakeSound();
+                        if (FactoryGameTimer.totalTime > 0)
+                        {   
+                            SpawnKeyBoards();
+                        }
                     }
-                    spawnedKeyboards.Clear();
-                    PlayMistakeSound();
-                    if (FactoryGameTimer.totalTime > 0)
-                    {   
-                        SpawnKeyBoards();
-                    }
-                }
-            }   
+                } 
+            }
         }
 
         if (RandNum != 0 && turn == RandNum)
