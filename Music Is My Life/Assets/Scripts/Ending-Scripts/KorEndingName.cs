@@ -31,7 +31,7 @@ public class KorEndingName : MonoBehaviour
                 endingName = "엔딩 #5: 벼락 부자";
                 break;
             case "TooFamousToBeg":
-                endingName = "엔딩 #6: 나락 엔딩";
+                endingName = "엔딩 #6: 나락";
                 break;
             default:
                 endingName = "게임 오버";
