@@ -15,9 +15,12 @@ public class JjirasiGame : MonoBehaviour
     public TMP_Text incfameTxt;
     public float LimitTime;
     public TMP_Text text_Timer;
+    public TMP_Text resultText;
+    public TMP_Text stressText;
+    public GameObject ScorePanel;
 
     public Button Jjirasi;
-    public Button Main;
+
     public GameObject jjirasi;
     private bool isClicked = false;
     public Image jjirasiImage; // 스프라이트 변경을 위한 Image 변수
@@ -42,7 +45,8 @@ public class JjirasiGame : MonoBehaviour
     public Slider duelSlider; // 대결 진행 바
     public float systemIncreaseRate = 1000.0f; // 시스템 증가율
     private bool duelInProgress = false; // 대결 진행 중 플래그
-     private bool duelStarted = false; // 듀얼 시작 여부를 추적하는 변수
+    private bool duelStarted = false;
+   private bool isDuelWon = false;
 
 
     void Start()
@@ -55,10 +59,11 @@ public class JjirasiGame : MonoBehaviour
 
         LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
-        Main.gameObject.SetActive(false);
+
         jjirasiImage.sprite = normalSprite;
 
         DuelPanel.SetActive(false);
+        ScorePanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
          PrepareGameStart();
 
@@ -271,6 +276,7 @@ public class JjirasiGame : MonoBehaviour
             else if (duelSlider.value >= 0.99)
             {
                 EndDuel(true); // 사용자 승리
+                isDuelWon = true;
             }
         }
 
@@ -296,9 +302,14 @@ public class JjirasiGame : MonoBehaviour
           }
     }
 
-    private void Hide()
+    void Hide()
     {
-        incfameTxt.text = "증가한 명성: " + totalFame.ToString();
+        ScorePanel.SetActive(true);
+        incfameTxt.text = "클릭 수 : "+ClickNum.ToString()+
+        "\n\n증가한 명성 : " + totalFame.ToString();
+        (string resultRes, string stressRes) = MGResultManager.JjirasiDayResult(isDuelWon);
+        resultText.text = resultRes;
+        stressText.text = stressRes;
         StatusChanger.UpdateBandFame(totalFame); // 게임 로직에 맞게 수정 필요
         jjirasiImage.gameObject.SetActive(false);
 
@@ -306,7 +317,7 @@ public class JjirasiGame : MonoBehaviour
         fameTxt.gameObject.SetActive(false);
         text_Timer.gameObject.SetActive(false);
         Jjirasi.gameObject.SetActive(false);
-        Main.gameObject.SetActive(true);
+
         incfameTxt.gameObject.SetActive(true);
     }
 
