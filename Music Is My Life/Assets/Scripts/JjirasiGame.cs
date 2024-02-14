@@ -269,7 +269,7 @@ IEnumerator DuelTimer()
       fameTxt.text = "명성 : " + totalFame.ToString();
       yield return new WaitForSeconds(0.5f);
   }
-  fameTxt.color = Color.white;
+  fameTxt.color = Color.black;
     UpdateFame(); // 다시 전체 명성 표시로 업데이트
 }
     void Update()
@@ -330,12 +330,14 @@ IEnumerator DuelTimer()
     void Hide()
     {
         ScorePanel.SetActive(true);
+        StatusChanger.UpdateBandFame(totalFame);
+
         incfameTxt.text = "클릭 수 : "+ClickNum.ToString()+
-        "\n\n증가한 명성 : " + totalFame.ToString();
+        "\n\n야옹의 명성 : "+PlayerPrefs.GetInt("BandFame")+" (+" + totalFame.ToString()+")";
         (string resultRes, string stressRes) = MGResultManager.JjirasiDayResult(isDuelWon);
         resultText.text = resultRes;
         stressText.text = stressRes;
-        StatusChanger.UpdateBandFame(totalFame); // 게임 로직에 맞게 수정 필요
+        // 게임 로직에 맞게 수정 필요
         jjirasiImage.gameObject.SetActive(false);
 
         clickTxt.gameObject.SetActive(false);
