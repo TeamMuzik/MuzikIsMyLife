@@ -185,26 +185,22 @@ public class FactoryGame : MonoBehaviour
             if (doll.transform.position.x > 9)
             {
                 Destroy(doll);
-                while(FactoryGameTimer.totalTime > 0)
+                if (turn < RandNum)
                 {
-                    if (turn < RandNum)
+                    StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
+                    FactoryGameTimer.totalTime -= 4f;
+                    foreach (GameObject keyboard in spawnedKeyboards)
                     {
-                        StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                        FactoryGameTimer.totalTime -= 4f;
-                        foreach (GameObject keyboard in spawnedKeyboards)
-                        {
-                            Destroy(keyboard);
-                        }
-                        spawnedKeyboards.Clear();
-                        PlayMistakeSound();
-                        if (FactoryGameTimer.totalTime > 0)
-                        {
-                            SpawnKeyBoards();
-                        }
+                        Destroy(keyboard);
+                    }
+                    spawnedKeyboards.Clear();
+                    PlayMistakeSound();
+                    if (FactoryGameTimer.totalTime > 0)
+                    {   
+                        SpawnKeyBoards();
                     }
                 }
-                
-            }
+            }   
         }
 
         if (RandNum != 0 && turn == RandNum)
@@ -217,7 +213,7 @@ public class FactoryGame : MonoBehaviour
 
         moneyNumText.SetText(money.ToString() + "만원");
         stageNumText.SetText(stageNum.ToString() + "개");
-
+    }
         // if (stageNum == 6)
         // {
         //     stageNum++;
@@ -232,7 +228,6 @@ public class FactoryGame : MonoBehaviour
         //     StatusChanger.EarnMoney(money);
         //     //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         // }
-    }
 
     // if (Timer.LimitTime < 0)
     // {
