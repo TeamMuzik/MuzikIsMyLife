@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     {
         string playerName;
         playerName = nameInputField.text; //안되면 ToString()
+        if (playerName.Length == 0 || playerName == null)
+        {
+            playerName = "연보라";
+        }
         if (playerName.Length > 0 && playerName.Length < 11)
         {
             Debug.Log("PlayerName: "+playerName);
@@ -65,6 +69,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Day" + d + "_Behavior", -1); // -1로 초기화함
         }
+
+        // 플레이어 기본 이름 (프롤로그, Ending-End 테스트 용으로 삽입)
+        PlayerPrefs.SetString("PlayerName", "연보라");
     }
 
     public static void FunitureInitializeSetting()

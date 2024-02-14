@@ -25,6 +25,7 @@ public class FactoryGame : MonoBehaviour
 
     public AudioClip successSound;
     public AudioClip mistakeSound;
+    public AudioClip dollMakingSound;
     private AudioSource audioSource;
 
     public static int turn; //지금 어떤 오브젝트를 입력할 차례인지 (0에서 시작)
@@ -146,7 +147,11 @@ public class FactoryGame : MonoBehaviour
         audioSource.clip = mistakeSound;
         audioSource.Play();
     }
-
+    public void PlayDollMakingSound()
+    {
+        audioSource.clip = dollMakingSound;
+        audioSource.Play();
+    }
     void Update()
     {
         if (FactoryGameTimer.totalTime < 0)
@@ -176,12 +181,11 @@ public class FactoryGame : MonoBehaviour
                     spriteRenderer.sprite = DogSprites[turn];
                     break;
             }
-
-            if (doll.transform.position.x > 9)
+            if (FactoryGameTimer.totalTime > 0)
             {
-                Destroy(doll);
-                while(FactoryGameTimer.totalTime > 0)
+                if (doll.transform.position.x > 9)
                 {
+                    Destroy(doll);
                     if (turn < RandNum)
                     {
                         StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
@@ -193,12 +197,11 @@ public class FactoryGame : MonoBehaviour
                         spawnedKeyboards.Clear();
                         PlayMistakeSound();
                         if (FactoryGameTimer.totalTime > 0)
-                        {
+                        {   
                             SpawnKeyBoards();
                         }
                     }
-                }
-                
+                } 
             }
         }
 
@@ -212,7 +215,7 @@ public class FactoryGame : MonoBehaviour
 
         moneyNumText.SetText(money.ToString() + "만원");
         stageNumText.SetText(stageNum.ToString() + "개");
-
+    }
         // if (stageNum == 6)
         // {
         //     stageNum++;
@@ -227,7 +230,6 @@ public class FactoryGame : MonoBehaviour
         //     StatusChanger.EarnMoney(money);
         //     //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
         // }
-    }
 
     // if (Timer.LimitTime < 0)
     // {

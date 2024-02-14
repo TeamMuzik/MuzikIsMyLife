@@ -71,9 +71,9 @@ public class MGResultManager : MonoBehaviour
         string resultRes, stressRes;
         int stressDiff;
 
-        if (!won) // 자르반 84세에게 졌을 때
+        if (!won) // 빌런에게 졌을 때
         {
-            resultRes = "패배했다...";
+            resultRes = "어그로 경쟁에서 패배한 날이었다...";
             stressDiff = 20;
         }
         else

@@ -43,12 +43,9 @@ public class BeggingGame : MonoBehaviour
 
         turn--; // 턴 감소
 
-        if (p < 0.02f) // 2%의 확률로 1조
+        if (p < 0.01f) // 1%의 확률로 1조
         {
             turn = -1;
-            // 1조의 경우 PlayerPrefs에는 저장하지 않음
-            StatusChanger.EarnMoney(income);
-            StatusChanger.UpdateMyFame(fameDiff);
             BecameRich();
         }
         else if (myFame >= 100 && p < 0.30f) // 명성이 100 이상이고 30%
@@ -87,13 +84,16 @@ public class BeggingGame : MonoBehaviour
 
     public void BecameRich()
     {
+        // 1조의 경우 PlayerPrefs에는 저장하지 않음
+        StatusChanger.EarnMoney(income);
+        StatusChanger.UpdateMyFame(fameDiff);
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
         sceneMove.targetScene = "Ending-Rich";
         sceneMove.ChangeScene();
     }
 
     // 결과창에 띄우는 구버전: 호출x
-    public void BecameRichInBeggingResult()
+    /*public void BecameRichInBeggingResult()
     {
         dialContent.text = "1조를 얻었습니다!";
         Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
@@ -112,7 +112,8 @@ public class BeggingGame : MonoBehaviour
             resultContent.text += " (+" + fameDiff + ")";
         scorePanel.GetComponent<SceneMove>().targetScene = "Ending-Rich";
         scorePanel.SetActive(true); // 결과 보기
-    }
+    }*/
+
     public void MeetFan() // 팬을 만나면 명성이 상승. 현재 수치: 5
     {
         Debug.Log("팬을 만남");
@@ -133,7 +134,7 @@ public class BeggingGame : MonoBehaviour
 
     public void BegForMoneyNormal(float p) // 구걸해 돈 벌기: 우선 대화창을 누르면 가능
     {
-        int newMoney = Random.Range(1, 6);
+        int newMoney = Random.Range(0, 4); // 0~3만원 획득
         dialContent.text = "지나가는 사람에게 구걸을 했다.\n" + newMoney + "만원을 얻었다.\n";
         income += newMoney;
         Debug.Log("income: " + income + " | newMoney:" + newMoney + " | turnLeft: " + turn);

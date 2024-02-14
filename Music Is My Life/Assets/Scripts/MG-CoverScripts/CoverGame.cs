@@ -7,6 +7,7 @@ public class CoverGame : MonoBehaviour
 {
     public TMP_Text subsStatus;
     public TMP_Text fameStatus;
+    public TMP_Text tutorialContent;
     public TMP_Text dialTitle;
     public TMP_Text dialContent;
     public GameObject scorePanel; // 점수판
@@ -40,8 +41,10 @@ public class CoverGame : MonoBehaviour
         subsMultiplier = PlayerPrefs.GetInt("Subs_Multiplier");
         Debug.Log("CoverGame- Subs_Min: " + (rangeStart*500) + "Subs_Max: " + (rangeEnd*500) + "Subs_Multiplier: " + subsMultiplier);
 
-        dialTitle.text = "야옹의 곡을 기타 커버 (클릭 시 자동 진행)";
-        dialContent.text = $"구매한 음향기기에 따라 구독자 수가 증가합니다.\n"
+        //dialTitle.text = "야옹의 곡을 기타 커버 (클릭 시 자동 진행)";
+        dialTitle.text = "";
+        dialContent.text = "";
+        tutorialContent.text = $"구매한 음향기기에 따라 구독자 수가 증가합니다.\n"
             + "구독자 수가 늘어나면 나의 명성이 올라갑니다.\n"
             + $"(현재 구독자 증가 범위: {rangeStart * 500 * subsMultiplier}명~{rangeEnd * 500 * subsMultiplier}명)"
             ;
