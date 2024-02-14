@@ -52,7 +52,7 @@ public class CafeGame : MonoBehaviour
     public TMP_FontAsset customFont;
 
     [SerializeField]
-    private TextMeshProUGUI moneyNumText;
+    private TextMeshProUGUI moneyNumTextInStartPanel;
 
     public AudioClip successSound; // 성공 사운드 클립
 
@@ -103,7 +103,7 @@ public class CafeGame : MonoBehaviour
         }
 
         //실시간 번 돈 나타내기
-        moneyNumText.SetText(money.ToString()+"만원");
+        moneyNumTextInStartPanel.SetText(money.ToString()+"만원");
         
         //과일을 클릭한 횟수에 따라 블랜더의 이미지 변경
         Image imageComponent = BlenderBtn.GetComponent<Image>();

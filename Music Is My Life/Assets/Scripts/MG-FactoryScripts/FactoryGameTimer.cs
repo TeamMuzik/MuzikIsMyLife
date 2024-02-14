@@ -10,9 +10,9 @@ public class FactoryGameTimer : MonoBehaviour
     // [SerializeField] private float StageTime;
     [SerializeField] private TMP_Text TotalTimerTxt;
     [SerializeField] private TMP_Text MistakeTimerTxt;
-    [SerializeField] private TMP_Text moneyNumInGameText;
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text stressText;
+    [SerializeField] private TextMeshProUGUI ContentInScorePanel;
     // [SerializeField] private TMP_Text StageTimerTxt;
     public static float totalTime;
     // public static float stageTime;
@@ -56,8 +56,8 @@ public class FactoryGameTimer : MonoBehaviour
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
                 resultText.text = resultRes;
                 stressText.text = stressRes;
+                ContentInScorePanel.SetText(FactoryGameInstance.money.ToString()+"개의 인형을 만들었다.\n 번 돈 "+FactoryGameInstance.money.ToString()+"만원");
 
-                moneyNumInGameText.SetText(FactoryGameInstance.money.ToString()+" 만원");
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
                 StatusChanger.EarnMoney(FactoryGameInstance.money);

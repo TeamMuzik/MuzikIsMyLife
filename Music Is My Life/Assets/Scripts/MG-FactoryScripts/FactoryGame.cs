@@ -180,21 +180,25 @@ public class FactoryGame : MonoBehaviour
             if (doll.transform.position.x > 9)
             {
                 Destroy(doll);
-                if (turn < RandNum)
+                while(FactoryGameTimer.totalTime > 0)
                 {
-                    StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                    FactoryGameTimer.totalTime -= 4f;
-                    foreach (GameObject keyboard in spawnedKeyboards)
+                    if (turn < RandNum)
                     {
-                        Destroy(keyboard);
-                    }
-                    spawnedKeyboards.Clear();
-                    PlayMistakeSound();
-                    if (FactoryGameTimer.totalTime > 0)
-                    {
-                        SpawnKeyBoards();
+                        StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
+                        FactoryGameTimer.totalTime -= 4f;
+                        foreach (GameObject keyboard in spawnedKeyboards)
+                        {
+                            Destroy(keyboard);
+                        }
+                        spawnedKeyboards.Clear();
+                        PlayMistakeSound();
+                        if (FactoryGameTimer.totalTime > 0)
+                        {
+                            SpawnKeyBoards();
+                        }
                     }
                 }
+                
             }
         }
 
