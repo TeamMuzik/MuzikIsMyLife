@@ -148,7 +148,6 @@ public class JjirasiGame : MonoBehaviour
             ClickNum++;
             clickTxt.text = "클릭 수 : " + ClickNum.ToString();
             Debug.Log("ClickNum: " + ClickNum);
-            // GameManager의 InitializeGamedata에 PlayerPrefs.SetInt("JjirasiClick", 0); 추가
             PlayerPrefs.SetInt("JjirasiClick", PlayerPrefs.GetInt("JjirasiClick") + 1);
             UpdateFame();
         }
@@ -249,7 +248,6 @@ public class JjirasiGame : MonoBehaviour
 
     private void Hide()
     {
-      incfameTxt.text = "증가한 명성: " + totalFame.ToString();
         incfameTxt.text = "증가한 명성: " + totalFame.ToString();
         StatusChanger.UpdateBandFame(totalFame); // 게임 로직에 맞게 수정 필요
         jjirasiImage.gameObject.SetActive(false);

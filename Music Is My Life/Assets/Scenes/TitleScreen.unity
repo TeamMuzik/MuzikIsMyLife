@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -186}
+  m_AnchoredPosition: {x: 0, y: -183}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150713256
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9CC\uB4E0 \uC0AC\uB78C\uB4E4: \uBB34\uC9C1(MUZIK)"
+  m_text: "\uB9CC\uB4E0 \uC0AC\uB78C\uB4E4: \uD300 \uBB34\uC9C1(Team Muzik)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -324,8 +324,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280887593
-  m_fontColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    rgba: 4283501145
+  m_fontColor: {r: 0.3490566, g: 0.037869357, b: 0.31941983, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -342,8 +342,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -561,8 +561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 560, y: 173.49}
+  m_AnchoredPosition: {x: 0, y: -76}
+  m_SizeDelta: {x: 700, y: 173.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238679587
 MonoBehaviour:
@@ -585,8 +585,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uB2F9\uC2E0\uC740 \uD574\uC678 \uB85D \uBC34\uB4DC \"\uC57C\uC639\"\uC758
-    \uC5F4\uD608\uD32C\uC785\uB2C8\uB2E4.\n\"\uC62C\uD574\uB294 \uADF8\uB4E4\uC744
-    \uAF2D \uB9CC\uB0A0 \uC218 \uC788\uAE38...!!\""
+    \uC5F4\uD608\uD32C\uC774\uC790, \uBB34\uC9C1 \uBC31\uC218\uC785\uB2C8\uB2E4.\n\uC2E0\uB144\uC744
+    \uB9DE\uC774\uD574 \uC5F4\uC2EC\uD788 \uC0B4\uAE30\uB85C \uB2E4\uC9D0\uD569\uB2C8\uB2E4.
+    \uC54C\uBC14\uB3C4 \uD558\uACE0, \uAE30\uD0C0 \uCEE4\uBC84\n\uC720\uD29C\uBE0C\uB3C4
+    \uC2DC\uC791\uD569\uB2C8\uB2E4. \uBB3C\uB860 \uC57C\uC639\uC744 \uC54C\uB9AC\uB294
+    \uAC83\uB3C4 \uBE7C\uB193\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.\n\"\uC62C\uD574\uB294
+    \uAF2D \uC57C\uC639\uC744 \uB9CC\uB0A0 \uC218 \uC788\uAE38...!\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -595,8 +599,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280756137
-  m_fontColor: {r: 0.6627451, g: 0.15294118, b: 0.15294118, a: 1}
+    rgba: 4280223010
+  m_fontColor: {r: 0.13207549, g: 0.018066933, b: 0.12067459, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -613,8 +617,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -730,8 +734,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280295456
-  m_fontColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    rgba: 4286545791
+  m_fontColor: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1003,7 +1007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &436987939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,7 +1207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 220}
+  m_AnchoredPosition: {x: 0, y: 228}
   m_SizeDelta: {x: 560, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534161019
@@ -1226,7 +1230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Music is My Life \uD50C\uB808\uC774 \uBC29\uBC95"
+  m_text: "[ MUZIK IS MY LIFE \uD50C\uB808\uC774 \uBC29\uBC95 ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -1784,7 +1788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBBF8\uB798"
+  m_text: "\uBC31\uC218\uC5F0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -2119,6 +2123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInputField: {fileID: 1272580574}
+  startPanel: {fileID: 840565344}
+  htpPanel: {fileID: 436987938}
 --- !u!114 &701309467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2150,7 +2156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &840565345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3141,8 +3147,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280295456
-  m_fontColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    rgba: 4286545791
+  m_fontColor: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3512,7 +3518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30, y: 70}
+  m_AnchoredPosition: {x: 30, y: 98}
   m_SizeDelta: {x: 25.19007, y: 22.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1926237583
@@ -3768,8 +3774,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280295456
-  m_fontColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

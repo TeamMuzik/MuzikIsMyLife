@@ -4,9 +4,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
+    public GameObject startPanel;
+    public GameObject htpPanel;
 
     void Start()
     {
+        startPanel.SetActive(false);
+        htpPanel.SetActive(false);
         InitializeGamedata();
     }
 

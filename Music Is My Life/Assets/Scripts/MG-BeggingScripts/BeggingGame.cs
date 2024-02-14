@@ -46,27 +46,10 @@ public class BeggingGame : MonoBehaviour
         if (p < 0.02f) // 2%의 확률로 1조
         {
             turn = -1;
-            dialContent.text = "1조를 얻었습니다!";
-            Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
-            moneyStatus.text = "번 돈: 1조 " + income + "만원";
-            if (fameDiff != 0)
-                fameStatus.text += "나의 명성: " + (myFame + fameDiff) + " (" + fameDiff + ")";
-            else
-                fameStatus.text = "나의 명성: " + (myFame + fameDiff);
-            //moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
-            //moneyStatus.text = "나의 돈: 1조 " + (PlayerPrefs.GetInt("Money") + income) + "만원 (+1조" + income + ")\n" + "나의 명성: " + myFame;
-
             // 1조의 경우 PlayerPrefs에는 저장하지 않음
             StatusChanger.EarnMoney(income);
             StatusChanger.UpdateMyFame(fameDiff);
-
-            resultContent.text = "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
-            if (fameDiff < 0)
-                resultContent.text += " (" + fameDiff + ")";
-            else if (fameDiff > 0)
-                resultContent.text += " (+" + fameDiff + ")";
-            scorePanel.GetComponent<SceneMove>().targetScene = "Ending-Rich";
-            scorePanel.SetActive(true); // 결과 보기
+            BecameRich();
         }
         else if (myFame >= 100 && p < 0.30f) // 명성이 100 이상이고 30%
         {
@@ -85,6 +68,7 @@ public class BeggingGame : MonoBehaviour
         {
             BegForMoneyNormal(p);
         }
+
         SetMoneyFameStatusText();
         if (turn == 0) // 부자 엔딩 나지 않고 5회 진행 -> 구걸 게임 종료
         {
@@ -101,6 +85,34 @@ public class BeggingGame : MonoBehaviour
         }
     }
 
+    public void BecameRich()
+    {
+        SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+        sceneMove.targetScene = "Ending-Rich";
+        sceneMove.ChangeScene();
+    }
+
+    // 결과창에 띄우는 구버전: 호출x
+    public void BecameRichInBeggingResult()
+    {
+        dialContent.text = "1조를 얻었습니다!";
+        Debug.Log("2%의 확률 성공. Ending-Rich를 봅니다.");
+        moneyStatus.text = "번 돈: 1조 " + income + "만원";
+        if (fameDiff != 0)
+            fameStatus.text += "나의 명성: " + (myFame + fameDiff) + " (" + fameDiff + ")";
+        else
+            fameStatus.text = "나의 명성: " + (myFame + fameDiff);
+        //moneyStatus.text = "번 돈: 1조 " + income + "만원\n" + "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+        //moneyStatus.text = "나의 돈: 1조 " + (PlayerPrefs.GetInt("Money") + income) + "만원 (+1조" + income + ")\n" + "나의 명성: " + myFame;
+
+        resultContent.text = "나의 돈: 1조 " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
+        if (fameDiff < 0)
+            resultContent.text += " (" + fameDiff + ")";
+        else if (fameDiff > 0)
+            resultContent.text += " (+" + fameDiff + ")";
+        scorePanel.GetComponent<SceneMove>().targetScene = "Ending-Rich";
+        scorePanel.SetActive(true); // 결과 보기
+    }
     public void MeetFan() // 팬을 만나면 명성이 상승. 현재 수치: 5
     {
         Debug.Log("팬을 만남");

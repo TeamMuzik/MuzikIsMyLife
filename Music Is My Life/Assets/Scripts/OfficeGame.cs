@@ -302,10 +302,10 @@ void UpdateGameTimer()
 
     void Update()
     {
-      if (!gameEnded && isGameStarted) // 게임이 시작되었고, 아직 종료되지 않았을 때 타이머 업데이트
-      {
-          UpdateGameTimer();
-      }
+        if (!gameEnded && isGameStarted) // 게임이 시작되었고, 아직 종료되지 않았을 때 타이머 업데이트
+        {
+            UpdateGameTimer();
+        }
     }
 
     void EndGame()
@@ -314,25 +314,14 @@ void UpdateGameTimer()
 
         StopAllCoroutines();
         foreach (GameObject blocker in blockers)
-    {
-        blocker.SetActive(false);
-    }
-        int result = MGResultManager.PartTimeDayResult();
-        switch (result)
         {
-            case 1:
-                resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
-                stressText.text = "스트레스 -20";
-                break;
-            case 2:
-                resultText.text = "바쁜 하루였다...";
-                stressText.text = "스트레스 +20";
-                break;
-            default:
-                resultText.text = "오늘도 열심히 알바를 했다.";
-                stressText.text = "스트레스 +10";
-                break;
+            blocker.SetActive(false);
         }
+        // 알바 결과 매핑
+        (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(1);
+        resultText.text = resultRes;
+        stressText.text = stressRes;
+
         finalText.gameObject.SetActive(true);
         int totalScore = score;
         int earnedMoney = totalScore / 10;

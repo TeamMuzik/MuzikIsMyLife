@@ -7,9 +7,6 @@ using TMPro;
 public class CafeGameTimer : MonoBehaviour
 {
     private CafeGame cafeGameInstance;
-    
-    [SerializeField]
-    private TextMeshProUGUI moneyNumTextInEnd;
 
     [SerializeField] private TMP_Text TotalTimerTxt;
     
@@ -21,6 +18,7 @@ public class CafeGameTimer : MonoBehaviour
 
     [SerializeField] private float Totaltime;
     [SerializeField] private float OrderTime;
+    
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text stressText;
 
@@ -36,6 +34,9 @@ public class CafeGameTimer : MonoBehaviour
     private GameObject EndPanel;
     public GameObject StartPanel;
     public GameObject TutorialPanel;
+
+    [SerializeField]
+    private TextMeshProUGUI ContentInScorePanel;
 
     private void Start()
     {
@@ -71,25 +72,15 @@ public class CafeGameTimer : MonoBehaviour
             if(totalTime <= 0)
             {
                 StopAllCoroutines();
-                int result = MGResultManager.PartTimeDayResult();
-                switch (result)
-                {
-                    case 1:
-                        resultText.text = "3일 연속으로 알바를 완벽하게 성공했다!";
-                        stressText.text = "스트레스 -20";
-                        break;
-                    case 2:
-                        resultText.text = "바쁜 하루였다...";
-                        stressText.text = "스트레스 +20";
-                        break;
-                    default:
-                        resultText.text = "오늘도 열심히 알바를 했다.";
-                        stressText.text = "스트레스 +10";
-                        break;
-                }
+
+                // 알바 결과 매핑
+                (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(0);
+                resultText.text = resultRes;
+                stressText.text = stressRes;
+                ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
+
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
-                moneyNumTextInEnd.SetText(cafeGameInstance.money.ToString()+"만원");
                 StatusChanger.EarnMoney(cafeGameInstance.money);
             }
         }
