@@ -29,6 +29,7 @@ public class OfficeGame : MonoBehaviour
     private bool gameEnded = false;
     private float blockerInterval = 15f; // 방해 요소 활성화 간격
     private HashSet<string> activeWords = new HashSet<string>(); // 사용 중인 단어 집합
+    private int correctWordCount = 0;
 
      private bool isGameStarted = false;
 
@@ -172,7 +173,7 @@ return selectedWord;
         if (!gameEnded && block != null)
         {
             gameTimer -= isHardWord ? 7 : 5;
-            StartCoroutine(FlashTimer(2));
+            StartCoroutine(FlashTimer(1));
 
             DestroyBlock(block);
         }
@@ -187,10 +188,7 @@ return selectedWord;
             yield return new WaitForSeconds(0.2f);
             timer.color = Color.white;
             yield return new WaitForSeconds(0.2f);
-            timer.color = Color.red;
-            yield return new WaitForSeconds(0.2f);
-            timer.color = Color.white;
-            yield return new WaitForSeconds(0.2f);
+
             elapsed += 1f;
         }
     }
@@ -257,6 +255,7 @@ void CheckInputAgainstBlocks(string input)
         {
             bool isLongWord = textComponent.text.Length > 5;
             score += isLongWord ? 10 : 5;
+            correctWordCount++;
             scoreText.text = "점수: " + score;
 
             blockTextList.Remove(block);
@@ -329,6 +328,6 @@ void UpdateGameTimer()
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
         StatusController statusController = FindObjectOfType<StatusController>();
 
-        finalText.text = "점수: " + score + "\n\n얻은 돈:" + earnedMoney + "만원";
+        finalText.text = "오늘 알바 끝!"+"\n\n"+correctWordCount+"개의 단어를 입력했다." + "\n\n번 돈: " + earnedMoney + "만원";
     }
 }
