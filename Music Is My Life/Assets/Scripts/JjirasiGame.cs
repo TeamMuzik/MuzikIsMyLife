@@ -31,6 +31,8 @@ public class JjirasiGame : MonoBehaviour
     private bool eventTriggered = false;
     public GameObject DuelimagePrefab; // 미리 준비된 Image 프리팹
     public Transform imagesParent; // 이미지들이 배치될 부모 객체 (예: Canvas)
+    public TMP_Text startMessageText;
+    public bool isGameStarted = false;
 
     public GameObject eventUI; // 이벤트 UI
     public Sprite sprite1;
@@ -49,15 +51,40 @@ public class JjirasiGame : MonoBehaviour
         FameNum = 0;
         clickTxt.text = "클릭 수 : 0";
         fameTxt.text = "명성 : 0";
-        text_Timer.text = "남은 시간: 30";
+        text_Timer.text = "남은 시간 : 30";
 
         LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
         Main.gameObject.SetActive(false);
         jjirasiImage.sprite = normalSprite;
-        UpdateEventTriggerTime(); // eventTriggerTime을 초기화하는 함수 호출
+
         DuelPanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
+         PrepareGameStart();
+
+    }
+
+    void StartGameplay()
+   {
+       isGameStarted = true; // 게임 시작 상태를 true로 변경
+
+       // 게임 시작 메시지 비활성화
+       startMessageText.gameObject.SetActive(false);
+        UpdateEventTriggerTime(); // eventTriggerTime을 초기화하는 함수 호출
+
+
+       // 게임 및 타이머 시작 로직
+       LimitTime = 30; // 예: 타이머 재설정
+       // 게임 관련 초기화 및 시작 로직...
+   }
+
+
+    void PrepareGameStart()
+    {
+        // 게임 시작 전 필요한 UI 설정
+        startMessageText.text = "시작하려면 주인공 클릭...";
+        startMessageText.gameObject.SetActive(true);
+
 
     }
 
@@ -139,11 +166,18 @@ public class JjirasiGame : MonoBehaviour
 
     public void Click()
     {
-        if (duelInProgress)
+
+      if (!isGameStarted)
+     {
+         // 게임 시작 처리
+         StartGameplay();
+     }
+
+     else if (duelInProgress)
         {
             duelSlider.value += 0.05f;
         }
-        else
+    else
         {
             ClickNum++;
             clickTxt.text = "클릭 수 : " + ClickNum.ToString();
@@ -177,8 +211,11 @@ public class JjirasiGame : MonoBehaviour
         if (won)
         {
           FameNum += 10; // 대결 승리 시 명성 10 증가
-          fameTxt.text = "명성 : " + FameNum.ToString(); // 명성 점수 업데이트
+          UpdateFame();
+          StartCoroutine(ShowFameIncrease());
         }
+
+
 
       eventTriggered = false;
       duelInProgress = false;
@@ -192,11 +229,24 @@ public class JjirasiGame : MonoBehaviour
       Jjirasi.gameObject.SetActive(true);
     }
 
+    IEnumerator ShowFameIncrease()
+{
+  fameTxt.color = Color.blue;
+  for (int i = 0; i < 4; i++) // 4번 깜빡임
+  {
+      fameTxt.text = "명성 : " + totalFame.ToString() + "\n\n(+10)";
+      yield return new WaitForSeconds(0.5f);
+      fameTxt.text = "명성 : " + totalFame.ToString();
+      yield return new WaitForSeconds(0.5f);
+  }
+  fameTxt.color = Color.white;
+    UpdateFame(); // 다시 전체 명성 표시로 업데이트
+}
     void Update()
     {
 
         // 대결 대기 시간이 끝나고, 타이머가 남아 있으며, 대결이 진행 중이 아닐 때
-        if (LimitTime > 0 && !eventTriggered)
+        if (LimitTime > 0 && !eventTriggered&&isGameStarted)
         {
             // 타이머 감소
             LimitTime -= Time.deltaTime;
