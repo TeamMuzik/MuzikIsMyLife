@@ -69,6 +69,7 @@ public class FactoryGameKeyboard : MonoBehaviour
                 {
                     keyState = 0;
                     FactoryGame.turn++;
+                    FactoryGameInstance.PlayDollMakingSound(); // 인형 꿰메지는 사운드 재생
                     // StartCoroutine(SuccessChangeColor(gameObject));
                     Destroy(gameObject);
                     if (FactoryGameTimerInstance.MistakePanel.activeSelf)

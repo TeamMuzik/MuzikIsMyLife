@@ -25,6 +25,7 @@ public class FactoryGame : MonoBehaviour
 
     public AudioClip successSound;
     public AudioClip mistakeSound;
+    public AudioClip dollMakingSound;
     private AudioSource audioSource;
 
     public static int turn; //지금 어떤 오브젝트를 입력할 차례인지 (0에서 시작)
@@ -146,7 +147,11 @@ public class FactoryGame : MonoBehaviour
         audioSource.clip = mistakeSound;
         audioSource.Play();
     }
-
+    public void PlayDollMakingSound()
+    {
+        audioSource.clip = dollMakingSound;
+        audioSource.Play();
+    }
     void Update()
     {
         if (FactoryGameTimer.totalTime < 0)
