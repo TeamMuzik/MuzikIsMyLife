@@ -43,7 +43,7 @@ public class BeggingGame : MonoBehaviour
 
         turn--; // 턴 감소
 
-        if (p < 0.02f) // 2%의 확률로 1조
+        if (p < 0.01f) // 1%의 확률로 1조
         {
             turn = -1;
             BecameRich();
