@@ -131,7 +131,7 @@ textComponent.text = selectedWord;
 textComponent.color = isLongWord ? Color.red : Color.black;
 
 RectTransform rectTransform = block.GetComponent<RectTransform>();
-rectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-250.0f, 200.0f), 300.0f);
+rectTransform.anchoredPosition = new Vector2(UnityEngine.Random.Range(-250.0f, 200.0f), 310.0f);
 
 blockTextList.Add(block);
 StartCoroutine(MoveTextDown(rectTransform, block, isLongWord));
@@ -154,7 +154,7 @@ return selectedWord;
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
         float speed = 90f; // Adjusted speed
-        while (rectTransform != null && rectTransform.anchoredPosition.y > -250f && !gameEnded)
+        while (rectTransform != null && rectTransform.anchoredPosition.y > -309f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it
             if (block != null)
