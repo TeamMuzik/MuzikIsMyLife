@@ -18,6 +18,7 @@ public class JjirasiGame : MonoBehaviour
     public TMP_Text resultText;
     public TMP_Text stressText;
     public GameObject ScorePanel;
+    public TMP_Text duelTimerText;
 
     public Button Jjirasi;
 
@@ -43,11 +44,13 @@ public class JjirasiGame : MonoBehaviour
     public Sprite sprite3;
 
     public Slider duelSlider; // 대결 진행 바
-    public float systemIncreaseRate = 1000.0f; // 시스템 증가율
+    public float systemIncreaseRate = 2000.0f; // 시스템 증가율
     private bool duelInProgress = false; // 대결 진행 중 플래그
     private bool duelStarted = false;
    private bool isDuelWon = false;
-
+   private float duelTimeLimit = 5.0f;
+   private bool duelTimerActive = false; // 듀얼 타이머 활성화 상태
+   private float remainingDuelTime; // 남은 듀얼 시간
 
     void Start()
     {
@@ -56,6 +59,7 @@ public class JjirasiGame : MonoBehaviour
         clickTxt.text = "클릭 수 : 0";
         fameTxt.text = "명성 : 0";
         text_Timer.text = "남은 시간 : 30";
+          duelTimerText.text = "";
 
         LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
@@ -115,6 +119,7 @@ public class JjirasiGame : MonoBehaviour
     eventTriggered = true;
 
 
+
     // 스프라이트 순차적 변경
     // 스프라이트 1을 사용하여 새 이미지 생성 및 표시
     GameObject image1 = InstantiateImage(sprite1);
@@ -135,9 +140,11 @@ public class JjirasiGame : MonoBehaviour
  }
  void StartDuel()
 {
-  Jjirasi.gameObject.SetActive(true);
-  jjirasiImage.gameObject.SetActive(true);
-  duelInProgress = true;
+    duelTimerActive = true; // 듀얼 타이머 시작
+    remainingDuelTime = duelTimeLimit; // 듀얼 시간 초기화
+    Jjirasi.gameObject.SetActive(true);
+    jjirasiImage.gameObject.SetActive(true);
+    duelInProgress = true;
     eventUI.SetActive(true);
     duelSlider.gameObject.SetActive(true);
 
@@ -145,10 +152,26 @@ public class JjirasiGame : MonoBehaviour
     clickTxt.gameObject.SetActive(false);
     fameTxt.gameObject.SetActive(false);
     text_Timer.gameObject.SetActive(false);
-      DuelPanel.SetActive(true);
+    DuelPanel.SetActive(true);
     duelSlider.value = 0.5f;
+     StartCoroutine(DuelTimer()); // 듀얼 타이머 코루틴 시작
+    }
 
 
+
+IEnumerator DuelTimer()
+{
+    while (duelTimerActive && remainingDuelTime > 0)
+    {    duelTimerText.text = "대결 시간: " + remainingDuelTime.ToString("F0") + "초"; // 화면에 남은 시간 표시
+            yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.0f);
+        remainingDuelTime -= 1.0f; // 듀얼 시간 감소
+        if (remainingDuelTime <= 0)
+        {
+            duelTimerText.text = "";// 시간 제한 내에 슬라이더를 채우지 못하면 자동 실패 처리
+            EndDuel(false);
+        }
+    }
 }
     // 듀얼 시작 로직
 
@@ -180,7 +203,7 @@ public class JjirasiGame : MonoBehaviour
 
      else if (duelInProgress)
         {
-            duelSlider.value += 0.05f;
+            duelSlider.value += 0.03f;
         }
     else
         {
@@ -209,8 +232,10 @@ public class JjirasiGame : MonoBehaviour
     private void EndDuel(bool won)
     {
         duelInProgress = false;
+        duelTimerActive = false; // 듀얼 타이머 비활성화
         eventUI.SetActive(false);
         duelSlider.gameObject.SetActive(false);
+        DuelPanel.gameObject.SetActive(false);
 
 
         if (won)
