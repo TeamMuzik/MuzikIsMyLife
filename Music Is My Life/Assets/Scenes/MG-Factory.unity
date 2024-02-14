@@ -3527,6 +3527,7 @@ MonoBehaviour:
   moneyNumText: {fileID: 480584023}
   successSound: {fileID: 8300000, guid: 323a57c9300d154418caa623e1fe4e27, type: 3}
   mistakeSound: {fileID: 8300000, guid: 87b5ee45b3717254e97fc26223a0959a, type: 3}
+  dollMakingSound: {fileID: 8300000, guid: 6a3b068811d8b7445a80574fbcb70741, type: 3}
   money: 0
 --- !u!82 &1695356522
 AudioSource:
