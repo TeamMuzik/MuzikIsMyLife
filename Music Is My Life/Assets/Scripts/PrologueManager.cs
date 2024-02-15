@@ -70,7 +70,7 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ClearTextStep(prologueTexts[1], prologueTexts[2])); // 텍스트 2, 3 비활성화
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[8], imagePrefab));
         steps.Add(new ShowTextStep(prologueTexts[3], "그 어떤 역경이 닥치더라도..."));
-        steps.Add(new ShowTextStep(prologueTexts[4], "나는 꼭\n\n야옹 밴드를 보고 말겠다."));
+        steps.Add(new ShowTextStep(prologueTexts[4], "나는 꼭\n\n야옹을 보고 말겠다."));
         steps.Add(new ActivateButtonStep(mainMenuButton)); // 마지막 단계에서 버튼 활성화
     }
 

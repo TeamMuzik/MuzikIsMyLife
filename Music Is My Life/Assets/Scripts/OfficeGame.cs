@@ -31,10 +31,15 @@ public class OfficeGame : MonoBehaviour
     private HashSet<string> activeWords = new HashSet<string>(); // 사용 중인 단어 집합
     private int correctWordCount = 0;
 
+    private AudioSource audioSource;
+    public AudioClip successSound;
+
+
      private bool isGameStarted = false;
 
     void Start()
-    {   TutorialPanel.SetActive(true);
+    {   audioSource = GetComponent<AudioSource>();
+        TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
         canvasGameObject = GameObject.Find("Canvas"); // Initialize canvasGameObject
@@ -60,7 +65,6 @@ public class OfficeGame : MonoBehaviour
         }
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
-
 
         }
 
@@ -260,6 +264,7 @@ void CheckInputAgainstBlocks(string input)
 
             blockTextList.Remove(block);
             Destroy(block);
+            PlaySuccessSound();
             return; // 일치하는 첫 번째 블록을 찾으면 루프 종료
         }
     }
@@ -329,5 +334,11 @@ void UpdateGameTimer()
         StatusController statusController = FindObjectOfType<StatusController>();
 
         finalText.text = "오늘 알바 끝!"+"\n\n"+correctWordCount+"개의 단어를 입력했다." + "\n\n번 돈: " + earnedMoney + "만원";
+    }
+
+    void PlaySuccessSound()
+    {
+        audioSource.clip = successSound;
+        audioSource.Play();
     }
 }
