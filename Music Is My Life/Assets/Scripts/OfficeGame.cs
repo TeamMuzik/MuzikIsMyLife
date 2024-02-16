@@ -158,7 +158,7 @@ return selectedWord;
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
-        float speed = 90f; // Adjusted speed
+        float speed = isHardWord ? 60f : 80f; // 긴 단어의 경우 속도를 70f로, 짧은 단어의 경우 속도를 90f로 설정
         while (rectTransform != null && rectTransform.anchoredPosition.y > -309f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it
@@ -333,7 +333,7 @@ void UpdateGameTimer()
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
         StatusController statusController = FindObjectOfType<StatusController>();
 
-        finalText.text = "오늘 알바 끝!"+"\n\n"+correctWordCount+"개의 단어를 입력했다." + "\n\n번 돈: " + earnedMoney + "만원";
+        finalText.text = "오늘 알바 끝!"+"\n\n"+correctWordCount+"개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
     }
 
     void PlaySuccessSound()
