@@ -145,8 +145,6 @@ public class JjirasiGame : MonoBehaviour
     audioSource.clip = VsSound;
     audioSource.Play();
     yield return new WaitForSeconds(1.0f); // 1초 대기
-    audioSource.clip = duelSound3;
-    audioSource.Play();
 
    Destroy(image1);
    Destroy(image2);
@@ -157,6 +155,8 @@ public class JjirasiGame : MonoBehaviour
  }
  void StartDuel()
 {
+    audioSource.clip = duelSound3;
+    audioSource.Play();
     duelTimerActive = true; // 듀얼 타이머 시작
     remainingDuelTime = duelTimeLimit; // 듀얼 시간 초기화
     Jjirasi.gameObject.SetActive(true);
@@ -188,6 +188,7 @@ IEnumerator DuelTimer()
             duelTimerText.text = "";// 시간 제한 내에 슬라이더를 채우지 못하면 자동 실패 처리
             EndDuel(false);
         }
+        
     }
 }
     // 듀얼 시작 로직
@@ -248,6 +249,7 @@ IEnumerator DuelTimer()
 
     private void EndDuel(bool won)
     {
+        audioSource.Stop();
         duelInProgress = false;
         duelTimerActive = false; // 듀얼 타이머 비활성화
         eventUI.SetActive(false);

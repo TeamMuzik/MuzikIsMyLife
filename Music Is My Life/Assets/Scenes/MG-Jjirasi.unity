@@ -206,7 +206,7 @@ MonoBehaviour:
   systemIncreaseRate: 0.2
   duelSound1: {fileID: 8300000, guid: 32f546f83e805814a9035293bddcbead, type: 3}
   duelSound2: {fileID: 8300000, guid: fba66b83177022845b0605876cdb8f65, type: 3}
-  duelSound3: {fileID: 8300000, guid: 2adedc54c40d6b44e91e052c8c7c034d, type: 3}
+  duelSound3: {fileID: 8300000, guid: 162dc36a4e784f441baaaca2a8222562, type: 3}
   VsSound: {fileID: 8300000, guid: 1c66c04c190c3644ea637c4ae688f5ba, type: 3}
 --- !u!114 &24719992
 MonoBehaviour:
