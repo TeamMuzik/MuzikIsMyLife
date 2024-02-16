@@ -40,29 +40,37 @@ public class MainUpdateController : MonoBehaviour
         int money = PlayerPrefs.GetInt("Money");
         int myFame = PlayerPrefs.GetInt("MyFame");
         int bandFame = PlayerPrefs.GetInt("Fame");
+        string endingScene = "";
 
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+
         if (money >= 2500000)
         {
-            sceneMove.targetScene = "Ending-Expedition";
+            endingScene = "Ending-Expedition";
         }
         else if (myFame >= 100)
         {
-            sceneMove.targetScene = "Ending-OpeningBand";
+            endingScene = "Ending-OpeningBand";
         }
         else if (bandFame >= 300)
         {
-            sceneMove.targetScene = "Ending-ConcertInKorea";
+            endingScene = "Ending-ConcertInKorea";
         }
         else
         {
-            sceneMove.targetScene = "Ending-Normal";
+            endingScene = "Ending-Normal";
         }
+
+        // 엔딩 잠금 해제 및 저장
+        PlayerPrefs.SetString("Ending", endingScene);
+        sceneMove.targetScene = endingScene;
         sceneMove.ChangeScene();
     }
 
     public void GoToGameOver()
     {
+
+        
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
         sceneMove.targetScene = "Ending-GameOver";
         sceneMove.ChangeScene();

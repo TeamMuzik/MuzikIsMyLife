@@ -25,8 +25,9 @@ public class PlaySummary : MonoBehaviour
         funitureController.UpdateFurnitures();
         DayBehavior();
         creditPanel.SetActive(false);
-
+        EndingCollectionManager.UnlockAndSaveEnding(PlayerPrefs.GetString("Ending"));
         endingName.text = $"\"{PlayerPrefs.GetString("EndingName")}\"";
+
         playerName.text = "플레이어: " + PlayerPrefs.GetString("PlayerName"); // "의 2주 결과";
         behaviorText.text = "카페 알바: " + cafeCount + "일"
             + "\n사무실 알바: " + officeCount + "일"
