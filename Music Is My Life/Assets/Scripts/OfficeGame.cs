@@ -333,7 +333,7 @@ void UpdateGameTimer()
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
         StatusController statusController = FindObjectOfType<StatusController>();
 
-        finalText.text = "오늘 알바 끝!"+"\n\n"+correctWordCount+"개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
+        finalText.text = correctWordCount + "개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
     }
 
     void PlaySuccessSound()
