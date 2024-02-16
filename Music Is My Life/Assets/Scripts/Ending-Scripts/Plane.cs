@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plane : MonoBehaviour
 {
-    float rightMoveSpeed = 3.9f;
+    float rightMoveSpeed = 4.7475f;
     float UpMoveSpeed = 3f;
 
     void Update()
