@@ -85,10 +85,14 @@ public class BeggingGame : MonoBehaviour
     public void BecameRich()
     {
         // 1조의 경우 PlayerPrefs에는 저장하지 않음
+
         StatusChanger.EarnMoney(income);
         StatusChanger.UpdateMyFame(fameDiff);
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
         sceneMove.targetScene = "Ending-Rich";
+        PlayerPrefs.SetString("Ending", "Ending-Rich");
+
+
         sceneMove.ChangeScene();
     }
 
