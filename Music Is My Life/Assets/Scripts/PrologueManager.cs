@@ -11,6 +11,7 @@ public class PrologueManager : MonoBehaviour
     public Sprite[] sprites; // 스프라이트 배열
     public TMP_Text[] prologueTexts; // 텍스트 컴포넌트 배열
     public Button mainMenuButton; // 메인 화면으로 가는 버튼
+    public GameObject panelPrefab;
     private List<IPrologueStep> steps = new List<IPrologueStep>(); // 모든 단계를 포함하는 리스트
     private int currentStepIndex = 0; // 현재 단계 인덱스
 
@@ -24,6 +25,7 @@ public class PrologueManager : MonoBehaviour
             }
         }
         mainMenuButton.gameObject.SetActive(false); // 시작 시 버튼 비활성화
+        panelPrefab.gameObject.SetActive(false);
         InitializeSteps();
         StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
     }
@@ -41,7 +43,7 @@ public class PrologueManager : MonoBehaviour
                 continue; // 대기 시간 없이 다음 단계로 진행
             }
 
-            yield return new WaitForSeconds(1.0f); // 다른 경우에는 1초 대기
+            yield return new WaitForSeconds(1.3f); // 다른 경우에는 1초 대기
         }
 
         // 모든 단계가 완료되면 추가 작업 수행
@@ -71,6 +73,9 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[8], imagePrefab));
         steps.Add(new ShowTextStep(prologueTexts[3], "그 어떤 역경이 닥치더라도..."));
         steps.Add(new ShowTextStep(prologueTexts[4], "나는 꼭\n\n야옹을 보고 말겠다."));
+        steps.Add(new ClearTextStep(prologueTexts[3], prologueTexts[4]));
+        steps.Add(new ShowSpriteStep(this, imageContainer, sprites[9], imagePrefab));
+        steps.Add(new ShowPanelStep(panelPrefab));
         steps.Add(new ActivateButtonStep(mainMenuButton)); // 마지막 단계에서 버튼 활성화
     }
 
@@ -166,4 +171,20 @@ public class PrologueManager : MonoBehaviour
 
 
     }
+
+    private class ShowPanelStep : IPrologueStep
+{
+    private GameObject panel;
+
+    public ShowPanelStep(GameObject panel)
+    {
+        this.panel = panel;
+    }
+
+    public void Execute()
+    {
+        panel.SetActive(true);
+    }
+}
+
 }
