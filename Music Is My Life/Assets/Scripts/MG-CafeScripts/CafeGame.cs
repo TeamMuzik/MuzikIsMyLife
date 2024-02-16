@@ -73,7 +73,7 @@ public class CafeGame : MonoBehaviour
             {
                 Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity);
-                if (hit.collider != null)
+                if (hit.collider != null && hit.collider.gameObject.name != "GarbageBtn")
                 {
                     GameObject clickedObject = hit.collider.gameObject;
                     TotalClickedFruits.Add(clickedObject);

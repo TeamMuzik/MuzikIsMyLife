@@ -52,6 +52,13 @@ public class JjirasiGame : MonoBehaviour
    private bool duelTimerActive = false; // 듀얼 타이머 활성화 상태
    private float remainingDuelTime; // 남은 듀얼 시간
 
+    public AudioClip duelSound1;
+    public AudioClip duelSound2;
+    public AudioClip duelSound3;
+    public AudioClip VsSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         ClickNum = 0;
@@ -70,6 +77,8 @@ public class JjirasiGame : MonoBehaviour
         ScorePanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
          PrepareGameStart();
+
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -123,13 +132,21 @@ public class JjirasiGame : MonoBehaviour
     // 스프라이트 순차적 변경
     // 스프라이트 1을 사용하여 새 이미지 생성 및 표시
     GameObject image1 = InstantiateImage(sprite1);
+    audioSource.clip = duelSound1;
+    audioSource.Play();
     yield return new WaitForSeconds(1.0f); // 1초 대기
 
     GameObject image2 = InstantiateImage(sprite2);
+    audioSource.clip = duelSound2;
+    audioSource.Play();
     yield return new WaitForSeconds(1.0f); // 1초 대기
 
     GameObject image3 = InstantiateImage(sprite3);
+    audioSource.clip = VsSound;
+    audioSource.Play();
     yield return new WaitForSeconds(1.0f); // 1초 대기
+    audioSource.clip = duelSound3;
+    audioSource.Play();
 
    Destroy(image1);
    Destroy(image2);
