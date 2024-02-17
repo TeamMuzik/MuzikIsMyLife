@@ -12,8 +12,10 @@ public class PrologueManager : MonoBehaviour
     public TMP_Text[] prologueTexts; // 텍스트 컴포넌트 배열
     public Button mainMenuButton; // 메인 화면으로 가는 버튼
     public GameObject panelPrefab;
+    
     private List<IPrologueStep> steps = new List<IPrologueStep>(); // 모든 단계를 포함하는 리스트
     private int currentStepIndex = 0; // 현재 단계 인덱스
+    private Coroutine prologueCoroutine; // 프롤로그 코루틴
 
     private void Start()
     {
@@ -27,7 +29,17 @@ public class PrologueManager : MonoBehaviour
         mainMenuButton.gameObject.SetActive(false); // 시작 시 버튼 비활성화
         panelPrefab.gameObject.SetActive(false);
         InitializeSteps();
-        StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
+        prologueCoroutine = StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
+    }
+
+    // 스킵 버튼 클릭 시 실행되는 스크립트
+    public void SkipPrologue(GameObject skipButton)
+    {
+        StopCoroutine(prologueCoroutine);
+        prologueCoroutine = null;
+        panelPrefab.gameObject.SetActive(true);
+        mainMenuButton.gameObject.SetActive(true);
+        skipButton.SetActive(false);
     }
 
     // 각 단계를 시간 간격을 두고 실행하는 코루틴
@@ -168,8 +180,6 @@ public class PrologueManager : MonoBehaviour
         {
             button.gameObject.SetActive(true);
         }
-
-
     }
 
     private class ShowPanelStep : IPrologueStep
