@@ -898,7 +898,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -160}
-  m_SizeDelta: {x: 220, y: 40}
+  m_SizeDelta: {x: 260, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484899341
 MonoBehaviour:
@@ -1301,6 +1301,7 @@ GameObject:
   - component: {fileID: 2041782429}
   - component: {fileID: 2041782428}
   - component: {fileID: 2041782427}
+  - component: {fileID: 2041782431}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1395,6 +1396,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2041782431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041782425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7d7cf4a0f7c2744af90c5168dd7046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Narak
 --- !u!1 &2068816882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[ \uC5D4\uB529 #6: \uB098\uB77D... ]"
+  m_text: "[ \uC5D4\uB529 #6: \uB098\uB77D\uB3C4 \uB77D\uC774\uB2E4 ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}

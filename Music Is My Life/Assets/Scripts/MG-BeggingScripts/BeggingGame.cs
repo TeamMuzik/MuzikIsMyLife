@@ -51,7 +51,7 @@ public class BeggingGame : MonoBehaviour
         else if (myFame >= 100 && p < 0.30f) // 명성이 100 이상이고 30%
         {
             Debug.Log("구걸 게임오버");
-            SceneManager.LoadScene("Ending-TooFamousToBeg"); // 추후 Beggine Game만의 GameOver 씬으로 바꿔야 함
+            SceneManager.LoadScene("Ending-Narak");
         }
         else if (myFame >= 40 && p < 0.15f) // 명성이 40 이상이고 15%
         {
