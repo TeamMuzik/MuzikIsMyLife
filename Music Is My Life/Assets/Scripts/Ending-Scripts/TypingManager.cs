@@ -14,7 +14,7 @@ public class TypingManager : MonoBehaviour
     public string[] tutorialDialogue;
     string[] dialogues;
 
-    int talkNum = 0;
+    int dialogNum = 0;
 
     public GameObject[] illustrationObjects; // 일러스트 게임 오브젝트 배열
     private int currentIllustrationIndex = 0; // 현재 일러스트 인덱스
@@ -64,7 +64,7 @@ public class TypingManager : MonoBehaviour
     public void StartTalk (string[] talks)
     {
         dialogues = talks;
-        StartCoroutine(Typing(dialogues[talkNum]));
+        StartCoroutine(Typing(dialogues[dialogNum]));
     }
     
     IEnumerator Typing(string talk)
@@ -77,26 +77,50 @@ public class TypingManager : MonoBehaviour
         }
         for (int i = 0; i < talk.Length; i++)
         {
-            targetTxt.text +=  talk[i];
+            targetTxt.text += talk[i];
             yield return new WaitForSeconds(typingSpeed);
         }
 
         yield return new WaitForSeconds(nextSceneSpeed);
-        NextTalk();
+        if (currentIllustrationIndex != illustrationObjects.Length - 1) NextTalk();
     }
 
     public void NextTalk()
     {
         targetTxt.text = null;
-        talkNum++;
+        dialogNum++;
 
-        if (talkNum == dialogues.Length)
+        if (dialogNum == dialogues.Length)
         {
-            talkNum = 0;
+            dialogNum = 0;
             return;
         }
         NextIllustration();
-        StartCoroutine(Typing(dialogues[talkNum]));
+        if (currentIllustrationIndex >= 3)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                dialogBox[i].gameObject.SetActive(false);
+            }
+            RectTransform rectTransform = targetTxt.GetComponent<RectTransform>();
+            switch (currentIllustrationIndex)
+            {
+                case 3:
+                    rectTransform.anchoredPosition = new Vector2(-40, 256);
+                    break;
+                case 4:
+                    rectTransform.anchoredPosition = new Vector2(-130, 256);
+                    break;
+                case 5:
+                    rectTransform.anchoredPosition = new Vector2(-80, 256);
+                    TextMeshProUGUI textMeshPro = targetTxt.GetComponent<TextMeshProUGUI>();
+                    textMeshPro.fontSize = 10;
+                    textMeshPro.fontStyle = FontStyles.Bold;
+                    textMeshPro.fontStyle |= FontStyles.Italic;
+                    break;
+            }
+        }
+        StartCoroutine(Typing(dialogues[dialogNum]));
     }
 
     // 다음 일러스트로 넘어가는 함수
@@ -110,18 +134,6 @@ public class TypingManager : MonoBehaviour
 
         // 다음 일러스트 보이기
         illustrationObjects[currentIllustrationIndex].SetActive(true);
-
-        if (currentIllustrationIndex >= 3)
-        {
-            
-            for (int i = 0; i < 1; i++)
-            {
-                dialogBox[i].gameObject.SetActive(false);
-            }
-            RectTransform rectTransform = targetTxt.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(-274, 256);
-
-        }
 
         // 일러스트 개수가 1개일 경우
         if (illustrationObjects.Length == 0)
@@ -149,7 +161,7 @@ public class TypingManager : MonoBehaviour
                 // 버튼 텍스트를 변경
 
                 // Next 버튼 활성화
-                nextButton.gameObject.SetActive(true);
+                // nextButton.gameObject.SetActive(true);
             }
         }
     }
