@@ -527,6 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464306458}
   - component: {fileID: 464306459}
+  - component: {fileID: 464306460}
   m_Layer: 0
   m_Name: plane
   m_TagString: Untagged
@@ -542,8 +543,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464306457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -223, z: -5399.9995}
-  m_LocalScale: {x: 60, y: 60, z: 60}
+  m_LocalPosition: {x: 0, y: -367, z: -5399.9995}
+  m_LocalScale: {x: 20, y: 20, z: 199.41234}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 381347082}
@@ -601,6 +602,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &464306460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464306457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d24d8c50d015043ad5b60ce1294b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &669037568
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -220}
+  m_AnchoredPosition: {x: 0, y: -215}
   m_SizeDelta: {x: 180, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &883808363
@@ -1179,7 +1192,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: fed567cf746900b40a7259575915a731, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1355,7 +1368,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 430fbe8146f1d3e478641ec017dec7ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1719,8 +1732,11 @@ MonoBehaviour:
   Dialogue:
   - "2\uC8FC \uB4A4...\uC57C\uC639\uC758 \uC6D4\uB4DC\uD22C\uC5B4 \uC77C\uC815\uC774
     \uBC1C\uD45C\uB418\uC5C8\uB2E4.  \uC5ED\uC2DC \uD55C\uAD6D\uC740 \uC5C6\uC5C8\uB2E4."
-  - "\uC57C\uC639...   \uB2C8\uAC00 \uC624\uC9C0 \uC54A\uB294\uB2E4\uBA74 \uB0B4\uAC00
+  - "\uC57C\uC639...   \uB124\uAC00 \uC624\uC9C0 \uC54A\uB294\uB2E4\uBA74 \uB0B4\uAC00
     \uAC00\uC8FC\uC9C0!"
+  - '                                                                        '
+  - "\uB098\uB294 \uC5F4\uC2EC\uD788 \uC54C\uBC14\uB97C \uD574\uC11C \uBAA8\uC740
+    \uB3C8\uC73C\uB85C \uC57C\uC639\uAD6D\uC73C\uB85C \uB5A0\uB0AC\uACE0"
   illustrationObjects:
   - {fileID: 2080584307}
   - {fileID: 1078876492}
@@ -1728,9 +1744,9 @@ MonoBehaviour:
   - {fileID: 669037568}
   nextButton: {fileID: 1293273153}
   endButton: {fileID: 2070742346}
-  Sound1: {fileID: 0}
-  Sound2: {fileID: 0}
-  Sound3: {fileID: 0}
+  Sound1: {fileID: 8300000, guid: 32b7c6c9867ec5640806b8f728201a68, type: 3}
+  Sound2: {fileID: 8300000, guid: 32b7c6c9867ec5640806b8f728201a68, type: 3}
+  Sound3: {fileID: 8300000, guid: 32b7c6c9867ec5640806b8f728201a68, type: 3}
 --- !u!82 &1488146584
 AudioSource:
   m_ObjectHideFlags: 0
