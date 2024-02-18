@@ -15,17 +15,17 @@ public class KorEndingName : MonoBehaviour
         string ending;
         switch (sceneName)
         {
-            case "ConcertInKorea":
-                endingName = "엔딩 #3: 야옹의 내한";
-                ending = "Ending-ConcertInKorea";
+            case "Normal":
+                endingName = "엔딩 #1: 다시 백수로...";
+                ending = "Ending-Normal";
                 break;
             case "Expedition":
                 endingName = "엔딩 #2: 원정을 가다";
                 ending = "Ending-Expedition";
                 break;
-            case "Normal":
-                endingName = "엔딩 #1: 다시 백수로...";
-                ending = "Ending-Normal";
+            case "ConcertInKorea":
+                endingName = "엔딩 #3: 야옹의 내한";
+                ending = "Ending-ConcertInKorea";
                 break;
             case "OpeningBand":
                 endingName = "엔딩 #4: 스타가 되다";
