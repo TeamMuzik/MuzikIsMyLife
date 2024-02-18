@@ -5,11 +5,12 @@ using UnityEngine;
 public class Plane : MonoBehaviour
 {
     float time;
-    float moveSpeed = 4f;
+    public float moveSpeed;
+    public float scaleSize;
 
     void Update()
     {
-        transform.localScale = new Vector3 (20, 20, 0) * (1+time);
+        transform.localScale = new Vector3 (scaleSize, scaleSize, 0) * (1+time);
         transform.position += Vector3.up * moveSpeed * Time.deltaTime; 
         time += Time.deltaTime;
     }

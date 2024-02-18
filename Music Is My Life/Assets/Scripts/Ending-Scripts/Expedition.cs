@@ -160,34 +160,32 @@ public class Expedition : MonoBehaviour
 
     void TypingAndIllustration()
     {
-        // switch (currentIllustrationIndex)
-        // {   
-        //     case 3:
-        //         textMeshPro.color = Color.white;
-        //         StartCoroutine(TourYellow());
-        //         rectTransform.anchoredPosition = new Vector2 (0, -220);
-        //         break;
-        //     case 4:
-        //         audioSource.Stop();
-        //         audioSource.clip = Sound2;
-        //         audioSource.Play();
-        //         rectTransform.anchoredPosition = new Vector2 (-48, 261);
-        //         break;
-        //     case 5:
-        //         rectTransform.anchoredPosition = new Vector2 (-34, 261);
-        //         break;
-        //     case 6:
-        //         audioSource.Stop();
-        //         audioSource.clip = Sound3;
-        //         audioSource.Play();
-        //         rectTransform.anchoredPosition = new Vector2 (-85, 264);
-        //         textMeshPro.fontStyle = FontStyles.Bold;
-        //         textMeshPro.fontStyle |= FontStyles.Italic;
-        //         textMeshPro.fontSize = 10;
-        //         targetTxt.text = null;
-        //         StartCoroutine(lastTalk());
-        //         break;
-        // }
+        switch (currentIllustrationIndex)
+        {   
+            case 1:
+                textMeshPro.color = Color.black;
+                textMeshPro.fontStyle = FontStyles.Bold;
+                textMeshPro.fontSize = 8;
+                rectTransform.anchoredPosition = new Vector2 (195, 58);
+                break;
+            case 2:
+                textMeshPro.color = Color.white;
+                break;
+            case 3:
+                audioSource.Stop();
+                audioSource.clip = Sound2;
+                audioSource.Play();
+                textMeshPro.color = Color.white;
+                textMeshPro.fontStyle = FontStyles.Normal;
+                textMeshPro.fontSize = 6;
+                rectTransform.anchoredPosition = new Vector2 (0, 261);
+                break;
+            case 5:
+                audioSource.Stop();
+                audioSource.clip = Sound3;
+                audioSource.Play();
+                break;
+        }
     }
 }
 

@@ -136,19 +136,6 @@ public class ConcertInKorea : MonoBehaviour
         StartCoroutine(Typing(dialogues[dialogNum]));
     }
 
-    IEnumerator lastTalk()
-    {   
-        yield return new WaitForSeconds(2.0f);
-        targetTxt2.text = null;
-        string talk = "매년 한국 와줘!!";
-        for (int i = 0; i < talk.Length; i++)
-        {
-            targetTxt2.text += talk[i];
-            yield return new WaitForSeconds(typingSpeed);
-        }
-        yield return new WaitForSeconds(nextSceneSpeed);
-    }
-
     // 다음 일러스트로 넘어가는 함수
     void NextIllustration()
     {
@@ -196,25 +183,30 @@ public class ConcertInKorea : MonoBehaviour
     {
         switch (currentIllustrationIndex)
         {   
+            case 1:
+                rectTransform.anchoredPosition = new Vector2 (140, -235);
+                break;
+            case 2:
+                rectTransform.anchoredPosition = new Vector2 (85, -235);
+                break;
             case 3:
                 textMeshPro.color = Color.white;
                 StartCoroutine(TourYellow());
-                rectTransform.anchoredPosition = new Vector2 (0, -220);
+                rectTransform.anchoredPosition = new Vector2 (235, -221);
                 break;
             case 4:
                 audioSource.Stop();
                 audioSource.clip = Sound2;
                 audioSource.Play();
-                rectTransform.anchoredPosition = new Vector2 (-48, 261);
+                rectTransform.anchoredPosition = new Vector2 (-10, 267);
                 break;
             case 5:
-                rectTransform.anchoredPosition = new Vector2 (-34, 261);
                 break;
             case 6:
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
-                rectTransform.anchoredPosition = new Vector2 (-85, 264);
+                rectTransform.anchoredPosition = new Vector2 (-10, 255);
                 textMeshPro.fontStyle = FontStyles.Bold;
                 textMeshPro.fontStyle |= FontStyles.Italic;
                 textMeshPro.fontSize = 10;
@@ -222,6 +214,19 @@ public class ConcertInKorea : MonoBehaviour
                 StartCoroutine(lastTalk());
                 break;
         }
+    }
+
+    IEnumerator lastTalk()
+    {   
+        yield return new WaitForSeconds(2.0f);
+        targetTxt2.text = null;
+        string talk = "매년 한국 와줘!!";
+        for (int i = 0; i < talk.Length; i++)
+        {
+            targetTxt2.text += talk[i];
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(nextSceneSpeed);
     }
 
 
