@@ -79,19 +79,21 @@ public class StoreProduct : Furniture // Furniture을 상속받음
         {
             case 10:
                 PlayerPrefs.SetInt("Subs_Max", subsMax + 500);
-                stress = -10;
+                stress = -5;
+                //stress = -10;
                 break;
             case 40:
                 PlayerPrefs.SetInt("Subs_Min", subsMin + 1500);
-                stress = -30;
+                stress = -10;
+                //stress = -30;
                 break;
             case 100:
                 PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 2);
-                stress = 0;
+                stress = -10;
                 break;
             case 150:
                 PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 3);
-                stress = 0;
+                stress = -10;
                 break;
             default:
                 throw new System.Exception("음향기기 상품 가격으로  10/40/100/150이 아닌 값이 입력되었습니다.");
