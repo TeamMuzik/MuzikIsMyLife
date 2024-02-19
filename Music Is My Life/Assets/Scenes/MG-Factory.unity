@@ -3932,7 +3932,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 824ad0d6b5135ac4ebd063520a6401e8, type: 3}
   hand: {fileID: 1045508089}
   handSprite:
-  - {fileID: 21300000, guid: 3b2706e091bcd4848b5be03e07dc505d, type: 3}
+  - {fileID: 21300000, guid: 0f78f6d0c015e6945b588dcf73e4a5df, type: 3}
   - {fileID: 21300000, guid: ae22aece7bca9da409a77cf634644866, type: 3}
   - {fileID: 21300000, guid: ed96abcc975d89042a65bdf59f62572f, type: 3}
   - {fileID: 21300000, guid: 2652945614ffe524c9e45d76760e2536, type: 3}
