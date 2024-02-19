@@ -32,6 +32,8 @@ public class Expedition : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public GameObject[] Light;
+
     void Start()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
@@ -182,12 +184,25 @@ public class Expedition : MonoBehaviour
                 textMeshPro.fontStyle = FontStyles.Normal;
                 textMeshPro.fontSize = 6;
                 rectTransform.anchoredPosition = new Vector2 (0, 261);
+                StartCoroutine(ChangeLight());
                 break;
             case 5:
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
                 break;
+        }
+    }
+
+    IEnumerator ChangeLight()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int randNum = Random.Range(0, 5);
+            yield return new WaitForSeconds(0.7f);
+            Light[randNum].SetActive(true);
+            yield return new WaitForSeconds(0.7f);
+            Light[randNum].SetActive(false);
         }
     }
 }
