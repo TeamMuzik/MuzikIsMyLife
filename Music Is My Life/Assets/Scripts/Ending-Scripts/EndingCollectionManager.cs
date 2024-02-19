@@ -6,12 +6,24 @@ public static class EndingCollectionManager
 {
     // 엔딩 잠금 해제 및 저장
     public static void UnlockAndSaveEnding(string sceneName)
-  {
-      string endingKey = sceneName.Replace("-", "");
-      PlayerPrefs.SetInt(endingKey, 1);
-      PlayerPrefs.Save(); // 변경사항 저장
-      Debug.Log("엔딩 잠금 해제 및 저장: " + endingKey);
-  }
+    {
+        string endingKey = sceneName.Replace("-", "");
+        PlayerPrefs.SetInt(endingKey, 1);
+        PlayerPrefs.Save(); // 변경사항 저장
+        Debug.Log("엔딩 잠금 해제 및 저장: " + endingKey);
+    }
+    public static void ResetEndingCollection()
+    {
+        List<string> allEndingKeys = new List<string> { "EndingExpedition", "EndingOpeningBand", "EndingConcertInKorea", "EndingNormal", "EndingNarak", "EndingRich" };
+        foreach (var key in allEndingKeys)
+        {
+            if (IsEndingUnlocked(key.Replace("Ending", "")))
+            {
+                PlayerPrefs.SetInt(key, 0);
+            }
+        }
+        PlayerPrefs.Save(); // 변경사항 저장
+    }
 
     // 엔딩 잠금 해제 여부 확인
     public static bool IsEndingUnlocked(string sceneName)

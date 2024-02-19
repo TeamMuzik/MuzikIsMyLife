@@ -5724,7 +5724,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286316679
+    rgba: 4286185605
   m_fontColor: {r: 0.52156866, g: 0, b: 0.47843137, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6639,8 +6639,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "[ \uB9AC\uC18C\uC2A4 \uC800\uC791\uAD8C \uD45C\uAE30 ]\n\uCE74\uD398 \uAC8C\uC784
-    \uACFC\uC77C \uC774\uBBF8\uC9C0: @pixelahead (Twitter) | \uD0C0\uC774\uD2C0 \uC601\uBB38
-    \uD3F0\uD2B8: Crang by Caveras"
+    \uACFC\uC77C \uC774\uBBF8\uC9C0: @pixelahead (Twitter) | \uC601\uBB38 \uD3F0\uD2B8:
+    Crang by Caveras, Baby Doll by Denise Bentulan"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -8732,7 +8732,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286316679
+    rgba: 4286185605
   m_fontColor: {r: 0.52156866, g: 0, b: 0.47843137, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

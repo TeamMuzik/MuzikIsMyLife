@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame() // 리셋 버튼
     {
+        EndingCollectionManager.ResetEndingCollection();
         InitializeGamedata();
     }
 }
