@@ -161,7 +161,10 @@ public class Expedition : MonoBehaviour
     void TypingAndIllustration()
     {
         switch (currentIllustrationIndex)
-        {   
+        {
+            case 0: 
+                rectTransform.anchoredPosition = new Vector2 (114, -215);
+                break;
             case 1:
                 textMeshPro.color = Color.black;
                 textMeshPro.fontStyle = FontStyles.Bold;

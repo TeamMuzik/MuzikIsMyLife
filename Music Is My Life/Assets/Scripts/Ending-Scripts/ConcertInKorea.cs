@@ -104,20 +104,25 @@ public class ConcertInKorea : MonoBehaviour
     IEnumerator TourYellow()
     {
         tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(false);
+        yield return new WaitForSeconds(0.55f);
+        tourYellow.SetActive(true);
+        yield return new WaitForSeconds(0.55f);
+        tourYellow.SetActive(false);
+        
 
     }
 
