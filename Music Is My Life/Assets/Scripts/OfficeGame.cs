@@ -176,7 +176,7 @@ return selectedWord;
 
         if (!gameEnded && block != null)
         {
-            gameTimer -= isHardWord ? 7 : 5;
+            gameTimer -= isHardWord ? 15 : 5;
             StartCoroutine(FlashTimer(1));
 
             DestroyBlock(block);
