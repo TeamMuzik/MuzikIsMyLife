@@ -20,8 +20,8 @@ public class PrologueManager : MonoBehaviour
 
     public AudioClip sadSound;
     public AudioClip waterSound;
-
     private AudioSource audioSource;
+    private Coroutine audioSourceCoroutine;
 
     private void Start()
     {
@@ -49,6 +49,12 @@ public class PrologueManager : MonoBehaviour
           prologueCoroutine = null;
       }
 
+      if (audioSourceCoroutine != null)
+      {
+          StopCoroutine(audioSourceCoroutine);
+          audioSourceCoroutine = null;
+      }
+
       // 포스터 이미지 활성화
       poster.gameObject.SetActive(true);
 
@@ -67,6 +73,8 @@ public class PrologueManager : MonoBehaviour
 
       // 패널 활성화
       panelPrefab.gameObject.SetActive(true);
+      // 딜레이 후 닫기 버튼 활성화
+      yield return new WaitForSeconds(delay);
       mainMenuButton.gameObject.SetActive(true);
   }
 
@@ -105,7 +113,7 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ClearTextStep(prologueTexts[0])); // 텍스트 2, 3 비활성화
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[2], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[3], imagePrefab));
-        StartCoroutine(PlaySound());
+        audioSourceCoroutine = StartCoroutine(PlaySound());
         steps.Add(new ShowTextStep(prologueTexts[1], "하\n\n지\n\n만\n..."));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[4], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[5], imagePrefab));
