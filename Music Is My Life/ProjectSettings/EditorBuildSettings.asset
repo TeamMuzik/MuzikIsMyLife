@@ -32,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-Rich.unity
     guid: 367cb66686cb2404a99972300db6ee23
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Ending-ConcertInKorea.unity
     guid: 1238942d7b4695b469ddc46f69f8e9c4

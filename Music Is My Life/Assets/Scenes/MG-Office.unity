@@ -2450,6 +2450,8 @@ GameObject:
   - component: {fileID: 1499306089}
   - component: {fileID: 1499306091}
   - component: {fileID: 1499306092}
+  - component: {fileID: 1499306094}
+  - component: {fileID: 1499306093}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -2626,6 +2628,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283975d13b7e14f788b65e373f86e23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1499306093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499306087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56393f797a0f7e94e95547f5052052a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1499306094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499306087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &1505225040
 GameObject:
   m_ObjectHideFlags: 0
