@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlaySummary : MonoBehaviour
 {
     public FunitureController funitureController;
+    public GameObject roomObject;
     public GameObject creditPanel;
     public TMP_Text endingName;
     public TMP_Text playerName;
@@ -23,7 +24,7 @@ public class PlaySummary : MonoBehaviour
     void Start()
     {
         funitureController.UpdateFurnitures();
-        DayBehavior();
+        CountDayBehavior();
         creditPanel.SetActive(false);
         EndingCollectionManager.UnlockAndSaveEnding(PlayerPrefs.GetString("Ending"));
         endingName.text = $"\"{PlayerPrefs.GetString("EndingName")}\"";
@@ -39,9 +40,10 @@ public class PlaySummary : MonoBehaviour
             + "\n나의 명성: " + PlayerPrefs.GetInt("MyFame")
             + "\n야옹의 명성: " + PlayerPrefs.GetInt("BandFame");
         roomText.text = PlayerPrefs.GetString("PlayerName") + "의 방";
+        roomObject.SetActive(true);
     }
 
-    private void DayBehavior()
+    private void CountDayBehavior()
     {
         int endDday = PlayerPrefs.GetInt("EndDday");
         for (int d = 1; d < endDday; d++)
