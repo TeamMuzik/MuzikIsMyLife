@@ -42,12 +42,12 @@ public class GameManager : MonoBehaviour
         var keys = PlayerPrefs.GetString("SavedEndingKeys", "").Split(',');
         foreach (var key in keys)
         {
-      // "Ending"으로 시작하지 않는 키에 대해서만 삭제
-      if (!key.StartsWith("Ending"))
-        {
-          PlayerPrefs.DeleteKey(key);
-        }
-      }    // 초기화 시 기존 데이터 모두 삭제 (엔딩 데이터 제외)
+            // "Ending"으로 시작하지 않는 키에 대해서만 삭제
+            if (!key.StartsWith("Ending"))
+            {
+                PlayerPrefs.DeleteKey(key);
+            }
+        }    // 초기화 시 기존 데이터 모두 삭제 (엔딩 데이터 제외)
         PlayerPrefs.SetInt("Money", 0); // 돈
         PlayerPrefs.SetInt("MyFame", 0); // 내 명성
         PlayerPrefs.SetInt("BandFame", 0); // 야옹의 명성 (추후 교체 필요)
@@ -110,7 +110,10 @@ public class GameManager : MonoBehaviour
 
         // replaceable settings
         string[] categories = {"CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
-        SetFurnitureData(categories, 0);
+        foreach (string category in categories)
+        {
+            PlayerPrefs.SetInt(category, 0); // 0으로 세팅
+        }
     }
 
     private static void SetFurnitureData(string[] furnitureNames, int stat)

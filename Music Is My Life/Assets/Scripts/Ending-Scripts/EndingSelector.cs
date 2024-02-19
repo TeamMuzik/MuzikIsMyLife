@@ -14,7 +14,7 @@ public class EndingSelector : MonoBehaviour
     {
         int money = PlayerPrefs.GetInt("Money");
         int myFame = PlayerPrefs.GetInt("MyFame");
-        int bandFame = PlayerPrefs.GetInt("Fame");
+        int bandFame = PlayerPrefs.GetInt("BandFame");
         string endingScene;
 
         if (money >= 2500000)
