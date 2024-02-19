@@ -10,12 +10,12 @@ public class MGResultManager : MonoBehaviour
         float p = Random.value;
         Debug.Log("알바 하루 결과 | 확률: " + p);
 
-        if (p < 0.05f) // 5%의 확률로 가장 좋은 결과
+        if (p < 0.02f) // 2%의 확률로 가장 좋은 결과
         {
             resultRes = "완벽하게 알바를 해냈다!";
             stressDiff = -20;
         }
-        else if (p < 0.15f) // 10%의 확률로 조금 좋은 결과
+        else if (p < 0.07f) // 5%의 확률로 조금 좋은 결과
         {
             if (behaviorId == 2)
                 resultRes = "만들기 쉬운 곰인형이 많았다.";
@@ -24,7 +24,7 @@ public class MGResultManager : MonoBehaviour
             stressDiff = -10;
 
         }
-        else if (p < 0.35f) // 20%의 확률로 안 좋은 결과
+        else if (p < 0.27f) // 20%의 확률로 안 좋은 결과
         {
             switch (behaviorId)
             {
@@ -80,12 +80,12 @@ public class MGResultManager : MonoBehaviour
         {
             float p = Random.value;
             Debug.Log("찌라시 하루 결과 | 확률: " + p);
-            if (p < 0.10f) // 10%의 확률로 좋은 결과
+            if (p < 0.05f) // 5%의 확률로 좋은 결과
             {
                 resultRes = "사람들이 찌라시를 잘 받아줬다.";
                 stressDiff = -10;
             }
-            else if (p < 0.30f) // 20%의 확률로 안 좋은 결과
+            else if (p < 0.25f) // 20%의 확률로 안 좋은 결과
             {
                 resultRes = "경찰 단속에 걸렸다...";
                 stressDiff = 20;
