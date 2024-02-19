@@ -19,6 +19,7 @@ public class JjirasiGame : MonoBehaviour
     public TMP_Text stressText;
     public GameObject ScorePanel;
     public TMP_Text duelTimerText;
+    public GameObject duelText;
 
     public Button Jjirasi;
 
@@ -28,6 +29,7 @@ public class JjirasiGame : MonoBehaviour
     public Sprite normalSprite; // 기본 스프라이트
     public Sprite clickSprite; // 클릭 시 보여질 스프라이트
     public GameObject DuelPanel;
+    public GameObject DuelImageContainer;
 
 
 
@@ -66,7 +68,7 @@ public class JjirasiGame : MonoBehaviour
         clickTxt.text = "클릭 수 : 0";
         fameTxt.text = "명성 : 0";
         text_Timer.text = "남은 시간 : 30";
-          duelTimerText.text = "";
+        duelTimerText.text = "";
 
         LimitTime = 30;
         incfameTxt.gameObject.SetActive(false);
@@ -76,6 +78,7 @@ public class JjirasiGame : MonoBehaviour
         DuelPanel.SetActive(false);
         ScorePanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
+        duelText.gameObject.SetActive(false);
          PrepareGameStart();
 
         audioSource = GetComponent<AudioSource>();
@@ -127,7 +130,7 @@ public class JjirasiGame : MonoBehaviour
 {
     eventTriggered = true;
 
-
+    DuelimagePrefab.gameObject.SetActive(true);
 
     // 스프라이트 순차적 변경
     // 스프라이트 1을 사용하여 새 이미지 생성 및 표시
@@ -146,10 +149,15 @@ public class JjirasiGame : MonoBehaviour
     audioSource.Play();
     yield return new WaitForSeconds(1.0f); // 1초 대기
 
+    duelText.gameObject.SetActive(true);
+    yield return new WaitForSeconds(2.0f);
+
+
    Destroy(image1);
    Destroy(image2);
    Destroy(image3);
    DuelimagePrefab.gameObject.SetActive(false);
+   duelText.gameObject.SetActive(false);
 
    StartDuel();
  }
@@ -188,18 +196,20 @@ IEnumerator DuelTimer()
             duelTimerText.text = "";// 시간 제한 내에 슬라이더를 채우지 못하면 자동 실패 처리
             EndDuel(false);
         }
-        
+
     }
 }
     // 듀얼 시작 로직
 
     GameObject InstantiateImage(Sprite sprite)
-    {
-        GameObject newImageObj = Instantiate(DuelimagePrefab, imagesParent);
-        newImageObj.GetComponent<Image>().sprite = sprite;
-        newImageObj.SetActive(true);
-        return newImageObj;
-    }
+{
+    // DuelImageContainer의 Transform을 부모로 사용하여 새 이미지 객체를 생성
+    GameObject newImageObj = Instantiate(DuelimagePrefab, DuelImageContainer.transform);
+    newImageObj.GetComponent<Image>().sprite = sprite;
+    newImageObj.SetActive(true);
+    return newImageObj;
+}
+
     private void UpdateFame()
 {
     // 기본 클릭에 의한 명성 계산
