@@ -33,6 +33,7 @@ public class OpeningBand : MonoBehaviour
     private AudioSource audioSource;
 
     public GameObject[] Light;
+    public GameObject audience;
 
     void Start()
     {
@@ -200,8 +201,10 @@ public class OpeningBand : MonoBehaviour
             int randNum = Random.Range(0, 5);
             yield return new WaitForSeconds(0.7f);
             Light[randNum].SetActive(true);
+            audience.SetActive(true);
             yield return new WaitForSeconds(0.7f);
             Light[randNum].SetActive(false);
+            audience.SetActive(false);
         }
     }
 

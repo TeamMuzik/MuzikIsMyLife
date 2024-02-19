@@ -18,8 +18,14 @@ public class PrologueManager : MonoBehaviour
     private int currentStepIndex = 0; // 현재 단계 인덱스
     private Coroutine prologueCoroutine; // 프롤로그 코루틴
 
+    public AudioClip sadSound;
+    public AudioClip waterSound;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         foreach (var text in prologueTexts)
         {
             if (text != null)
@@ -95,9 +101,11 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[0], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[1], imagePrefab));
         steps.Add(new ShowTextStep(prologueTexts[0], "나 " + playerName + caseMarker + ",\n\n'해외 밴드' 야옹의 팬이다.")); // 플레이어 이름 출력
+        steps.Add(new ShowSpriteStep(this, imageContainer, sprites[0], imagePrefab));
         steps.Add(new ClearTextStep(prologueTexts[0])); // 텍스트 2, 3 비활성화
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[2], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[3], imagePrefab));
+        StartCoroutine(PlaySound());
         steps.Add(new ShowTextStep(prologueTexts[1], "하\n\n지\n\n만\n..."));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[4], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[5], imagePrefab));
@@ -111,8 +119,21 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ClearTextStep(prologueTexts[3], prologueTexts[4]));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[9], imagePrefab));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[10], imagePrefab));
+        steps.Add(new ShowSpriteStep(this, imageContainer, sprites[10], imagePrefab));
         steps.Add(new ShowPanelStep(panelPrefab));
         steps.Add(new ActivateButtonStep(mainMenuButton)); // 마지막 단계에서 버튼 활성화
+    }
+
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(7.8f);
+        audioSource.clip = sadSound;
+        audioSource.Play();
+        yield return new WaitForSeconds(5.2f);
+        audioSource.clip = waterSound;
+        audioSource.Play();
+        yield return new WaitForSeconds(1.3f);
+        audioSource.Play();
     }
 
     private void ShowCurrentStep()
