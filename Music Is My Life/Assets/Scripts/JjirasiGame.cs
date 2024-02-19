@@ -58,6 +58,7 @@ public class JjirasiGame : MonoBehaviour
     public AudioClip duelSound2;
     public AudioClip duelSound3;
     public AudioClip VsSound;
+    public AudioClip SuccessSound;
 
     private AudioSource audioSource;
 
@@ -272,6 +273,7 @@ IEnumerator DuelTimer()
           FameNum += 10; // 대결 승리 시 명성 10 증가
           UpdateFame();
           StartCoroutine(ShowFameIncrease());
+          PlaySound();
         }
 
 
@@ -375,6 +377,12 @@ IEnumerator DuelTimer()
         Jjirasi.gameObject.SetActive(false);
 
         incfameTxt.gameObject.SetActive(true);
+    }
+
+    void PlaySound()
+    {
+        audioSource.clip = SuccessSound;
+        audioSource.Play();
     }
 
 }
