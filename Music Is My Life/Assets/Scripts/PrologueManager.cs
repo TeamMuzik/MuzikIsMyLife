@@ -12,7 +12,7 @@ public class PrologueManager : MonoBehaviour
     public TMP_Text[] prologueTexts; // 텍스트 컴포넌트 배열
     public Button mainMenuButton; // 메인 화면으로 가는 버튼
     public GameObject panelPrefab;
-    
+
     private List<IPrologueStep> steps = new List<IPrologueStep>(); // 모든 단계를 포함하는 리스트
     private int currentStepIndex = 0; // 현재 단계 인덱스
     private Coroutine prologueCoroutine; // 프롤로그 코루틴
@@ -87,6 +87,7 @@ public class PrologueManager : MonoBehaviour
         steps.Add(new ShowTextStep(prologueTexts[4], "나는 꼭\n\n야옹을 보고 말겠다."));
         steps.Add(new ClearTextStep(prologueTexts[3], prologueTexts[4]));
         steps.Add(new ShowSpriteStep(this, imageContainer, sprites[9], imagePrefab));
+        steps.Add(new ShowSpriteStep(this, imageContainer, sprites[10], imagePrefab));
         steps.Add(new ShowPanelStep(panelPrefab));
         steps.Add(new ActivateButtonStep(mainMenuButton)); // 마지막 단계에서 버튼 활성화
     }
