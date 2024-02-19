@@ -258,7 +258,7 @@ void CheckInputAgainstBlocks(string input)
         if (input.Equals(textComponent.text.ToUpper().Trim()))
         {
             bool isLongWord = textComponent.text.Length > 5;
-            score += isLongWord ? 20 : 10;
+            score += isLongWord ? 15 : 10;
             correctWordCount++;
             scoreText.text = "점수: " + score;
 
