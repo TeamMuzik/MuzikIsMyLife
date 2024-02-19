@@ -176,7 +176,7 @@ return selectedWord;
 
         if (!gameEnded && block != null)
         {
-            gameTimer -= isHardWord ? 15 : 5;
+            gameTimer -= isHardWord ? 7 : 5;
             StartCoroutine(FlashTimer(1));
 
             DestroyBlock(block);
@@ -258,7 +258,7 @@ void CheckInputAgainstBlocks(string input)
         if (input.Equals(textComponent.text.ToUpper().Trim()))
         {
             bool isLongWord = textComponent.text.Length > 5;
-            score += isLongWord ? 15 : 10;
+            score += isLongWord ? 15 : 5;
             correctWordCount++;
             scoreText.text = "점수: " + score;
 
