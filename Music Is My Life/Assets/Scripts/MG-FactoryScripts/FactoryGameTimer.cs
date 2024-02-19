@@ -30,7 +30,7 @@ public class FactoryGameTimer : MonoBehaviour
     private void Start()
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
-        TotalTime = 61;
+        TotalTime = 31;
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
