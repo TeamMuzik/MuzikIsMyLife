@@ -41,8 +41,8 @@ public class CafeGameTimer : MonoBehaviour
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
-        Totaltime = 10000;
-        OrderTime = 10000;
+        Totaltime = 61;
+        OrderTime = 16;
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
@@ -82,6 +82,12 @@ public class CafeGameTimer : MonoBehaviour
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
                 StatusChanger.EarnMoney(cafeGameInstance.money);
+
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order1, cafeGameInstance.Order1Name);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order2, cafeGameInstance.Order1Name);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order3, cafeGameInstance.Order1Name);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order4, cafeGameInstance.Order1Name);
+                cafeGameInstance.DestroyOrder(cafeGameInstance.Order5, cafeGameInstance.Order1Name);
             }
         }
     }

@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Plane : MonoBehaviour
 {
-    float rightMoveSpeed = 3.84422111f;
-    float UpMoveSpeed = 3f;
+    // float time;
+    public float moveSpeed;
+    // public float scaleSize;
 
     void Update()
     {
-        transform.position += Vector3.right * rightMoveSpeed * Time.deltaTime;
-        transform.position += Vector3.up * UpMoveSpeed * Time.deltaTime;
-        if(transform.position.x > 540f)
-        {
-            Destroy(gameObject);
-        }
+        // transform.localScale = new Vector3 (scaleSize, scaleSize, 0) * (1+time);
+        transform.position += Vector3.right * moveSpeed * Time.deltaTime; 
+        // time += Time.deltaTime;
     }
-    
+
+    // public void resetAnim()
+    // {
+    //     time = 0;
+    //     transform.localScale = Vector3.one;
+    // }
 }

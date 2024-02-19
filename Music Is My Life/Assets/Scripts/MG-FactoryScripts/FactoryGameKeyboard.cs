@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,6 @@ public class FactoryGameKeyboard : MonoBehaviour
     private FactoryGameTimer FactoryGameTimerInstance;
     public KeyCode assignedKey; //객체의 key
 
-    private SpriteRenderer spriteRenderer;
     public Sprite LeftKeyboard; //좌
     public Sprite RightKeyboard; //우
     public Sprite DownKeyboard; //하
@@ -18,6 +17,7 @@ public class FactoryGameKeyboard : MonoBehaviour
     public static int keyState = 0; //키보드가 눌렸는지 체크하는 변수
     public static bool allowControl = true;
 
+    private SpriteRenderer spriteRenderer;
     private Color redColor = Color.red;
     private Color whiteColor = Color.white;
     public Color blackColor = Color.black;
@@ -59,7 +59,7 @@ public class FactoryGameKeyboard : MonoBehaviour
     {
         if (allowControl)
         {
-            if (objectIndex == FactoryGame.turn)
+            if (objectIndex == FactoryGame.factoryTurn)
             {
                 if (Input.GetKeyDown(assignedKey))
                 {
@@ -67,8 +67,9 @@ public class FactoryGameKeyboard : MonoBehaviour
                 }
                 if (keyState == 1 && !Input.anyKeyDown) //한번 입력되고 다른 키가 입력되지 않을 때
                 {
+                    FactoryGame.ChangeHandIndexInTurn(); // 손 인덱스 바꿈 (0/1)
                     keyState = 0;
-                    FactoryGame.turn++;
+                    FactoryGame.factoryTurn++;
                     FactoryGameInstance.PlayDollMakingSound(); // 인형 꿰메지는 사운드 재생
                     // StartCoroutine(SuccessChangeColor(gameObject));
                     Destroy(gameObject);
@@ -79,22 +80,23 @@ public class FactoryGameKeyboard : MonoBehaviour
                 }
                 else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
                 {
+                    FactoryGame.currentHandIndex = 2; // 손 인덱스 2로 바꿈
                     keyState = 0;
                     allowControl = false;
                     StartCoroutine(MistakeChangeColor());
                     StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
                     FactoryGameTimer.totalTime -= 2f;
                     FactoryGameInstance.PlayMistakeSound();
+
                     // foreach (GameObject keyboard in FactoryGameInstance.spawnedKeyboards)
-                    // {
-                    //     Destroy(keyboard);
-                    // }
+                    // { Destroy(keyboard); }
                     // FactoryGameInstance.spawnedKeyboards.Clear();
                 }
             }
         }
         
     }
+
     public IEnumerator MistakeChangeColor()
     {
         float elapsedTime = 0f; // 누적 경과 시간

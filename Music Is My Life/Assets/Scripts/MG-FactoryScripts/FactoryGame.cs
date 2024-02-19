@@ -17,7 +17,10 @@ public class FactoryGame : MonoBehaviour
     public Sprite[] CatSprites;
     public Sprite[] FoxSprites;
     public Sprite[] DogSprites;
-    
+    public GameObject hand; // 손
+    public Sprite[] handSprite; // 손 스프라이트들
+    public static int currentHandIndex;
+
     [SerializeField]
     private TextMeshProUGUI stageNumText;
     [SerializeField]
@@ -28,7 +31,7 @@ public class FactoryGame : MonoBehaviour
     public AudioClip dollMakingSound;
     private AudioSource audioSource;
 
-    public static int turn; //지금 어떤 오브젝트를 입력할 차례인지 (0에서 시작)
+    public static int factoryTurn; //지금 어떤 오브젝트를 입력할 차례인지 (0에서 시작)
     private static int stageNum = 0;
     public static int RandNum = 0;
     public int money = 0;
@@ -39,6 +42,8 @@ public class FactoryGame : MonoBehaviour
         money = 0;
         FactoryGameTimerInstance = FindObjectOfType<FactoryGameTimer>();
         audioSource = GetComponent<AudioSource>();
+        // 손 스프라이트 인덱스
+        currentHandIndex = 0;
     }
 
     public void SpawnKeyBoards()
@@ -48,7 +53,7 @@ public class FactoryGame : MonoBehaviour
             Destroy(keyboard);
         }
         spawnedKeyboards.Clear();
-        turn = 0;
+        factoryTurn = 0;
         int index = 0;
         float yPos = 1.5f;
         RandNum = Random.Range(3, 7);
@@ -154,6 +159,7 @@ public class FactoryGame : MonoBehaviour
     }
     void Update()
     {
+        hand.GetComponent<SpriteRenderer>().sprite = handSprite[currentHandIndex]; // 손 계속 업데이트
         if (FactoryGameTimer.totalTime < 0)
         {
             foreach (GameObject keyboard in spawnedKeyboards)
@@ -169,16 +175,16 @@ public class FactoryGame : MonoBehaviour
             switch (RandNum)
             {
                 case 3:
-                    spriteRenderer.sprite = BearSprites[turn];
+                    spriteRenderer.sprite = BearSprites[factoryTurn];
                     break;
                 case 4:
-                    spriteRenderer.sprite = CatSprites[turn];
+                    spriteRenderer.sprite = CatSprites[factoryTurn];
                     break;
                 case 5:
-                    spriteRenderer.sprite = FoxSprites[turn];
+                    spriteRenderer.sprite = FoxSprites[factoryTurn];
                     break;
                 case 6:
-                    spriteRenderer.sprite = DogSprites[turn];
+                    spriteRenderer.sprite = DogSprites[factoryTurn];
                     break;
             }
             if (FactoryGameTimer.totalTime > 0)
@@ -186,7 +192,7 @@ public class FactoryGame : MonoBehaviour
                 if (doll.transform.position.x > 9)
                 {
                     Destroy(doll);
-                    if (turn < RandNum)
+                    if (factoryTurn < RandNum)
                     {
                         StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
                         FactoryGameTimer.totalTime -= 4f;
@@ -197,7 +203,7 @@ public class FactoryGame : MonoBehaviour
                         spawnedKeyboards.Clear();
                         PlayMistakeSound();
                         if (FactoryGameTimer.totalTime > 0)
-                        {   
+                        {
                             SpawnKeyBoards();
                         }
                     }
@@ -205,8 +211,9 @@ public class FactoryGame : MonoBehaviour
             }
         }
 
-        if (RandNum != 0 && turn == RandNum)
+        if (RandNum != 0 && factoryTurn == RandNum)
         {
+            currentHandIndex = 3;
             moneyManager();
             increaseStageNum();
             SpawnKeyBoards();
@@ -216,20 +223,35 @@ public class FactoryGame : MonoBehaviour
         moneyNumText.SetText(money.ToString() + "만원");
         stageNumText.SetText(stageNum.ToString() + "개");
     }
-        // if (stageNum == 6)
-        // {
-        //     stageNum++;
-        //     foreach (GameObject keyboard in spawnedKeyboards)
-        //     {
-        //         Destroy(keyboard);
-        //     }
-        //     spawnedKeyboards.Clear();
-        //     StartPanel.SetActive(false);
-        //     EndPanel.SetActive(true);
-        //     moneyNumText.SetText(money.ToString()+"만원");
-        //     StatusChanger.EarnMoney(money);
-        //     //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
-        // }
+
+
+    public static void ChangeHandIndexInTurn()
+    {
+        currentHandIndex = factoryTurn % 2;
+    }
+
+    // 손 오브젝트의 스프라이트바꾸기
+
+    /*public static IEnumerator HandSpriteWhenFinished()
+    {
+        hand.GetComponent<SpriteRenderer>().sprite = handSprite[0];
+        yield return new WaitForSeconds(.25f);
+    }*/
+
+    // if (stageNum == 6)
+    // {
+    //     stageNum++;
+    //     foreach (GameObject keyboard in spawnedKeyboards)
+    //     {
+    //         Destroy(keyboard);
+    //     }
+    //     spawnedKeyboards.Clear();
+    //     StartPanel.SetActive(false);
+    //     EndPanel.SetActive(true);
+    //     moneyNumText.SetText(money.ToString()+"만원");
+    //     StatusChanger.EarnMoney(money);
+    //     //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
+    // }
 
     // if (Timer.LimitTime < 0)
     // {
@@ -237,7 +259,7 @@ public class FactoryGame : MonoBehaviour
     //     EndStagePanel.SetActive(true);
     //     stageNum = 1;
     //     Timer.LimitTime = 15f;
-            
+
     //     foreach (GameObject keyboard in spawnedKeyboards)
     //     {
     //         Destroy(keyboard);
