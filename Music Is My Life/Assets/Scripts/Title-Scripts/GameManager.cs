@@ -99,17 +99,17 @@ public class GameManager : MonoBehaviour
 
         // 굿즈들
         // CD (1~14)
-        string[] cds = { "CD_CURRENT", "CD_1", "CD_2", "CD_3", "CD_4", "CD_5", "CD_6", "CD_7", "CD_8", "CD_9", "CD_10", "CD_11", "CD_12", "CD_13", "CD_14" };
+        string[] cds = { "CD_1", "CD_2", "CD_3", "CD_4", "CD_5", "CD_6", "CD_7", "CD_8", "CD_9", "CD_10", "CD_11", "CD_12", "CD_13", "CD_14" };
         SetFurnitureData(cds, 0);
         // LP (1~6; SHOP)
-        string[] lps = { "LP_CURRENT", "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6", "LP_SHOP" };
+        string[] lps = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6", "LP_SHOP" };
         SetFurnitureData(lps, 0);
         // 포스터 (1~10)
-        string[] posters = { "POSTER_CURRENT", "POSTER_1", "POSTER_2", "POSTER_3", "POSTER_4", "POSTER_5", "POSTER_6", "POSTER_7", "POSTER_8", "POSTER_9", "POSTER_10" };
+        string[] posters = { "POSTER_1", "POSTER_2", "POSTER_3", "POSTER_4", "POSTER_5", "POSTER_6", "POSTER_7", "POSTER_8", "POSTER_9", "POSTER_10" };
         SetFurnitureData(posters, 0);
 
         // replaceable settings
-        string[] categories = {"CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
+        string[] categories = { "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT", "CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
         foreach (string category in categories)
         {
             PlayerPrefs.SetInt(category, 0); // 0으로 세팅
