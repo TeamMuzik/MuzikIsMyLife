@@ -17,15 +17,15 @@ public class EndingSelector : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt("BandFame");
         string endingScene;
 
-        if (money >= 2500000)
+        if (money >= 100)
         {
             endingScene = "Ending-Expedition";
         }
-        else if (myFame >= 100)
+        else if (myFame >= 75)
         {
             endingScene = "Ending-OpeningBand";
         }
-        else if (bandFame >= 300)
+        else if (bandFame >= 150)
         {
             endingScene = "Ending-ConcertInKorea";
         }

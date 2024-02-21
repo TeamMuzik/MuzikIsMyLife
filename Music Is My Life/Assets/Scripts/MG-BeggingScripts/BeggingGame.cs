@@ -48,7 +48,7 @@ public class BeggingGame : MonoBehaviour
             turn = -1;
             BecameRich();
         }
-        else if (myFame >= 100 && p < 0.30f) // 명성이 100 이상이고 30%
+        else if (myFame >= 50 && p < 0.30f) // 명성이 50 이상이고 30%
         {
             Debug.Log("구걸 게임오버");
             SceneManager.LoadScene("Ending-Narak");

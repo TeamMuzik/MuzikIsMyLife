@@ -17,15 +17,15 @@ public class EndManager : MonoBehaviour
 
     void Start()
     {
-      if (illustrationObjects.Length == 1)
-      {
-          // 바로 End 버튼 활성화
-          endButton.gameObject.SetActive(true);
-          nextButton.gameObject.SetActive(false);
+        if (illustrationObjects.Length == 1)
+        {
+            // 바로 End 버튼 활성화
+            endButton.gameObject.SetActive(true);
+            nextButton.gameObject.SetActive(false);
 
-      }
-      else
-      { endButton.gameObject.SetActive(false);
+        }
+        else
+        { endButton.gameObject.SetActive(false);
 
         // 모든 일러스트를 비활성화
         for (int i = 1; i < illustrationObjects.Length; i++)
@@ -48,7 +48,7 @@ public class EndManager : MonoBehaviour
         // SceneMove 스크립트를 찾아 인스턴스 생성
         sceneMover = FindObjectOfType<SceneMove>();
     }
-  }
+    }
 
     // 다음 일러스트로 넘어가는 함수
     void NextIllustration()
