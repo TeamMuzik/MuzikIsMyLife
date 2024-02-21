@@ -17,7 +17,7 @@ public class EndingSelector : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt("BandFame");
         string endingScene;
 
-        if (money >= 100)
+        if (money >= 150)
         {
             endingScene = "Ending-Expedition";
         }
