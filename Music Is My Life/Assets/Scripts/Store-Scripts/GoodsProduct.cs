@@ -14,6 +14,9 @@ public class GoodsProduct : MonoBehaviour
 
     private TextMeshProUGUI buttonText;
 
+    void start() {
+        index = PlayerPrefs.GetInt(category + "_CURRENT", index);
+    }
     public void BuyGoodsProduct()
     {
         if (index >= totalCount)

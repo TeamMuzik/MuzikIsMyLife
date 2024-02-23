@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         SetFurnitureData(posters, 0);
 
         // replaceable settings
-        string[] categories = { "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT", "CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
+        string[] categories = {"CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT", "CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
         foreach (string category in categories)
         {
             PlayerPrefs.SetInt(category, 0); // 0으로 세팅
