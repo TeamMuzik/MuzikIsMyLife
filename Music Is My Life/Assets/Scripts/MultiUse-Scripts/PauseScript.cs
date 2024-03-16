@@ -31,23 +31,31 @@ public class PauseScript : MonoBehaviour
 
     public void Resume()
     {
-        if (!tutorialPanel.activeSelf)
-        {
-            pausePanel.SetActive(false);
-            Time.timeScale = 1f;
-            IsPaused = false;
-            audioSource.UnPause();
-        }
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        IsPaused = false;
+        audioSource.UnPause();
+        // if (!tutorialPanel.activeSelf)
+        // {
+        //     pausePanel.SetActive(false);
+        //     Time.timeScale = 1f;
+        //     IsPaused = false;
+        //     audioSource.UnPause();
+        // }
     }
 
     public void Pause()
     {
-        if (!tutorialPanel.activeSelf)
-        {
-            pausePanel.SetActive(true);
-            Time.timeScale = 0f;
-            IsPaused = true;
-            audioSource.Pause();
-        }
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+        IsPaused = true;
+        audioSource.Pause();
+        // if (!tutorialPanel.activeSelf)
+        // {
+        //     pausePanel.SetActive(true);
+        //     Time.timeScale = 0f;
+        //     IsPaused = true;
+        //     audioSource.Pause();
+        // }
     }
 }
