@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class PlaySummary : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class PlaySummary : MonoBehaviour
     public GameObject creditPanel;
     public TMP_Text endingName;
     public TMP_Text playerName;
+    public TMP_Text seasonText;
     public TMP_Text behaviorText;
     public TMP_Text statusText;
     public TMP_Text roomText;
@@ -30,6 +29,7 @@ public class PlaySummary : MonoBehaviour
         endingName.text = $"\"{PlayerPrefs.GetString("EndingName")}\"";
 
         playerName.text = "플레이어: " + PlayerPrefs.GetString("PlayerName"); // "의 2주 결과";
+        seasonText.text = PlayerPrefs.GetInt("SeasonNum") + "번째 시즌";
         behaviorText.text = "카페 알바: " + cafeCount + "일"
             + "\n사무실 알바: " + officeCount + "일"
             + "\n공장 알바: " + factoryCount + "일"

@@ -13,7 +13,7 @@ public class StatusController : MonoBehaviour
 
     public void UpdateStatus()
     {
-        NameText(); // 플레이어 이름
+        NameText();
         DdayText();
         DateText();
         StatusText();
@@ -21,21 +21,21 @@ public class StatusController : MonoBehaviour
         SetFloorThing(floorThing);
     }
 
-    public void NameText()
+    private void NameText()
     {
         playerName.text = PlayerPrefs.GetString("PlayerName");
     }
 
-    public void DdayText()
+    private void DdayText()
     {
         dday.text = PlayerPrefs.GetInt("Dday") + "일차";
     }
-    public void DateText()
+    private void DateText()
     {
         date.text = PlayerPrefs.GetString("Date");
     }
 
-    public void StatusText()
+    private void StatusText()
     {
         status.text = "돈: " + PlayerPrefs.GetInt("Money") + "만원"
                     + "\n나의 명성: " + PlayerPrefs.GetInt("MyFame")
@@ -44,7 +44,7 @@ public class StatusController : MonoBehaviour
     }
 
     // 스마트폰에서 알바 앱 아이콘 비활성화
-    void SetAppsByYesterdayBehavior()
+    private void SetAppsByYesterdayBehavior()
     {
         int yesterday = PlayerPrefs.GetInt("Dday") - 1;
         if (yesterday > 0)
@@ -73,7 +73,7 @@ public class StatusController : MonoBehaviour
     }
 
     // 전날 한 행동에 따라 바닥 물건 변경
-    public void SetFloorThing(GameObject floorThing)
+    private void SetFloorThing(GameObject floorThing)
     {
         int yesterday = PlayerPrefs.GetInt("Dday") - 1;
         if (yesterday < 1)
