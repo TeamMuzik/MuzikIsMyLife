@@ -37,6 +37,5 @@ public class EndingSelector : MonoBehaviour
         // 엔딩 잠금 해제 및 저장
         PlayerPrefs.SetString("Ending", endingScene);
         sceneMoveScript.targetScene = endingScene;
-        sceneMoveScript.ChangeScene();
     }
 }

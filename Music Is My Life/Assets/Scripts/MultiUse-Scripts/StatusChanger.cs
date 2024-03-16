@@ -73,15 +73,17 @@ public class StatusChanger : MonoBehaviour
             if (ydBehaviorId > 5)
                 return;
         }
+        // Dday
+        int nextDday = PlayerPrefs.GetInt("Dday") + 1;
+        PlayerPrefs.SetInt("Dday", nextDday);
 
-        // Date
+        // Date - 어제가 0일이면 Date 업데이트 x
+        if (yesterday == 0)
+            return;
         string savedDate = PlayerPrefs.GetString("Date");
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트
         string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
-        // Dday
-        int nextDday = PlayerPrefs.GetInt("Dday") + 1;
-        PlayerPrefs.SetInt("Dday", nextDday);
     }
 
 }
