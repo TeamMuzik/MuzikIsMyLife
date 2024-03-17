@@ -6,15 +6,12 @@ public class PauseScript : MonoBehaviour
 {
     public static bool IsPaused = false;
     public GameObject pausePanel;
-    public GameObject tutorialPanel;
     public GameObject AudioManager;
     private AudioSource audioSource;
 
     
     void Start()
     {
-        // IsPaused = false;
-        // pausePanel.SetActive(false);
         audioSource = AudioManager.GetComponent<AudioSource>();
     }
 
@@ -31,23 +28,17 @@ public class PauseScript : MonoBehaviour
 
     public void Resume()
     {
-        if (!tutorialPanel.activeSelf)
-        {
-            pausePanel.SetActive(false);
-            Time.timeScale = 1f;
-            IsPaused = false;
-            audioSource.UnPause();
-        }
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        IsPaused = false;
+        audioSource.UnPause();
     }
 
     public void Pause()
     {
-        if (!tutorialPanel.activeSelf)
-        {
-            pausePanel.SetActive(true);
-            Time.timeScale = 0f;
-            IsPaused = true;
-            audioSource.Pause();
-        }
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+        IsPaused = true;
+        audioSource.Pause();
     }
 }
