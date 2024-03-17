@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dc4aaef41712f4898d2fa4b2786ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorId: -1
+  behaviorId: 7
 --- !u!1 &35733623
 GameObject:
   m_ObjectHideFlags: 0
