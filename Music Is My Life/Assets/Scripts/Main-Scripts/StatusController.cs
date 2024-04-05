@@ -81,13 +81,13 @@ public class StatusController : MonoBehaviour
         int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior"); // 어제 한 행동 확인
         if (ydBehaviorId != -1 && ydBehaviorId < 6)
         {
-            ReplaceableThing thing = floorThing.GetComponent<ReplaceableThing>(); // 스프라이트 가져오기
+            ReplaceableThing repThing = floorThing.GetComponent<ReplaceableThing>(); // 스프라이트 가져오기
             SpriteRenderer spriteRenderer = floorThing.GetComponent<SpriteRenderer>();
 
-            if (spriteRenderer != null && ydBehaviorId >= 0 && ydBehaviorId < thing.availableSprites.Count)
+            if (spriteRenderer != null && ydBehaviorId >= 0 && ydBehaviorId < repThing.availableSprites.Count)
             {
                 // 선택한 인덱스에 해당하는 스프라이트 할당
-                spriteRenderer.sprite = thing.availableSprites[ydBehaviorId];
+                spriteRenderer.sprite = repThing.availableSprites[ydBehaviorId];
                 // 교체할 때 데이터도 교체 필요
             }
             else
