@@ -26,8 +26,8 @@ public class InitializeManager : MonoBehaviour
         PlayerPrefs.SetInt("SeasonNum", 0);
         InitializeForNextSeason();
 
-        // 기본 가구, 교체 가능한 가구, 상점 물품 세팅
-        InitializeRoomFurniture();
+        // 기본 가구, 변경되는 기본 가구, 교체 가능한 가구, 상점 물품 세팅
+        InitializeDefaultFurniture();
         InitializeRepFurniture();
         InitializeStoreProducts();
     }
@@ -69,21 +69,20 @@ public class InitializeManager : MonoBehaviour
         }
     }
 
-    private void InitializeRoomFurniture()
+    private void InitializeDefaultFurniture()
     {
         // 디폴트 가구들: index가 0
-        string[] defaultFurniture = { "ROOM_0", "BED_0", "GUITAR_0", "SHELF_0", "DESK_0", "CHARACTER_0", "MIC_0", "COMPUTER_0", "CHAIR_0", "CARPET_0" };
+        string[] defaultFurniture = { "CARPET_0", "CHAIR_0", "COMPUTER_0", "DESK_0", "GUITAR_0", "MIC_0", "ROOM_0", "SHELF_0",
+            "FLOOR_0", "CHARACTER_0", "BED_0", "CURTAIN_0", "WINDOW_0"};
         SetFurnitureData(defaultFurniture, 1);
-
-        // 바닥 물건들
-        string[] floorThings = { "FLOOR_GUITARBAG", "FLOOR_AIRPLANE", "FLOOR_SNACK", "FLOOR_JJIRASI", "FLOOR_COKE", "FLOOR_TRASH" };
-        SetFurnitureData(floorThings, 0);
     }
 
     private void InitializeRepFurniture()
     {
         // replaceable한 가구들의 초기 인덱스를 0으로 세팅
-        string[] categories = { "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT", "CHARACTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT", "COMPUTER_CURRENT", "BED_CURRENT" };
+        string[] categories = {"BED_CURRENT", "CHARACTER_CURRENT", "COMPUTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT",
+            "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT",
+            "CURTAIN_CURRENT", "WINDOW_CURRENT" };
         foreach (string category in categories)
         {
             PlayerPrefs.SetInt(category, 0); // 0으로 세팅
@@ -117,4 +116,22 @@ public class InitializeManager : MonoBehaviour
             PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
         }
     }
+
+
+    /* //240405 - 현재는 필요 없는 코드이나 기획에 따라 필요하게 될 수 있어 남겨둠
+        // 바닥 물건들
+        // string[] floorThings = { "FLOOR_GUITARBAG", "FLOOR_AIRPLANE", "FLOOR_SNACK", "FLOOR_JJIRASI", "FLOOR_COKE", "FLOOR_TRASH" };
+        // SetFurnitureData(floorThings, 0);
+
+    private void InitializeRandomFurniture()
+    {
+        // 디폴트 지만 replacable: IsOwned=1, IsEquipped=0
+        string[] randomFurniture = { "CHARACTER_1", "CHARACTER_2", "CHARACTER_3", "BED_1", "CURTAIN_1", "WINDOW_1" };
+
+        foreach (string Category_Index in randomFurniture)
+        {
+            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
+            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 0);
+        }
+    }*/
 }
