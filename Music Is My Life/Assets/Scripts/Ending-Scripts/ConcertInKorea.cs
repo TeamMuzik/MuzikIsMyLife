@@ -125,8 +125,6 @@ public class ConcertInKorea : MonoBehaviour
         tourYellow.SetActive(true);
         yield return new WaitForSeconds(0.55f);
         tourYellow.SetActive(false);
-        
-
     }
 
     void NextTalk()
