@@ -42,7 +42,7 @@ public class BeggingGame : MonoBehaviour
         dialContent.text = "서울역에서 구걸을 한다.\n무엇을 해볼까?\n(클릭해서 진행)";
         scorePanel.SetActive(false); // 결과 보기 비활성화
 
-        dialContentRectTransform  = dialContent.GetComponent<RectTransform>();
+        dialContentRectTransform  = dialContent.GetComponent<RectTransform>(); //다이얼로그 txt 위치값 가져오기
         dialImage.SetActive(false); //대화창 비활성화
         foreach (GameObject btn in choiceButtons) //선택지 버튼들 비활성화
             btn.SetActive(false);
@@ -97,17 +97,17 @@ public class BeggingGame : MonoBehaviour
         {
             PeopleNoticed(); // 5%의 확률로 행인이 알아봄
         }
-        else if (p < 0.1f) // 대성공 10%
+        else if (p < 0.1f) // 10%의 확률로 대성공
         {
             BegForMoneyBigSuccess();
             Debug.Log("대성공");
         }
-        else if (p < 0.4f) // 성공 40%
+        else if (p < 0.4f) // 40%의 확률로 성공
         {
             BegForMoneySuccess();
             Debug.Log("성공");
         }
-        else // 실패 50%
+        else // 50%의 확률로 성공
         {
             BegForMoneyFail();
             Debug.Log("실패");
