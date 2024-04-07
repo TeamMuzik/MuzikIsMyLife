@@ -63,6 +63,7 @@ public class BeggingGame : MonoBehaviour
 
     public void TryBegging() // 우선 대화창을 누르면 가능
     {
+        Debug.Log("if문 전 turn: " + turn);
         if (turn <= 0) // 버튼 클릭하지 못하도록
             return;
         
@@ -73,8 +74,26 @@ public class BeggingGame : MonoBehaviour
             return;
         }
 
+        if (turn == 1) // 부자 엔딩 나지 않고 4회 진행 -> 구걸 게임 종료
+        {
+            dialContent.text = "";
+            dialImage.SetActive(false);
+
+            StatusChanger.EarnMoney(income);
+            StatusChanger.UpdateMyFame(fameDiff);
+            //resultContent.text = "번 돈: " + income + "만원\n" + "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
+            resultContent.text = "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
+            if (fameDiff < 0)
+                resultContent.text += " (" + fameDiff + ")";
+            else if (fameDiff > 0)
+                resultContent.text += " (+" + fameDiff + ")";
+            scorePanel.GetComponent<SceneMove>().targetScene = "Main";
+            scorePanel.SetActive(true); // 결과 보기
+            return;
+        }
+
         turn--;
-        Debug.Log(turn);
+        Debug.Log("if문 후 turn: " +turn);
         dialTitle.text = "구걸중...";
         float p = Random.value; // 팬을 만날 확률, 혹은 돈을 벌 확률
         Debug.Log("확률: " + p);
@@ -114,22 +133,7 @@ public class BeggingGame : MonoBehaviour
         }
 
         SetMoneyFameStatusText();
-        if (turn == 0) // 부자 엔딩 나지 않고 4회 진행 -> 구걸 게임 종료
-        {
-            dialContent.text = "";
-            dialImage.SetActive(false);
 
-            StatusChanger.EarnMoney(income);
-            StatusChanger.UpdateMyFame(fameDiff);
-            //resultContent.text = "번 돈: " + income + "만원\n" + "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
-            resultContent.text = "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
-            if (fameDiff < 0)
-                resultContent.text += " (" + fameDiff + ")";
-            else if (fameDiff > 0)
-                resultContent.text += " (+" + fameDiff + ")";
-            scorePanel.GetComponent<SceneMove>().targetScene = "Main";
-            scorePanel.SetActive(true); // 결과 보기
-        }   
     }
 
     public void BecameRich()
