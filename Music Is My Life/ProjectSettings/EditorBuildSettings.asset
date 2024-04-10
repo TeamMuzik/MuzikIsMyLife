@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nar-AskNextSeason.unity
     guid: 7e7d4f99dad54f7499cfe049917023b9
+  - enabled: 1
+    path: Assets/Scenes/Main-Fortune.unity
+    guid: 062c3ec6dd6ff32478b24f6928a90360
   m_configObjects: {}
