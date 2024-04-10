@@ -72,35 +72,26 @@ public class InitializeManager : MonoBehaviour
     private void InitializeDefaultFurniture()
     {
         // 디폴트 가구들: index가 0
-        string[] defaultFurniture = { "CARPET_0", "CHAIR_0", "COMPUTER_0", "DESK_0", "GUITAR_0", "MIC_0", "ROOM_0", "SHELF_0",
-            "FLOOR_0", "CHARACTER_0", "BED_0", "CURTAIN_0", "WINDOW_0"};
+        string[] defaultFurniture = { "COMPUTER_0", "GUITAR_0", "MIC_0",
+            "BED_0", "CHARACTER_0", "CURTAIN_0", "WINDOW_0",
+            "ROOM_0", "SHELF_0", "FLOOR_0", "CARPET_0", "CHAIR_0", "DESK_0",
+        };
         SetFurnitureData(defaultFurniture, 1);
     }
 
-    private void InitializeRepFurniture()
-    {
-        // replaceable한 가구들의 초기 인덱스를 0으로 세팅
-        string[] categories = {"BED_CURRENT", "CHARACTER_CURRENT", "COMPUTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT",
-            "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT",
-            "CURTAIN_CURRENT", "WINDOW_CURRENT" };
-        foreach (string category in categories)
-        {
-            PlayerPrefs.SetInt(category, 0); // 0으로 세팅
-        }
-    }
 
     private void InitializeStoreProducts()
     {
         // 음향기기들
-        // 기타 (1~2), 컴퓨터 (1), 마이크 (1), 이펙터 (1~6), 페달보드 (1), 오인페 (1)
-        string[] audioProducts = { "GUITAR_1", "GUITAR_2", "COMPUTER_1", "MIC_1", "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1", "AUIN_1" };
+        // 컴퓨터 (1), 기타 (1~2), 마이크 (1), 이펙터 (1~6), 페달보드 (1), 오인페 (1)
+        string[] audioProducts = { "COMPUTER_1", "GUITAR_1", "GUITAR_2", "MIC_1", "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1", "AUIN_1" };
         SetFurnitureData(audioProducts, 0);
 
         // 굿즈들
         // CD (1~14)
         string[] cds = { "CD_1", "CD_2", "CD_3", "CD_4", "CD_5", "CD_6", "CD_7", "CD_8", "CD_9", "CD_10", "CD_11", "CD_12", "CD_13", "CD_14" };
-        // LP (1~6; SHOP)
-        string[] lps = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6", "LP_SHOP" };
+        // LP (1~6)
+        string[] lps = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6"};
         // 포스터 (1~10)
         string[] posters = { "POSTER_1", "POSTER_2", "POSTER_3", "POSTER_4", "POSTER_5", "POSTER_6", "POSTER_7", "POSTER_8", "POSTER_9", "POSTER_10" };
         SetFurnitureData(cds, 0);
@@ -113,7 +104,18 @@ public class InitializeManager : MonoBehaviour
         foreach (string Category_Index in furnitureNames)
         {
             PlayerPrefs.SetInt($"{Category_Index}_IsOwned", stat);
-            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
+            // PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
+        }
+    }
+    private void InitializeRepFurniture()
+    {
+        // replaceable한 가구들의 초기 인덱스를 0으로 세팅
+        string[] categories = {"COMPUTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT",
+            "BED_CURRENT", "CHARACTER_CURRENT", "CURTAIN_CURRENT", "WINDOW_CURRENT",
+            "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT" };
+        foreach (string category in categories)
+        {
+            PlayerPrefs.SetInt(category, 0); // 0으로 세팅
         }
     }
 

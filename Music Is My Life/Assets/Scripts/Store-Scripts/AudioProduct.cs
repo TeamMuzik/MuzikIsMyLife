@@ -3,27 +3,56 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-public class StoreProduct : Furniture // Furniture을 상속받음
+public class AudioProduct : MonoBehaviour // Furniture을 상속받음
 {
-    public int price; // 가격
+    public string category;
+    public int index;
     public bool replaceable;
+    public int price; // 가격
+    public bool isOwned;
     public Button button;
 
     private TextMeshProUGUI buttonText;
 
-    public void BuyProduct()
+    public void LoadOwnedStatus()
+    {
+        isOwned = PlayerPrefs.GetInt($"{category}_{index}_IsOwned", 0) == 1;
+    }
+
+    public void BuyAudioProduct()
     {
         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (buttonText == null)
+        {
+            throw new System.Exception("buttonText가 없습니다.");
+        }
+        if (buttonText.text.Equals("장착하기")) // 이미 산 물건
+        {
+            ReplaceAudioProduct();
+            return;
+        }
         if (StatusChanger.SpendMoney(price)) // 물건 구매 시도
         {
             UpgradeCoverAndDecreaseStress();
-            if (replaceable)
+            UpdateAudioProductData();
+            Debug.Log("구매 성공");
+
+            if (replaceable) // 교체 가능한 가구
             {
-                ReplaceProduct();
+                ReplaceAudioProduct();
+                SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
+                button.interactable = false;
+                if (category.Equals("GUITAR")) // 기타라면 장착 클릭 가능
+                {
+                    StartCoroutine(MapEquipAfterDelay());
+                    button.interactable = true;
+                }
+                else
+                {
+                    StartCoroutine(MapSoldOutAfterDelay());
+                }
             }
-            IsOwned = true; // 구매 완료
-            IsEquipped = true; // 장착 완료
-            if (buttonText != null)
+            else
             {
                 SetButtonTextAndColor("구매 완료", "#00B028"); // 텍스트를 변경하여 구매 완료로 설정
                 button.interactable = false;
@@ -38,16 +67,21 @@ public class StoreProduct : Furniture // Furniture을 상속받음
         }
     }
 
-    IEnumerator MapPriceTextAfterDelay()
+    IEnumerator MapEquipAfterDelay()
     {
         yield return new WaitForSeconds(1f); // 1초 대기
-        SetButtonTextAndColor(price.ToString() + "만원", "#323232");
+        SetButtonTextAndColor("장착하기", "#323232");
     }
 
     IEnumerator MapSoldOutAfterDelay()
     {
         yield return new WaitForSeconds(1f); // 1초 대기
         SetButtonTextAndColor("SOLD OUT", "#323232");
+    }
+    IEnumerator MapPriceTextAfterDelay()
+    {
+        yield return new WaitForSeconds(1f); // 1초 대기
+        SetButtonTextAndColor(price.ToString() + "만원", "#323232");
     }
 
     private void SetButtonTextAndColor(string text, string colorCode)
@@ -59,17 +93,19 @@ public class StoreProduct : Furniture // Furniture을 상속받음
         }
     }
 
-    public void ReplaceProduct()
+    // 구매에 대한 로직
+    private void UpdateAudioProductData()
     {
-        string[] CI = Category_Index.Split("_");
-        string category = CI[0];
-        int index = int.Parse(CI[1]);
-        int previousIndex = PlayerPrefs.GetInt(category + "_CURRENT");
-        PlayerPrefs.SetInt(category + "_" + previousIndex + "_IsEquipped", 0);
-        PlayerPrefs.SetInt(category + "_CURRENT", index);
+        PlayerPrefs.SetInt($"{category}_{index}_IsOwned", 1);
+        PlayerPrefs.SetInt($"{category}_CURRENT", index);
     }
 
-    public void UpgradeCoverAndDecreaseStress()
+    private void ReplaceAudioProduct()
+    {
+        PlayerPrefs.SetInt($"{category}_CURRENT", index);
+    }
+
+    private void UpgradeCoverAndDecreaseStress()
     {
         int subsMin = PlayerPrefs.GetInt("Subs_Min");
         int subsMax = PlayerPrefs.GetInt("Subs_Max");

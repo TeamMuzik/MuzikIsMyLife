@@ -12,7 +12,7 @@ public class FunitureController : MonoBehaviour
     public void UpdateFurnitures()
     {
         // 랜덤 선택되어야 하는 가구들
-        SelectRandRepCurrentIndex();
+        SelectRandomRepCurrentIndex();
 
         SetFurnitureObjects(furnitureList);
         SetFurnitureObjects(posterList);
@@ -29,14 +29,10 @@ public class FunitureController : MonoBehaviour
             Furniture furniture = obj.GetComponent<Furniture>();
             furniture.LoadFurnitureStatus();
 
-            if (furniture.IsOwned && furniture.IsEquipped)
-            {
+            if (furniture.IsOwned)
                 obj.SetActive(true);
-            }
             else
-            {
                 obj.SetActive(false);
-            }
         }
     }
 
@@ -50,7 +46,7 @@ public class FunitureController : MonoBehaviour
         }
     }
 
-    void SelectRandRepCurrentIndex() // RandRep 가구들 Sprite 수 바뀌면 조정해야 함
+    void SelectRandomRepCurrentIndex() // RandRep 가구들 Sprite 수 바뀌면 조정해야 함
     {
         int randIndex = Random.Range(0, 4); // randIndex 뽑기: 0 ~ 개수-1
 

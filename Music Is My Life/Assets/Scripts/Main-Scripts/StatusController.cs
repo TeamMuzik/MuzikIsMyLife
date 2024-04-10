@@ -67,7 +67,7 @@ public class StatusController : MonoBehaviour
                         childObject.SetActive(false);
                     button.interactable = true;
                 }
-                Debug.Log("appObj:" + dayBehavior.behaviorId +" " + appObj.name);
+                Debug.Log("appObj:" + dayBehavior.behaviorId + " " + appObj.name);
             }
         }
     }
