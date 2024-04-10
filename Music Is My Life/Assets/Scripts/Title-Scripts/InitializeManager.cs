@@ -92,15 +92,15 @@ public class InitializeManager : MonoBehaviour
     private void InitializeStoreProducts()
     {
         // 음향기기들
-        // 기타 (1~2), 컴퓨터 (1), 마이크 (1), 이펙터 (1~6), 페달보드 (1), 오인페 (1)
-        string[] audioProducts = { "GUITAR_1", "GUITAR_2", "COMPUTER_1", "MIC_1", "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1", "AUIN_1" };
+        // 컴퓨터 (1), 기타 (1~2), 마이크 (1), 이펙터 (1~6), 페달보드 (1), 오인페 (1)
+        string[] audioProducts = { "COMPUTER_1", "GUITAR_1", "GUITAR_2", "MIC_1", "EF_1", "EF_2", "EF_3", "EF_4", "EF_5", "EF_6", "PDBD_1", "AUIN_1" };
         SetFurnitureData(audioProducts, 0);
 
         // 굿즈들
         // CD (1~14)
         string[] cds = { "CD_1", "CD_2", "CD_3", "CD_4", "CD_5", "CD_6", "CD_7", "CD_8", "CD_9", "CD_10", "CD_11", "CD_12", "CD_13", "CD_14" };
-        // LP (1~6; SHOP)
-        string[] lps = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6", "LP_SHOP" };
+        // LP (1~6)
+        string[] lps = { "LP_1", "LP_2", "LP_3", "LP_4", "LP_5", "LP_6"};
         // 포스터 (1~10)
         string[] posters = { "POSTER_1", "POSTER_2", "POSTER_3", "POSTER_4", "POSTER_5", "POSTER_6", "POSTER_7", "POSTER_8", "POSTER_9", "POSTER_10" };
         SetFurnitureData(cds, 0);
