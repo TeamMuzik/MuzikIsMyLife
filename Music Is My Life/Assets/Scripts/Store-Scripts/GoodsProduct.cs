@@ -6,13 +6,19 @@ using System.Collections;
 public class GoodsProduct : MonoBehaviour
 {
     public string category;
-    public int price; // 가격
-    public int totalCount; // 총 개수
     public int index; // 1~14, 1~6
+    public int totalCount; // 총 개수
+    public int price; // 가격
     public TMP_Text description;
     public Button button;
 
     private TextMeshProUGUI buttonText;
+
+    public void LoadIndexStatus()
+    {
+        index = PlayerPrefs.GetInt($"{category}_CURRENT");
+        description.text = "남은 개수: " + (totalCount - index) + "개";
+    }
 
     public void BuyGoodsProduct()
     {
@@ -49,13 +55,11 @@ public class GoodsProduct : MonoBehaviour
     }
 
     // 구매에 대한 로직
-    public void UpdateGoodsProductData()
+    private void UpdateGoodsProductData()
     {
         index++;
-        string Category_Index = category + "_" + index;
-        PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
-        PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 1);
-        PlayerPrefs.SetInt(category + "_CURRENT", index);
+        PlayerPrefs.SetInt($"{category}_{index}_IsOwned", 1);
+        PlayerPrefs.SetInt($"{category}_CURRENT", index);
     }
 
     IEnumerator MapPriceTextAfterDelay()
@@ -79,7 +83,7 @@ public class GoodsProduct : MonoBehaviour
         }
     }
 
-    public void DecreaseStress()
+    private void DecreaseStress()
     {
         float p = Random.value;
         int stress;

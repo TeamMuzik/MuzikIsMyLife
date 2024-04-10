@@ -13,7 +13,7 @@ public class StatusController : MonoBehaviour
 
     public void UpdateStatus()
     {
-        NameText(); // 플레이어 이름
+        NameText();
         DdayText();
         DateText();
         StatusText();
@@ -21,21 +21,21 @@ public class StatusController : MonoBehaviour
         SetFloorThing(floorThing);
     }
 
-    public void NameText()
+    private void NameText()
     {
         playerName.text = PlayerPrefs.GetString("PlayerName");
     }
 
-    public void DdayText()
+    private void DdayText()
     {
         dday.text = PlayerPrefs.GetInt("Dday") + "일차";
     }
-    public void DateText()
+    private void DateText()
     {
         date.text = PlayerPrefs.GetString("Date");
     }
 
-    public void StatusText()
+    private void StatusText()
     {
         status.text = "돈: " + PlayerPrefs.GetInt("Money") + "만원"
                     + "\n나의 명성: " + PlayerPrefs.GetInt("MyFame")
@@ -44,7 +44,7 @@ public class StatusController : MonoBehaviour
     }
 
     // 스마트폰에서 알바 앱 아이콘 비활성화
-    void SetAppsByYesterdayBehavior()
+    private void SetAppsByYesterdayBehavior()
     {
         int yesterday = PlayerPrefs.GetInt("Dday") - 1;
         if (yesterday > 0)
@@ -67,13 +67,13 @@ public class StatusController : MonoBehaviour
                         childObject.SetActive(false);
                     button.interactable = true;
                 }
-                Debug.Log("appObj:" + dayBehavior.behaviorId +" " + appObj.name);
+                Debug.Log("appObj:" + dayBehavior.behaviorId + " " + appObj.name);
             }
         }
     }
 
     // 전날 한 행동에 따라 바닥 물건 변경
-    public void SetFloorThing(GameObject floorThing)
+    private void SetFloorThing(GameObject floorThing)
     {
         int yesterday = PlayerPrefs.GetInt("Dday") - 1;
         if (yesterday < 1)
@@ -81,13 +81,13 @@ public class StatusController : MonoBehaviour
         int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior"); // 어제 한 행동 확인
         if (ydBehaviorId != -1 && ydBehaviorId < 6)
         {
-            ReplaceableThing thing = floorThing.GetComponent<ReplaceableThing>(); // 스프라이트 가져오기
+            ReplaceableThing repThing = floorThing.GetComponent<ReplaceableThing>(); // 스프라이트 가져오기
             SpriteRenderer spriteRenderer = floorThing.GetComponent<SpriteRenderer>();
 
-            if (spriteRenderer != null && ydBehaviorId >= 0 && ydBehaviorId < thing.availableSprites.Count)
+            if (spriteRenderer != null && ydBehaviorId >= 0 && ydBehaviorId < repThing.availableSprites.Count)
             {
                 // 선택한 인덱스에 해당하는 스프라이트 할당
-                spriteRenderer.sprite = thing.availableSprites[ydBehaviorId];
+                spriteRenderer.sprite = repThing.availableSprites[ydBehaviorId];
                 // 교체할 때 데이터도 교체 필요
             }
             else

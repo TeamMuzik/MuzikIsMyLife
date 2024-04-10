@@ -14,18 +14,18 @@ public class EndingSelector : MonoBehaviour
     {
         int money = PlayerPrefs.GetInt("Money");
         int myFame = PlayerPrefs.GetInt("MyFame");
-        int bandFame = PlayerPrefs.GetInt("Fame");
+        int bandFame = PlayerPrefs.GetInt("BandFame");
         string endingScene;
 
-        if (money >= 2500000)
+        if (money >= 150)
         {
             endingScene = "Ending-Expedition";
         }
-        else if (myFame >= 100)
+        else if (myFame >= 75)
         {
             endingScene = "Ending-OpeningBand";
         }
-        else if (bandFame >= 300)
+        else if (bandFame >= 150)
         {
             endingScene = "Ending-ConcertInKorea";
         }
@@ -37,6 +37,5 @@ public class EndingSelector : MonoBehaviour
         // 엔딩 잠금 해제 및 저장
         PlayerPrefs.SetString("Ending", endingScene);
         sceneMoveScript.targetScene = endingScene;
-        sceneMoveScript.ChangeScene();
     }
 }

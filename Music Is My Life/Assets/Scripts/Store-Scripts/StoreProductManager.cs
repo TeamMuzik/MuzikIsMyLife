@@ -11,7 +11,7 @@ public class StoreProductManager : MonoBehaviour
 
     void Start()
     {
-        LoadProductsData(audioProducts);
+        LoadAudioProductsData(audioProducts);
         LoadGoodsProductsData(goodsProducts);
     }
 
@@ -21,25 +21,29 @@ public class StoreProductManager : MonoBehaviour
         playerStress.text = "스트레스: " + PlayerPrefs.GetInt("Stress"); // 내 스트레스 업데이트 
     }
 
-    public void LoadProductsData(GameObject[] allProductObj)
+    public void LoadAudioProductsData(GameObject[] allProductObj)
     {
         foreach (GameObject slotObj in allProductObj)
         {
-            StoreProduct product = slotObj.GetComponentInChildren<StoreProduct>();
+            AudioProduct product = slotObj.GetComponentInChildren<AudioProduct>();
             // 가구 상태 세팅
-            product.LoadFurnitureStatus();
+            product.LoadOwnedStatus();
             // 버튼 세팅
             Button button = slotObj.GetComponentInChildren<Button>();
             TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();
             // Debug.Log("상품명: " + product.Category_Index + " | 가격: " + product.price);
-            if (product.IsOwned) // 보유 중임
+            if (product.isOwned == false) // 보유 중x
             {
-                buttonText.text = "SOLD OUT";
-                button.interactable = false;
+                buttonText.text = product.price + "만원";
+            }
+            else if (product.category.Equals("GUITAR")) // 일단은 기타만 장착 변경 가능
+            {
+                buttonText.text = "장착하기";
             }
             else
             {
-                buttonText.text = product.price + "만원";
+                buttonText.text = "SOLD OUT";
+                button.interactable = false;
             }
             buttonText.color = ColorUtility.TryParseHtmlString("#323232", out Color color) ? color : Color.black;
         }
@@ -51,8 +55,7 @@ public class StoreProductManager : MonoBehaviour
         {
             GoodsProduct product = slotObj.GetComponentInChildren<GoodsProduct>();
             // index, 개수 세팅
-            product.index = PlayerPrefs.GetInt(product.category + "_CURRENT");
-            product.description.text = "남은 개수: " + (product.totalCount - product.index) + "개";
+            product.LoadIndexStatus();
             // 버튼 세팅
             Button button = slotObj.GetComponentInChildren<Button>();
             TextMeshProUGUI buttonText = slotObj.GetComponentInChildren<Button>().GetComponentInChildren<TextMeshProUGUI>();

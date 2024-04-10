@@ -78,7 +78,7 @@ public class FactoryGameKeyboard : MonoBehaviour
                         FactoryGameTimerInstance.MistakePanel.SetActive(false);
                     }
                 }
-                else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) //실수로 다른 키를 눌렀을 때
+                else if (Input.anyKeyDown && !Input.GetKeyDown(assignedKey) && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetKeyDown(KeyCode.Escape)) //실수로 다른 키를 눌렀을 때
                 {
                     FactoryGame.currentHandIndex = 2; // 손 인덱스 2로 바꿈
                     keyState = 0;
