@@ -155,12 +155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_1
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 1396606809}
+  category: 
 --- !u!212 &561249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -537,9 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_4"
   Category_Index: POSTER_4
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &21576029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -624,12 +621,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_3
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 132934287}
+  category: 
 --- !u!212 &27960129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -796,9 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_6
   Category_Index: EF_6
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &35610955
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +808,7 @@ GameObject:
   - component: {fileID: 35610957}
   - component: {fileID: 35610961}
   m_Layer: 5
-  m_Name: ExitBtn
+  m_Name: RestBtn
   m_TagString: app
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cc2442c4aae2548be225fd46c67cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: TitleScreen
+  targetScene: Main
 --- !u!114 &35610958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,9 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_1
   Category_Index: LP_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &35733626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1650,12 +1642,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: GUITAR_2
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 40
   replaceable: 1
   button: {fileID: 643685833}
+  category: 
 --- !u!212 &88701927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2448,9 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_13
   Category_Index: CD_13
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &124314654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2883,9 +2872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uBCF4\uB77C \uCFE0\uC158 \uC758\uC790"
   Category_Index: CHAIR_0
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &203602099
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,9 +3542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_5"
   Category_Index: POSTER_5
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &233845342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3750,9 +3735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_3"
   Category_Index: POSTER_3
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &246319740
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4502,12 +4485,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_6
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 790401165}
+  category: 
 --- !u!212 &322662755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4869,9 +4851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_5
   Category_Index: LP_5
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &360750419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4956,12 +4936,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: PDBD_1
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 875183143}
+  category: 
 --- !u!212 &364301829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5076,9 +5055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_3
   Category_Index: LP_3
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &373126874
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5780,7 +5757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &414452712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5796,7 +5773,6 @@ RectTransform:
   - {fileID: 738299336}
   - {fileID: 509890551}
   - {fileID: 1662596352}
-  - {fileID: 1010093527}
   - {fileID: 1214844802}
   m_Father: {fileID: 518487785}
   m_RootOrder: 3
@@ -6056,9 +6032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uCC45\uC0C1"
   Category_Index: DESK_0
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &456152596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,12 +6158,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: AUIN_1
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 40
   replaceable: 0
   button: {fileID: 814808915}
+  category: 
 --- !u!212 &474100367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6304,9 +6277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_3
   Category_Index: CD_3
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &500799680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6632,9 +6603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_6"
   Category_Index: POSTER_6
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &558666169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6921,9 +6890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_2
   Category_Index: EF_2
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &592558063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7131,9 +7098,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 742911502}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1079490739}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+        m_MethodName: set_isOn
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7509,12 +7476,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_5
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 1259761431}
+  category: 
 --- !u!212 &634321824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8405,9 +8371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_3
   Category_Index: EF_3
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &671019713
 GameObject:
   m_ObjectHideFlags: 0
@@ -8647,8 +8611,10 @@ GameObject:
   - component: {fileID: 713168809}
   - component: {fileID: 713168811}
   - component: {fileID: 713168810}
+  - component: {fileID: 713168813}
+  - component: {fileID: 713168812}
   m_Layer: 0
-  m_Name: "XBtn(\uAE30\uB2A5\uC5C6\uC74C)"
+  m_Name: "XBtn_\uC885\uB8CC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8661,17 +8627,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713168808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2833334, y: 0.2833334, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 742911503}
-  m_RootOrder: 3
+  m_Father: {fileID: 1622434889}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.384, y: -1.293}
+  m_AnchoredPosition: {x: 6.9923186, y: 4.3436975}
   m_SizeDelta: {x: 1.2694, y: 1.2694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713168810
@@ -8712,6 +8678,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713168808}
   m_CullTransparentMesh: 1
+--- !u!114 &713168812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713168808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cc2442c4aae2548be225fd46c67cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: TitleScreen
+--- !u!114 &713168813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713168808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 713168810}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 713168812}
+        m_TargetAssemblyTypeName: SceneMove, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 374686987}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 74b8925252a96a240bcd959a74d12cb6, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &718130937
 GameObject:
   m_ObjectHideFlags: 0
@@ -9293,12 +9340,10 @@ Transform:
   m_Children:
   - {fileID: 1462412679}
   - {fileID: 1622434889}
-  - {fileID: 1306604771}
-  - {fileID: 713168809}
   - {fileID: 1396548686}
   - {fileID: 1079490735}
   m_Father: {fileID: 788914437}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745789164
 GameObject:
@@ -9332,12 +9377,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_2
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 2093697872}
+  category: 
 --- !u!212 &745789166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9504,9 +9548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: PDBD_1
   Category_Index: PDBD_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &788914433
 GameObject:
   m_ObjectHideFlags: 0
@@ -9604,6 +9646,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 898271832}
   - {fileID: 742911503}
   - {fileID: 1030334722}
   - {fileID: 849953420}
@@ -9922,7 +9965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &792869643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10544,9 +10587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uC218\uB0A9\uC7A5"
   Category_Index: SHELF_0
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &811465670
 GameObject:
   m_ObjectHideFlags: 0
@@ -11251,9 +11292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_10"
   Category_Index: POSTER_10
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &837797639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11375,7 +11414,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788914437}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12151,12 +12190,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: MIC_1
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 40
   replaceable: 1
   button: {fileID: 211304152}
+  category: 
 --- !u!212 &895443904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12224,6 +12262,154 @@ Transform:
   m_Father: {fileID: 1821695492}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &898271831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898271832}
+  - component: {fileID: 898271835}
+  - component: {fileID: 898271834}
+  - component: {fileID: 898271833}
+  - component: {fileID: 898271836}
+  m_Layer: 5
+  m_Name: "\uB3C8\uBCF5\uC0AC\uBC84\uD2BC"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &898271832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898271831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1084769927}
+  m_Father: {fileID: 788914437}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -361.5, y: 262}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &898271833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898271831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 898271834}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 898271836}
+        m_TargetAssemblyTypeName: AddMoneyTest, Assembly-CSharp
+        m_MethodName: AddMoneyForTest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &898271834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898271831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &898271835
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898271831}
+  m_CullTransparentMesh: 1
+--- !u!114 &898271836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898271831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdcc7717f7f96a4a8828476d032d078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusController: {fileID: 1622434891}
 --- !u!1 &917291095
 GameObject:
   m_ObjectHideFlags: 0
@@ -12452,12 +12638,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: EF_4
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 10
   replaceable: 0
   button: {fileID: 1582313500}
+  category: 
 --- !u!212 &926069786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12572,9 +12757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_12
   Category_Index: CD_12
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &932971748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13090,7 +13273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC8C\uC784\n\uC885\uB8CC"
+  m_text: "\uD734\uC2DD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -13167,90 +13350,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975277253}
   m_CullTransparentMesh: 1
---- !u!1 &1010093526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1010093527}
-  - component: {fileID: 1010093528}
-  m_Layer: 0
-  m_Name: "\uAD7F\uC988_\uC2AC\uB86F"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1010093527
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010093526}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.3, y: -1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 414452712}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1010093528
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010093526}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ab87046cbdca7d14f9b6963135568ff1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.84, y: 9.44}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1016299034
 GameObject:
   m_ObjectHideFlags: 0
@@ -13755,7 +13854,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788914437}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13831,7 +13930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1030334722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13849,7 +13948,7 @@ RectTransform:
   - {fileID: 595043141}
   - {fileID: 518487785}
   m_Father: {fileID: 788914437}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13993,9 +14092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_1"
   Category_Index: POSTER_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &1039719008
 GameObject:
   m_ObjectHideFlags: 0
@@ -14336,14 +14433,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
+  furnitureName: "\uD39C\uB354 \uD154\uB808\uCE90\uC2A4\uD130"
   Category_Index: GUITAR_1
-  description: 
   isOwned: 1
-  isEquipped: 1
   price: 150
   replaceable: 1
   button: {fileID: 1845083881}
+  category: GUITAR
 --- !u!212 &1059870909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14458,9 +14554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_11
   Category_Index: CD_11
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1060559008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14663,7 +14757,7 @@ GameObject:
   - component: {fileID: 1079490740}
   - component: {fileID: 1079490741}
   m_Layer: 5
-  m_Name: "\uC2A4\uB9C8\uD2B8\uD3F0"
+  m_Name: "\uC2A4\uB9C8\uD2B8\uD3F0\uBC84\uD2BC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14682,7 +14776,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 742911503}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14897,6 +14991,141 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1084769926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084769927}
+  - component: {fileID: 1084769929}
+  - component: {fileID: 1084769928}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1084769927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084769926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 898271832}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1084769928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084769926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\uB3C8\uBCF5\uC0AC\n\uBC84\uD2BC"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
+  m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 10
+  m_fontSizeBase: 10
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 30
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1084769929
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084769926}
+  m_CullTransparentMesh: 1
 --- !u!1 &1108717314
 GameObject:
   m_ObjectHideFlags: 0
@@ -14996,9 +15225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_5
   Category_Index: EF_5
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &1110701424
 GameObject:
   m_ObjectHideFlags: 0
@@ -16223,9 +16450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_7
   Category_Index: CD_7
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1189670575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16520,9 +16745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_10
   Category_Index: CD_10
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1205690453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16700,7 +16923,7 @@ RectTransform:
   - {fileID: 341339338}
   - {fileID: 431256734}
   m_Father: {fileID: 414452712}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16754,9 +16977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_8
   Category_Index: CD_8
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1218133453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17095,9 +17316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_2
   Category_Index: CD_2
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1269818272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17467,9 +17686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_2"
   Category_Index: POSTER_2
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1285981920
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17688,16 +17905,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306604770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -139.63745}
-  m_LocalScale: {x: 0.2833334, y: 0.2833334, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 742911503}
-  m_RootOrder: 2
+  m_Father: {fileID: 1622434889}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9416261, y: -1.2900243}
+  m_AnchoredPosition: {x: 5.4309998, y: 4.354199}
   m_SizeDelta: {x: 1.2862, y: 1.2666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306604773
@@ -18071,7 +18288,7 @@ RectTransform:
   - {fileID: 593245674}
   - {fileID: 35610956}
   m_Father: {fileID: 742911503}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -18398,9 +18615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_6
   Category_Index: LP_6
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1454765372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18951,9 +19166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_4
   Category_Index: LP_4
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1523758113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19105,9 +19318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_4
   Category_Index: EF_4
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &1579151384
 GameObject:
   m_ObjectHideFlags: 0
@@ -19155,9 +19366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_6
   Category_Index: CD_6
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1579151387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19257,9 +19466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_7"
   Category_Index: POSTER_7
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1580754227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19505,9 +19712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_5
   Category_Index: CD_5
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1604098659
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19659,9 +19864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD68C\uC0C9 \uBC29"
   Category_Index: ROOM_0
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &1622434888
 GameObject:
   m_ObjectHideFlags: 0
@@ -19696,6 +19899,8 @@ Transform:
   - {fileID: 974659265}
   - {fileID: 126758415}
   - {fileID: 1987605156}
+  - {fileID: 1306604771}
+  - {fileID: 713168809}
   m_Father: {fileID: 742911503}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20359,9 +20564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_9"
   Category_Index: POSTER_9
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1655646870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20461,9 +20664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC624\uB514\uC624 \uC778\uD130\uD398\uC774\uC2A4"
   Category_Index: AUIN_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1660312008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20853,9 +21054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_1
   Category_Index: EF_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!1 &1679357436
 GameObject:
   m_ObjectHideFlags: 0
@@ -21038,9 +21237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_4
   Category_Index: CD_4
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1679602731
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21790,9 +21987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_14
   Category_Index: CD_14
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1746372645
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22682,9 +22877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_2
   Category_Index: LP_2
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1868059927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23321,9 +23514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_1
   Category_Index: CD_1
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1885024021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23446,7 +23637,7 @@ RectTransform:
   m_Children:
   - {fileID: 803679823}
   m_Father: {fileID: 788914437}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -23500,9 +23691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_9
   Category_Index: CD_9
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1919732361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23629,7 +23818,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9db9a99bec4cc464ba81db7882913632, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d010b203a814b045affab61c200fc17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -23637,7 +23826,7 @@ SpriteRenderer:
   m_Size: {x: 24, y: 18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1932144117
@@ -24338,9 +24527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC6D0\uD615 \uCE74\uD398\uD2B8"
   Category_Index: CARPET_0
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2010437510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25436,12 +25623,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: 
   Category_Index: COMPUTER_1
-  description: 
   isOwned: 0
-  isEquipped: 0
   price: 100
   replaceable: 1
   button: {fileID: 2019400641}
+  category: 
 --- !u!212 &2105642160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25691,9 +25877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_8"
   Category_Index: POSTER_8
-  description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2115209940
 SpriteRenderer:
   m_ObjectHideFlags: 0

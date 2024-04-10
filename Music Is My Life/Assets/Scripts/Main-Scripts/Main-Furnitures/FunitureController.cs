@@ -29,14 +29,10 @@ public class FunitureController : MonoBehaviour
             Furniture furniture = obj.GetComponent<Furniture>();
             furniture.LoadFurnitureStatus();
 
-            if (furniture.IsOwned && furniture.IsEquipped)
-            {
+            if (furniture.IsOwned)
                 obj.SetActive(true);
-            }
             else
-            {
                 obj.SetActive(false);
-            }
         }
     }
 

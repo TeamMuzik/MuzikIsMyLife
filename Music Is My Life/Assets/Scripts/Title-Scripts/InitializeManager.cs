@@ -72,22 +72,13 @@ public class InitializeManager : MonoBehaviour
     private void InitializeDefaultFurniture()
     {
         // 디폴트 가구들: index가 0
-        string[] defaultFurniture = { "CARPET_0", "CHAIR_0", "COMPUTER_0", "DESK_0", "GUITAR_0", "MIC_0", "ROOM_0", "SHELF_0",
-            "FLOOR_0", "CHARACTER_0", "BED_0", "CURTAIN_0", "WINDOW_0"};
+        string[] defaultFurniture = { "COMPUTER_0", "GUITAR_0", "MIC_0",
+            "BED_0", "CHARACTER_0", "CURTAIN_0", "WINDOW_0",
+            "ROOM_0", "SHELF_0", "FLOOR_0", "CARPET_0", "CHAIR_0", "DESK_0",
+        };
         SetFurnitureData(defaultFurniture, 1);
     }
 
-    private void InitializeRepFurniture()
-    {
-        // replaceable한 가구들의 초기 인덱스를 0으로 세팅
-        string[] categories = {"BED_CURRENT", "CHARACTER_CURRENT", "COMPUTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT",
-            "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT",
-            "CURTAIN_CURRENT", "WINDOW_CURRENT" };
-        foreach (string category in categories)
-        {
-            PlayerPrefs.SetInt(category, 0); // 0으로 세팅
-        }
-    }
 
     private void InitializeStoreProducts()
     {
@@ -113,7 +104,18 @@ public class InitializeManager : MonoBehaviour
         foreach (string Category_Index in furnitureNames)
         {
             PlayerPrefs.SetInt($"{Category_Index}_IsOwned", stat);
-            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
+            // PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
+        }
+    }
+    private void InitializeRepFurniture()
+    {
+        // replaceable한 가구들의 초기 인덱스를 0으로 세팅
+        string[] categories = {"COMPUTER_CURRENT", "GUITAR_CURRENT", "MIC_CURRENT",
+            "BED_CURRENT", "CHARACTER_CURRENT", "CURTAIN_CURRENT", "WINDOW_CURRENT",
+            "CD_CURRENT", "LP_CURRENT", "POSTER_CURRENT" };
+        foreach (string category in categories)
+        {
+            PlayerPrefs.SetInt(category, 0); // 0으로 세팅
         }
     }
 
