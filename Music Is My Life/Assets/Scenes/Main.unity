@@ -153,13 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_1
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 1
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 1396606809}
-  category: 
 --- !u!212 &561249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -536,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_4"
   Category_Index: POSTER_4
+  description: 
   isOwned: 0
 --- !u!212 &21576029
 SpriteRenderer:
@@ -619,13 +619,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_3
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 3
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 132934287}
-  category: 
 --- !u!212 &27960129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -792,6 +791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_6
   Category_Index: EF_6
+  description: 
   isOwned: 0
 --- !u!1 &35610955
 GameObject:
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_1
   Category_Index: LP_1
+  description: 
   isOwned: 0
 --- !u!212 &35733626
 SpriteRenderer:
@@ -1640,13 +1641,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: GUITAR_2
-  isOwned: 0
-  price: 40
+  category: GUITAR
+  index: 2
   replaceable: 1
+  price: 40
+  isOwned: 0
   button: {fileID: 643685833}
-  category: 
 --- !u!212 &88701927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2439,6 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_13
   Category_Index: CD_13
+  description: 
   isOwned: 0
 --- !u!212 &124314654
 SpriteRenderer:
@@ -2712,8 +2713,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 27960128}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2872,6 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uBCF4\uB77C \uCFE0\uC158 \uC758\uC790"
   Category_Index: CHAIR_0
+  description: 
   isOwned: 0
 --- !u!1 &203602099
 GameObject:
@@ -3195,8 +3197,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 895443903}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3542,6 +3544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_5"
   Category_Index: POSTER_5
+  description: 
   isOwned: 0
 --- !u!212 &233845342
 SpriteRenderer:
@@ -3735,6 +3738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_3"
   Category_Index: POSTER_3
+  description: 
   isOwned: 0
 --- !u!212 &246319740
 SpriteRenderer:
@@ -4483,13 +4487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_6
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 6
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 790401165}
-  category: 
 --- !u!212 &322662755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4851,6 +4854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_5
   Category_Index: LP_5
+  description: 
   isOwned: 0
 --- !u!212 &360750419
 SpriteRenderer:
@@ -4934,13 +4938,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: PDBD_1
-  isOwned: 0
-  price: 10
+  category: PDBD
+  index: 1
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 875183143}
-  category: 
 --- !u!212 &364301829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5055,6 +5058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_3
   Category_Index: LP_3
+  description: 
   isOwned: 0
 --- !u!212 &373126874
 SpriteRenderer:
@@ -6032,6 +6036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uCC45\uC0C1"
   Category_Index: DESK_0
+  description: 
   isOwned: 0
 --- !u!1 &456152596
 GameObject:
@@ -6156,13 +6161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: AUIN_1
-  isOwned: 0
-  price: 40
+  category: AUIN
+  index: 1
   replaceable: 0
+  price: 40
+  isOwned: 0
   button: {fileID: 814808915}
-  category: 
 --- !u!212 &474100367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6277,6 +6281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_3
   Category_Index: CD_3
+  description: 
   isOwned: 0
 --- !u!212 &500799680
 SpriteRenderer:
@@ -6603,6 +6608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_6"
   Category_Index: POSTER_6
+  description: 
   isOwned: 0
 --- !u!212 &558666169
 SpriteRenderer:
@@ -6890,6 +6896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_2
   Category_Index: EF_2
+  description: 
   isOwned: 0
 --- !u!1 &592558063
 GameObject:
@@ -7474,13 +7481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_5
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 5
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 1259761431}
-  category: 
 --- !u!212 &634321824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7769,8 +7775,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 88701926}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8371,6 +8377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_3
   Category_Index: EF_3
+  description: 
   isOwned: 0
 --- !u!1 &671019713
 GameObject:
@@ -9375,13 +9382,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_2
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 2
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 2093697872}
-  category: 
 --- !u!212 &745789166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9548,6 +9554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: PDBD_1
   Category_Index: PDBD_1
+  description: 
   isOwned: 0
 --- !u!1 &788914433
 GameObject:
@@ -9887,8 +9894,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 322662754}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10587,6 +10594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uAC08\uC0C9 \uC218\uB0A9\uC7A5"
   Category_Index: SHELF_0
+  description: 
   isOwned: 0
 --- !u!1 &811465670
 GameObject:
@@ -10808,8 +10816,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 474100366}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11292,6 +11300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_10"
   Category_Index: POSTER_10
+  description: 
   isOwned: 0
 --- !u!212 &837797639
 SpriteRenderer:
@@ -11506,8 +11515,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 364301828}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12188,13 +12197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: MIC_1
-  isOwned: 0
-  price: 40
+  category: MIC
+  index: 1
   replaceable: 1
+  price: 40
+  isOwned: 0
   button: {fileID: 211304152}
-  category: 
 --- !u!212 &895443904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12508,9 +12516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   category: LP
-  price: 30
-  totalCount: 6
   index: 0
+  totalCount: 6
+  price: 30
   description: {fileID: 1067066365}
   button: {fileID: 1460081874}
 --- !u!1 &917730762
@@ -12636,13 +12644,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: EF_4
-  isOwned: 0
-  price: 10
+  category: EF
+  index: 4
   replaceable: 0
+  price: 10
+  isOwned: 0
   button: {fileID: 1582313500}
-  category: 
 --- !u!212 &926069786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12757,6 +12764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_12
   Category_Index: CD_12
+  description: 
   isOwned: 0
 --- !u!212 &932971748
 SpriteRenderer:
@@ -14092,6 +14100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_1"
   Category_Index: POSTER_1
+  description: 
   isOwned: 0
 --- !u!1 &1039719008
 GameObject:
@@ -14433,13 +14442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: "\uD39C\uB354 \uD154\uB808\uCE90\uC2A4\uD130"
-  Category_Index: GUITAR_1
-  isOwned: 1
-  price: 150
-  replaceable: 1
-  button: {fileID: 1845083881}
   category: GUITAR
+  index: 1
+  replaceable: 1
+  price: 150
+  isOwned: 1
+  button: {fileID: 1845083881}
 --- !u!212 &1059870909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14554,6 +14562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_11
   Category_Index: CD_11
+  description: 
   isOwned: 0
 --- !u!212 &1060559008
 SpriteRenderer:
@@ -15225,6 +15234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_5
   Category_Index: EF_5
+  description: 
   isOwned: 0
 --- !u!1 &1110701424
 GameObject:
@@ -16450,6 +16460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_7
   Category_Index: CD_7
+  description: 
   isOwned: 0
 --- !u!212 &1189670575
 SpriteRenderer:
@@ -16745,6 +16756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_10
   Category_Index: CD_10
+  description: 
   isOwned: 0
 --- !u!212 &1205690453
 SpriteRenderer:
@@ -16977,6 +16989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_8
   Category_Index: CD_8
+  description: 
   isOwned: 0
 --- !u!212 &1218133453
 SpriteRenderer:
@@ -17208,8 +17221,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 634321823}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17316,6 +17329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_2
   Category_Index: CD_2
+  description: 
   isOwned: 0
 --- !u!212 &1269818272
 SpriteRenderer:
@@ -17686,6 +17700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_2"
   Category_Index: POSTER_2
+  description: 
   isOwned: 0
 --- !u!212 &1285981920
 SpriteRenderer:
@@ -18418,8 +18433,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 561248}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18615,6 +18630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_6
   Category_Index: LP_6
+  description: 
   isOwned: 0
 --- !u!212 &1454765372
 SpriteRenderer:
@@ -18766,9 +18782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   category: POSTER
-  price: 5
-  totalCount: 10
   index: 0
+  totalCount: 10
+  price: 5
   description: {fileID: 1635786302}
   button: {fileID: 1186856782}
 --- !u!1 &1460081872
@@ -19166,6 +19182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_4
   Category_Index: LP_4
+  description: 
   isOwned: 0
 --- !u!212 &1523758113
 SpriteRenderer:
@@ -19318,6 +19335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_4
   Category_Index: EF_4
+  description: 
   isOwned: 0
 --- !u!1 &1579151384
 GameObject:
@@ -19366,6 +19384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_6
   Category_Index: CD_6
+  description: 
   isOwned: 0
 --- !u!212 &1579151387
 SpriteRenderer:
@@ -19466,6 +19485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_7"
   Category_Index: POSTER_7
+  description: 
   isOwned: 0
 --- !u!212 &1580754227
 SpriteRenderer:
@@ -19604,8 +19624,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 926069785}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19712,6 +19732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_5
   Category_Index: CD_5
+  description: 
   isOwned: 0
 --- !u!212 &1604098659
 SpriteRenderer:
@@ -19864,6 +19885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD68C\uC0C9 \uBC29"
   Category_Index: ROOM_0
+  description: 
   isOwned: 0
 --- !u!1 &1622434888
 GameObject:
@@ -20564,6 +20586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_9"
   Category_Index: POSTER_9
+  description: 
   isOwned: 0
 --- !u!212 &1655646870
 SpriteRenderer:
@@ -20664,6 +20687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC624\uB514\uC624 \uC778\uD130\uD398\uC774\uC2A4"
   Category_Index: AUIN_1
+  description: 
   isOwned: 0
 --- !u!212 &1660312008
 SpriteRenderer:
@@ -20950,9 +20974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   category: CD
-  price: 15
-  totalCount: 14
   index: 0
+  totalCount: 14
+  price: 15
   description: {fileID: 885801722}
   button: {fileID: 718130939}
 --- !u!1 &1673326084
@@ -21054,6 +21078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: EF_1
   Category_Index: EF_1
+  description: 
   isOwned: 0
 --- !u!1 &1679357436
 GameObject:
@@ -21237,6 +21262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_4
   Category_Index: CD_4
+  description: 
   isOwned: 0
 --- !u!212 &1679602731
 SpriteRenderer:
@@ -21987,6 +22013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_14
   Category_Index: CD_14
+  description: 
   isOwned: 0
 --- !u!212 &1746372645
 SpriteRenderer:
@@ -22659,8 +22686,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1059870908}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22877,6 +22904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: LP_2
   Category_Index: LP_2
+  description: 
   isOwned: 0
 --- !u!212 &1868059927
 SpriteRenderer:
@@ -23514,6 +23542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_1
   Category_Index: CD_1
+  description: 
   isOwned: 0
 --- !u!212 &1885024021
 SpriteRenderer:
@@ -23691,6 +23720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: CD_9
   Category_Index: CD_9
+  description: 
   isOwned: 0
 --- !u!212 &1919732361
 SpriteRenderer:
@@ -24527,6 +24557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uC6D0\uD615 \uCE74\uD398\uD2B8"
   Category_Index: CARPET_0
+  description: 
   isOwned: 0
 --- !u!212 &2010437510
 SpriteRenderer:
@@ -24665,8 +24696,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2105642159}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25395,8 +25426,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 745789165}
-        m_TargetAssemblyTypeName: StoreProduct, Assembly-CSharp
-        m_MethodName: BuyProduct
+        m_TargetAssemblyTypeName: AudioProduct, Assembly-CSharp
+        m_MethodName: BuyAudioProduct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25621,13 +25652,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559c1944504c5a84c92b20207bfe1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureName: 
-  Category_Index: COMPUTER_1
-  isOwned: 0
-  price: 100
+  category: COMPUTER
+  index: 1
   replaceable: 1
+  price: 100
+  isOwned: 0
   button: {fileID: 2019400641}
-  category: 
 --- !u!212 &2105642160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25877,6 +25907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureName: "\uD3EC\uC2A4\uD130_8"
   Category_Index: POSTER_8
+  description: 
   isOwned: 0
 --- !u!212 &2115209940
 SpriteRenderer:
