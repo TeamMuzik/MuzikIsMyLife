@@ -161,7 +161,19 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_1()
     {
-        fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("1번 과일개수확률: " + p);
+            if(p < 0.3f) //30%확률로 과일의 개수가 3개 나올 수도 있음
+                fruitsCount = 3;
+            else
+                fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
+        }
+        else
+            fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+
         for (int i = 0; i < fruitsCount; i++)
         {
             //과일 생성
@@ -192,7 +204,18 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_2()
     {
-        int fruitsCount = Random.Range(3, 6);
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("2번 과일개수확률: " + p);
+            if(p < 0.3f) //30%확률로 과일의 개수가 3개 나올 수도 있음
+                fruitsCount = 3;
+            else
+                fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
+        }
+        else
+            fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+
         for (int i = 0; i < fruitsCount; i++)
         {
             float yPos = 2.8f - 0.6f*i;
@@ -220,7 +243,19 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_3()
     {
-        int fruitsCount = Random.Range(3, 6);
+
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("3번 과일개수확률: " + p);
+            if(p < 0.3f) //30%확률로 과일의 개수가 3개 나올 수도 있음
+                fruitsCount = 3;
+            else
+                fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
+        }
+        else
+            fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        
         for (int i = 0; i < fruitsCount; i++)
         {
             float yPos = 2.8f - 0.6f*i;
@@ -248,7 +283,18 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_4()
     {
-        int fruitsCount = Random.Range(3, 6);
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("4번 과일개수확률: " + p);
+            if(p < 0.3f) //30%확률로 과일의 개수가 3개 나올 수도 있음
+                fruitsCount = 3;
+            else
+                fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
+        }
+        else
+            fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        
         for (int i = 0; i < fruitsCount; i++)
         {
             float yPos = 2.8f - 0.6f*i;
@@ -276,7 +322,18 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_5()
     {
-        int fruitsCount = Random.Range(3, 6);
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("5번 과일개수확률: " + p);
+            if(p < 0.3f) //30%확률로 과일의 개수가 3개 나올 수도 있음
+                fruitsCount = 3;
+            else
+                fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
+        }
+        else
+            fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        
         for (int i = 0; i < fruitsCount; i++)
         {
             float yPos = 2.8f - 0.6f*i;
