@@ -31,7 +31,7 @@ public class BeggingGame : MonoBehaviour
     RectTransform dialContentRectTransform;
 
     private int fortuneId;
-
+    private string isFortune;
     void Start()
     {
         income = 0;
@@ -51,6 +51,7 @@ public class BeggingGame : MonoBehaviour
         
         fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
+        isFortune = "";
         
     }
 
@@ -84,16 +85,25 @@ public class BeggingGame : MonoBehaviour
             dialContent.text = "";
             dialImage.SetActive(false);
 
+            if (fortuneId == 10)
+            {
+                income = 0;
+                isFortune = "앗 모든 돈을 도둑 맞았다...\n";
+            }
+
             StatusChanger.EarnMoney(income);
             StatusChanger.UpdateMyFame(fameDiff);
             //resultContent.text = "번 돈: " + income + "만원\n" + "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원\n" + "나의 명성: " + myFame;
-            resultContent.text = "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
+            resultContent.text = isFortune + "나의 돈: " + PlayerPrefs.GetInt("Money") + "만원 (+" + income + "만원)\n" + "나의 명성: " + PlayerPrefs.GetInt("MyFame");
+
             if (fameDiff < 0)
                 resultContent.text += " (" + fameDiff + ")";
             else if (fameDiff > 0)
                 resultContent.text += " (+" + fameDiff + ")";
+
             scorePanel.GetComponent<SceneMove>().targetScene = "Main";
             scorePanel.SetActive(true); // 결과 보기
+
             return;
         }
 
@@ -102,6 +112,7 @@ public class BeggingGame : MonoBehaviour
         dialTitle.text = "구걸중...";
         float p = Random.value; // 팬을 만날 확률, 혹은 돈을 벌 확률
         Debug.Log("확률: " + p);
+
 
         if(fortuneId == 5) //오늘의 운세 5번일 경우 - 2%의 확률로 1조 
             if (p < 0.02f)
