@@ -47,6 +47,8 @@ public class CafeGame : MonoBehaviour
     public int money = 0;
     private float yPosBox =2;
 
+    private int fruitsCount;
+
     public int clickCount = 0;
     
     public TMP_FontAsset customFont;
@@ -58,11 +60,17 @@ public class CafeGame : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private int fortuneId;
+
+
     void Start()
     {
         money = 0;
         clickCount = 0;
         audioSource = GetComponent<AudioSource>();
+
+        fortuneId = DayFortune.GetTodayFortuneId();
+        Debug.Log("운세번호: " + fortuneId);
     }
     
     void Update()
@@ -153,7 +161,7 @@ public class CafeGame : MonoBehaviour
 
     public void SpawnFruits_1()
     {
-        int fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
+        fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
         for (int i = 0; i < fruitsCount; i++)
         {
             //과일 생성

@@ -27,6 +27,9 @@ public class FactoryGameTimer : MonoBehaviour
     [SerializeField]
     public GameObject MistakePanel;
 
+    private int fortuneId;
+    private string isFortune;
+
     private void Start()
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
@@ -34,7 +37,10 @@ public class FactoryGameTimer : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
-        // StageTime = 16;
+
+        isFortune = "";
+        fortuneId = DayFortune.GetTodayFortuneId();
+        Debug.Log("운세번호: " + fortuneId);
     }
 
     public IEnumerator TotalTimer()
@@ -56,7 +62,13 @@ public class FactoryGameTimer : MonoBehaviour
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
                 resultText.text = resultRes;
                 stressText.text = stressRes;
-                ContentInScorePanel.SetText(FactoryGameInstance.money.ToString()+"개의 인형을 만들었다.\n 번 돈 "+FactoryGameInstance.money.ToString()+"만원");
+
+                if (fortuneId == 1)
+                {
+                    FactoryGameInstance.money += 5;
+                    isFortune = " (운세적용)";
+                }
+                ContentInScorePanel.SetText(FactoryGameInstance.money.ToString()+"개의 인형을 만들었다.\n 번 돈 "+FactoryGameInstance.money.ToString()+"만원" + isFortune);
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);

@@ -38,6 +38,9 @@ public class CafeGameTimer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI ContentInScorePanel;
 
+    private int fortuneId;
+    private string isFortune;
+
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
@@ -46,6 +49,10 @@ public class CafeGameTimer : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+
+        isFortune = "";
+        fortuneId = DayFortune.GetTodayFortuneId();
+        Debug.Log("운세번호: " + fortuneId);
     }
 
     public void startCoroutine()
@@ -77,7 +84,16 @@ public class CafeGameTimer : MonoBehaviour
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(0);
                 resultText.text = resultRes;
                 stressText.text = stressRes;
-                ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
+
+                if (fortuneId == 1)
+                {
+                    cafeGameInstance.money += 5;
+                    isFortune = " (운세적용)";
+                }
+                
+                ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원" + isFortune);
+                
+
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
