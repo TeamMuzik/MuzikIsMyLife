@@ -28,6 +28,9 @@ public class FactoryGameTimer : MonoBehaviour
     [SerializeField]
     public GameObject MistakePanel;
 
+    private int fortuneId;
+    private string isFortune;
+
     private void Start()
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
@@ -35,8 +38,14 @@ public class FactoryGameTimer : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+
         highScore = PlayerPrefs.GetInt("FactoryGameHighScore", 0);
         // StageTime = 16;
+
+
+        isFortune = "";
+        fortuneId = DayFortune.GetTodayFortuneId();
+
     }
 
     public IEnumerator TotalTimer()
@@ -54,11 +63,16 @@ public class FactoryGameTimer : MonoBehaviour
             {
                 StopAllCoroutines();
 
+                if (fortuneId == 1 || fortuneId == 7)//오늘의 운세 1번(알바비 +5) 또는 오늘의 운세 7번(알바 하드모드)
+                    isFortune = "(운세적용)";
+                else if (fortuneId == 1) //오늘의 운세 1번 (알바비 +5)
+                    FactoryGameInstance.money += 5;
+
                 // 알바 결과 매핑
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
                 resultText.text = resultRes;
-                stressText.text = stressRes;
                 ContentInScorePanel.SetText(FactoryGameInstance.money.ToString()+"개의 인형을 만들었다.\n 번 돈 "+FactoryGameInstance.money.ToString()+"만원");
+
                 if (FactoryGameInstance.money > highScore)
                   {
                     highScore = FactoryGameInstance.money;
@@ -66,6 +80,9 @@ public class FactoryGameTimer : MonoBehaviour
                     PlayerPrefs.Save();
                   }
                 Debug.Log("Current High Score: " + highScore);
+
+                stressText.text = stressRes + "\n" + isFortune;
+
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
