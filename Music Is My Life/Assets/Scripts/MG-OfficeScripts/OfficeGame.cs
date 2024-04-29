@@ -34,6 +34,8 @@ public class OfficeGame : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip successSound;
 
+    private static int playCount = 0; // 플레이 횟수 변수
+    private static int highScore = 0; // 최고 점수 변수
 
      private bool isGameStarted = false;
 
@@ -64,6 +66,9 @@ public class OfficeGame : MonoBehaviour
             }
         }
 
+        playCount = PlayerPrefs.GetInt("OfficeGamePlayCount", 0); // 플레이 횟수 불러오기
+        highScore = PlayerPrefs.GetInt("OfficeGameHighScore", 0); // 최고 점수 불러오기
+
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
 
         }
@@ -77,6 +82,11 @@ public class OfficeGame : MonoBehaviour
     gameTimer = 60.0f;
     score = 0;
     scoreText.text = "점수: " + score;
+
+    playCount++; // 플레이 횟수 증가
+       PlayerPrefs.SetInt("OfficeGamePlayCount", playCount); // 플레이 횟수 저장
+       PlayerPrefs.Save();
+      Debug.Log("Current playCount: " + playCount);
 
     // 초기에 모든 블록커를 비활성화
     foreach (GameObject blocker in blockers)
@@ -316,6 +326,14 @@ void UpdateGameTimer()
     {
         EndPanel.SetActive(true);
 
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("OfficeGameHighScore", highScore); // 최고 점수 저장
+            PlayerPrefs.Save();
+        }
+
+        Debug.Log("Current High Score: " + highScore);
         StopAllCoroutines();
         foreach (GameObject blocker in blockers)
         {

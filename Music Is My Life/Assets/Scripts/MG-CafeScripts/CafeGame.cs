@@ -50,7 +50,7 @@ public class CafeGame : MonoBehaviour
     private int fruitsCount;
 
     public int clickCount = 0;
-    
+
     public TMP_FontAsset customFont;
 
     [SerializeField]
@@ -60,7 +60,11 @@ public class CafeGame : MonoBehaviour
 
     private AudioSource audioSource;
 
+
+    private static int playCount = 0; // 플레이 횟수
+
     private int fortuneId;
+
 
 
     void Start()
@@ -69,10 +73,19 @@ public class CafeGame : MonoBehaviour
         clickCount = 0;
         audioSource = GetComponent<AudioSource>();
 
+
+        playCount = PlayerPrefs.GetInt("CafeGamePlayCount", 0);
+
+        playCount++; // 플레이 횟수 증가
+        PlayerPrefs.SetInt("CafeGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
+
         fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
+
     }
-    
+
     void Update()
     {
         if (TotalClickedFruits.Count < 5)
@@ -112,7 +125,7 @@ public class CafeGame : MonoBehaviour
 
         //실시간 번 돈 나타내기
         moneyNumTextInStartPanel.SetText(money.ToString()+"만원");
-        
+
         //과일을 클릭한 횟수에 따라 블랜더의 이미지 변경
         Image imageComponent = BlenderBtn.GetComponent<Image>();
         switch(clickCount)
@@ -275,7 +288,7 @@ public class CafeGame : MonoBehaviour
             RectTransform rectTransform = FruitNameObj.GetComponent<RectTransform>();
             rectTransform.SetParent(Order3NameVertical.transform, false); //버티컬 레이아웃의 자식요소로 들어가게 함
             Order3Name.Add(FruitNameObj);
-        } 
+        }
         Vector3 spawnPositionBox = new Vector3(0f, yPosBox, 0);
         GameObject ReceiptObj = ReceiptPrefabs[0];
         ReceiptObj3 = Instantiate(ReceiptObj, spawnPositionBox, Quaternion.identity);
@@ -406,11 +419,11 @@ public class CafeGame : MonoBehaviour
     //     {
     //         Destroy(TotalFruitImageObject[i]);
     //     }
-    //     TotalFruitImageObject.Clear(); 
+    //     TotalFruitImageObject.Clear();
     // }
 
-    // 2차원 리스트로 과일 주문 5개 생성하기 - 근데 어려워서 포기 
-    // public void SpawnFruits() 
+    // 2차원 리스트로 과일 주문 5개 생성하기 - 근데 어려워서 포기
+    // public void SpawnFruits()
     // {
     //     for (int i = 0; i < 5; i++)
     //     {
@@ -425,8 +438,8 @@ public class CafeGame : MonoBehaviour
     //             GameObject FruitsObj = Instantiate(RandomFruit, spawnPosition, Quaternion.identity);
     //             TotalOrder.Add(new List<GameObject>{FruitsObj});
     //         }
-            
-    //         float yPosBox = 1.5f + 0.5f * (5 - fruitCount); 
+
+    //         float yPosBox = 1.5f + 0.5f * (5 - fruitCount);
     //         Vector3 spawnPositionBox = new Vector3(xPos, yPosBox, 0);
     //         GameObject BoxObj = BoxPrefabs[fruitCount - 3];
     //         Instantiate(BoxObj, spawnPositionBox, Quaternion.identity);
