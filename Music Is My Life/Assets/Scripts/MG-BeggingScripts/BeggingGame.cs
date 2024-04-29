@@ -30,6 +30,8 @@ public class BeggingGame : MonoBehaviour
 
     RectTransform dialContentRectTransform;
 
+    private int fortuneId;
+
     void Start()
     {
         income = 0;
@@ -47,6 +49,9 @@ public class BeggingGame : MonoBehaviour
         foreach (GameObject btn in choiceButtons) //선택지 버튼들 비활성화
             btn.SetActive(false);
         
+        fortuneId = DayFortune.GetTodayFortuneId();
+        Debug.Log("운세번호: " + fortuneId);
+        
     }
 
     public void showChoice()
@@ -63,7 +68,7 @@ public class BeggingGame : MonoBehaviour
 
     public void TryBegging() // 우선 대화창을 누르면 가능
     {
-        Debug.Log("if문 전 turn: " + turn);
+        // Debug.Log("if문 전 turn: " + turn);
         if (turn <= 0) // 버튼 클릭하지 못하도록
             return;
         
@@ -93,10 +98,17 @@ public class BeggingGame : MonoBehaviour
         }
 
         turn--;
-        Debug.Log("if문 후 turn: " +turn);
+        // Debug.Log("if문 후 turn: " +turn);
         dialTitle.text = "구걸중...";
         float p = Random.value; // 팬을 만날 확률, 혹은 돈을 벌 확률
         Debug.Log("확률: " + p);
+
+        if(fortuneId == 5) //오늘의 운세 5번일 경우 - 2%의 확률로 1조 
+            if (p < 0.02f)
+            {
+                turn = -1;
+                BecameRich();
+            }
 
         if (p < 0.01f) // 1%의 확률로 1조
         {
