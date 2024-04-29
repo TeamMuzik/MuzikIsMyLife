@@ -51,7 +51,6 @@ public class CafeGameTimer : MonoBehaviour
 
         isFortune = "";
         fortuneId = DayFortune.GetTodayFortuneId();
-        Debug.Log("운세번호: " + fortuneId);
     }
 
     public void startCoroutine()
@@ -79,9 +78,9 @@ public class CafeGameTimer : MonoBehaviour
             {
                 StopAllCoroutines();
 
-                if (fortuneId == 1 || fortuneId == 7)
+                if (fortuneId == 1 || fortuneId == 7)//오늘의 운세 1번(알바비 +5) 또는 오늘의 운세 7번(알바 하드모드)
                     isFortune = "(운세적용)";
-                else if (fortuneId == 1)
+                else if (fortuneId == 1) //오늘의 운세 1번 (알바비 +5)
                     cafeGameInstance.money += 5;
                 
                 // 알바 결과 매핑
