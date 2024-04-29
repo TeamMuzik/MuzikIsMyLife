@@ -35,6 +35,7 @@ public class FactoryGame : MonoBehaviour
     private static int stageNum = 0;
     public static int RandNum = 0;
     public int money = 0;
+    private int fortuneId;
 
     private void Start()
     {
@@ -44,6 +45,9 @@ public class FactoryGame : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // 손 스프라이트 인덱스
         currentHandIndex = 0;
+
+        fortuneId = DayFortune.GetTodayFortuneId();
+        Debug.Log("운세번호: " + fortuneId);
     }
 
     public void SpawnKeyBoards()
@@ -56,8 +60,19 @@ public class FactoryGame : MonoBehaviour
         factoryTurn = 0;
         int index = 0;
         float yPos = 1.5f;
-        RandNum = Random.Range(3, 7);
-    
+
+        if (fortuneId == 7) //알바 하드모드 운세일 경우
+        {
+            float p = Random.value;
+            Debug.Log("인형확률: " + p);
+            if(p < 0.3f) //30%확률로 인형이 3, 4개 키보드로 나올 수도 있음
+                RandNum = Random.Range(3, 5);
+            else
+                RandNum = Random.Range(5, 7); //70%확률로 인형이 5, 6개 키보드
+        }
+        else //하드모드 운세가 아닐 경우
+            RandNum = Random.Range(3, 7); //인형의 조합 가지수 3~6개
+        
         switch (RandNum)
         {
             case 3:

@@ -89,8 +89,6 @@ public class CafeGameTimer : MonoBehaviour
                 resultText.text = resultRes;
                 ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
                 stressText.text = stressRes + "\n" + isFortune;
-                
-
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);

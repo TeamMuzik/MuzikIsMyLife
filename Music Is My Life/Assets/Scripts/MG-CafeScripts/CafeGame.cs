@@ -213,7 +213,7 @@ public class CafeGame : MonoBehaviour
             else
                 fruitsCount = Random.Range(4, 6); //70%확률로 과일의 개수 4, 5개
         }
-        else
+        else //하드모드 운세가 아닐경우
             fruitsCount = Random.Range(3, 6); //한 주문에 나오는 과일의 개수 3~5개 사이
 
         for (int i = 0; i < fruitsCount; i++)
