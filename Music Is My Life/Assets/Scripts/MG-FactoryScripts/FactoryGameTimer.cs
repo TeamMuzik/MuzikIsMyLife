@@ -13,6 +13,7 @@ public class FactoryGameTimer : MonoBehaviour
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text stressText;
     [SerializeField] private TextMeshProUGUI ContentInScorePanel;
+    private static int highScore = 0; // 최고 점수
     // [SerializeField] private TMP_Text StageTimerTxt;
     public static float totalTime;
     // public static float stageTime;
@@ -34,6 +35,7 @@ public class FactoryGameTimer : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        highScore = PlayerPrefs.GetInt("FactoryGameHighScore", 0);
         // StageTime = 16;
     }
 
@@ -57,6 +59,13 @@ public class FactoryGameTimer : MonoBehaviour
                 resultText.text = resultRes;
                 stressText.text = stressRes;
                 ContentInScorePanel.SetText(FactoryGameInstance.money.ToString()+"개의 인형을 만들었다.\n 번 돈 "+FactoryGameInstance.money.ToString()+"만원");
+                if (FactoryGameInstance.money > highScore)
+                  {
+                    highScore = FactoryGameInstance.money;
+                    PlayerPrefs.SetInt("FactoryGameHighScore", highScore);
+                    PlayerPrefs.Save();
+                  }
+                Debug.Log("Current High Score: " + highScore);
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);
@@ -95,7 +104,7 @@ public class FactoryGameTimer : MonoBehaviour
     //         yield return null;
 
     //         if(stageTime <= 0)
-    //         {  
+    //         {
     //             FactoryGameKeyboard.keyState = 0;
     //             foreach (GameObject keyboard in FactoryGameInstance.spawnedKeyboards)
     //             {

@@ -17,7 +17,7 @@ public class BeggingGame : MonoBehaviour
     public TMP_Text resultContent; // 점수 결과
     public Button button;
     public GameObject[] choiceButtons; //0번 동정심, 1번 설득, 3번 묘기
-    
+
 
     private int income;
     private int turn;
@@ -27,6 +27,9 @@ public class BeggingGame : MonoBehaviour
     private bool sym = false;
     private bool per = false;
     private bool trick = false;
+
+    private static int highScore = 0;
+    private static int playCount = 0;
 
     RectTransform dialContentRectTransform;
 
@@ -46,7 +49,15 @@ public class BeggingGame : MonoBehaviour
         dialImage.SetActive(false); //대화창 비활성화
         foreach (GameObject btn in choiceButtons) //선택지 버튼들 비활성화
             btn.SetActive(false);
-        
+
+        highScore = PlayerPrefs.GetInt("BeggingGameHighScore", 0);
+        playCount = PlayerPrefs.GetInt("BeggingGamePlayCount", 0);
+
+        playCount++;
+        PlayerPrefs.SetInt("BeggingGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
+
     }
 
     public void showChoice()
@@ -66,9 +77,9 @@ public class BeggingGame : MonoBehaviour
         Debug.Log("if문 전 turn: " + turn);
         if (turn <= 0) // 버튼 클릭하지 못하도록
             return;
-        
+
         if (turn == 3) //액션 1회 수행 후 다시 선택지 보여주기
-        {   
+        {
             turn--;
             showChoice();
             return;
@@ -89,6 +100,15 @@ public class BeggingGame : MonoBehaviour
                 resultContent.text += " (+" + fameDiff + ")";
             scorePanel.GetComponent<SceneMove>().targetScene = "Main";
             scorePanel.SetActive(true); // 결과 보기
+
+            if (income>highScore){
+              highScore = income;
+              PlayerPrefs.SetInt("BeggingGameHighScore",highScore);
+              PlayerPrefs.Save();
+
+            }
+            Debug.Log("Current High Score: " + highScore);
+
             return;
         }
 

@@ -35,6 +35,9 @@ public class FactoryGame : MonoBehaviour
     private static int stageNum = 0;
     public static int RandNum = 0;
     public int money = 0;
+    
+    private static int playCount = 0; // 플레이 횟수
+
 
     private void Start()
     {
@@ -44,6 +47,15 @@ public class FactoryGame : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // 손 스프라이트 인덱스
         currentHandIndex = 0;
+
+
+
+        playCount = PlayerPrefs.GetInt("FactoryGamePlayCount", 0);
+        playCount++; // 플레이 횟수 증가
+        PlayerPrefs.SetInt("FactoryGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
+
     }
 
     public void SpawnKeyBoards()
@@ -57,7 +69,7 @@ public class FactoryGame : MonoBehaviour
         int index = 0;
         float yPos = 1.5f;
         RandNum = Random.Range(3, 7);
-    
+
         switch (RandNum)
         {
             case 3:
@@ -67,7 +79,7 @@ public class FactoryGame : MonoBehaviour
                 doll = Instantiate(doll0Prefab, bearSpawn, Quaternion.identity);
                 //키보드 생성
                 for (int i = 0; i < RandNum; i++)
-                {   
+                {
                     float xPos = -1.5f + 1.5f*i;
                     Vector3 spawnPosition = new Vector3 (xPos, yPos, 0);
                     int randNum = Random.Range(0, possibleKeys.Length);
@@ -168,8 +180,8 @@ public class FactoryGame : MonoBehaviour
             }
             spawnedKeyboards.Clear();
         }
-        
-        if (doll != null) 
+
+        if (doll != null)
         {
             SpriteRenderer spriteRenderer = doll.GetComponent<SpriteRenderer>();
             switch (RandNum)
@@ -207,7 +219,7 @@ public class FactoryGame : MonoBehaviour
                             SpawnKeyBoards();
                         }
                     }
-                } 
+                }
             }
         }
 

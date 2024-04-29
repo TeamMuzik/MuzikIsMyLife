@@ -9,7 +9,7 @@ public class CafeGameTimer : MonoBehaviour
     private CafeGame cafeGameInstance;
 
     [SerializeField] private TMP_Text TotalTimerTxt;
-    
+
     [SerializeField] private TMP_Text Order1TimerTxt;
     [SerializeField] private TMP_Text Order2TimerTxt;
     [SerializeField] private TMP_Text Order3TimerTxt;
@@ -18,7 +18,7 @@ public class CafeGameTimer : MonoBehaviour
 
     [SerializeField] private float Totaltime;
     [SerializeField] private float OrderTime;
-    
+
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private TMP_Text stressText;
 
@@ -38,6 +38,8 @@ public class CafeGameTimer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI ContentInScorePanel;
 
+    private static int highScore = 0; // 최고 점수
+
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
@@ -46,6 +48,7 @@ public class CafeGameTimer : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        highScore = PlayerPrefs.GetInt("CafeGameHighScore", 0);
     }
 
     public void startCoroutine()
@@ -78,6 +81,15 @@ public class CafeGameTimer : MonoBehaviour
                 resultText.text = resultRes;
                 stressText.text = stressRes;
                 ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
+                if (cafeGameInstance.money > highScore)
+                  {
+           highScore = cafeGameInstance.money;
+           PlayerPrefs.SetInt("CafeGameHighScore", highScore);
+           PlayerPrefs.Save();
+          }
+
+
+        Debug.Log("Current High Score: " + highScore);
 
                 EndPanel.SetActive(true);
                 StartPanel.SetActive(false);

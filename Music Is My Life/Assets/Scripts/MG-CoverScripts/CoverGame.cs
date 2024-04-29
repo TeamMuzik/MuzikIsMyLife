@@ -27,6 +27,8 @@ public class CoverGame : MonoBehaviour
     private int rangeEnd; // 구독자 수 최대치 / 5
     private int subsMultiplier; // 구독자 증가 배율
 
+    private static int highScore = 0;
+    private static int playCount = 0;
     void Start()
     {
         totalSubs = PlayerPrefs.GetInt("Subscribers");
@@ -51,6 +53,14 @@ public class CoverGame : MonoBehaviour
         subsStatus.text = "구독자 수: " + totalSubs + "명";
         fameStatus.text = "나의 명성: " + beforeMyFame;
         scorePanel.SetActive(false); // 결과 보기 비활성화
+
+        highScore = PlayerPrefs.GetInt("CoverGameHighScore", 0);
+        playCount = PlayerPrefs.GetInt("CoverGamePlayCount", 0);
+
+        playCount++;
+        PlayerPrefs.SetInt("CoverGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
     }
 
     public void StartCoverGame()
@@ -107,6 +117,15 @@ public class CoverGame : MonoBehaviour
         resultContent.text = "구독자 수: " + PlayerPrefs.GetInt("Subscribers") + "명\n나의 명성: " + PlayerPrefs.GetInt("MyFame") + " (+" + newFame + ")";
         scorePanel.SetActive(true); // 나가기 버튼 활성화 (클릭 시 Main으로)
         Debug.Log("명성 증가량: " + newFame + ", 점수판 활성화");
+
+
+        if (totalSubs>highScore){
+          highScore = totalSubs;
+          PlayerPrefs.SetInt("CoverGameHighScore",highScore);
+          PlayerPrefs.Save();
+
+        }
+        Debug.Log("Current High Score: " + highScore);
 
         int result = MGResultManager.CoverDayResult();
         if (result == 1)

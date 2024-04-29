@@ -62,6 +62,10 @@ public class JjirasiGame : MonoBehaviour
 
     private AudioSource audioSource;
 
+
+    private static int highScore = 0;
+    private static int playCount = 0;
+
     void Start()
     {
         ClickNum = 0;
@@ -83,6 +87,8 @@ public class JjirasiGame : MonoBehaviour
          PrepareGameStart();
 
         audioSource = GetComponent<AudioSource>();
+        highScore = PlayerPrefs.GetInt("JjirasiGameHighScore", 0);
+        playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount", 0);
 
     }
 
@@ -94,6 +100,10 @@ public class JjirasiGame : MonoBehaviour
        startMessageText.gameObject.SetActive(false);
         UpdateEventTriggerTime(); // eventTriggerTime을 초기화하는 함수 호출
 
+        playCount++;
+        PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
 
        // 게임 및 타이머 시작 로직
        LimitTime = 30; // 예: 타이머 재설정
@@ -354,6 +364,13 @@ IEnumerator DuelTimer()
           {
 
             Hide();
+            if (ClickNum>highScore){
+              highScore = ClickNum;
+              PlayerPrefs.SetInt("JjirasiGameHighScore",highScore);
+              PlayerPrefs.Save();
+
+            }
+            Debug.Log("Current High Score: " + highScore);
 
           }
     }
