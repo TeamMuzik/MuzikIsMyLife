@@ -251,7 +251,7 @@ RectTransform:
   m_GameObject: {fileID: 1659419}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.82, y: 0.82, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012498690}
@@ -603,11 +603,11 @@ MonoBehaviour:
   pBlockText: {fileID: 528728350}
   BlockParent: {fileID: 1659420}
   blockers:
-  - {fileID: 1101346019}
-  - {fileID: 1295518517}
-  - {fileID: 1734820253}
-  - {fileID: 777648610}
   - {fileID: 1890551750}
+  - {fileID: 777648610}
+  - {fileID: 1734820253}
+  - {fileID: 1295518517}
+  - {fileID: 1101346019}
   StartButton: {fileID: 167724130}
   successSound: {fileID: 8300000, guid: 5bb467ddd10edf647adffd7717687a89, type: 3}
 --- !u!114 &167724130
@@ -1063,7 +1063,7 @@ RectTransform:
   m_GameObject: {fileID: 528728350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.82, y: 0.82, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012498690}
@@ -1121,8 +1121,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
-  m_fontSizeBase: 23
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
