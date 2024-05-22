@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
         startPanel.SetActive(false);
         htpPanel.SetActive(false);
         InitializeGamedata();
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     public void SavePlayerName()

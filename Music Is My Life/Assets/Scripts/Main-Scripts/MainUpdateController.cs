@@ -10,8 +10,6 @@ public class MainUpdateController : MonoBehaviour
 
     void Start()
     {
-
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
         roomPanel.SetActive(true);
         phonePanel.SetActive(false);
         storePanel.SetActive(false);
