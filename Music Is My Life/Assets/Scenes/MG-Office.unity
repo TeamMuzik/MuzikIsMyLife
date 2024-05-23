@@ -591,7 +591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WordInputField: {fileID: 1499306091}
-  WordInputFieldText: {fileID: 1739348895}
   timer: {fileID: 1860021333}
   scoreText: {fileID: 1632362637}
   resultText: {fileID: 1631898930}
@@ -1121,8 +1120,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
-  m_fontSizeBase: 23
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
