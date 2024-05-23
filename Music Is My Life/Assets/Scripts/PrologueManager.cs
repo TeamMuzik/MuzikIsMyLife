@@ -40,58 +40,66 @@ public class PrologueManager : MonoBehaviour
         prologueCoroutine = StartCoroutine(ExecuteStepsOverTime()); // 코루틴 시작
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) // 마우스 왼쪽 버튼 클릭 시
+        {
+            ShowNextStep();
+        }
+    }
+
     // 스킵 버튼 클릭 시 실행되는 스크립트
     public void SkipPrologue(GameObject skipButton)
-  {
-      if (prologueCoroutine != null)
-      {
-          StopCoroutine(prologueCoroutine);
-          prologueCoroutine = null;
-      }
+    {
+        if (prologueCoroutine != null)
+        {
+            StopCoroutine(prologueCoroutine);
+            prologueCoroutine = null;
+        }
 
-      if (audioSourceCoroutine != null)
-      {
-          StopCoroutine(audioSourceCoroutine);
-          audioSourceCoroutine = null;
-      }
+        if (audioSourceCoroutine != null)
+        {
+            StopCoroutine(audioSourceCoroutine);
+            audioSourceCoroutine = null;
+        }
 
-      // 포스터 이미지 활성화
-      poster.gameObject.SetActive(true);
+        // 포스터 이미지 활성화
+        poster.gameObject.SetActive(true);
 
-      // 패널을 지연시켜 활성화하기 위한 코루틴 시작
-      StartCoroutine(ShowPanelAfterDelay(1.5f)); // 예를 들어, 0.5초 후에 패널을 표시
+        // 패널을 지연시켜 활성화하기 위한 코루틴 시작
+        StartCoroutine(ShowPanelAfterDelay(1.5f)); // 예를 들어, 0.5초 후에 패널을 표시
 
-      // 메인 메뉴 버튼 활성화 및 스킵 버튼 비활성화
+        // 메인 메뉴 버튼 활성화 및 스킵 버튼 비활성화
+        skipButton.SetActive(false);
+    }
 
-      skipButton.SetActive(false);
-  }
+    IEnumerator ShowPanelAfterDelay(float delay)
+    {
+        // 지정된 지연 시간 동안 대기
+        yield return new WaitForSeconds(delay);
 
-  IEnumerator ShowPanelAfterDelay(float delay)
-  {
-      // 지정된 지연 시간 동안 대기
-      yield return new WaitForSeconds(delay);
-
-      // 패널 활성화
-      panelPrefab.gameObject.SetActive(true);
-      // 딜레이 후 닫기 버튼 활성화
-      yield return new WaitForSeconds(delay);
-      mainMenuButton.gameObject.SetActive(true);
-  }
-
+        // 패널 활성화
+        panelPrefab.gameObject.SetActive(true);
+        // 딜레이 후 닫기 버튼 활성화
+        yield return new WaitForSeconds(delay);
+        mainMenuButton.gameObject.SetActive(true);
+    }
 
     // 각 단계를 시간 간격을 두고 실행하는 코루틴
     IEnumerator ExecuteStepsOverTime()
     {
-        for (int i = 0; i < steps.Count; i++)
+        while (currentStepIndex < steps.Count)
         {
-            steps[i].Execute();
+            steps[currentStepIndex].Execute();
 
             // 'ClearTextStep' 다음에 'ShowSpriteStep'가 바로 오는 경우 대기하지 않음
-            if (i < steps.Count - 1 && steps[i] is ClearTextStep && steps[i + 1] is ShowSpriteStep)
+            if (currentStepIndex < steps.Count - 1 && steps[currentStepIndex] is ClearTextStep && steps[currentStepIndex + 1] is ShowSpriteStep)
             {
+                currentStepIndex++;
                 continue; // 대기 시간 없이 다음 단계로 진행
             }
 
+            currentStepIndex++;
             yield return new WaitForSeconds(1.3f); // 다른 경우에는 1초 대기
         }
 
@@ -144,11 +152,12 @@ public class PrologueManager : MonoBehaviour
         audioSource.Play();
     }
 
-    private void ShowCurrentStep()
+    private void ShowNextStep()
     {
         if (currentStepIndex < steps.Count)
         {
             steps[currentStepIndex].Execute();
+            currentStepIndex++;
         }
     }
 
@@ -236,18 +245,17 @@ public class PrologueManager : MonoBehaviour
     }
 
     private class ShowPanelStep : IPrologueStep
-{
-    private GameObject panel;
-
-    public ShowPanelStep(GameObject panel)
     {
-        this.panel = panel;
-    }
+        private GameObject panel;
 
-    public void Execute()
-    {
-        panel.SetActive(true);
-    }
-}
+        public ShowPanelStep(GameObject panel)
+        {
+            this.panel = panel;
+        }
 
+        public void Execute()
+        {
+            panel.SetActive(true);
+        }
+    }
 }
