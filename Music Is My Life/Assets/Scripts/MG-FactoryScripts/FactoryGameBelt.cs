@@ -6,10 +6,10 @@ public class FactoryGameBelt : MonoBehaviour
 {
     void Update()
     {
-        transform.position += Vector3.right * FactoryGameDoll.moveSpeed * Time.deltaTime;
-        if (transform.position.x>=17.76f)
+        transform.position += Vector3.down * FactoryGameDoll.moveSpeed * Time.deltaTime;
+        if (transform.position.y<=-14f)
         {
-            transform.position += new Vector3(-17.76f*2, 0, 0);
+            transform.position += new Vector3(0, 28f, 0);
         }
     }
 }
