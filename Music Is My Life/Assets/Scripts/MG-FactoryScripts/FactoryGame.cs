@@ -13,10 +13,6 @@ public class FactoryGame : MonoBehaviour
 
     private GameObject doll;
     public GameObject[] DollPrefab;
-    // public Sprite[] BearSprites;
-    // public Sprite[] CatSprites;
-    // public Sprite[] FoxSprites;
-    // public Sprite[] DogSprites;
     public GameObject hand; // 손
     public Sprite[] handSprite; // 손 스프라이트들
     public static int currentHandIndex;
@@ -131,13 +127,14 @@ public class FactoryGame : MonoBehaviour
         {
             if (FactoryGameTimer.totalTime > 0)
             {
-                if (doll.transform.position.x > 9)
+                RectTransform dollPos = doll.GetComponent<RectTransform>();
+                if (dollPos.anchoredPosition.y < -430)
                 {
                     Destroy(doll);
                     if (factoryTurn < RandNum)
                     {
                         StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                        FactoryGameTimer.totalTime -= 4f;
+                        FactoryGameTimer.totalTime -= 2f;
                         foreach (GameObject keyboard in spawnedKeyboards)
                         {
                             Destroy(keyboard);
@@ -171,48 +168,4 @@ public class FactoryGame : MonoBehaviour
     {
         currentHandIndex = factoryTurn % 2;
     }
-
-    // 손 오브젝트의 스프라이트바꾸기
-
-    /*public static IEnumerator HandSpriteWhenFinished()
-    {
-        hand.GetComponent<SpriteRenderer>().sprite = handSprite[0];
-        yield return new WaitForSeconds(.25f);
-    }*/
-
-    // if (stageNum == 6)
-    // {
-    //     stageNum++;
-    //     foreach (GameObject keyboard in spawnedKeyboards)
-    //     {
-    //         Destroy(keyboard);
-    //     }
-    //     spawnedKeyboards.Clear();
-    //     StartPanel.SetActive(false);
-    //     EndPanel.SetActive(true);
-    //     moneyNumText.SetText(money.ToString()+"만원");
-    //     StatusChanger.EarnMoney(money);
-    //     //GameObject.FindWithTag("StatusChanger").GetComponent<StatusChanger>().earnMoney(money);
-    // }
-
-    // if (Timer.LimitTime < 0)
-    // {
-    //     StageNumPanel.SetActive(false);
-    //     EndStagePanel.SetActive(true);
-    //     stageNum = 1;
-    //     Timer.LimitTime = 15f;
-
-    //     foreach (GameObject keyboard in spawnedKeyboards)
-    //     {
-    //         Destroy(keyboard);
-    //     }
-    //     spawnedKeyboards.Clear();
-    // }
-
-    // if (turn == 9)
-    // {
-    //     turn = 0;
-    //     increaseStageNum();
-    //     SpawnKeyBoards();
-    // }
 }
