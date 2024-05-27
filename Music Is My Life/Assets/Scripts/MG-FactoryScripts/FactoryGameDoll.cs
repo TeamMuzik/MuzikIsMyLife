@@ -8,6 +8,6 @@ public class FactoryGameDoll : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
     }
 }
