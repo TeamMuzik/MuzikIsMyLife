@@ -26800,6 +26800,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2eeaedd2105601e42a139d8be8343e49, type: 3}
   - {fileID: 21300000, guid: ead8bda88f8634846ad8c01f911efb9e, type: 3}
   - {fileID: 21300000, guid: 96f953c50c7b22246b455faea4a04d8b, type: 3}
+  - {fileID: 21300000, guid: 96f953c50c7b22246b455faea4a04d8b, type: 3}
 --- !u!212 &2143112923
 SpriteRenderer:
   m_ObjectHideFlags: 0
