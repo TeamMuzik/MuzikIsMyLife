@@ -60,7 +60,17 @@ public class FunitureController : MonoBehaviour
             PlayerPrefs.SetInt("BED_CURRENT", 1);
             PlayerPrefs.SetInt("CHARACTER_CURRENT", randIndex);
         }
-        PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 2)); // 창밖
-        PlayerPrefs.SetInt("CURTAIN_CURRENT", Random.Range(0, 2)); // 커튼
+
+        // 창문
+        int seasonNum = PlayerPrefs.GetInt("SeasonNum");
+        if (seasonNum == 1) // 3월: 0~1번 창문
+            PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 2));
+        else if (seasonNum == 2) // 8월: 0~2번 창문 (+비)
+            PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 3));
+        else // 12월: 0~3번 창문 (+눈)
+            PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 4));
+
+        // 커튼
+        PlayerPrefs.SetInt("CURTAIN_CURRENT", Random.Range(0, 2));
     }
 }
