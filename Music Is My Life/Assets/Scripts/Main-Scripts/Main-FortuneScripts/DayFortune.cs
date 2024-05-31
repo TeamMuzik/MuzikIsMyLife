@@ -10,15 +10,6 @@ public class DayFortune : MonoBehaviour
         return fortuneId;
     }
 
-    public static int RandomDraw()
-    {
-        int dayNum = PlayerPrefs.GetInt("Dday");
-        int fortuneId = Random.Range(1, 11);
-        PlayerPrefs.SetInt($"Day{dayNum}_Fortune", fortuneId);
-        Debug.Log("PickTodayFortune: " + fortuneId);
-        return fortuneId;
-    }
-
     public static string GetFortuneMessage(int fortuneId)
     {
         string fortuneMessage;
