@@ -16,8 +16,12 @@ public class FortuneManager : MonoBehaviour
         compStartPanel.SetActive(true);
         fortuneOpenPanel.SetActive(false);
         fortuneContentPanel.SetActive(false);
-        fortuneId = DayFortune.GetTodayFortuneId();
         spriteRenderer = fortuneImage.GetComponent<SpriteRenderer>();
+
+        // 이전 Fortune 효과 초기화
+        DayFortune.ResetFortuneEffect();
+
+        fortuneId = DayFortune.GetTodayFortuneId();
         if (fortuneId != -1)
         {
             Debug.Log("오늘의 운세(이미 확인): " + fortuneId);
@@ -37,6 +41,7 @@ public class FortuneManager : MonoBehaviour
             fortuneId = Random.Range(1, 11);
             PlayerPrefs.SetInt($"Day{dayNum}_Fortune", fortuneId);
             Debug.Log("오늘의 운세: " + fortuneId);
+            DayFortune.AddFortuneEffect(fortuneId);
             SetFortuneMessageSprite();
         }
     }
