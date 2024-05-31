@@ -350,7 +350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &287666040
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -511,10 +511,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bdc403c5b32f9934b9ba000460e2c66a, type: 3}
   - {fileID: 21300000, guid: 0c2fbfaf5b36cf44fbd238bb5458958d, type: 3}
   - {fileID: 21300000, guid: ce1eef43f23fdf840b40edcef49618b4, type: 3}
-  compStartPanel: {fileID: 0}
+  compStartPanel: {fileID: 1868758585}
   fortuneOpenPanel: {fileID: 1154582251}
   fortuneContentPanel: {fileID: 287666039}
-  fortuneImage: {fileID: 0}
+  fortuneImage: {fileID: 1827288090}
 --- !u!114 &365152771
 MonoBehaviour:
   m_ObjectHideFlags: 0
