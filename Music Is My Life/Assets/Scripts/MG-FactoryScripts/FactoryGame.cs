@@ -11,10 +11,10 @@ public class FactoryGame : MonoBehaviour
     public KeyCode[] possibleKeys; //실제 입력할 키보드 리스트 (방향키, 스페이스바)
     public List<GameObject> spawnedKeyboards = new List<GameObject>();
 
-    private GameObject doll;
+    public GameObject doll;
     public GameObject[] DollPrefab;
-    public GameObject hand; // 손
-    public Sprite[] handSprite; // 손 스프라이트들
+    //public GameObject hand; // 손
+    //public Sprite[] handSprite; // 손 스프라이트들
     public static int currentHandIndex;
 
     [SerializeField]
@@ -34,6 +34,8 @@ public class FactoryGame : MonoBehaviour
 
     private Transform canvasPos;
 
+    private bool isSpawning;
+
     private void Start()
     {
         stageNum = 0;
@@ -43,18 +45,24 @@ public class FactoryGame : MonoBehaviour
         // 손 스프라이트 인덱스
         currentHandIndex = 0;
         canvasPos = GameObject.Find("Canvas").transform;
+
+        isSpawning = false;
+            
     }
+
+    public void StartSpawning()
+    {   
+        SpawnKeyBoards();
+        if (FactoryGameTimer.totalTime > 0 && !isSpawning && !FactoryGameTimer.isEnd)
+        {
+            float spawnInterval = FactoryGameTimer.totalTime >= 15f ? 2.0f : 1.0f;
+            InvokeRepeating("SpawnKeyBoards", spawnInterval, spawnInterval);
+        }
+    }
+
 
     public void SpawnKeyBoards()
     {
-        foreach (GameObject keyboard in spawnedKeyboards)
-        {
-            Destroy(keyboard);
-        }
-        spawnedKeyboards.Clear();
-        factoryTurn = 0;
-        int index = 0;
-        float yPos = 1.5f;
         RandNum = Random.Range(3, 7);
     
         switch (RandNum)
@@ -85,6 +93,7 @@ public class FactoryGame : MonoBehaviour
             break;
         }
     }
+
     public void increaseStageNum()
     {
         stageNum++;
@@ -106,63 +115,32 @@ public class FactoryGame : MonoBehaviour
         audioSource.clip = mistakeSound;
         audioSource.Play();
     }
+
     public void PlayDollMakingSound()
     {
         audioSource.clip = dollMakingSound;
         audioSource.Play();
     }
+    
     void Update()
     {
-        hand.GetComponent<SpriteRenderer>().sprite = handSprite[currentHandIndex]; // 손 계속 업데이트
-        if (FactoryGameTimer.totalTime < 0)
-        {
-            foreach (GameObject keyboard in spawnedKeyboards)
-            {
-                Destroy(keyboard);
-            }
-            spawnedKeyboards.Clear();
-        }
-        
-        if (doll != null) 
-        {
-            if (FactoryGameTimer.totalTime > 0)
-            {
-                RectTransform dollPos = doll.GetComponent<RectTransform>();
-                if (dollPos.anchoredPosition.y < -430)
-                {
-                    Destroy(doll);
-                    if (factoryTurn < RandNum)
-                    {
-                        StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
-                        FactoryGameTimer.totalTime -= 2f;
-                        foreach (GameObject keyboard in spawnedKeyboards)
-                        {
-                            Destroy(keyboard);
-                        }
-                        spawnedKeyboards.Clear();
-                        PlayMistakeSound();
-                        if (FactoryGameTimer.totalTime > 0)
-                        {
-                            SpawnKeyBoards();
-                        }
-                    }
-                } 
-            }
-        }
+        //hand.GetComponent<SpriteRenderer>().sprite = handSprite[currentHandIndex]; // 손 계속 업데이트
 
-        if (RandNum != 0 && factoryTurn == RandNum)
+        if (FactoryGameTimer.isEnd)
         {
-            currentHandIndex = 3;
-            moneyManager();
-            increaseStageNum();
-            SpawnKeyBoards();
-            PlaySuccessSound();
+            CancelInvoke("SpawnKeyBoards");
+            isSpawning = false;
+            return;
         }
 
         moneyNumText.SetText(money.ToString() + "만원");
         stageNumText.SetText(stageNum.ToString() + "개");
     }
 
+    public void StartBlinkText()
+    {
+        StartCoroutine(FactoryGameTimerInstance.BlinkText(FactoryGameTimer.totalTime));
+    }
 
     public static void ChangeHandIndexInTurn()
     {
