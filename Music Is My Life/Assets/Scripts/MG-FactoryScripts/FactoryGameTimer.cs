@@ -15,6 +15,7 @@ public class FactoryGameTimer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ContentInScorePanel;
     // [SerializeField] private TMP_Text StageTimerTxt;
     public static float totalTime;
+    public static bool isEnd;
     // public static float stageTime;
 
     int minute = 0;
@@ -35,6 +36,8 @@ public class FactoryGameTimer : MonoBehaviour
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
         // StageTime = 16;
+
+        isEnd = false;
     }
 
     public IEnumerator TotalTimer()
@@ -51,7 +54,7 @@ public class FactoryGameTimer : MonoBehaviour
             if (totalTime <= 0)
             {
                 StopAllCoroutines();
-
+                isEnd = true;
                 // 알바 결과 매핑
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
                 resultText.text = resultRes;
@@ -70,11 +73,11 @@ public class FactoryGameTimer : MonoBehaviour
         MistakePanel.SetActive(true);
         int minute = (int)Time / 60;
         int second = (int)Time % 60;
+        
         MistakeTimerTxt.text = minute.ToString("00") + ":" + second.ToString("00");
         yield return new WaitForSeconds(.25f);
         MistakeTimerTxt.text = "";
         yield return new WaitForSeconds(.25f);
-        FactoryGameKeyboard.allowControl = true;
         MistakeTimerTxt.text = minute.ToString("00") + ":" + second.ToString("00");
         yield return new WaitForSeconds(.25f);
         MistakeTimerTxt.text = "";
