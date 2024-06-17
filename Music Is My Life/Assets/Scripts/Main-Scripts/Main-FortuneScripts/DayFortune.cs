@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DayFortune : MonoBehaviour
@@ -10,16 +11,75 @@ public class DayFortune : MonoBehaviour
         return fortuneId;
     }
 
-    public static int RandomDraw()
+    public static void ResetFortuneEffect()
     {
-        int dayNum = PlayerPrefs.GetInt("Dday");
-        int fortuneId = Random.Range(1, 11);
-        PlayerPrefs.SetInt($"Day{dayNum}_Fortune", fortuneId);
-        Debug.Log("PickTodayFortune: " + fortuneId);
-        return fortuneId;
+        int yDayNum = PlayerPrefs.GetInt("Dday") - 1;
+        int fortuneId = PlayerPrefs.GetInt($"Day{yDayNum}_Fortune");
+        switch (fortuneId)
+        {
+            // 1, 3, 7, 8, 10은 미니게임 내에서 해결함
+            case 4:
+                // 커버 증가율 +1000명 돌려놓기
+                break;
+            case 5:
+                // 부자 엔딩 확률 +1% 돌려놓기
+                break;
+            case 6:
+                // 휴식을 할 경우 스트레스 많이 감소(-50), 일하면 스트레스 많이 증가(+10) 돌려놓기
+                break;
+            case 9:
+                // 커버 증가율 -500명 돌려놓기
+                break;
+            default:
+                throw new System.Exception("fortuneId가 잘못되었습니다.");
+        }
+        Debug.Log("전날의 행운을 되돌렸습니다: " + fortuneId);
     }
 
-    public static string GetFortuneMessage(int fortuneId)
+    public static void AddFortuneEffect(int fortuneId)
+    {
+        string effectMessage;
+        switch (fortuneId)
+        {
+            case 1:
+                effectMessage = "알바비 보너스 지급 +5";
+                break;
+            case 2:
+                effectMessage = "스트레스 감소 !";
+                StatusChanger.UpdateStress(-10);
+                break;
+            case 3:
+                effectMessage = "찌라시 빌런 하";
+                break;
+            case 4:
+                effectMessage = "커버 증가율 + 1000명";
+                break;
+            case 5:
+                effectMessage = "부자 엔딩 확률 +1%";
+                break;
+            case 6:
+                effectMessage = "휴식을 할 경우 스트레스 많이 감소(-50), 일하면 스트레스 많이 증가(+10)";
+                break;
+            case 7:
+                effectMessage = "알바 하드모드";
+                break;
+            case 8:
+                effectMessage = "찌라시 빌런 상";
+                break;
+            case 9:
+                effectMessage = "커버 증가율 -500명";
+                break;
+            case 10:
+                effectMessage = "구걸을 할 경우 돈을 얻지 못함";
+                break;
+            default:
+                throw new System.Exception("fortuneId가 잘못되었습니다.");
+        }
+        Debug.Log(effectMessage);
+    }
+
+
+    /*public static string GetFortuneMessage(int fortuneId)
     {
         string fortuneMessage;
         switch (fortuneId)
@@ -58,46 +118,5 @@ public class DayFortune : MonoBehaviour
                 throw new System.Exception("fortuneId가 잘못되었습니다.");
         }
         return fortuneMessage;
-    }
-
-    public static string GetEffectMessage(int fortuneId)
-    {
-        string effectMessage;
-        switch (fortuneId)
-        {
-            case 1:
-                effectMessage = "알바비 보너스 지급 +5";
-                break;
-            case 2:
-                effectMessage = "스트레스 감소 !";
-                break;
-            case 3:
-                effectMessage = "찌라시 빌런 하";
-                break;
-            case 4:
-                effectMessage = "커버 증가율 + 1000명";
-                break;
-            case 5:
-                effectMessage = "부자 엔딩 확률 +1%";
-                break;
-            case 6:
-                effectMessage = "휴식을 할 경우 스트레스 많이 감소(-50), 일하면 스트레스 많이 증가(+10)";
-                break;
-            case 7:
-                effectMessage = "알바 하드모드";
-                break;
-            case 8:
-                effectMessage = "찌라시 빌런 상";
-                break;
-            case 9:
-                effectMessage = "커버 증가율 -500명";
-                break;
-            case 10:
-                effectMessage = "구걸을 할 경우 돈을 얻지 못함";
-                break;
-            default:
-                throw new System.Exception("fortuneId가 잘못되었습니다.");
-        }
-        return effectMessage;
-    }
+    }*/
 }
