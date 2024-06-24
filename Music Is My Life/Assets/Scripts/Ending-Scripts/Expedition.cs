@@ -167,12 +167,12 @@ public class Expedition : MonoBehaviour
         {
             case 0: 
                 rectTransform.anchoredPosition = new Vector2 (114, -215);
+                textMeshPro.color = Color.white;
+                textMeshPro.fontSize = 6;
                 break;
             case 1:
                 textMeshPro.color = Color.black;
-                textMeshPro.fontStyle = FontStyles.Bold;
-                textMeshPro.fontSize = 8;
-                rectTransform.anchoredPosition = new Vector2 (195, 58);
+                rectTransform.anchoredPosition = new Vector2 (259, 153);
                 break;
             case 2:
                 textMeshPro.color = Color.white;
