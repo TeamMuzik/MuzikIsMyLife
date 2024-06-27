@@ -63,10 +63,10 @@ public class StatusChanger : MonoBehaviour
     }
 
     // 날짜 업데이트
-    public static void UpdateDay()
+    public static void UpdateDay(bool forceUpdate = false)
     {
         int yesterday = PlayerPrefs.GetInt("Dday");
-        if (yesterday > 0)
+        if (yesterday > 0 && !forceUpdate)
         {
             // Main 씬에 재진입하기 전에 한 행동이 상점이거나 운세, 게임 종료(강제 종료 포함)인 경우 날짜 업데이트 x
             int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
@@ -85,5 +85,4 @@ public class StatusChanger : MonoBehaviour
         string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
     }
-
 }
