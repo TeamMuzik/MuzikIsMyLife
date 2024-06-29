@@ -200,7 +200,7 @@ public class ConcertInKorea : MonoBehaviour
                 StartCoroutine(TourYellow());
                 rectTransform.anchoredPosition = new Vector2 (235, -221);
                 break;
-            case 4:
+            case 4: //공연장면
                 StartCoroutine(ChangeLight());
                 audioSource.Stop();
                 audioSource.clip = Sound2;
@@ -209,16 +209,22 @@ public class ConcertInKorea : MonoBehaviour
                 break;
             case 5:
                 break;
-            case 6:
+            case 6: //thanks to 자르반
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
                 rectTransform.anchoredPosition = new Vector2 (-10, 255);
                 textMeshPro.fontStyle = FontStyles.Bold;
-                textMeshPro.fontStyle |= FontStyles.Italic;
+                textMeshPro.fontStyle = FontStyles.Italic;
                 textMeshPro.fontSize = 10;
                 targetTxt.text = null;
                 StartCoroutine(lastTalk());
+                break;
+            case 7:
+                targetTxt2.text = null;
+                textMeshPro.fontStyle = FontStyles.Normal;
+                textMeshPro.fontSize = 6;
+                rectTransform.anchoredPosition = new Vector2 (-10, -235);
                 break;
         }
     }
