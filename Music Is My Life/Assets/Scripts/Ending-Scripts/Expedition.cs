@@ -35,12 +35,14 @@ public class Expedition : MonoBehaviour
     public GameObject[] Light;
     public GameObject audience;
 
-    void Start()
+    void Awake()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
         textMeshPro = targetTxt.GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
-
+    }
+    void Start()
+    {
         audioSource.clip = Sound1;
         audioSource.Play();
 

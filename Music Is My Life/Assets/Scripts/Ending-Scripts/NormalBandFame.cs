@@ -41,12 +41,16 @@ public class NormalBandFame : MonoBehaviour
     public GameObject[] Light;
     public GameObject audience;
 
-    void Start()
+    void Awake()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
         rectTransform2 = targetTxt2.GetComponent<RectTransform>();
         textMeshPro = targetTxt.GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         audioSource.clip = Sound1;
         audioSource.Play();
         StartTalk(Dialogue);

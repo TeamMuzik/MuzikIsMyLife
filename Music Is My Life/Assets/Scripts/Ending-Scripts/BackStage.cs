@@ -47,8 +47,6 @@ public class BackStage : MonoBehaviour
 
     void Start()
     {
-        
-
         rectTransform.anchoredPosition = new Vector2 (114, -215);
 
         audioSource.clip = Sound1;

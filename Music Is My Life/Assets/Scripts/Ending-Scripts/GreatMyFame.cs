@@ -35,12 +35,14 @@ public class GreatMyFame : MonoBehaviour
     //public GameObject[] Light;
     //public GameObject audience;
 
-    void Start()
+    void Awake()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
         textMeshPro = targetTxt.GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
-
+    }
+    void Start()
+    {
         rectTransform.anchoredPosition = new Vector2 (114, -215);
 
         audioSource.clip = Sound1;
