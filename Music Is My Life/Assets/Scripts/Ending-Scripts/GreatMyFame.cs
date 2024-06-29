@@ -10,7 +10,7 @@ public class GreatMyFame : MonoBehaviour
     public float nextSceneSpeed; //다음 페이지로 넘어가는 속도, 높을 수록 속도가 느림
 
     public TMP_Text targetTxt;
-    //public TMP_Text targetTxt2;
+    public TMP_Text targetTxt2;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -171,27 +171,40 @@ public class GreatMyFame : MonoBehaviour
                 textMeshPro.color = Color.black;
                 rectTransform.anchoredPosition = new Vector2 (139, -246);
                 break;
-            // case 2:
-            //     rectTransform.anchoredPosition = new Vector2 (-23, 275);
-            //     break;
-            // case 3:
-            //     rectTransform.anchoredPosition = new Vector2 (587, -35);
-            //     break;
-            // case 4:
-            //     rectTransform.anchoredPosition = new Vector2 (50, 90);
-            //     break;
-            // case 5:
-            //     rectTransform.anchoredPosition = new Vector2 (178, 46);
-            //     // textMeshPro.color = Color.white;
-            //     // audioSource.Stop();
-            //     // audioSource.clip = Sound2;
-            //     // audioSource.Play();
-            //     // StartCoroutine(ChangeLight());
-            //     textMeshPro.fontSize = 5;
-            //     break;
-            // case 7:
-            //     StartCoroutine(lastTalk());
-            //     break;
+            case 2:
+                textMeshPro.color = Color.white;
+                rectTransform.anchoredPosition = new Vector2 (15, -254);
+                break;
+            case 3:
+                textMeshPro.color = Color.black;
+                break;
+            case 4:
+                textMeshPro.color = Color.white;
+                rectTransform.anchoredPosition = new Vector2 (-13, 268);
+                StartCoroutine(talk());
+                break;
+            case 5:
+                rectTransform.anchoredPosition = new Vector2 (15, -254);
+                break;
+            case 6:
+                rectTransform.anchoredPosition = new Vector2 (55, 240);
+                break;
         }
+    }
+
+    IEnumerator talk()
+    {   
+        nextSceneSpeed = 3f;
+        yield return new WaitForSeconds(1.8f);
+        targetTxt2.text = null;
+        string talk = "야옹이 내 영상을 봤어?!!\n야옹에 합류하라니!!!";
+        for (int i = 0; i < talk.Length; i++)
+        {
+            targetTxt2.text += talk[i];
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(0.5f);
+        targetTxt2.text = null;
+        nextSceneSpeed = 1.5f;
     }
 }
