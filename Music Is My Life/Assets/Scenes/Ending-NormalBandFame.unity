@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &234514663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &792896295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,7 +1560,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -159.95131}
-  m_SizeDelta: {x: 260, y: 40}
+  m_SizeDelta: {x: 330.24, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &908726767
 GameObject:
@@ -2719,7 +2719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7d7cf4a0f7c2744af90c5168dd7046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: ConcertInKorea
+  sceneName: NormalBandFame
 --- !u!1 &1437998382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,7 +3403,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[ \uC5D4\uB529 #3: \uC57C\uC639\uC758 \uB0B4\uD55C ]"
+  m_text: "[ \uC5D4\uB529 #3: \uCC98\uC74C\uC774\uC790 \uB9C8\uC9C0\uB9C9 \uB0B4\uD55C
+    ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}

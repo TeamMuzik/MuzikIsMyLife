@@ -1791,7 +1791,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -102}
-  m_SizeDelta: {x: 260, y: 40}
+  m_SizeDelta: {x: 295.37, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &908726767
 GameObject:
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7d7cf4a0f7c2744af90c5168dd7046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: ConcertInKorea
+  sceneName: ExcellentBandFame
 --- !u!1 &1437998382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,7 +3721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[ \uC5D4\uB529 #3: \uC57C\uC639\uC758 \uB0B4\uD55C ]"
+  m_text: "[ \uC5D4\uB529 #5: \uBC15 \uD130\uC9C0\uB294 \uD2F0\uCF13\uD305 ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
@@ -4165,7 +4165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2009709941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4370,8 +4370,6 @@ MonoBehaviour:
   nextSceneSpeed: 1.5
   targetTxt: {fileID: 1551645793}
   targetTxt2: {fileID: 1264203955}
-  canDoit: {fileID: 0}
-  canDoit2: {fileID: 0}
   Dialogue:
   - "\uB098\uB294 \uC57C\uC639\uC744 \uD55C\uAD6D\uC5D0 \uC54C\uB9AC\uAE30 \uC704\uD574
     \uC5F4\uC2EC\uD788 \uCC0C\uB77C\uC2DC\uB97C \uBFCC\uB838\uB2E4"
