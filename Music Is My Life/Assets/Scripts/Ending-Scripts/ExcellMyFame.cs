@@ -28,12 +28,12 @@ public class ExcellMyFame : MonoBehaviour
     SceneMove sceneMover; // SceneMove 클래스의 인스턴스 생성
 
     public AudioClip Sound1;
-    //public AudioClip Sound2;
+    public AudioClip Sound2;
 
     private AudioSource audioSource;
 
-    //public GameObject[] Light;
-    //public GameObject audience;
+    public GameObject[] Light;
+    public GameObject audience;
 
     void Start()
     {
@@ -171,27 +171,39 @@ public class ExcellMyFame : MonoBehaviour
                 textMeshPro.color = Color.black;
                 rectTransform.anchoredPosition = new Vector2 (139, -246);
                 break;
-            // case 2:
-            //     rectTransform.anchoredPosition = new Vector2 (-23, 275);
-            //     break;
-            // case 3:
-            //     rectTransform.anchoredPosition = new Vector2 (587, -35);
-            //     break;
-            // case 4:
-            //     rectTransform.anchoredPosition = new Vector2 (50, 90);
-            //     break;
-            // case 5:
-            //     rectTransform.anchoredPosition = new Vector2 (178, 46);
-            //     // textMeshPro.color = Color.white;
-            //     // audioSource.Stop();
-            //     // audioSource.clip = Sound2;
-            //     // audioSource.Play();
-            //     // StartCoroutine(ChangeLight());
-            //     textMeshPro.fontSize = 5;
-            //     break;
-            // case 7:
-            //     StartCoroutine(lastTalk());
-            //     break;
+            case 2:
+                textMeshPro.color = Color.white;
+                rectTransform.anchoredPosition = new Vector2 (15, -254);
+                break;
+            case 3:
+                rectTransform.anchoredPosition = new Vector2 (140, 0);
+                break;
+            case 4:
+                //rectTransform.anchoredPosition = new Vector2 (178, 46);
+                //textMeshPro.color = Color.white;
+                audioSource.Stop();
+                audioSource.clip = Sound2;
+                audioSource.Play();
+                StartCoroutine(ChangeLight());
+                //textMeshPro.fontSize = 5;
+                break;
+            case 5:
+                rectTransform.anchoredPosition = new Vector2 (-17, 196);
+                break;
+        }
+    }
+
+    IEnumerator ChangeLight()
+    {
+        while (currentIllustrationIndex == 4)
+        {
+            int randNum = Random.Range(0, 5);
+            yield return new WaitForSeconds(0.7f);
+            Light[randNum].SetActive(true);
+            audience.SetActive(true);
+            yield return new WaitForSeconds(0.7f);
+            Light[randNum].SetActive(false);
+            audience.SetActive(false);
         }
     }
 }
