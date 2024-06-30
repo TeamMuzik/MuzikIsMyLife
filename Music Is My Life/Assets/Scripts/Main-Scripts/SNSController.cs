@@ -43,23 +43,34 @@ public class SNSController : MonoBehaviour
         {
             Debug.LogError("dayEndPanel이 설정되지 않았습니다.");
         }
+
+        // PlayerPrefs 키 디버깅
+        SpriteUtils.DebugPlayerPrefsKeys();
     }
 
     public void ShowDayStartPanel(System.Action onClosed = null)
     {
-        if (spriteImage == null || spriteRenderer == null || dayEndPanel == null)
+        if (spriteImage == null)
         {
-            Debug.LogError("필수 설정이 누락되었습니다.");
+            Debug.LogError("spriteImage가 null입니다.");
             return;
         }
 
         Transform spriteTransform = spriteImage.transform;
+
+        // 위치 조정
         spriteTransform.localPosition = positionOffset;
 
         int currentDay = PlayerPrefs.GetInt("Dday");
 
         bool shouldShowPanel = false;
         Sprite displayedSprite = null;
+
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("spriteRenderer가 null입니다.");
+            return;
+        }
 
         if (currentDay >= 2 && currentDay <= 8)
         {
@@ -72,38 +83,36 @@ public class SNSController : MonoBehaviour
             int yesterday = currentDay - 1;
             int behaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
 
-            if (behaviorSprites != null)
+            if (behaviorSprites == null)
             {
-                BehaviorSprite behaviorSprite = behaviorSprites.Find(bs => bs.behaviorId == behaviorId);
+                Debug.LogError("behaviorSprites가 null입니다.");
+                return;
+            }
 
-                if (behaviorSprite != null)
+            BehaviorSprite behaviorSprite = behaviorSprites.Find(bs => bs.behaviorId == behaviorId);
+
+            if (behaviorSprite != null)
+            {
+                displayedSprite = GetRandomSprite(behaviorSprite);
+                if (displayedSprite != null)
                 {
-                    displayedSprite = GetRandomSprite(behaviorSprite);
-                    if (displayedSprite != null)
-                    {
-                        spriteRenderer.sprite = displayedSprite;
-                        shouldShowPanel = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("사용 가능한 스프라이트가 없습니다.");
-                    }
+                    spriteRenderer.sprite = displayedSprite;
+                    shouldShowPanel = true;
                 }
                 else
                 {
-                    Debug.LogError("잘못된 behaviorId이거나 behaviorSprites에 포함되지 않았습니다.");
+                    Debug.LogError("사용 가능한 스프라이트가 없습니다.");
                 }
             }
             else
             {
-                Debug.LogError("behaviorSprites가 null입니다.");
+                Debug.LogError("잘못된 behaviorId이거나 behaviorSprites에 포함되지 않았습니다.");
             }
         }
 
         if (shouldShowPanel && displayedSprite != null)
         {
-            SpriteUtils.SaveSprite(currentDay, displayedSprite); // 스프라이트 저장
-            Debug.Log($"Saving sprite for day {currentDay}: {displayedSprite.name}"); // 디버그 로그 추가
+            SpriteUtils.SaveSprite(currentDay, displayedSprite.name); // 스프라이트 이름 저장
             if (dayEndPanel != null)
             {
                 dayEndPanel.SetActive(true); // 패널 표시
@@ -133,6 +142,10 @@ public class SNSController : MonoBehaviour
         if (dayEndPanel != null)
         {
             dayEndPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("dayEndPanel이 null입니다.");
         }
     }
 }

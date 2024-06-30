@@ -19,6 +19,9 @@ public class InitializeManager : MonoBehaviour
             }
         }
 
+        // 스프라이트 데이터 리셋
+        SpriteUtils.ResetAllSavedSprites();
+
         // 플레이어 기본 이름
         PlayerPrefs.SetString("PlayerName", "연보라");
 
@@ -81,7 +84,6 @@ public class InitializeManager : MonoBehaviour
         SetFurnitureData(defaultFurniture, 1);
     }
 
-
     private void InitializeStoreProducts()
     {
         // 음향기기들
@@ -109,6 +111,7 @@ public class InitializeManager : MonoBehaviour
             // PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", stat);
         }
     }
+
     private void InitializeRepFurniture()
     {
         // replaceable한 가구들의 초기 인덱스를 0으로 세팅
@@ -120,22 +123,4 @@ public class InitializeManager : MonoBehaviour
             PlayerPrefs.SetInt(category, 0); // 0으로 세팅
         }
     }
-
-
-    /* //240405 - 현재는 필요 없는 코드이나 기획에 따라 필요하게 될 수 있어 남겨둠
-        // 바닥 물건들
-        // string[] floorThings = { "FLOOR_GUITARBAG", "FLOOR_AIRPLANE", "FLOOR_SNACK", "FLOOR_JJIRASI", "FLOOR_COKE", "FLOOR_TRASH" };
-        // SetFurnitureData(floorThings, 0);
-
-    private void InitializeRandomFurniture()
-    {
-        // 디폴트 지만 replacable: IsOwned=1, IsEquipped=0
-        string[] randomFurniture = { "CHARACTER_1", "CHARACTER_2", "CHARACTER_3", "BED_1", "CURTAIN_1", "WINDOW_1" };
-
-        foreach (string Category_Index in randomFurniture)
-        {
-            PlayerPrefs.SetInt($"{Category_Index}_IsOwned", 1);
-            PlayerPrefs.SetInt($"{Category_Index}_IsEquipped", 0);
-        }
-    }*/
 }
