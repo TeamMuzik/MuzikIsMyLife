@@ -3,47 +3,67 @@ using UnityEngine;
 
 public static class SpriteUtils
 {
-    // 스프라이트 저장
-    public static void SaveSprite(int day, Sprite sprite)
+    private const string SpriteKeyPrefix = "SavedSprite_";
+
+    public static void SaveSprite(int day, string spriteName)
     {
-        string spriteName = sprite.name;
-        PlayerPrefs.SetString($"DisplayedSprite_{day}", spriteName);
+        if (string.IsNullOrEmpty(spriteName))
+        {
+            Debug.LogError("저장하려는 스프라이트 이름이 null이거나 비어 있습니다.");
+            return;
+        }
+
+        string key = SpriteKeyPrefix + day;
+        PlayerPrefs.SetString(key, spriteName);
         PlayerPrefs.Save();
-        Debug.Log($"Saved Sprite: Day {day}, Name: {spriteName}"); // 디버그 로그 추가
+
+        string savedValue = PlayerPrefs.GetString(key, "저장된 값 없음");
+        Debug.Log($"스프라이트 저장됨: {spriteName}, Day: {day}, Key: {key}, 확인된 값: {savedValue}");
     }
 
-    // 저장된 스프라이트 불러오기
-    public static Sprite LoadSprite(string spriteName)
-    {
-        Debug.Log($"Attempting to load sprite: {spriteName}"); // 디버그 로그 추가
-        return Resources.Load<Sprite>(spriteName);
-    }
-
-    // 저장된 모든 스프라이트 이름 불러오기
     public static List<string> GetAllSavedSprites()
     {
         List<string> spriteNames = new List<string>();
-        int day = 1;
-        while (PlayerPrefs.HasKey($"DisplayedSprite_{day}"))
+
+        for (int day = 1; day <= 30; day++)
         {
-            string spriteName = PlayerPrefs.GetString($"DisplayedSprite_{day}");
-            spriteNames.Add(spriteName);
-            Debug.Log($"Loaded Sprite: Day {day}, Name: {spriteName}"); // 디버그 로그 추가
-            day++;
+            string key = SpriteKeyPrefix + day;
+            if (PlayerPrefs.HasKey(key))
+            {
+                string spriteName = PlayerPrefs.GetString(key);
+                spriteNames.Add(spriteName);
+                Debug.Log($"로드된 스프라이트 이름: {spriteName}, Day: {day}, Key: {key}");
+            }
         }
+
+        Debug.Log($"총 저장된 스프라이트 수: {spriteNames.Count}");
         return spriteNames;
     }
 
-    // 저장된 모든 스프라이트 데이터 리셋
     public static void ResetAllSavedSprites()
     {
-        int day = 1;
-        while (PlayerPrefs.HasKey($"DisplayedSprite_{day}"))
+        for (int day = 1; day <= 30; day++)
         {
-            PlayerPrefs.DeleteKey($"DisplayedSprite_{day}");
-            day++;
+            string key = SpriteKeyPrefix + day;
+            if (PlayerPrefs.HasKey(key))
+            {
+                PlayerPrefs.DeleteKey(key);
+            }
         }
         PlayerPrefs.Save();
-        Debug.Log("Reset all saved sprites."); // 디버그 로그 추가
+        Debug.Log("모든 저장된 스프라이트가 초기화되었습니다.");
+    }
+
+    public static void DebugPlayerPrefsKeys()
+    {
+        for (int i = 1; i <= 30; i++) // 최대 30일까지 검사 (필요에 따라 범위 조정 가능)
+        {
+            string key = SpriteKeyPrefix + i;
+            if (PlayerPrefs.HasKey(key))
+            {
+                string value = PlayerPrefs.GetString(key);
+                Debug.Log($"Key: {key}, Value: {value}");
+            }
+        }
     }
 }

@@ -58,4 +58,13 @@ public class FortuneManager : MonoBehaviour
             Debug.LogError("Sprite Renderer가 설정되지 않았거나, 인덱스가 잘못되었습니다.");
         }
     }
+
+    public void GoBackToMain()
+   {
+       PlayerPrefs.SetInt("FromFortuneScene", 1); // Main 씬으로 돌아갈 때 플래그 설정
+       PlayerPrefs.Save();
+       SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+       sceneMove.targetScene = "Main";
+       sceneMove.ChangeScene();
+   }
 }
