@@ -17,17 +17,49 @@ public class EndingSelector : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt("BandFame");
         string endingScene;
 
-        if (money >= 150)
+        if (money >= 150 && myFame >= 75 && bandFame >= 150)
+        {
+            endingScene = "Ending-Collaboration";
+        }
+        else if (money >= 150 && myFame >= 75)
+        {
+            endingScene = "Ending-Entertainment";
+        }
+        else if (myFame >= 75 && bandFame >= 150)
+        {
+            endingScene = "Ending-BackStage";
+        }
+        else if (money >= 150 && bandFame >= 150)
+        {
+            endingScene = "Ending-WanDuck";
+        }
+        else if (money >= 150)
         {
             endingScene = "Ending-Expedition";
         }
+        else if (myFame >= 120)
+        {
+            endingScene = "Ending-ExcellentMyFame";
+        }
         else if (myFame >= 75)
         {
-            endingScene = "Ending-OpeningBand";
+            endingScene = "Ending-GreatMyFame";
+        }
+        else if (myFame >= 50)
+        {
+            endingScene = "Ending-NormalMyFame";
+        }
+        else if (bandFame >= 200)
+        {
+            endingScene = "Ending-ExcellentMyFame";
         }
         else if (bandFame >= 150)
         {
-            endingScene = "Ending-ConcertInKorea";
+            endingScene = "Ending-GreatMyFame";
+        }
+        else if (bandFame >= 100)
+        {
+            endingScene = "Ending-NormalMyFame";
         }
         else
         {

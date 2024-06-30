@@ -83,27 +83,29 @@ public class CafeGameTimer : MonoBehaviour
             if(totalTime <= 0)
             {
                 StopAllCoroutines();
+                int drinkCount = cafeGameInstance.money;
 
                 if (fortuneId == 1 || fortuneId == 7)//오늘의 운세 1번(알바비 +5) 또는 오늘의 운세 7번(알바 하드모드)
                     isFortune = "(운세적용)";
-                else if (fortuneId == 1) //오늘의 운세 1번 (알바비 +5)
+                    
+                if (fortuneId == 1) //오늘의 운세 1번 (알바비 +5)
                     cafeGameInstance.money += 5;
-                
+                    
                 // 알바 결과 매핑
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(0);
 
                 resultText.text = resultRes;
-                ContentInScorePanel.SetText(cafeGameInstance.money.ToString()+"개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
+                ContentInScorePanel.SetText(drinkCount + "개의 음료를 만들었다.\n 번 돈 "+cafeGameInstance.money.ToString()+"만원");
 
                 if (cafeGameInstance.money > highScore)
-                  {
-           highScore = cafeGameInstance.money;
-           PlayerPrefs.SetInt("CafeGameHighScore", highScore);
-           PlayerPrefs.Save();
-          }
+                {
+                    highScore = cafeGameInstance.money;
+                    PlayerPrefs.SetInt("CafeGameHighScore", highScore);
+                    PlayerPrefs.Save();
+                }
 
 
-        Debug.Log("Current High Score: " + highScore);
+                Debug.Log("Current High Score: " + highScore);
 
                 stressText.text = stressRes + "\n" + isFortune;
 

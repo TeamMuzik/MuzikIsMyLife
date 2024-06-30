@@ -39,8 +39,7 @@ public class MainUpdateController : MonoBehaviour
         }
         else
         {
-            funitureController.UpdateFurnitures();
-            statusController.UpdateStatus();
+            statusController.UpdateStatus(); // 상태창 업데이트
             snsController.ShowDayStartPanel(); // 하루 시작 패널 표시
         }
     }

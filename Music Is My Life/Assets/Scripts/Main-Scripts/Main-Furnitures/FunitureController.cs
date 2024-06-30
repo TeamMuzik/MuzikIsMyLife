@@ -9,6 +9,11 @@ public class FunitureController : MonoBehaviour
     public GameObject[] lpList;
     public GameObject[] effectorList;
 
+    void Start()
+    {
+        UpdateFurnitures();
+    }
+    
     public void UpdateFurnitures()
     {
         // 랜덤 선택되어야 하는 가구들
@@ -67,7 +72,7 @@ public class FunitureController : MonoBehaviour
             PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 2));
         else if (seasonNum == 2) // 8월: 낮(0)/밤(1)/비(2)
             PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(0, 3));
-        else // 12월: 낮눈(3)/밤눈(4)
+        else // 12월: 겨울낮(3)/겨울밤(4)
             PlayerPrefs.SetInt("WINDOW_CURRENT", Random.Range(3, 5));
         // 커튼
         PlayerPrefs.SetInt("CURTAIN_CURRENT", Random.Range(0, 2));
