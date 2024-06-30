@@ -38,9 +38,6 @@ public class OfficeGame : MonoBehaviour
     private static int highScore = 0; // 최고 점수 변수
 
      private bool isGameStarted = false;
-    
-    private int fortuneId; //오늘의 운세
-    private string isFortune; //운세 적용 여부
 
     void Start()
     {   audioSource = GetComponent<AudioSource>();
@@ -74,13 +71,7 @@ public class OfficeGame : MonoBehaviour
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
 
-        //오늘의 운세 가져오기
-        fortuneId = DayFortune.GetTodayFortuneId();
-        Debug.Log("운세번호: " + fortuneId);
-
-        isFortune = "";
-
-    }
+        }
 
       public void InitializeGame()
 {
@@ -351,19 +342,11 @@ void UpdateGameTimer()
         // 알바 결과 매핑
         (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(1);
         resultText.text = resultRes;
+        stressText.text = stressRes;
 
         finalText.gameObject.SetActive(true);
         int totalScore = score;
         int earnedMoney = totalScore / 10;
-
-        //오늘의 운세 1번이면 번 돈 5 증가
-        if (fortuneId == 1 || fortuneId == 7)
-            isFortune = "(운세적용)";
-
-        if (fortuneId == 1)
-            earnedMoney += 5;
-        
-        stressText.text = stressRes + "\n" + isFortune;
 
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
         StatusController statusController = FindObjectOfType<StatusController>();
