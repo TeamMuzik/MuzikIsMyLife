@@ -11,7 +11,7 @@ public class Plane : MonoBehaviour
     void Update()
     {
         // transform.localScale = new Vector3 (scaleSize, scaleSize, 0) * (1+time);
-        transform.position += Vector3.right * moveSpeed * Time.deltaTime; 
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime + Vector3.up * moveSpeed * Time.deltaTime; 
         // time += Time.deltaTime;
     }
 

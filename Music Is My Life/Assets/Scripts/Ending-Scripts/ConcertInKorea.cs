@@ -38,11 +38,15 @@ public class ConcertInKorea : MonoBehaviour
     public GameObject[] Light;
     public GameObject audience;
 
-    void Start()
+    void Awake()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
         textMeshPro = targetTxt.GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         audioSource.clip = Sound1;
         audioSource.Play();
         StartTalk(Dialogue);
@@ -102,29 +106,6 @@ public class ConcertInKorea : MonoBehaviour
         yield return new WaitForSeconds(nextSceneSpeed);
         //마지막 일러스트가 아닐 경우 다음 다이얼로그 진행
         if (currentIllustrationIndex != illustrationObjects.Length - 1) NextTalk();
-    }
-
-    IEnumerator TourYellow()
-    {
-        tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(false);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(true);
-        yield return new WaitForSeconds(0.55f);
-        tourYellow.SetActive(false);
     }
 
     void NextTalk()
@@ -197,10 +178,10 @@ public class ConcertInKorea : MonoBehaviour
                 break;
             case 3:
                 textMeshPro.color = Color.white;
-                StartCoroutine(TourYellow());
+                StartCoroutine(TrunYellow());
                 rectTransform.anchoredPosition = new Vector2 (235, -221);
                 break;
-            case 4:
+            case 4: //공연장면
                 StartCoroutine(ChangeLight());
                 audioSource.Stop();
                 audioSource.clip = Sound2;
@@ -209,17 +190,34 @@ public class ConcertInKorea : MonoBehaviour
                 break;
             case 5:
                 break;
-            case 6:
+            case 6: //thanks to 자르반
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
                 rectTransform.anchoredPosition = new Vector2 (-10, 255);
                 textMeshPro.fontStyle = FontStyles.Bold;
-                textMeshPro.fontStyle |= FontStyles.Italic;
+                textMeshPro.fontStyle = FontStyles.Italic;
                 textMeshPro.fontSize = 10;
                 targetTxt.text = null;
                 StartCoroutine(lastTalk());
                 break;
+            case 7:
+                targetTxt2.text = null;
+                textMeshPro.fontStyle = FontStyles.Normal;
+                textMeshPro.fontSize = 6;
+                rectTransform.anchoredPosition = new Vector2 (-10, -235);
+                break;
+        }
+    }
+    IEnumerator TrunYellow()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            tourYellow.SetActive(true);
+            yield return new WaitForSeconds(0.55f);
+            tourYellow.SetActive(false);
+            if (i != 4)
+                yield return new WaitForSeconds(0.55f);           
         }
     }
 
