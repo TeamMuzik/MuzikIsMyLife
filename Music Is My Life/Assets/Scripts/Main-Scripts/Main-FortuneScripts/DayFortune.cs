@@ -28,6 +28,8 @@ public class DayFortune : MonoBehaviour
                 return;
 
             // 정상
+            case 2:
+                break;
             case 4:
                 // 커버 증가율 +1000명 돌려놓기
                 break;
