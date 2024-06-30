@@ -1,4 +1,4 @@
-using System;
+
 using UnityEngine;
 
 public class DayFortune : MonoBehaviour
@@ -14,6 +14,11 @@ public class DayFortune : MonoBehaviour
     public static void ResetFortuneEffect()
     {
         int yesterdayNum = PlayerPrefs.GetInt("Dday") - 1;
+        if (yesterdayNum == 0)
+        {
+            Debug.Log("ResetFortuneEffect: 어제 적용된 행운이 없습니다.");
+            return;
+        }
         int fortuneId = PlayerPrefs.GetInt($"Day{yesterdayNum}_Fortune");
         switch (fortuneId)
         {
@@ -21,12 +26,8 @@ public class DayFortune : MonoBehaviour
             case -1:
                 Debug.Log("ResetFortuneEffect: 어제 적용된 행운이 없습니다.");
                 return;
-            // 비정상
-            case 0:
-                throw new System.Exception("ResetFortuneEffect: 날짜가 잘못되었습니다. 15일 이상일 때 이 에러가 발생할 수 있습니다.");
 
             // 정상
-            // 1, 3, 7, 8, 10은 미니게임 내에서 해결함
             case 4:
                 // 커버 증가율 +1000명 돌려놓기
                 break;
@@ -39,8 +40,16 @@ public class DayFortune : MonoBehaviour
             case 9:
                 // 커버 증가율 -500명 돌려놓기
                 break;
+            case int n when (n == 1 || n == 3 || n == 7 || n == 8 || n == 10):
+                // 1, 3, 7, 8, 10은 미니게임 내에서 해결함
+                Debug.Log($"ResetFortuneEffect: fortuneId가 {n}일 때는 되돌려야 하는 변수가 없습니다.");
+                break;
+
+            // 비정상
+            case 0:
+                throw new System.Exception("ResetFortuneEffect: 날짜가 잘못되었습니다. 15일 이상일 때 이 에러가 발생할 수 있습니다.");
             default:
-                throw new System.Exception("ResetFortuneEffect: fortuneId가 잘못되었습니다.");
+                throw new System.Exception("ResetFortuneEffect: fortuneId가 잘못되었습니다. fortuneId: " + fortuneId);
         }
         Debug.Log("전날의 행운을 되돌렸습니다: " + fortuneId);
     }
@@ -50,13 +59,6 @@ public class DayFortune : MonoBehaviour
         string effectMessage;
         switch (fortuneId)
         {
-            // 행운 미적용
-            case -1:
-                throw new System.Exception("AddOrLogFortuneEffect: 행운을 정상적으로 뽑지 못하여 효과가 적용되지 않았습니다.");
-            // 비정상
-            case 0:
-                throw new System.Exception("AddOrLogFortuneEffect: 날짜가 잘못되었습니다. 15일 이상일 때 이 에러가 발생할 수 있습니다.");
-
             // 정상
             case 1:
                 effectMessage = "알바비 보너스 지급 +5";
@@ -89,8 +91,14 @@ public class DayFortune : MonoBehaviour
             case 10:
                 effectMessage = "구걸을 할 경우 돈을 얻지 못함";
                 break;
+
+            // 비정상
+            case -1:
+                throw new System.Exception("AddOrLogFortuneEffect: 행운을 정상적으로 뽑지 못하여 효과가 적용되지 않았습니다.");
+            case 0:
+                throw new System.Exception("AddOrLogFortuneEffect: 날짜가 잘못되었습니다. 15일 이상일 때 이 에러가 발생할 수 있습니다.");
             default:
-                throw new System.Exception("AddFortuneEffect: fortuneId가 잘못되었습니다.");
+                throw new System.Exception("AddFortuneEffect: fortuneId가 잘못되었습니다. fortuneId: " + fortuneId);
         }
         Debug.Log(effectMessage);
     }
