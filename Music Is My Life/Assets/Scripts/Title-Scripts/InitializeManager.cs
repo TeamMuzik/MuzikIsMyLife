@@ -67,10 +67,10 @@ public class InitializeManager : MonoBehaviour
         PlayerPrefs.SetInt("JjirasiClick", 0);
 
         // DayBehavior 초기화, 행운 초기화
-        for (int d = 1; d < endDday; d++)
+        for (int dayNum = 1; dayNum < endDday; dayNum++)
         {
-            PlayerPrefs.SetInt($"Day{d}_Behavior", -1); // -1로 초기화
-            PlayerPrefs.SetInt($"Day{d}_Fortune", -1); // -1로 초기화
+            PlayerPrefs.SetInt($"Day{dayNum}_Behavior", -1); // -1로 초기화
+            PlayerPrefs.SetInt($"Day{dayNum}_Fortune", -1); // -1로 초기화
         }
     }
 
