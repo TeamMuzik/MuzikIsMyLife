@@ -51,15 +51,11 @@ public class FactoryGame : MonoBehaviour
         // 손 스프라이트 인덱스
         currentHandIndex = 0;
 
-
-
-
         playCount = PlayerPrefs.GetInt("FactoryGamePlayCount", 0);
         playCount++; // 플레이 횟수 증가
         PlayerPrefs.SetInt("FactoryGamePlayCount", playCount);
         PlayerPrefs.Save();
         Debug.Log("Current playCount: " + playCount);
-
 
         fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
