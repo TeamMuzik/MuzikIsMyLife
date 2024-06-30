@@ -3171,6 +3171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8875817628679774734}
   - component: {fileID: 6987415409590724111}
+  - component: {fileID: 17371514834243607}
   m_Layer: 0
   m_Name: "MainRoom\uAC00\uAD6C"
   m_TagString: Untagged
@@ -3224,6 +3225,75 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
+--- !u!114 &17371514834243607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6987415409590724097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f5ec90b7d24d149b086146e264a8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  furnitureList:
+  - {fileID: 6987415410446602107}
+  - {fileID: 6987415409102134610}
+  - {fileID: 6987415408460945022}
+  - {fileID: 6987415410473835074}
+  - {fileID: 6987415408711458693}
+  - {fileID: 6987415410119316484}
+  - {fileID: 6987415409154976754}
+  replaceableList:
+  - {fileID: 6987415409941526263}
+  - {fileID: 6987415410194673269}
+  - {fileID: 6987415409857275941}
+  - {fileID: 6987415410362927244}
+  - {fileID: 6987415408605941593}
+  - {fileID: 6987415409983556959}
+  - {fileID: 6987415408633903924}
+  - {fileID: 6987415408745284260}
+  posterList:
+  - {fileID: 6987415408874088426}
+  - {fileID: 6987415409698981210}
+  - {fileID: 6987415408659319294}
+  - {fileID: 6987415408820976349}
+  - {fileID: 6987415408611717596}
+  - {fileID: 6987415409357541937}
+  - {fileID: 6987415409472054967}
+  - {fileID: 6987415410006542678}
+  - {fileID: 6987415410471299348}
+  - {fileID: 6987415409082991747}
+  cdList:
+  - {fileID: 6987415410179009685}
+  - {fileID: 6987415409783447578}
+  - {fileID: 6987415408341801786}
+  - {fileID: 6987415410375718831}
+  - {fileID: 6987415409444575719}
+  - {fileID: 6987415409469928351}
+  - {fileID: 6987415409871596843}
+  - {fileID: 6987415409763778125}
+  - {fileID: 6987415410215258369}
+  - {fileID: 6987415409851442133}
+  - {fileID: 6987415408917781274}
+  - {fileID: 6987415409041885030}
+  - {fileID: 6987415408789464988}
+  - {fileID: 6987415410308271013}
+  lpList:
+  - {fileID: 6987415408868656112}
+  - {fileID: 6987415410262677139}
+  - {fileID: 6987415408532338000}
+  - {fileID: 6987415409532532633}
+  - {fileID: 6987415408472284887}
+  - {fileID: 6987415409597200062}
+  effectorList:
+  - {fileID: 6987415410453294467}
+  - {fileID: 6987415409408473954}
+  - {fileID: 6987415409321008519}
+  - {fileID: 6987415409413610229}
+  - {fileID: 6987415409939049605}
+  - {fileID: 6987415408814118504}
 --- !u!1 &6987415409597200062
 GameObject:
   m_ObjectHideFlags: 0

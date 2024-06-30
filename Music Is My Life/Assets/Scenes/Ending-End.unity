@@ -359,7 +359,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -438,7 +438,7 @@ RectTransform:
   m_Children:
   - {fileID: 580014007}
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -789,7 +789,6 @@ MonoBehaviour:
   Category_Index: CD_10
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &131411447
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -891,7 +890,6 @@ MonoBehaviour:
   Category_Index: POSTER_10
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &131496535
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1324,7 +1322,6 @@ MonoBehaviour:
   Category_Index: POSTER_7
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &180997986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1426,7 +1423,6 @@ MonoBehaviour:
   Category_Index: CD_11
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &196185323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1686,7 +1682,6 @@ MonoBehaviour:
   Category_Index: POSTER_3
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &211342887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1788,7 +1783,6 @@ MonoBehaviour:
   Category_Index: CD_6
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &211922671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1890,7 +1884,6 @@ MonoBehaviour:
   Category_Index: LP_3
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &215612730
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2196,7 +2189,6 @@ MonoBehaviour:
   Category_Index: SHELF_0
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &363637249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2453,7 +2445,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2509,7 +2501,6 @@ MonoBehaviour:
   Category_Index: CARPET_0
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &459070966
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2713,7 +2704,6 @@ MonoBehaviour:
   Category_Index: EF_2
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &520729475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2987,7 +2977,6 @@ MonoBehaviour:
   Category_Index: CD_7
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &582323654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3089,7 +3078,6 @@ MonoBehaviour:
   Category_Index: EF_3
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &589573131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3191,7 +3179,6 @@ MonoBehaviour:
   Category_Index: CD_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &613958301
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3473,7 +3460,6 @@ MonoBehaviour:
   Category_Index: CD_8
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &635736926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3974,7 +3960,6 @@ MonoBehaviour:
   Category_Index: EF_6
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &700627561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4076,7 +4061,6 @@ MonoBehaviour:
   Category_Index: LP_2
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &727969130
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4145,7 +4129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!210 &782813327
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -4238,7 +4222,6 @@ MonoBehaviour:
   Category_Index: LP_4
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &837498558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4340,7 +4323,6 @@ MonoBehaviour:
   Category_Index: POSTER_8
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &841199814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4426,7 +4408,7 @@ RectTransform:
   m_Children:
   - {fileID: 627437343}
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4600,7 +4582,6 @@ MonoBehaviour:
   Category_Index: DESK_0
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &909679287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4702,7 +4683,6 @@ MonoBehaviour:
   Category_Index: POSTER_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &938323076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5097,7 +5077,6 @@ MonoBehaviour:
   Category_Index: POSTER_6
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1056505995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5260,7 +5239,7 @@ RectTransform:
   m_Children:
   - {fileID: 1248684736}
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5429,7 +5408,7 @@ RectTransform:
   - {fileID: 1273776623}
   - {fileID: 1051827313}
   m_Father: {fileID: 1672416038}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5523,7 +5502,6 @@ MonoBehaviour:
   Category_Index: POSTER_4
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1223641940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5625,7 +5603,6 @@ MonoBehaviour:
   Category_Index: PDBD_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1234957046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5727,7 +5704,6 @@ MonoBehaviour:
   Category_Index: LP_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1239941270
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6136,7 +6112,6 @@ MonoBehaviour:
   Category_Index: LP_5
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1285933468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6516,7 +6491,6 @@ MonoBehaviour:
   Category_Index: EF_4
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1325150677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6618,7 +6592,6 @@ MonoBehaviour:
   Category_Index: ROOM_0
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1325994884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6671,6 +6644,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1358069583
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1672416038}
+    m_Modifications:
+    - target: {fileID: 6987415409590724097, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_Name
+      value: "MainRoom\uAC00\uAD6C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 185
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+--- !u!4 &1358069584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8875817628679774734, guid: ad58ef77d9f38694ca62cfabf3e5144f, type: 3}
+  m_PrefabInstance: {fileID: 1358069583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391099127
 GameObject:
   m_ObjectHideFlags: 0
@@ -6720,7 +6767,6 @@ MonoBehaviour:
   Category_Index: CD_4
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1391099130
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6822,7 +6868,6 @@ MonoBehaviour:
   Category_Index: CD_5
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1402291096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7061,7 +7106,6 @@ MonoBehaviour:
   Category_Index: CD_13
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1452345672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7437,7 +7481,6 @@ MonoBehaviour:
   Category_Index: CD_9
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1506858861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7539,7 +7582,6 @@ MonoBehaviour:
   Category_Index: LP_6
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1514124362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7641,7 +7683,6 @@ MonoBehaviour:
   Category_Index: CD_3
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1547647231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7878,7 +7919,6 @@ MonoBehaviour:
   Category_Index: CD_2
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1575496540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7980,7 +8020,6 @@ MonoBehaviour:
   Category_Index: CD_12
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1601468319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8082,7 +8121,6 @@ MonoBehaviour:
   Category_Index: EF_5
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1635995171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8184,7 +8222,6 @@ MonoBehaviour:
   Category_Index: CD_14
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1655560357
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8417,6 +8454,7 @@ RectTransform:
   - {fileID: 1921756002}
   - {fileID: 663455981}
   - {fileID: 782813328}
+  - {fileID: 1358069584}
   - {fileID: 48132810}
   - {fileID: 904699439}
   - {fileID: 89321018}
@@ -8516,7 +8554,6 @@ MonoBehaviour:
   Category_Index: EF_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1686113298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8618,7 +8655,6 @@ MonoBehaviour:
   Category_Index: POSTER_5
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &1743080137
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9399,7 +9435,6 @@ MonoBehaviour:
   Category_Index: POSTER_9
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2001063948
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9501,7 +9536,6 @@ MonoBehaviour:
   Category_Index: POSTER_2
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2048092802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9603,7 +9637,6 @@ MonoBehaviour:
   Category_Index: AUIN_1
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2056120206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9890,7 +9923,6 @@ MonoBehaviour:
   Category_Index: CHAIR_0
   description: 
   isOwned: 0
-  isEquipped: 0
 --- !u!212 &2144881382
 SpriteRenderer:
   m_ObjectHideFlags: 0

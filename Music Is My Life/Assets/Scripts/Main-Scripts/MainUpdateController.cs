@@ -28,7 +28,6 @@ public class MainUpdateController : MonoBehaviour
         {
             GoToGameOver();
         }
-        funitureController.UpdateFurnitures();
         statusController.UpdateStatus();
     }
 

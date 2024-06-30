@@ -9,6 +9,11 @@ public class FunitureController : MonoBehaviour
     public GameObject[] lpList;
     public GameObject[] effectorList;
 
+    void Start()
+    {
+        UpdateFurnitures();
+    }
+    
     public void UpdateFurnitures()
     {
         // 랜덤 선택되어야 하는 가구들
