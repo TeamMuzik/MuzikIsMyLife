@@ -41,7 +41,7 @@ public class FortuneManager : MonoBehaviour
             fortuneId = Random.Range(1, 11);
             PlayerPrefs.SetInt($"Day{dayNum}_Fortune", fortuneId);
             Debug.Log("오늘의 운세: " + fortuneId);
-            DayFortune.AddFortuneEffect(fortuneId);
+            DayFortune.AddOrLogFortuneEffect(fortuneId);
             SetFortuneMessageSprite();
         }
     }
