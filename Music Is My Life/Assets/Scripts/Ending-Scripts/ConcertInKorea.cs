@@ -188,8 +188,6 @@ public class ConcertInKorea : MonoBehaviour
                 audioSource.Play();
                 rectTransform.anchoredPosition = new Vector2 (-10, 267);
                 break;
-            case 5:
-                break;
             case 6: //thanks to 자르반
                 audioSource.Stop();
                 audioSource.clip = Sound3;
@@ -199,7 +197,7 @@ public class ConcertInKorea : MonoBehaviour
                 textMeshPro.fontStyle = FontStyles.Italic;
                 textMeshPro.fontSize = 10;
                 targetTxt.text = null;
-                StartCoroutine(lastTalk());
+                //StartCoroutine(lastTalk());
                 break;
             case 7:
                 targetTxt2.text = null;

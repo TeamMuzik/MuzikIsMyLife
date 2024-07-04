@@ -11,6 +11,8 @@ public class GreatMyFame : MonoBehaviour
 
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
+    public TMP_Text playerName1;
+    public TMP_Text playerName2;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -32,8 +34,7 @@ public class GreatMyFame : MonoBehaviour
 
     private AudioSource audioSource;
 
-    //public GameObject[] Light;
-    //public GameObject audience;
+    public GameObject emoji;
 
     void Awake()
     {
@@ -47,6 +48,8 @@ public class GreatMyFame : MonoBehaviour
 
         audioSource.clip = Sound1;
         audioSource.Play();
+
+        emoji.SetActive(false);
 
         StartTalk(Dialogue);
 
@@ -176,6 +179,7 @@ public class GreatMyFame : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName1.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3:
                 textMeshPro.color = Color.black;
@@ -187,9 +191,11 @@ public class GreatMyFame : MonoBehaviour
                 break;
             case 5:
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName2.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 6:
                 rectTransform.anchoredPosition = new Vector2 (55, 240);
+                StartCoroutine(showEmoji());
                 break;
         }
     }
@@ -208,5 +214,11 @@ public class GreatMyFame : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         targetTxt2.text = null;
         nextSceneSpeed = 1.5f;
+    }
+
+    IEnumerator showEmoji()
+    {
+        yield return new WaitForSeconds(2.5f);
+        emoji.SetActive(true);
     }
 }
