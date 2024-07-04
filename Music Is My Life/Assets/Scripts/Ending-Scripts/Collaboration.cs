@@ -11,6 +11,9 @@ public class Collaboration : MonoBehaviour
 
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
+    public TMP_Text playerName1;
+    public TMP_Text playerName2;
+
 
     RectTransform rectTransform;
     RectTransform rectTransform2;
@@ -178,6 +181,7 @@ public class Collaboration : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName1.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3: //sns 연락
                 textMeshPro.color = Color.black;
@@ -195,6 +199,7 @@ public class Collaboration : MonoBehaviour
                 nextSceneSpeed = 1.5f;
                 targetTxt2.text = null;
                 rectTransform.anchoredPosition = new Vector2 (-10, -260);
+                playerName2.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 6: //공연장면
                 StartCoroutine(ChangeLight());

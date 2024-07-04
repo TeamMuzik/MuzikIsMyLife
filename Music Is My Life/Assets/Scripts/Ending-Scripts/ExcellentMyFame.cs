@@ -11,6 +11,7 @@ public class ExcellentMyFame : MonoBehaviour
 
     public TMP_Text targetTxt;
     //public TMP_Text targetTxt2;
+    public TMP_Text playerName;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -35,6 +36,8 @@ public class ExcellentMyFame : MonoBehaviour
     public GameObject[] Light;
     public GameObject audience;
 
+    public GameObject[] performImage;
+
     void Awake()
     {
         rectTransform = targetTxt.GetComponent<RectTransform>();
@@ -47,6 +50,9 @@ public class ExcellentMyFame : MonoBehaviour
 
         audioSource.clip = Sound1;
         audioSource.Play();
+
+        foreach (GameObject g in performImage)
+            g.SetActive(false);
 
         StartTalk(Dialogue);
 
@@ -176,21 +182,25 @@ public class ExcellentMyFame : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3:
                 rectTransform.anchoredPosition = new Vector2 (140, 0);
                 break;
             case 4:
-                //rectTransform.anchoredPosition = new Vector2 (178, 46);
-                //textMeshPro.color = Color.white;
                 audioSource.Stop();
                 audioSource.clip = Sound2;
                 audioSource.Play();
+
+                if (PlayerPrefs.GetString("PlayerName").Equals("연보라")) //이름이 기본일경우
+                    performImage[0].SetActive(true);
+                else
+                    performImage[1].SetActive(true); //사용자가 이름을 입력한 경우
+
                 StartCoroutine(ChangeLight());
-                //textMeshPro.fontSize = 5;
                 break;
             case 5:
-                rectTransform.anchoredPosition = new Vector2 (-17, 196);
+                rectTransform.anchoredPosition = new Vector2 (-25, 220);
                 break;
         }
     }

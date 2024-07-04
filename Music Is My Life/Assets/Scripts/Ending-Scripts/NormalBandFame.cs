@@ -208,10 +208,10 @@ public class NormalBandFame : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-23, 270);
                 break;
             case 9:
-                // foreach (GameObject g in Light)
-                //     g.SetActive(false);
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
 
-                // audience.SetActive(false);
+                audience.SetActive(false);
 
                 audioSource.Stop();
                 audioSource.clip = Sound3;

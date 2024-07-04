@@ -11,6 +11,9 @@ public class BackStage : MonoBehaviour
 
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
+    public TMP_Text playerName1;
+    public TMP_Text playerName2;
+    public TMP_Text playerName3;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -180,6 +183,7 @@ public class BackStage : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName1.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3:
                 textMeshPro.color = Color.black;
@@ -191,6 +195,7 @@ public class BackStage : MonoBehaviour
                 break;
             case 5: //sns 초대장면
                 nextSceneSpeed = 3.5f;
+                playerName2.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 6: //공연장면
                 StartCoroutine(ChangeLight());
@@ -209,6 +214,9 @@ public class BackStage : MonoBehaviour
             case 8:
                 audioSource2.clip = Sound4;
                 audioSource2.Play();
+                break;
+            case 9:
+                playerName3.text = PlayerPrefs.GetString("PlayerName");
                 break;
 
         }
