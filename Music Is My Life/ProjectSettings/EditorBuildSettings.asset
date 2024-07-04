@@ -32,9 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-Rich.unity
     guid: 367cb66686cb2404a99972300db6ee23
-  - enabled: 1
-    path: Assets/Scenes/Ending-ConcertInKorea.unity
-    guid: 1238942d7b4695b469ddc46f69f8e9c4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Ending-Expedition.unity
     guid: 307b83dd271080a48ad29e554258ccad
@@ -65,4 +65,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main-Fortune.unity
     guid: 062c3ec6dd6ff32478b24f6928a90360
+  - enabled: 1
+    path: Assets/Scenes/Event-Lobby.unity
+    guid: bf4931661a42c00438f5e21e5bf2132a
+  - enabled: 1
+    path: Assets/Scenes/Event-PartTimeJob.unity
+    guid: 64df2f6fd62b0ec48aa0aee47c5f0415
+  - enabled: 1
+    path: Assets/Scenes/Event-GuitarContest.unity
+    guid: 92f52f2f47ad49848ab92214470727ab
+  - enabled: 1
+    path: Assets/Scenes/Event-ArtistVote.unity
+    guid: e26583b8628f487448b980c8ba469b36
   m_configObjects: {}
