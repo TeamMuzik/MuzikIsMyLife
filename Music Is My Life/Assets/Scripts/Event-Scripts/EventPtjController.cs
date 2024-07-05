@@ -132,13 +132,14 @@ public class EventPtjController : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             ChangePlayerAndExtraSprite(0);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             ChangePlayerAndExtraSprite(1);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             if (i % 2 == 1) // 1초에 한번씩 돈 증가
             {
                 playerScore += Random.Range(startPoint, endPoint);
                 extraScore += Random.Range(2, 5);
+                Debug.Log($"시간: {(float)(i+1)*0.5}초 | playerScore: {playerScore}, extraScore: {extraScore}");
             }
         }
         EventPTJResult();
