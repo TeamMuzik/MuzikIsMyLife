@@ -1,9 +1,8 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using static EventSpriteManager;
+using static EventSpriteChanger;
 
 public class EventPtjController : MonoBehaviour
 {

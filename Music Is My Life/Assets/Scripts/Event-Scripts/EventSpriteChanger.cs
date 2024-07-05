@@ -1,11 +1,7 @@
-
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
-
-public class EventSpriteManager : MonoBehaviour
+public class EventSpriteChanger : MonoBehaviour
 {
     public static void SetImage(GameObject obj, Sprite newSprite)
     {
