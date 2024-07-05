@@ -36,6 +36,8 @@ public class EventPtjController : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("SeasonEvent", 1);
+
         eventPtjSelector = new EventPtjSelector();
         // 버튼 클릭 이벤트에 함수 등록
         nextButton.GetComponent<Button>().onClick.AddListener(OnNextButtonClicked);

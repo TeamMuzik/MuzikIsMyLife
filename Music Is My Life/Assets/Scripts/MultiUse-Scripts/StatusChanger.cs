@@ -85,8 +85,9 @@ public class StatusChanger : MonoBehaviour
         if (yesterday > 0 && !forceUpdate)
         {
             // Main 씬에 재진입하기 전에 한 행동이 상점이거나 운세, 이벤트, 게임 종료(강제 종료 포함)인 경우 날짜 업데이트 x
+            // -1는 디폴트와 이벤트와 게임 종료, -2는 컴퓨터(운세, SNS)
             int ydBehaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
-            if (ydBehaviorId == 6 || ydBehaviorId == -1)
+            if (ydBehaviorId == 6 || ydBehaviorId == -1 || ydBehaviorId == -2)
                 return;
         }
         // Dday

@@ -50,6 +50,7 @@ public class InitializeManager : MonoBehaviour
         int seasonNum = PlayerPrefs.GetInt("SeasonNum") + 1;
         PlayerPrefs.SetInt("SeasonNum", seasonNum);
         PlayerPrefs.SetInt("SEASONAL_CURRENT", seasonNum - 1); // 계절 가구 선택 (0, 1, 2)
+        PlayerPrefs.SetInt("SeasonEvent", 0); // 0이면 안 봄, 1~3이면 봄
 
         // 날짜, 디데이 관련 초기화
         PlayerPrefs.SetString("Date", datelist[seasonNum - 1]); // 날짜

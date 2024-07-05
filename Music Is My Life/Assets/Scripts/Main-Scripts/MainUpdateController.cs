@@ -12,7 +12,7 @@ public class MainUpdateController : MonoBehaviour
 
     void Start()
     {
-        roomPanel.SetActive(true);
+        roomPanel.SetActive(false);
         phonePanel.SetActive(false);
         storePanel.SetActive(false);
         StatusChanger.UpdateDay(); // 날짜 업데이트
@@ -22,16 +22,9 @@ public class MainUpdateController : MonoBehaviour
         {
             SpriteUtils.ResetAllSavedSprites();
         }
-
-        // 8일차(시작 전)에 이벤트
-        if (PlayerPrefs.GetInt("Dday") == 8)
-        {
-            SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
-            sceneMove.targetScene = "Event-Lobby";
-            sceneMove.ChangeScene();
-        }
+        
         // 14일이 지나면 15일: 엔딩으로 이동
-        else if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
+        if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
         {
             snsController.ShowDayStartPanel(() => {
                 SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
@@ -44,10 +37,20 @@ public class MainUpdateController : MonoBehaviour
         {
             GoToGameOver();
         }
+        // 8일에 이벤트 보기
+        else if (PlayerPrefs.GetInt("Dday") == 8 && PlayerPrefs.GetInt("SeasonEvent") == 0)
+        {
+            SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+            sceneMove.targetScene = "Event-Lobby";
+            sceneMove.ChangeScene();
+        }
         else
         {
+            roomPanel.SetActive(true);
             statusController.UpdateStatus(); // 상태창 업데이트
-            snsController.ShowDayStartPanel(); // 하루 시작 패널 표시
+            int ydBehaviorId = PlayerPrefs.GetInt("Day" + PlayerPrefs.GetInt("Dday") + "_Behavior");
+            if (ydBehaviorId != -2)
+                snsController.ShowDayStartPanel(); // 하루 시작 패널 표시
         }
     }
 
