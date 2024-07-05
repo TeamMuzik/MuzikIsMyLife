@@ -23,8 +23,15 @@ public class MainUpdateController : MonoBehaviour
             SpriteUtils.ResetAllSavedSprites();
         }
 
+        // 8일차(시작 전)에 이벤트
+        if (PlayerPrefs.GetInt("Dday") == 8)
+        {
+            SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
+            sceneMove.targetScene = "Event-Lobby";
+            sceneMove.ChangeScene();
+        }
         // 14일이 지나면 15일: 엔딩으로 이동
-        if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
+        else if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
         {
             snsController.ShowDayStartPanel(() => {
                 SceneMove sceneMove = gameObject.AddComponent<SceneMove>();

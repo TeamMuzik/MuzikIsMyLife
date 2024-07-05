@@ -33,6 +33,9 @@ public class InitializeManager : MonoBehaviour
         InitializeDefaultFurniture();
         InitializeRepFurniture();
         InitializeStoreProducts();
+
+        // 알바별 누적 번 돈 초기화
+        InitializePartTimeCumulativeIncome();
     }
 
     public void InitializeForNextSeason()
@@ -122,5 +125,12 @@ public class InitializeManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(category, 0); // 0으로 세팅
         }
+    }
+
+    private void InitializePartTimeCumulativeIncome()
+    {
+        PlayerPrefs.SetInt("CumulativeIncome_Cafe", 0);
+        PlayerPrefs.SetInt("CumulativeIncome_Office", 0);
+        PlayerPrefs.SetInt("CumulativeIncome_Factory", 0);
     }
 }
