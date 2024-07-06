@@ -219,6 +219,11 @@ public class Entertainment : MonoBehaviour
                 StartCoroutine(ChangeLight());
                 break;
             case 7:
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 textMeshPro.fontSize = 5;
                 playerName1.gameObject.SetActive(true);
                 rectTransform.anchoredPosition = new Vector2 (-20, -256);
