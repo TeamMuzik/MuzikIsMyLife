@@ -221,7 +221,7 @@ public class ExcellentBandFame : MonoBehaviour
                     g.SetActive(false);
 
                 audience.SetActive(false);
-                
+
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
@@ -241,7 +241,6 @@ public class ExcellentBandFame : MonoBehaviour
 
     IEnumerator TrunYellow()
     {
-
         for (int i = 0; i < 5; i++)
         {
             tourYellow.SetActive(true);

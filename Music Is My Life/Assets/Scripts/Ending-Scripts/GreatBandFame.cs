@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ConcertInKorea : MonoBehaviour
+public class GreatBandFame : MonoBehaviour
 {
     public float typingSpeed; //타이핑 속도, 높을 수록 속도가 느림
     public float nextSceneSpeed; //다음 페이지로 넘어가는 속도, 높을 수록 속도가 느림
