@@ -217,6 +217,11 @@ public class ExcellentBandFame : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-10, 267);
                 break;
             case 11: //thanks to 자르반
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
