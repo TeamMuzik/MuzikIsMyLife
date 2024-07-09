@@ -41,8 +41,8 @@ public class EventPtjSelector : MonoBehaviour
         int mostFreqPtjId = Mathf.Max(ptjBehavior[0], ptjBehavior[1], ptjBehavior[2]); // 가장 큰 값 반환
         if (AreAllElementsEqual(ptjBehavior) || AreAllElementsZero(ptjBehavior))
         {
-            Debug.Log("모든 요소가 같거나 모두 0입니다.");
             mostFreqPtjId = HandleSpecialCase(ptjBehavior);
+            Debug.Log($"모든 요소가 같거나 모두 0입니다. mostFreqPtjId: {mostFreqPtjId}");
         }
         return mostFreqPtjId;
     }
