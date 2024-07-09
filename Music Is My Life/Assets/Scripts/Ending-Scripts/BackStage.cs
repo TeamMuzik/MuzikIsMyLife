@@ -205,6 +205,11 @@ public class BackStage : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-22, 255);
                 break;
             case 7: //감격 (성덕이 되다)
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 nextSceneSpeed = 3f;
                 audioSource.Stop();
                 audioSource.clip = Sound3;
@@ -224,8 +229,7 @@ public class BackStage : MonoBehaviour
 
     IEnumerator ChangeLight()
     {   
-        //5번만 반복
-        for (int i = 0; i < 5; i++)
+        while(currentIllustrationIndex == 6)
         {
             int randNum = Random.Range(0, 5);
             yield return new WaitForSeconds(0.7f);

@@ -200,16 +200,27 @@ public class ExcellentMyFame : MonoBehaviour
                 StartCoroutine(ChangeLight());
                 break;
             case 5:
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+
                 rectTransform.anchoredPosition = new Vector2 (-25, 220);
                 break;
         }
     }
 
     IEnumerator ChangeLight()
-    {
-        while (currentIllustrationIndex == 4)
+    {   
+        int randNum;
+
+        while(currentIllustrationIndex == 4)
         {
-            int randNum = Random.Range(0, 5);
+            if (PlayerPrefs.GetString("PlayerName").Equals("연보라"))
+                randNum = Random.Range(0, 3);
+            else
+                randNum = Random.Range(4, 7);
+
             yield return new WaitForSeconds(0.7f);
             Light[randNum].SetActive(true);
             audience.SetActive(true);
