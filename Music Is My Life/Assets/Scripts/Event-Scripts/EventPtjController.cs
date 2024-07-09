@@ -29,7 +29,6 @@ public class EventPtjController : MonoBehaviour
 
     private string playerName; // 플레이어 이름
     private string extraName; // 엑스트라 이름
-    private string winnerName;
     private int playerScore; // 플레이어 점수
     private int extraScore; // 엑스트라 점수
     private int currentOrderIndex; // 현재 순서 번호
@@ -81,7 +80,9 @@ public class EventPtjController : MonoBehaviour
         else if (currentOrderIndex == 3)
         {
             nextButton.SetActive(false);
-            ShowEventPtjResult();
+            playerObject[ptjId].SetActive(false);
+            extraObject[ptjId].SetActive(false);
+            scorePanel.SetActive(true);
         }
     }
 
@@ -186,30 +187,22 @@ public class EventPtjController : MonoBehaviour
         if (playerScore == extraScore)
         {
             dialogContent.text = $"어디 보자…\n{playerName}: {playerScore}개, {extraName}: {extraScore}개\n 동점이므로 둘 다 승진시키겠네."; // ??
+            StatusChanger.EarnMoney(30);
+            scoreText.text = "알바생에서 계약직으로 승진했다!\n돈 +30만원";
+        }
+        else if (playerScore > extraScore)
+        {
+            dialogContent.text = $"어디 보자…\n{playerName}: {playerScore}개, {extraName}: {extraScore}개\n축하하네 {playerName}";
+            StatusChanger.EarnMoney(30);
+            scoreText.text = "알바생에서 계약직으로 승진했다!\n돈 +30만원";
         }
         else
         {
-            winnerName = playerScore > extraScore ? playerName : extraName;
-            dialogContent.text = $"어디 보자…\n{playerName}: {playerScore}개, {extraName}: {extraScore}개\n축하하네 {winnerName}";
+            dialogContent.text = $"어디 보자…\n{playerName}: {playerScore}개, {extraName}: {extraScore}개\n축하하네 {extraName}";
+            scoreText.text = "졌다... 아쉽지만 어쩔 수 없지...\n더 열심히 하자~!";
         }
         currentOrderIndex++;
         dialogObject.SetActive(true);
         nextButton.SetActive(true);
-    }
-
-    void ShowEventPtjResult()
-    {
-        playerObject[ptjId].SetActive(false);
-        extraObject[ptjId].SetActive(false);
-        if (winnerName.Equals(playerName))
-        {
-            scoreText.text = "알바생에서 계약직으로 승진했다!\n돈 +30만원";
-            StatusChanger.EarnMoney(30);
-        }
-        else
-        {
-            scoreText.text = "졌다... 아쉽지만 어쩔 수 없지...\n더 열심히 하자~!";
-        }
-        scorePanel.SetActive(true);
     }
 }

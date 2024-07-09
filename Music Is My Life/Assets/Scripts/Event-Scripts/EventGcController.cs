@@ -6,8 +6,8 @@ using System.Collections;
 public class EventGcController : MonoBehaviour
 {
     public GameObject[] panelObject;
-    public GameObject dialogObject;
-    public TMP_Text dialogContent;
+    public GameObject playerWinPrize;
+    public GameObject rivalWinPrize;
 
     public TMP_Text playerScoreText;
     public TMP_Text rivalScoreText;
@@ -16,9 +16,6 @@ public class EventGcController : MonoBehaviour
     public GameObject scorePanel; // 결과창
     public TMP_Text scoreText;
 
-    private string playerName; // 플레이어 이름
-    private string rivalName; // 라이벌 이름
-    private string winnerName;
     private int playerScore; // 플레이어 점수
     private int rivalScore; // 라이벌 점수
     private int currentOrderIndex; // 현재 순서 번호
@@ -32,17 +29,17 @@ public class EventGcController : MonoBehaviour
         nextButton.SetActive(true);
         scorePanel.SetActive(false);
 
-        dialogObject.SetActive(true);
+        playerWinPrize.SetActive(false);
+        rivalWinPrize.SetActive(false);
+
         playerScoreText.text = "0";
         rivalScoreText.text = "0";
-
-        playerName = PlayerPrefs.GetString("PlayerName");
-        rivalName = "Team Muzik";
+        
         playerScore = 0;
         rivalScore = 0;
         currentOrderIndex = 0;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             panelObject[i].SetActive(i == 0);
         }
@@ -59,7 +56,8 @@ public class EventGcController : MonoBehaviour
         else if (currentOrderIndex == 2)
         {
             nextButton.SetActive(false);
-            ShowEventGcResult();
+            scorePanel.SetActive(true);
+            rivalWinPrize.SetActive(false);
         }
     }
 
@@ -76,27 +74,25 @@ public class EventGcController : MonoBehaviour
 
         int startPoint, endPoint;
         if (myFame >= 60)
-            (startPoint, endPoint) = (3000, 6000);
+            (startPoint, endPoint) = (3, 6);
         else if (myFame >= 40)
-            (startPoint, endPoint) = (2000, 5000);
+            (startPoint, endPoint) = (2, 5);
         else if (myFame >= 20)
-            (startPoint, endPoint) = (1000, 4000);
+            (startPoint, endPoint) = (1, 4);
         else
-            (startPoint, endPoint) = (1000, 3000);
+            (startPoint, endPoint) = (1, 3);
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 4; i++)
         {
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitForSeconds(0.5f);
-            if (i % 2 == 1) // 1초에 한번씩 돈 증가
-            {
-                playerScore += Random.Range(startPoint, endPoint);
-                rivalScore += Random.Range(2000, 5000);
-                playerScoreText.text = playerScore.ToString();
-                rivalScoreText.text = rivalScore.ToString();
-                Debug.Log($"시간: {(float)(i + 1) * 0.5}초 | playerScore: {playerScore}, rivalScore: {rivalScore}");
-            }
+            yield return new WaitForSeconds(1f);
+            playerScore += Random.Range(startPoint, endPoint + 1) * 1000;
+            rivalScore += Random.Range(2, 5 + 1) * 1000;
+
+            playerScoreText.text = playerScore.ToString();
+            rivalScoreText.text = rivalScore.ToString();
+            Debug.Log($"시간: {(float)(i + 1) * 1}초 | playerScore: {playerScore}, rivalScore: {rivalScore}");
         }
+        yield return new WaitForSeconds(1f);
         EventGcResult();
     }
 
@@ -105,29 +101,23 @@ public class EventGcController : MonoBehaviour
         // 무승부
         if (playerScore == rivalScore)
         {
-            dialogContent.text = $"공동 우승입니다!";
+            playerWinPrize.SetActive(true);
+            rivalWinPrize.SetActive(true);
+            scoreText.text = "기타 콘테스트에서 공동 우승했다!\n나의 명성 +15";
+            StatusChanger.UpdateMyFame(+15);
         }
-        else
+        else if (playerScore > rivalScore)
         {
-            winnerName = playerScore > rivalScore ? playerName : rivalName;
-            dialogContent.text = $"축하드립니다\n우승은 {winnerName}입니다!";
-        }
-        ShowNextPanel(1);
-        currentOrderIndex++;
-        nextButton.SetActive(true);
-    }
-
-    void ShowEventGcResult()
-    {
-        if (winnerName.Equals(playerName))
-        {
+            playerWinPrize.SetActive(true);
             scoreText.text = "기타 콘테스트에서 우승했다!\n나의 명성 +15";
             StatusChanger.UpdateMyFame(+15);
         }
         else
         {
+            rivalWinPrize.SetActive(true);
             scoreText.text = "졌다... 아쉽지만 어쩔 수 없지...\n더 열심히 하자~!";
         }
-        scorePanel.SetActive(true);
+        currentOrderIndex++;
+        nextButton.SetActive(true);
     }
 }
