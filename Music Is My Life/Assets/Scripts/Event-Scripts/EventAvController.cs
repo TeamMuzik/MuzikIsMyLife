@@ -39,17 +39,14 @@ public class EventAvController : MonoBehaviour
         rivalScore = 0;
         currentOrderIndex = 0;
 
-        for (int i = 0; i < 2; i++)
-        {
-            panelObject[i].SetActive(i == 0);
-        }
+        panelObject[0].SetActive(true);
     }
 
     void OnNextButtonClicked()
     {
         if (currentOrderIndex == 0)
         {
-            ShowNextPanel(0);
+            currentOrderIndex++;
             nextButton.SetActive(false);
             StartCoroutine(EventGcCouroutine());
         }
@@ -61,12 +58,6 @@ public class EventAvController : MonoBehaviour
         }
     }
 
-    void ShowNextPanel(int index)
-    {
-        panelObject[index].SetActive(false);
-        panelObject[index + 1].SetActive(true);
-        currentOrderIndex++;
-    }
 
     IEnumerator EventGcCouroutine()
     {
