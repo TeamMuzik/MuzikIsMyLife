@@ -106,7 +106,7 @@ public class EventAvController : MonoBehaviour
         else
         {
             rivalWinPrize.SetActive(true);
-            scoreText.text = "아옹이 졌다... 아쉽지만 어쩔 수 없지...\n더 열심히 하자~!";
+            scoreText.text = "졌다... 아쉽지만 어쩔 수 없지...\n더 열심히 하자~!";
         }
         currentOrderIndex++;
         nextButton.SetActive(true);
