@@ -55,7 +55,8 @@ public class FactoryGame : MonoBehaviour
         SpawnKeyBoards();
         if (FactoryGameTimer.totalTime > 0 && !isSpawning && !FactoryGameTimer.isEnd)
         {
-            float spawnInterval = FactoryGameTimer.totalTime >= 15f ? 2.0f : 1.0f;
+            //float spawnInterval = FactoryGameTimer.totalTime >= 15f ? 2.0f : 1.0f;
+            float spawnInterval = 1.0f;
             InvokeRepeating("SpawnKeyBoards", spawnInterval, spawnInterval);
         }
     }
