@@ -211,6 +211,8 @@ MonoBehaviour:
   duelSound3: {fileID: 8300000, guid: 162dc36a4e784f441baaaca2a8222562, type: 3}
   VsSound: {fileID: 8300000, guid: 1c66c04c190c3644ea637c4ae688f5ba, type: 3}
   SuccessSound: {fileID: 8300000, guid: c0c654e378cacda4885bf6561c078f87, type: 3}
+  easyDuelIncrement: 0.06
+  hardDuelIncrement: 0.02
 --- !u!114 &24719992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,7 +2957,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1378495375}
-  tutorialPanel: {fileID: 0}
   AudioManager: {fileID: 901097333}
 --- !u!1 &1570034229
 GameObject:
@@ -4084,7 +4085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870116530
