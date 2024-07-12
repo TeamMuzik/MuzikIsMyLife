@@ -11,9 +11,6 @@ public class FortuneManager : MonoBehaviour
     {
         spriteRenderer = fortuneImage.GetComponent<SpriteRenderer>();
 
-        // 이전 Fortune 효과 초기화
-        DayFortune.ResetFortuneEffect();
-
         int fortuneId = DayFortune.GetTodayFortuneId();
         if (fortuneId != -1)
         {

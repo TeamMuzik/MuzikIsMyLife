@@ -101,5 +101,41 @@ public class StatusChanger : MonoBehaviour
         DateTime nextDate = DateTime.Parse(savedDate).AddDays(1); // 날짜를 하루 뒤로 업데이트
         string updatedDate = nextDate.ToString("yyyy-MM-dd");
         PlayerPrefs.SetString("Date", updatedDate);
+
+        // 전날의 Fortune 효과 초기화
+        DayFortune.ResetYdayFortuneEffect();
+    }
+
+    // 구독자 최솟값 업데이트: 최솟값 500. change는 음수, 양수 둘다 가능
+    public static void UpdateSubsMin(int change)
+    {
+        int subsMin = PlayerPrefs.GetInt("Subs_Min");
+        subsMin += change;
+        if (subsMin < 500)
+            subsMin = 500;
+        PlayerPrefs.SetInt("Subs_Min", subsMin);
+
+    }
+
+    // 구독자 최댓값 업데이트: 최솟값 5000. change는 음수, 양수 둘다 가능
+    public static void UpdateSubsMax(int change)
+    {
+        int subsMax = PlayerPrefs.GetInt("Subs_Max");
+        subsMax += change;
+        if (subsMax < 5000)
+            subsMax = 5000;
+        PlayerPrefs.SetInt("Subs_Max", subsMax);
+
+    }
+
+    // 구독자 증가배율 업데이트: 최솟값 1. change는 양수만 가능
+    public static void UpdateSubsMultiplier(int rate)
+    {
+        int subsMultiplier = PlayerPrefs.GetInt("Subs_Multiplier");
+        subsMultiplier *= rate;
+        if (subsMultiplier < 1)
+            subsMultiplier = 1;
+        PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier);
+
     }
 }
