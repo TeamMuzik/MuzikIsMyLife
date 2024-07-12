@@ -82,15 +82,15 @@ public class EventGcController : MonoBehaviour
         else
             (startPoint, endPoint) = (1, 3);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 8; i++)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             playerScore += Random.Range(startPoint, endPoint + 1) * 1000;
             rivalScore += Random.Range(2, 5 + 1) * 1000;
 
             playerScoreText.text = playerScore.ToString();
             rivalScoreText.text = rivalScore.ToString();
-            Debug.Log($"시간: {(float)(i + 1) * 1}초 | playerScore: {playerScore}, rivalScore: {rivalScore}");
+            Debug.Log($"시간: {(i + 1) * 0.5f}초 | playerScore: {playerScore}, rivalScore: {rivalScore}");
         }
         yield return new WaitForSeconds(1f);
         EventGcResult();
