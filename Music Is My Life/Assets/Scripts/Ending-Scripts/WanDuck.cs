@@ -194,6 +194,11 @@ public class WanDuck : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-10, 267);
                 break;
             case 7: //감동
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();

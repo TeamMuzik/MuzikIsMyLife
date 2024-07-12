@@ -198,10 +198,10 @@ public class ExcellentBandFame : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (215, -155);
                 break;
             case 7: //취켓팅
-                nextSceneSpeed = 2.5f;
+                nextSceneSpeed = 2.8f;
                 textMeshPro.fontSize = 6;
                 rectTransform.anchoredPosition = new Vector2 (-20, -265);
-                StartCoroutine(Talk("이대로 포기할 순 없지\n내가 꼭 가고만다", 2f, new Vector2(528, -50)));
+                StartCoroutine(Talk("이대로 포기할 순 없지\n내가 꼭 가고만다", 2.3f, new Vector2(528, -50)));
                 break;
             case 8: //예매 성공
                 nextSceneSpeed = 1.5f;
@@ -217,6 +217,11 @@ public class ExcellentBandFame : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-10, 267);
                 break;
             case 11: //thanks to 자르반
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();
@@ -236,7 +241,6 @@ public class ExcellentBandFame : MonoBehaviour
 
     IEnumerator TrunYellow()
     {
-
         for (int i = 0; i < 5; i++)
         {
             tourYellow.SetActive(true);

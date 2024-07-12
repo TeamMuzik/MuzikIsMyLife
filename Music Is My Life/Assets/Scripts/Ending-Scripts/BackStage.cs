@@ -11,6 +11,9 @@ public class BackStage : MonoBehaviour
 
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
+    public TMP_Text playerName1;
+    public TMP_Text playerName2;
+    public TMP_Text playerName3;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -180,6 +183,7 @@ public class BackStage : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName1.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3:
                 textMeshPro.color = Color.black;
@@ -191,6 +195,7 @@ public class BackStage : MonoBehaviour
                 break;
             case 5: //sns 초대장면
                 nextSceneSpeed = 3.5f;
+                playerName2.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 6: //공연장면
                 StartCoroutine(ChangeLight());
@@ -200,6 +205,11 @@ public class BackStage : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (-22, 255);
                 break;
             case 7: //감격 (성덕이 되다)
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 nextSceneSpeed = 3f;
                 audioSource.Stop();
                 audioSource.clip = Sound3;
@@ -210,14 +220,16 @@ public class BackStage : MonoBehaviour
                 audioSource2.clip = Sound4;
                 audioSource2.Play();
                 break;
+            case 9:
+                playerName3.text = PlayerPrefs.GetString("PlayerName");
+                break;
 
         }
     }
 
     IEnumerator ChangeLight()
     {   
-        //5번만 반복
-        for (int i = 0; i < 5; i++)
+        while(currentIllustrationIndex == 6)
         {
             int randNum = Random.Range(0, 5);
             yield return new WaitForSeconds(0.7f);

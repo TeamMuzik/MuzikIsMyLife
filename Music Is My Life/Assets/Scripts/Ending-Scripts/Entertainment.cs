@@ -12,6 +12,8 @@ public class Entertainment : MonoBehaviour
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
     public TMP_Text targetTxt3;
+    public TMP_Text playerName1;
+    public TMP_Text playerName2;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -47,12 +49,19 @@ public class Entertainment : MonoBehaviour
     }
 
     void Start()
-    {
+    {   
+        //나레이션 위치
         rectTransform.anchoredPosition = new Vector2 (114, -215);
 
+        //플레이어 이름 가져오기
+        playerName1.text = PlayerPrefs.GetString("PlayerName");
+        playerName1.gameObject.SetActive(false);
+
+        //bgm 틀기
         audioSource.clip = Sound1;
         audioSource.Play();
 
+        //타이핑 효과
         StartTalk(Dialogue);
 
         if (illustrationObjects.Length == 1)
@@ -181,15 +190,18 @@ public class Entertainment : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName1.gameObject.SetActive(true);
                 break;
             case 3: // 다짐
                 nextSceneSpeed = 3f;
                 textMeshPro.color = Color.black;
                 rectTransform.anchoredPosition = new Vector2 (-20, 250);
+                playerName1.gameObject.SetActive(false);
                 StartCoroutine(Talk("내가 직접\n뭐라도 해보겠어!"));
                 break;
             case 4: //sns 공지
                 nextSceneSpeed = 15f;
+                playerName1.gameObject.SetActive(true);
                 StartCoroutine(sns());
                 break;
             case 5: //대표 기획
@@ -197,6 +209,8 @@ public class Entertainment : MonoBehaviour
                 textMeshPro.color = Color.black;
                 textMeshPro.fontSize = 5;
                 rectTransform.anchoredPosition = new Vector2 (497, 223);
+                playerName1.gameObject.SetActive(false);
+                playerName2.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 6: //공연 장면
                 textMeshPro.color = Color.white;
@@ -205,7 +219,13 @@ public class Entertainment : MonoBehaviour
                 StartCoroutine(ChangeLight());
                 break;
             case 7:
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+                
                 textMeshPro.fontSize = 5;
+                playerName1.gameObject.SetActive(true);
                 rectTransform.anchoredPosition = new Vector2 (-20, -256);
                 break;
         }

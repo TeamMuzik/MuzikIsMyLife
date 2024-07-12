@@ -179,7 +179,7 @@ public class Expedition : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 break;
-            case 3:
+            case 3: //공연장면
                 audioSource.Stop();
                 audioSource.clip = Sound2;
                 audioSource.Play();
@@ -189,7 +189,12 @@ public class Expedition : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2 (0, 261);
                 StartCoroutine(ChangeLight());
                 break;
-            case 5:
+            case 5: //thanks to 자르반
+                foreach (GameObject g in Light)
+                    g.SetActive(false);
+
+                audience.SetActive(false);
+
                 audioSource.Stop();
                 audioSource.clip = Sound3;
                 audioSource.Play();

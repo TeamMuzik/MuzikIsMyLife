@@ -11,6 +11,7 @@ public class NormalMyFame : MonoBehaviour
 
     public TMP_Text targetTxt;
     public TMP_Text targetTxt2;
+    public TMP_Text playerName;
 
     RectTransform rectTransform;
     TextMeshProUGUI textMeshPro;
@@ -34,6 +35,7 @@ public class NormalMyFame : MonoBehaviour
 
     public GameObject[] Light;
     public GameObject audience;
+
 
     void Awake()
     {
@@ -177,42 +179,23 @@ public class NormalMyFame : MonoBehaviour
             case 2:
                 textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (15, -254);
+                playerName.text = PlayerPrefs.GetString("PlayerName");
                 break;
             case 3:
                 textMeshPro.color = Color.black;
                 break;
             case 4:
+                textMeshPro.color = Color.white;
                 rectTransform.anchoredPosition = new Vector2 (-13, 268);
                 StartCoroutine(talk());
                 break;
             case 5:
+                textMeshPro.color = Color.black;
                 rectTransform.anchoredPosition = new Vector2 (-15, 45);
                 textMeshPro.alignment = TextAlignmentOptions.Center;
-                // textMeshPro.color = Color.white;
-                // audioSource.Stop();
-                // audioSource.clip = Sound2;
-                // audioSource.Play();
-                // StartCoroutine(ChangeLight());
                 break;
-            // case 7:
-            //     StartCoroutine(lastTalk());
-            //     break;
         }
     }
-
-    // IEnumerator ChangeLight()
-    // {
-    //     while (currentIllustrationIndex >= 5)
-    //     {
-    //         int randNum = Random.Range(0, 5);
-    //         yield return new WaitForSeconds(0.7f);
-    //         Light[randNum].SetActive(true);
-    //         audience.SetActive(true);
-    //         yield return new WaitForSeconds(0.7f);
-    //         Light[randNum].SetActive(false);
-    //         audience.SetActive(false);
-    //     }
-    // }
 
     IEnumerator talk()
     {   
