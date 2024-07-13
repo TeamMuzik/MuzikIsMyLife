@@ -152,7 +152,7 @@ public class EventPtjController : MonoBehaviour
         Debug.Log($"Player's startPoint: {startPoint}, endPoint: {endPoint}");
         Debug.Log($"Extra's startPoint: 2, endPoint: 5");
 
-        for (int i = 0; i < 4 * 2; i++)
+        for (int i = 0; i < 8; i++)
         {
             ChangePlayerAndExtraSprite(0);
             yield return new WaitForSeconds(0.25f);

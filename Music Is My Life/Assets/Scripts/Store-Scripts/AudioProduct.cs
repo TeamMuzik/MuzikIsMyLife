@@ -107,28 +107,23 @@ public class AudioProduct : MonoBehaviour // Furniture을 상속받음
 
     private void UpgradeCoverAndDecreaseStress()
     {
-        int subsMin = PlayerPrefs.GetInt("Subs_Min");
-        int subsMax = PlayerPrefs.GetInt("Subs_Max");
-        int subsMultiplier = PlayerPrefs.GetInt("Subs_Multiplier");
         int stress;
         switch (price)
         {
             case 10:
-                PlayerPrefs.SetInt("Subs_Max", subsMax + 500);
+                StatusChanger.UpdateSubsMax(500);
                 stress = -5;
-                //stress = -10;
                 break;
             case 40:
-                PlayerPrefs.SetInt("Subs_Min", subsMin + 1500);
+                StatusChanger.UpdateSubsMin(1500);
                 stress = -10;
-                //stress = -30;
                 break;
             case 100:
-                PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 2);
+                StatusChanger.UpdateSubsMultiplier(2);
                 stress = -10;
                 break;
             case 150:
-                PlayerPrefs.SetInt("Subs_Multiplier", subsMultiplier * 3);
+                StatusChanger.UpdateSubsMultiplier(3);
                 stress = -10;
                 break;
             default:
