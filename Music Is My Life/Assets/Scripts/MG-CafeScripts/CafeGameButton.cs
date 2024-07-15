@@ -75,6 +75,6 @@ public class CafeGameButton : MonoBehaviour
         FactoryGameTimerInstance.TutorialPanel.SetActive(false);
         FactoryGameTimerInstance.StartPanel.SetActive(true);
         FactoryGameTimerInstance.StartCoroutine(FactoryGameTimerInstance.TotalTimer());
-        FactoryGameInstance.SpawnKeyBoards();
+        FactoryGameInstance.StartSpawning();
     }
 }
