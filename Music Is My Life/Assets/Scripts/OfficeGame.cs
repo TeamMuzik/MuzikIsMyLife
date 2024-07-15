@@ -284,7 +284,7 @@ public class OfficeGame : MonoBehaviour
         {
             isPositionValid = true;
             xPos = UnityEngine.Random.Range(-startPanelWidth / 2 + rectTransform.rect.width / 2, startPanelWidth / 2 - rectTransform.rect.width / 2);
-            yPos = UnityEngine.Random.Range(-startPanelHeight / 2 + rectTransform.rect.height / 2 + 300, startPanelHeight / 2 - rectTransform.rect.height / 2 - 100; // 추가적인 여유 공간을 둠
+            yPos = UnityEngine.Random.Range(-startPanelHeight / 2 + rectTransform.rect.height / 2 + 400, startPanelHeight / 2 - rectTransform.rect.height / 2 - 100); // 추가적인 여유 공간을 둠
 
             // Check if the new position overlaps with any existing blocks
             foreach (GameObject existingBlock in blockTextList)
