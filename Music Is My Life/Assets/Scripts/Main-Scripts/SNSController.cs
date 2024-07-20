@@ -17,9 +17,6 @@ public class SNSController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    // 일관된 위치를 위한 오프셋 값
-    public Vector3 positionOffset = new Vector3(0, 0, 0);
-
     void Awake()
     {
         if (spriteImage != null)
@@ -58,8 +55,8 @@ public class SNSController : MonoBehaviour
 
         Transform spriteTransform = spriteImage.transform;
 
-        // 위치 조정
-        spriteTransform.localPosition = positionOffset;
+        // 스프라이트 교체 전 스케일 값을 저장
+        Vector3 originalScale = spriteTransform.localScale;
 
         int currentDay = PlayerPrefs.GetInt("Dday");
 
@@ -75,7 +72,6 @@ public class SNSController : MonoBehaviour
         if (currentDay >= 2 && currentDay <= 8)
         {
             displayedSprite = daySprites[currentDay - 2];
-            spriteRenderer.sprite = displayedSprite;
             shouldShowPanel = true;
         }
         else if (currentDay >= 10 && currentDay <= 14)
@@ -96,7 +92,6 @@ public class SNSController : MonoBehaviour
                 displayedSprite = GetRandomSprite(behaviorSprite);
                 if (displayedSprite != null)
                 {
-                    spriteRenderer.sprite = displayedSprite;
                     shouldShowPanel = true;
                 }
                 else
@@ -112,6 +107,11 @@ public class SNSController : MonoBehaviour
 
         if (shouldShowPanel && displayedSprite != null)
         {
+            spriteRenderer.sprite = displayedSprite;
+
+            // 스프라이트 교체 후 원래 스케일 값을 복원
+            spriteTransform.localScale = originalScale;
+
             SpriteUtils.SaveSprite(currentDay, displayedSprite.name); // 스프라이트 이름 저장
             if (dayEndPanel != null)
             {
