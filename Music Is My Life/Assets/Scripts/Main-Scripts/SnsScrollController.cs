@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SnsScrollController : MonoBehaviour
 {
@@ -8,9 +9,18 @@ public class SnsScrollController : MonoBehaviour
     public Transform contentParent; // 패널을 배치할 부모 오브젝트
     public List<Sprite> allSprites; // 모든 스프라이트 리스트
     public float maxSpriteWidth = 500f; // 스프라이트의 최대 너비
+    public TMP_Text playerName;
 
     void Start()
-    {
+    { 
+      string PlayerName = PlayerPrefs.GetString("PlayerName");
+      if (PlayerName == "연보라")
+      {
+    playerName.text = "연보라\n@lavender_S2";
+      }
+      else
+      playerName.text = PlayerName;
+
         if (spritePanelPrefab == null || contentParent == null || allSprites == null)
         {
             Debug.LogError("필수 설정이 누락되었습니다.");
