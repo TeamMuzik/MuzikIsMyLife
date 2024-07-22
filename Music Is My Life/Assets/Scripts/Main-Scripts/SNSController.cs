@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class BehaviorSprite
@@ -12,8 +13,10 @@ public class SNSController : MonoBehaviour
 {
     public List<Sprite> daySprites; // 1~7일차 스프라이트
     public List<BehaviorSprite> behaviorSprites; // 행동 기반 스프라이트 리스트
+    public List<Sprite> hintSprites; // 힌트 기반 스프라이트 리스트
     public GameObject dayEndPanel; // 하루 종료 패널
     public GameObject spriteImage; // 패널 안의 스프라이트 이미지 오브젝트
+    public TMP_Text playerName;
 
     private SpriteRenderer spriteRenderer;
 
@@ -63,18 +66,75 @@ public class SNSController : MonoBehaviour
         bool shouldShowPanel = false;
         Sprite displayedSprite = null;
 
+        string PlayerName = PlayerPrefs.GetString("PlayerName");
+        if (PlayerName == "연보라")
+        {
+      playerName.text = "연보라\n@lavender_S2";
+        }
+        else
+        playerName.text = PlayerName;
+
+
+
         if (spriteRenderer == null)
         {
             Debug.LogError("spriteRenderer가 null입니다.");
             return;
         }
 
-        if (currentDay >= 2 && currentDay <= 8)
+        if (currentDay >= 1 && currentDay <= 7)
         {
-            displayedSprite = daySprites[currentDay - 2];
+            displayedSprite = daySprites[currentDay - 1];
             shouldShowPanel = true;
         }
-        else if (currentDay >= 10 && currentDay <= 14)
+        else if (currentDay == 8)
+        {
+            int money = PlayerPrefs.GetInt("Money");
+            int myFame = PlayerPrefs.GetInt("MyFame");
+            int bandFame = PlayerPrefs.GetInt("BandFame");
+
+            if (hintSprites != null && hintSprites.Count >= 8) // hintSprites가 null이 아니고, 최소 8개 이상의 요소가 있는지 확인
+            {
+                if (money >= 75 && myFame >= 38 && bandFame >= 75)
+                {
+                    displayedSprite = hintSprites[0];
+                }
+                else if (money >= 75 && myFame >= 38)
+                {
+                    displayedSprite = hintSprites[1];
+                }
+                else if (myFame >= 38 && bandFame >= 75)
+                {
+                    displayedSprite = hintSprites[2];
+                }
+                else if (money >= 75 && bandFame >= 75)
+                {
+                    displayedSprite = hintSprites[3];
+                }
+                else if (money >= 75)
+                {
+                    displayedSprite = hintSprites[4];
+                }
+                else if (myFame >= 38)
+                {
+                    displayedSprite = hintSprites[5];
+                }
+                else if (bandFame >= 75)
+                {
+                    displayedSprite = hintSprites[6];
+                }
+                else
+                {
+                    displayedSprite = hintSprites[7];
+                }
+                shouldShowPanel = true;
+            }
+            else
+            {
+                Debug.LogError("hintSprites가 설정되지 않았거나, 요소가 부족합니다.");
+            }
+        }
+        else if (currentDay >= 9 && currentDay <= 13)
         {
             int yesterday = currentDay - 1;
             int behaviorId = PlayerPrefs.GetInt("Day" + yesterday + "_Behavior");
@@ -103,6 +163,11 @@ public class SNSController : MonoBehaviour
             {
                 Debug.LogError("잘못된 behaviorId이거나 behaviorSprites에 포함되지 않았습니다.");
             }
+        }
+        else if (currentDay==14)
+        {
+          displayedSprite = daySprites[7];
+          shouldShowPanel = true;
         }
 
         if (shouldShowPanel && displayedSprite != null)
