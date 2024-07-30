@@ -15,7 +15,9 @@ public class MainUpdateController : MonoBehaviour
         roomPanel.SetActive(false);
         phonePanel.SetActive(false);
         storePanel.SetActive(false);
-        StatusChanger.UpdateDay(); // 날짜 업데이트
+
+        // 날짜 업데이트
+        StatusChanger.UpdateDay();
 
         // 시즌이 새로 시작될 때 데이터 리셋
         if (PlayerPrefs.GetInt("Dday") == 1)
