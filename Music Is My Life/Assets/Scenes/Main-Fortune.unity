@@ -2029,7 +2029,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280.93, y: 154.94}
+  m_SizeDelta: {x: 348.15, y: 156.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278107599
 MonoBehaviour:
@@ -2746,7 +2746,7 @@ MonoBehaviour:
   spritePanelPrefab: {fileID: 1278107597}
   contentParent: {fileID: 665369309}
   allSprites:
-  - {fileID: 21300000, guid: 24a0e9308496a4b83be08ea086df18e2, type: 3}
+  - {fileID: 21300000, guid: 07c16d4c366dd4f6ab6bb2acf4a9b777, type: 3}
   - {fileID: 21300000, guid: 47384138ca27f472994eb5f90b65a07b, type: 3}
   - {fileID: 21300000, guid: c9071f6596767461db38a4696452babb, type: 3}
   - {fileID: 21300000, guid: 189a3eb8de155451b93c4ad1a9faea41, type: 3}
