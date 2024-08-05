@@ -43,6 +43,7 @@ public class JjirasiGame : MonoBehaviour
     public Sprite sprite2;
     public Sprite sprite3;
 
+    public GameObject[] villains;
     public Slider duelSlider;
     public float systemIncreaseRate = 2000.0f;
     private bool duelInProgress = false;
@@ -70,6 +71,8 @@ public class JjirasiGame : MonoBehaviour
     public float easyDuelIncrement = 0.06f;
     public float hardDuelIncrement = 0.02f;
     private float duelIncrement;
+
+    private bool villainIndex;
 
     void Start()
     {
@@ -114,6 +117,12 @@ public class JjirasiGame : MonoBehaviour
             duelIncrement = 0.04f;  // Default increment
         }
         isFortune = "";
+
+        foreach(GameObject v in villains)
+        {
+            v.SetActive(false);
+        }
+        
     }
 
     void StartGameplay()
@@ -181,6 +190,7 @@ public class JjirasiGame : MonoBehaviour
         DuelimagePrefab.gameObject.SetActive(false);
         duelText.gameObject.SetActive(false);
 
+        villainIndex = true;
         StartDuel();
     }
 
@@ -200,6 +210,7 @@ public class JjirasiGame : MonoBehaviour
         fameTxt.gameObject.SetActive(false);
         text_Timer.gameObject.SetActive(false);
         DuelPanel.SetActive(true);
+        villains[0].SetActive(true); //첫번쨰 빌런 이미지만 활성화
         duelSlider.value = 0.5f;
         StartCoroutine(DuelTimer());
     }
@@ -244,6 +255,18 @@ public class JjirasiGame : MonoBehaviour
         else if (duelInProgress)
         {
             duelSlider.value += duelIncrement;  // Adjusted for fortune
+            villainIndex = !villainIndex;
+            if (villainIndex)
+            {    
+                villains[0].SetActive(true);
+                villains[1].SetActive(false);
+            }
+            else
+            {
+                villains[1].SetActive(true);
+                villains[0].SetActive(false);
+            }
+
         }
         else
         {

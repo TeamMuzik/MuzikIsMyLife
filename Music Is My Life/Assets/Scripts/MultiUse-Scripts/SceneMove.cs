@@ -33,4 +33,11 @@ public class SceneMove : MonoBehaviour
         Debug.Log("Fade Out이 완료되어 씬을 이동합니다.");
         SceneManager.LoadScene(targetScene); //해당 씬으로 이동
     }
+
+    public void ChangeSceneAfterPause()
+    {
+        Time.timeScale = 1f;
+
+        ChangeScene();
+    }
 }
