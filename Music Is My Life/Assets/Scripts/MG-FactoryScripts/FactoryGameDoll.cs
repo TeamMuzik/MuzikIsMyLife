@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class FactoryGameDoll : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    public static float moveSpeed = 3f;
+    public static float moveSpeed = 4.5f;
     public static Vector2 OriginalPos;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
