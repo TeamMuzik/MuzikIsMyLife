@@ -40,6 +40,8 @@ public class InitializeManager : MonoBehaviour
 
     public void InitializeForNextSeason()
     {
+        SpriteUtils.ResetAllSavedSprites();
+        
         // 게임 기본 데이터
         PlayerPrefs.SetInt("Money", 0); // 돈
         PlayerPrefs.SetInt("MyFame", 0); // 내 명성

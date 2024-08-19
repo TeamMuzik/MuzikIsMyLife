@@ -10,18 +10,21 @@ public class SnsScrollController : MonoBehaviour
     public List<Sprite> allSprites; // 모든 스프라이트 리스트
     public float maxSpriteWidth = 500f; // 스프라이트의 최대 너비
     public TMP_Text playerName;
+    public GameObject dividerTextPrefab; // 구분선을 표시할 텍스트 프리팹 (TMP_Text 또는 Text)
 
     void Start()
-    { 
-      string PlayerName = PlayerPrefs.GetString("PlayerName");
-      if (PlayerName == "연보라")
-      {
-    playerName.text = "연보라\n@lavender_S2";
-      }
-      else
-      playerName.text = PlayerName;
+    {
+        string PlayerName = PlayerPrefs.GetString("PlayerName");
+        if (PlayerName == "연보라")
+        {
+            playerName.text = "연보라\n@lavender_S2";
+        }
+        else
+        {
+            playerName.text = PlayerName;
+        }
 
-        if (spritePanelPrefab == null || contentParent == null || allSprites == null)
+        if (spritePanelPrefab == null || contentParent == null || allSprites == null || dividerTextPrefab == null)
         {
             Debug.LogError("필수 설정이 누락되었습니다.");
             return;
@@ -29,9 +32,20 @@ public class SnsScrollController : MonoBehaviour
 
         // 프리팹을 처음에는 비활성화 상태로 설정
         spritePanelPrefab.SetActive(false);
+        dividerTextPrefab.SetActive(false);
 
         List<string> spriteNames = SpriteUtils.GetAllSavedSprites();
         Debug.Log($"저장된 스프라이트 수: {spriteNames.Count}");
+
+        // contentParent의 기존 자식 오브젝트 삭제 (프리팹 자체는 삭제하지 않도록)
+        for (int i = contentParent.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = contentParent.GetChild(i).gameObject;
+            if (child != spritePanelPrefab && child != dividerTextPrefab)  // 프리팹은 삭제하지 않도록 체크
+            {
+                Destroy(child.gameObject);
+            }
+        }
 
         // Force update canvas to ensure correct layout calculations
         Canvas.ForceUpdateCanvases();
@@ -43,12 +57,14 @@ public class SnsScrollController : MonoBehaviour
             return;
         }
 
-        foreach (string spriteName in spriteNames)
+        for (int i = 0; i < spriteNames.Count; i++)
         {
+            string spriteName = spriteNames[i];
             Debug.Log($"로드 중인 스프라이트 이름: {spriteName}");
             Sprite sprite = allSprites.Find(s => s.name == spriteName);
             if (sprite != null)
             {
+                // 스프라이트 패널 생성
                 GameObject panel = Instantiate(spritePanelPrefab, contentParent);
                 RectTransform panelRectTransform = panel.GetComponent<RectTransform>();
                 Image image = panel.GetComponent<Image>();
@@ -72,6 +88,18 @@ public class SnsScrollController : MonoBehaviour
                     panel.SetActive(true);
 
                     Debug.Log($"Loaded and set sprite: {spriteName}, New size: {newWidth}x{newHeight}");
+
+                    // 다음 스프라이트가 있을 경우에만 구분선 텍스트 추가
+                    if (i < spriteNames.Count - 1) // 마지막 스프라이트가 아닌 경우
+                    {
+                        GameObject divider = Instantiate(dividerTextPrefab, contentParent);
+                        TMP_Text dividerText = divider.GetComponent<TMP_Text>();
+                        if (dividerText != null)
+                        {
+                            dividerText.text = "- - - - -"; // 구분선 텍스트 설정
+                            divider.SetActive(true);
+                        }
+                    }
                 }
                 else
                 {
