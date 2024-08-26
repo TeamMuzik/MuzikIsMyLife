@@ -94,10 +94,26 @@ public class OfficeGame : MonoBehaviour
         {
             CreateRandomWord();
         }
+
+
+    }
+
+    IEnumerator KeepKeyboardActive()
+    {
+        while (!gameEnded)
+        {
+            if (TouchScreenKeyboard.visible == false)
+            {
+                ShowKeyboard();
+                Debug.Log("Keyboard activated"); // 키보드 활성화 시 콘솔 출력
+            }
+            yield return new WaitForSeconds(0.5f); // 주기적으로 키보드가 활성화되어 있는지 체크
+        }
     }
 
     void ShowKeyboard()
     {
+        WordInputField.ActivateInputField();
         TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "", 0);
     }
 
@@ -121,7 +137,8 @@ public class OfficeGame : MonoBehaviour
     }
 
     public void InitializeGame()
-    {
+    {     // 게임 시작 시 키보드 활성화
+        StartCoroutine(KeepKeyboardActive());
         StartPanel.SetActive(true);
         EndPanel.SetActive(false);
         gameEnded = false;
@@ -149,6 +166,9 @@ public class OfficeGame : MonoBehaviour
         {
             CreateRandomWord();
         }
+
+        // 게임 시작 시 키보드 활성화
+        StartCoroutine(KeepKeyboardActive());
     }
 
     IEnumerator ActivateBlockersRoutine()
@@ -284,7 +304,7 @@ public class OfficeGame : MonoBehaviour
         {
             isPositionValid = true;
             xPos = UnityEngine.Random.Range(-startPanelWidth / 2 + rectTransform.rect.width / 2, startPanelWidth / 2 - rectTransform.rect.width / 2);
-            yPos = UnityEngine.Random.Range(-startPanelHeight / 2 + rectTransform.rect.height / 2 + 400, startPanelHeight / 2 - rectTransform.rect.height / 2 - 100); // 추가적인 여유 공간을 둠
+            yPos = UnityEngine.Random.Range(-startPanelHeight / 2 + rectTransform.rect.height / 2 + 400, startPanelHeight / 2 - rectTransform.rect.height / 2 - 400); // 추가적인 여유 공간을 둠
 
             // Check if the new position overlaps with any existing blocks
             foreach (GameObject existingBlock in blockTextList)
@@ -427,6 +447,7 @@ public class OfficeGame : MonoBehaviour
                 {
                     isKeyboardVisible = false;
                     MoveUIDown();
+
                 }
             }
         }
@@ -474,6 +495,10 @@ public class OfficeGame : MonoBehaviour
         StatusController statusController = FindObjectOfType<StatusController>();
 
         finalText.text = correctWordCount + "개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
+
+        // 게임 종료 시 키보드 비활성화
+        TouchScreenKeyboard.hideInput = true;
+        Debug.Log("Keyboard deactivated at end of game"); // 키보드 비활성화 시 콘솔 출력
     }
 
     void PlaySuccessSound()
