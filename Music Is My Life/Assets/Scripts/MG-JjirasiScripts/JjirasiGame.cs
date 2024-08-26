@@ -74,6 +74,13 @@ public class JjirasiGame : MonoBehaviour
 
     private bool villainIndex;
 
+    //주인공 및 찌라시 버튼 위치 변수
+    private RectTransform charRect;
+    private RectTransform buttonRect;
+
+    //빌런 대사
+    public TMP_Text vilainTxt;
+
     void Start()
     {
         ClickNum = 0;
@@ -122,6 +129,12 @@ public class JjirasiGame : MonoBehaviour
         {
             v.SetActive(false);
         }
+
+        //주인공 이미지 위치
+        charRect = jjirasi.GetComponent<RectTransform>();
+
+        //찌라시 버튼 위치
+        buttonRect = Jjirasi.GetComponent<RectTransform>();
         
     }
 
@@ -213,6 +226,16 @@ public class JjirasiGame : MonoBehaviour
         villains[0].SetActive(true); //첫번쨰 빌런 이미지만 활성화
         duelSlider.value = 0.5f;
         StartCoroutine(DuelTimer());
+
+        //주인공 위치 변경
+        charRect.anchoredPosition = new Vector2 (-240, -180);
+        
+        //찌라시 버튼 위치 변경
+        buttonRect.anchoredPosition = new Vector2 (-180, -110);
+
+        //빌런 대사
+        villainDialogue();
+
     }
 
     IEnumerator DuelTimer()
@@ -318,6 +341,14 @@ public class JjirasiGame : MonoBehaviour
         fameTxt.gameObject.SetActive(true);
         text_Timer.gameObject.SetActive(true);
         Jjirasi.gameObject.SetActive(true);
+
+        //주인공 원위치
+        charRect.anchoredPosition = new Vector2 (-27.93f, -180.48f);
+        //버튼 원위치
+        buttonRect.anchoredPosition = new Vector2 (-6.58f, -113.94f);
+        //빌런 대사 초기화
+        vilainTxt.text = null;
+
     }
 
     IEnumerator ShowFameIncrease()
@@ -411,5 +442,15 @@ public class JjirasiGame : MonoBehaviour
     {
         audioSource.clip = SuccessSound;
         audioSource.Play();
+    }
+
+    void villainDialogue()
+    {
+        string[] Dialogue = {"악의 무리는 죗값을 치르리라!!!",
+        "죄 지은 자는 고통을 받을지어다!!!",
+        "내게 자비란 없다!!!",
+        "이제 모든 걸 끝낼 시간이다!!!",
+        "이게 전력인가? 약해 빠진 놈!!!"};
+        vilainTxt.text = Dialogue[Random.Range(0, 5)];
     }
 }
