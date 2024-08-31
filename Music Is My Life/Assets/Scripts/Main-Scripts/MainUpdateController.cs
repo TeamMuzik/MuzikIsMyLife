@@ -20,11 +20,11 @@ public class MainUpdateController : MonoBehaviour
         StatusChanger.UpdateDay();
 
         // 시즌이 새로 시작될 때 데이터 리셋
-        if (PlayerPrefs.GetInt("Dday") == 1)
+        /*if (PlayerPrefs.GetInt("Dday") == 1)
         {
             SpriteUtils.ResetAllSavedSprites();
-        }
-        
+        }*/
+
         // 14일이 지나면 15일: 엔딩으로 이동
         if (PlayerPrefs.GetInt("Dday") >= PlayerPrefs.GetInt("EndDday")) // EndDday: 15
         {
