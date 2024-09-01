@@ -15,6 +15,9 @@ public class OfficeGame : MonoBehaviour
     public TMP_Text stressText;
     public TMP_Text finalText;
     public GameObject EndPanel, StartPanel, TutorialPanel;
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
     public GameObject pBlockText;
     public Transform BlockParent;
     public GameObject[] blockers; // 방해 요소 배열
@@ -48,6 +51,7 @@ public class OfficeGame : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        howToPlay.SetActive(false);
         canvasGameObject = GameObject.Find("Canvas"); // Initialize canvasGameObject
         if (!canvasGameObject)
         {
@@ -86,6 +90,31 @@ public class OfficeGame : MonoBehaviour
         Debug.Log("운세번호: " + fortuneId);
 
         isFortune = "";
+
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+    }
+
+    public void Tutorial()
+    {
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        InitializeGame();
     }
 
     public void InitializeGame()

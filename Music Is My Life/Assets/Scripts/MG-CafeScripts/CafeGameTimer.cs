@@ -57,6 +57,7 @@ public class CafeGameTimer : MonoBehaviour
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
         howToPlay.SetActive(false);
+        TutorialPanel.SetActive(false); 
 
         playCount = PlayerPrefs.GetInt("CafeGamePlayCount");
         playCount++; // 플레이 횟수 증가
