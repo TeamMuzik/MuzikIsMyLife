@@ -81,6 +81,10 @@ public class JjirasiGame : MonoBehaviour
     //빌런 대사
     public TMP_Text vilainTxt;
 
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
+
     void Start()
     {
         ClickNum = 0;
@@ -99,13 +103,15 @@ public class JjirasiGame : MonoBehaviour
         ScorePanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
         duelText.gameObject.SetActive(false);
-        PrepareGameStart();
+        howToPlay.SetActive(false);
+        Jjirasi.interactable = false; //찌라시 클릭 버튼 처음에는 비활성화
+        //PrepareGameStart();
 
         audioSource = GetComponent<AudioSource>();
         highScore = PlayerPrefs.GetInt("JjirasiGameHighScore", 0);
-        
+
         playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount");
-        playCount++;
+        playCount = 1;
         PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
         PlayerPrefs.Save();
         Debug.Log("Current playCount: " + playCount);
@@ -130,7 +136,7 @@ public class JjirasiGame : MonoBehaviour
         }
         isFortune = "";
 
-        foreach(GameObject v in villains)
+        foreach (GameObject v in villains)
         {
             v.SetActive(false);
         }
@@ -140,7 +146,35 @@ public class JjirasiGame : MonoBehaviour
 
         //찌라시 버튼 위치
         buttonRect = Jjirasi.GetComponent<RectTransform>();
-        
+
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+
+    }
+
+    public void Tutorial()
+    {
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        PrepareGameStart();
+        Jjirasi.interactable = true;
+        ready.SetActive(false);
+        start.SetActive(false);
     }
 
     void StartGameplay()
@@ -166,11 +200,11 @@ public class JjirasiGame : MonoBehaviour
 
     private void TriggerEvent()
     {
-      if (!duelStarted)
-      {
-        StartCoroutine(StartDuelSequence());
-        duelStarted = true;
-      }
+        if (!duelStarted)
+        {
+            StartCoroutine(StartDuelSequence());
+            duelStarted = true;
+        }
     }
 
     IEnumerator StartDuelSequence()
@@ -228,10 +262,10 @@ public class JjirasiGame : MonoBehaviour
         StartCoroutine(DuelTimer());
 
         //주인공 위치 변경
-        charRect.anchoredPosition = new Vector2 (-240, -180);
-        
+        charRect.anchoredPosition = new Vector2(-240, -180);
+
         //찌라시 버튼 위치 변경
-        buttonRect.anchoredPosition = new Vector2 (-180, -110);
+        buttonRect.anchoredPosition = new Vector2(-180, -110);
 
         //빌런 대사
         villainDialogue();
@@ -280,7 +314,7 @@ public class JjirasiGame : MonoBehaviour
             duelSlider.value += duelIncrement;  // Adjusted for fortune
             villainIndex = !villainIndex;
             if (villainIndex)
-            {    
+            {
                 villains[0].SetActive(true);
                 villains[1].SetActive(false);
             }
@@ -343,9 +377,9 @@ public class JjirasiGame : MonoBehaviour
         Jjirasi.gameObject.SetActive(true);
 
         //주인공 원위치
-        charRect.anchoredPosition = new Vector2 (-27.93f, -180.48f);
+        charRect.anchoredPosition = new Vector2(-27.93f, -180.48f);
         //버튼 원위치
-        buttonRect.anchoredPosition = new Vector2 (-6.58f, -113.94f);
+        buttonRect.anchoredPosition = new Vector2(-6.58f, -113.94f);
         //빌런 대사 초기화
         vilainTxt.text = null;
 
