@@ -111,7 +111,7 @@ public class JjirasiGame : MonoBehaviour
         highScore = PlayerPrefs.GetInt("JjirasiGameHighScore", 0);
 
         playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount");
-        playCount = 1;
+        playCount++;
         PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
         PlayerPrefs.Save();
         Debug.Log("Current playCount: " + playCount);
