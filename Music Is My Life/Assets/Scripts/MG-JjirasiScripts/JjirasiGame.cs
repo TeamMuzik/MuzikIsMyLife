@@ -62,7 +62,7 @@ public class JjirasiGame : MonoBehaviour
     private AudioSource audioSource;
 
     private static int highScore = 0;
-    private static int playCount = 0;
+    private static int playCount = 0; //플레이 횟수
 
     private int fortuneId;
     private string isFortune;
@@ -103,7 +103,12 @@ public class JjirasiGame : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         highScore = PlayerPrefs.GetInt("JjirasiGameHighScore", 0);
-        playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount", 0);
+        
+        playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount");
+        playCount++;
+        PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
 
         // Fetch and set fortune, and adjust duel difficulty accordingly
         //fortuneId = DayFortune.GetTodayFortuneId();
@@ -143,11 +148,6 @@ public class JjirasiGame : MonoBehaviour
         isGameStarted = true;
         startMessageText.gameObject.SetActive(false);
         UpdateEventTriggerTime();
-
-        playCount++;
-        PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
-        PlayerPrefs.Save();
-        Debug.Log("Current playCount: " + playCount);
 
         LimitTime = 30;
     }
