@@ -76,7 +76,7 @@ public class CafeGameTimer : MonoBehaviour
         }
         else
         {
-            Tutorial();/*  */
+            Tutorial();
         }
 
     }
@@ -95,8 +95,7 @@ public class CafeGameTimer : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         cafeGameButtonInstance.CafeGameGameStartButton();
-        TutorialPanel.SetActive(false);
-        
+        TutorialPanel.SetActive(false);  
     }   
 
     public void startCoroutine()

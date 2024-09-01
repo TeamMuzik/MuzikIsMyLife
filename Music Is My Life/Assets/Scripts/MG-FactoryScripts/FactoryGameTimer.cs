@@ -6,6 +6,7 @@ using TMPro;
 public class FactoryGameTimer : MonoBehaviour
 {
     private FactoryGame FactoryGameInstance;
+    private CafeGameButton cafeGameButtonInstance;
     public float TotalTime;
     // [SerializeField] private float StageTime;
     [SerializeField] private TMP_Text TotalTimerTxt;
@@ -27,30 +28,68 @@ public class FactoryGameTimer : MonoBehaviour
     public GameObject TutorialPanel;
     [SerializeField]
     public GameObject MistakePanel;
-
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
+    private static int playCount = 0; // 플레이 횟수
     private int fortuneId;
     private string isFortune;
 
     private void Start()
     {
         FactoryGameInstance = FindObjectOfType<FactoryGame>();
+        cafeGameButtonInstance = GetComponent<CafeGameButton>();
         TotalTime = 31;
-        TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        howToPlay.SetActive(false);
+        TutorialPanel.SetActive(false);
 
         highScore = PlayerPrefs.GetInt("FactoryGameHighScore", 0);
         // StageTime = 16;
 
+        playCount = PlayerPrefs.GetInt("FactoryGamePlayCount");
+        playCount++; // 플레이 횟수 증가
+        PlayerPrefs.SetInt("FactoryGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
+
         isFortune = "";
         fortuneId = DayFortune.GetTodayFortuneId();
 
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+
+    }
+
+    public void Tutorial()
+    {
+        TutorialPanel.SetActive(true);
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        cafeGameButtonInstance.FactoryGameStartButton();
+        TutorialPanel.SetActive(false);
     }
 
     public IEnumerator TotalTimer()
     {
         totalTime = TotalTime;
-        while(totalTime > 0)
+        while (totalTime > 0)
         {
             totalTime -= Time.deltaTime;
             minute = (int)totalTime / 60;
@@ -65,10 +104,10 @@ public class FactoryGameTimer : MonoBehaviour
 
                 if (fortuneId == 1 || fortuneId == 7)//오늘의 운세 1번(알바비 +5) 또는 오늘의 운세 7번(알바 하드모드)
                     isFortune = "(운세적용)";
-                
+
                 if (fortuneId == 1) //오늘의 운세 1번 (알바비 +5)
-                    FactoryGameInstance.money += 5;;
-                    
+                    FactoryGameInstance.money += 5; ;
+
 
                 // 알바 결과 매핑
                 (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(2);
@@ -92,7 +131,7 @@ public class FactoryGameTimer : MonoBehaviour
         }
     }
 
-	public IEnumerator BlinkText(float Time)
+    public IEnumerator BlinkText(float Time)
     {
         MistakePanel.SetActive(true);
         int minute = (int)Time / 60;
