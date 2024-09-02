@@ -7,7 +7,8 @@ using TMPro;
 public class CafeGameTimer : MonoBehaviour
 {
     private CafeGame cafeGameInstance;
-
+    private CafeGameButton cafeGameButtonInstance;
+    
     [SerializeField] private TMP_Text TotalTimerTxt;
 
     [SerializeField] private TMP_Text Order1TimerTxt;
@@ -36,28 +37,67 @@ public class CafeGameTimer : MonoBehaviour
     private GameObject EndPanel;
     public GameObject StartPanel;
     public GameObject TutorialPanel;
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
 
     private int fortuneId;
     private string isFortune;
+
+    private static int playCount = 0; // 플레이 횟수
 
     private static int highScore = 0; // 최고 점수
 
     private void Start()
     {
         cafeGameInstance = FindObjectOfType<CafeGame>();
+        cafeGameButtonInstance = GetComponent<CafeGameButton>();
         Totaltime = 61;
         OrderTime = 16;
-        TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        howToPlay.SetActive(false);
+        TutorialPanel.SetActive(false); 
+
+        playCount = PlayerPrefs.GetInt("CafeGamePlayCount");
+        playCount++; // 플레이 횟수 증가
+        PlayerPrefs.SetInt("CafeGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
 
         highScore = PlayerPrefs.GetInt("CafeGameHighScore", 0);
-
 
         isFortune = "";
         fortuneId = DayFortune.GetTodayFortuneId();
 
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+
     }
+
+    public void Tutorial()
+    {
+        TutorialPanel.SetActive(true);
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);   
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        cafeGameButtonInstance.CafeGameGameStartButton();
+        TutorialPanel.SetActive(false);  
+    }   
 
     public void startCoroutine()
     {

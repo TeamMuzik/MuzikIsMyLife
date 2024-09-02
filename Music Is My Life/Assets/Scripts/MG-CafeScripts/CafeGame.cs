@@ -60,9 +60,6 @@ public class CafeGame : MonoBehaviour
 
     private AudioSource audioSource;
 
-
-    private static int playCount = 0; // 플레이 횟수
-
     private int fortuneId;
 
 
@@ -72,14 +69,6 @@ public class CafeGame : MonoBehaviour
         money = 0;
         clickCount = 0;
         audioSource = GetComponent<AudioSource>();
-
-
-        playCount = PlayerPrefs.GetInt("CafeGamePlayCount", 0);
-
-        playCount++; // 플레이 횟수 증가
-        PlayerPrefs.SetInt("CafeGamePlayCount", playCount);
-        PlayerPrefs.Save();
-        Debug.Log("Current playCount: " + playCount);
 
         fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);

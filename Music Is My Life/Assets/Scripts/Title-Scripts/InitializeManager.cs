@@ -36,6 +36,9 @@ public class InitializeManager : MonoBehaviour
 
         // 알바별 누적 번 돈 초기화
         InitializePartTimeCumulativeIncome();
+
+        // 알바별 플레이 횟수 초기화
+        InitializePartTimePlayCount();
     }
 
     public void InitializeForNextSeason()
@@ -135,5 +138,13 @@ public class InitializeManager : MonoBehaviour
         PlayerPrefs.SetInt("CumulativeIncome_Cafe", 0);
         PlayerPrefs.SetInt("CumulativeIncome_Office", 0);
         PlayerPrefs.SetInt("CumulativeIncome_Factory", 0);
+    }
+
+    private void InitializePartTimePlayCount()
+    {
+        PlayerPrefs.SetInt("CafeGamePlayCount", 0);
+        PlayerPrefs.SetInt("FactoryGamePlayCount", 0);
+        PlayerPrefs.SetInt("OfficeGamePlayCount", 0);
+        PlayerPrefs.SetInt("JjirasiGamePlayCount", 0);
     }
 }
