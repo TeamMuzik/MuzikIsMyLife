@@ -68,7 +68,7 @@ public class KorEndingName : MonoBehaviour
                 ending = "Ending-BackStage";
                 break;
             case "Collaboration":
-                endingName = "엔딩 #14: 콜라보 공연";
+                endingName = "엔딩 #14: 야옹과의 콜라보 앨범 발매";
                 ending = "Ending-Collaboration";
                 break;
             default:
