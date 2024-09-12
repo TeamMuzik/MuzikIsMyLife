@@ -22082,7 +22082,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2016349837}
         m_TargetAssemblyTypeName: SceneMove, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: ChangeSceneAfterPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
