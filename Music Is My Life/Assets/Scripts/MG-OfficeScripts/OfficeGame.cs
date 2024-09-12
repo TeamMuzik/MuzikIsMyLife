@@ -85,8 +85,7 @@ public class OfficeGame : MonoBehaviour
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
 
         //오늘의 운세 가져오기
-        //fortuneId = DayFortune.GetTodayFortuneId();
-        fortuneId = 7;
+        fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
 
         isFortune = "";
