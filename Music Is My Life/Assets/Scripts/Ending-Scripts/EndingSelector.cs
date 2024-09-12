@@ -51,15 +51,15 @@ public class EndingSelector : MonoBehaviour
         }
         else if (bandFame >= 200)
         {
-            endingScene = "Ending-ExcellentMyFame";
+            endingScene = "Ending-ExcellentBandFame";
         }
         else if (bandFame >= 150)
         {
-            endingScene = "Ending-GreatMyFame";
+            endingScene = "Ending-GreatBandFame";
         }
         else if (bandFame >= 100)
         {
-            endingScene = "Ending-NormalMyFame";
+            endingScene = "Ending-NormalBandFame";
         }
         else
         {

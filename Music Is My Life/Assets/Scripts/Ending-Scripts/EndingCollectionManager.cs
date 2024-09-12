@@ -14,8 +14,8 @@ public static class EndingCollectionManager
     }
     public static void ResetEndingCollection()
     {
-        List<string> allEndingKeys = new List<string> { "EndingExpedition", "EndingNormalBandFame", "EndingGreatBandFame", "EndingExcellentBandFame", 
-        "EndingNormalMyFame", "EndingGreatMyFame", "EndingExcellentMyFame", "EndingWanDuck", "EndingBackStage", "EndingCollaboration", "EndingNormal", "EndingNarak", "EndingRich" };
+        List<string> allEndingKeys = new List<string> { "EndingExpedition", "EndingNormalBandFame", "EndingGreatBandFame", "EndingExcellentBandFame",
+        "EndingNormalMyFame", "EndingGreatMyFame", "EndingExcellentMyFame", "EndingWanDuck", "EndingBackStage", "EndingCollaboration", "EndingNormal", "EndingNarak", "EndingRich","EndingEntertainment" };
         foreach (var key in allEndingKeys)
         {
             if (IsEndingUnlocked(key.Replace("Ending", "")))
@@ -38,8 +38,8 @@ public static class EndingCollectionManager
     // 잠금 해제된 모든 엔딩 가져오기
     public static List<string> GetAllUnlockedEndings()
     {
-        List<string> allEndingKeys = new List<string> { "EndingExpedition", "EndingNormalBandFame", "EndingGreatBandFame", "EndingExcellentBandFame", 
-        "EndingNormalMyFame", "EndingGreatMyFame", "EndingExcellentMyFame", "EndingWanDuck", "EndingBackStage", "EndingCollaboration", "EndingNormal", "EndingNarak", "EndingRich" };
+        List<string> allEndingKeys = new List<string> { "EndingExpedition", "EndingNormalBandFame", "EndingGreatBandFame", "EndingExcellentBandFame",
+        "EndingNormalMyFame", "EndingGreatMyFame", "EndingExcellentMyFame", "EndingWanDuck", "EndingBackStage", "EndingCollaboration", "EndingNormal", "EndingNarak", "EndingRich","EndingEntertainment" };
         List<string> unlockedEndings = new List<string>();
         foreach (var key in allEndingKeys)
         {
