@@ -1560,7 +1560,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -159.95131}
-  m_SizeDelta: {x: 330.24, y: 40}
+  m_SizeDelta: {x: 245.72, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &908726767
 GameObject:
@@ -3403,8 +3403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[ \uC5D4\uB529 #3: \uCC98\uC74C\uC774\uC790 \uB9C8\uC9C0\uB9C9 \uB0B4\uD55C
-    ]"
+  m_text: "[ \uC5D4\uB529 #8: \uB9C8\uC9C0\uB9C9 \uB0B4\uD55C ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
