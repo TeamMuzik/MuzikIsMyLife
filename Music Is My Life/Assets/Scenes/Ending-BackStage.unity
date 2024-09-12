@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[ \uC5D4\uB529 #11: \uBC31\uC2A4\uD14C\uC774\uC9C0 ]"
+  m_text: "[ \uC5D4\uB529 #13: \uACF5\uC5F0\uC5D0 \uCD08\uB300\uBC1B\uB2E4 ]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}
   m_sharedMaterial: {fileID: 1055382723624233682, guid: 50b5851b54dd61749bb340d99bbbafcb, type: 2}

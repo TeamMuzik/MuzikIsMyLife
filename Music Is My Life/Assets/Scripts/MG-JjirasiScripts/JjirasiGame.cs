@@ -117,8 +117,7 @@ public class JjirasiGame : MonoBehaviour
         Debug.Log("Current playCount: " + playCount);
 
         // Fetch and set fortune, and adjust duel difficulty accordingly
-        //fortuneId = DayFortune.GetTodayFortuneId();
-        fortuneId = 8;
+        fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
 
 
