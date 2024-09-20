@@ -472,34 +472,42 @@ public class OfficeGame : MonoBehaviour
     }
 
     void EndGame()
+{
+    EndPanel.SetActive(true);
+
+    StopAllCoroutines();
+    foreach (GameObject blocker in blockers)
     {
-        EndPanel.SetActive(true);
-
-        StopAllCoroutines();
-        foreach (GameObject blocker in blockers)
+        if (blocker != null)
         {
-            if (blocker != null)
-            {
-                blocker.SetActive(false);
-            }
+            blocker.SetActive(false);
         }
-        (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(1);
-        resultText.text = resultRes;
-        stressText.text = stressRes;
-
-        finalText.gameObject.SetActive(true);
-        int totalScore = score;
-        int earnedMoney = totalScore / 10;
-
-        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
-        StatusController statusController = FindObjectOfType<StatusController>();
-
-        finalText.text = correctWordCount + "개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
-
-        // 게임 종료 시 키보드 비활성화
-        TouchScreenKeyboard.hideInput = true;
-        Debug.Log("Keyboard deactivated at end of game"); // 키보드 비활성화 시 콘솔 출력
     }
+
+    // 게임 결과 처리
+    (string resultRes, string stressRes) = MGResultManager.PartTimeDayResult(1);
+    resultText.text = resultRes;
+    stressText.text = stressRes;
+
+    finalText.gameObject.SetActive(true);
+    int totalScore = score;
+    int earnedMoney = totalScore / 10;
+
+    PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + earnedMoney);
+    StatusController statusController = FindObjectOfType<StatusController>();
+
+    finalText.text = correctWordCount + "개의 단어를 입력했다." + "\n번 돈: " + earnedMoney + "만원";
+
+    // 입력 필드 비활성화 및 키보드 숨기기
+    WordInputField.DeactivateInputField();
+    TouchScreenKeyboard.hideInput = true;
+
+    // Debug: 게임 종료 시 콘솔에 키보드 비활성화 메시지 출력
+    Debug.Log("Keyboard deactivated at end of game");
+
+    // 키보드가 사라지도록 입력 필드를 비활성화한 후 다시 활성화
+    TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "", 0).active = false;
+}
 
     void PlaySuccessSound()
     {
