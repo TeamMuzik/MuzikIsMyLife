@@ -60,6 +60,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Ending-Narak.unity
     guid: 90e0fbca06185f34e9db004f76419762
   - enabled: 1
+    path: Assets/Scenes/Main-Fortune.unity
+    guid: 062c3ec6dd6ff32478b24f6928a90360
+  - enabled: 1
     path: Assets/Scenes/GoToEnding.unity
     guid: f3e4473b43899804ab8f0d0fff57f4ff
   m_configObjects: {}
