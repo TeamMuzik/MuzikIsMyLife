@@ -39,9 +39,9 @@ public class KorEndingName : MonoBehaviour
                 endingName = "엔딩 #6: 야옹과 합주";
                 ending = "Ending-GreatMyFame";
                 break;
-            case "ExcellMyFame":
+            case "ExcellentMyFame":
                 endingName = "엔딩 #7: 스타는 외로워";
-                ending = "Ending-ExcellMyFame";
+                ending = "Ending-ExcellentMyFame";
                 break;
             case "NormalBandFame":
                 endingName = "엔딩 #8: 마지막 내한";
