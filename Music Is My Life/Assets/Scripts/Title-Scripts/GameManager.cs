@@ -34,7 +34,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void ContinueGame() // 이어하기: Main으로 씬 이동
-    {
+    {   
+        //만약 엔딩을 보고 난 후에 이어하기 버튼을 누를 경우 새 게임 버튼을 누른 것과 동일하게 적용
+        if (PlayerPrefs.GetString("PreviousScene") == "Ending-End"){
+            initializeManager.InitializeGamedata();
+        }
         sceneMove.targetScene = "Main";
         sceneMove.ChangeScene();
     }
