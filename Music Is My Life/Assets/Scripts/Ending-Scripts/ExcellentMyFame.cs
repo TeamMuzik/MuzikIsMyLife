@@ -214,7 +214,7 @@ public class ExcellentMyFame : MonoBehaviour
     {   
         int randNum;
 
-        while(currentIllustrationIndex == 4)
+        for(int i = 0; i < 4; i++)
         {
             if (PlayerPrefs.GetString("PlayerName").Equals("연보라"))
                 randNum = Random.Range(0, 3);
