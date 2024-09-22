@@ -55,6 +55,7 @@ public class EventAvController : MonoBehaviour
             nextButton.SetActive(false);
             scorePanel.SetActive(true);
             rivalWinPrize.SetActive(false);
+            bandWinPrize.SetActive(false);
         }
     }
 
