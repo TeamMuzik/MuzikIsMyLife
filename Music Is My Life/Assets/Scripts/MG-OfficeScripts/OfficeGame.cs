@@ -218,7 +218,9 @@ public class OfficeGame : MonoBehaviour
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
-        float speed = isHardWord ? 60f : 80f; // 긴 단어의 경우 속도를 60f로, 짧은 단어의 경우 속도를 80f로 설정
+        // 기존 : 긴 단어의 경우 속도를 60f로, 짧은 단어의 경우 속도를 80f로 설정
+        // 변경 후 : 긴 단어 40f, 짧은 단어 60f
+        float speed = isHardWord ? 40f : 60f; 
         while (rectTransform != null && rectTransform.anchoredPosition.y > -309f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it
