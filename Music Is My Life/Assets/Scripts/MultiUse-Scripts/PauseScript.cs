@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;  
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
@@ -8,17 +10,32 @@ public class PauseScript : MonoBehaviour
     public GameObject pausePanel;
     public GameObject AudioManager;
     private AudioSource audioSource;
+    private GameObject smartPhonePanel;
+    private Toggle smartPhoneBtn;
 
     
     void Start()
     {
         audioSource = AudioManager.GetComponent<AudioSource>();
+        Scene scene = SceneManager.GetActiveScene();
+        
+        if (scene.name == "Main"){
+            smartPhonePanel = GameObject.Find("MainRoom뷰").transform.GetChild(3).gameObject;
+            GameObject Btn = GameObject.Find("스마트폰버튼");
+            smartPhoneBtn = Btn.GetComponent<Toggle>();
+        }
     }
 
     void Update()
-    {
+    {   
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if(smartPhonePanel != null && smartPhonePanel.activeSelf){
+                smartPhonePanel.SetActive(false);
+                smartPhoneBtn.isOn = false;
+                return;
+            }
+
             if (IsPaused)
                 Resume();
             else
