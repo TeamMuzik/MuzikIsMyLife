@@ -65,12 +65,12 @@ public class EventAvController : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt($"BandFame");
 
         int startPoint, endPoint;
-        //기존 100, 70, 50 | 변경 후 70, 50, 20
-        if (bandFame >= 70)
+
+        if (bandFame >= 100)
             (startPoint, endPoint) = (3, 6);
-        else if (bandFame >= 50)
+        else if (bandFame >= 70)
             (startPoint, endPoint) = (2, 5);
-        else if (bandFame >= 20)
+        else if (bandFame >= 50)
             (startPoint, endPoint) = (1, 4);
         else
             (startPoint, endPoint) = (1, 3);

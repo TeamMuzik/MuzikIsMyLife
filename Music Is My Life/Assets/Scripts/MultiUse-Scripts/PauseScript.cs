@@ -13,6 +13,8 @@ public class PauseScript : MonoBehaviour
     private GameObject smartPhonePanel;
     private Toggle smartPhoneBtn;
     private GameObject SNSPanel;
+    private GameObject FortuneOpenPanel;
+    private GameObject FortuneContentPanel;
 
     
     void Start()
@@ -28,10 +30,17 @@ public class PauseScript : MonoBehaviour
 
             SNSPanel = GameObject.Find("SNS-Panel");
         }
+
+        else if (scene.name == "Main-Fortune"){
+            SNSPanel = GameObject.Find("Canvas").transform.GetChild(4).gameObject;
+            FortuneOpenPanel = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+            FortuneContentPanel = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
+        }
     }
 
     void Update()
     {   
+        Scene scene = SceneManager.GetActiveScene();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(smartPhonePanel != null && smartPhonePanel.activeSelf){
@@ -42,6 +51,21 @@ public class PauseScript : MonoBehaviour
 
             if(SNSPanel != null && SNSPanel.activeSelf){
                 SNSPanel.SetActive(false);
+                return;
+            }
+
+            if(FortuneOpenPanel != null && FortuneOpenPanel.activeSelf){
+                FortuneOpenPanel.SetActive(false);
+                return;
+            }
+
+            if(FortuneContentPanel != null && FortuneContentPanel.activeSelf){
+                FortuneContentPanel.SetActive(false);
+                return;
+            }
+
+            if (scene.name == "Main-Fortune"){
+                SceneManager.LoadScene("Main");
                 return;
             }
 

@@ -142,15 +142,14 @@ public class EventPtjController : MonoBehaviour
 
         int startPoint, endPoint;
 
-        //기존 100, 70, 50 | 변경 후 70 50 30
-        if (ptjMoney >= 70)
+        if (ptjMoney >= 100)
+            (startPoint, endPoint) = (3, 6);
+        else if (ptjMoney >= 70)
             (startPoint, endPoint) = (3, 6);
         else if (ptjMoney >= 50)
             (startPoint, endPoint) = (2, 5);
-        else if (ptjMoney >= 30)
-            (startPoint, endPoint) = (1, 4);
         else
-            (startPoint, endPoint) = (1, 3);
+            (startPoint, endPoint) = (1, 4);
         Debug.Log($"Player's startPoint: {startPoint}, endPoint: {endPoint}");
         Debug.Log($"Extra's startPoint: 2, endPoint: 5");
 

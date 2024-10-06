@@ -964,7 +964,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -10
+          m_IntArgument: -15
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12656,7 +12656,7 @@ MonoBehaviour:
   category: LP
   index: 0
   totalCount: 6
-  price: 30
+  price: 5
   description: {fileID: 1067066365}
   button: {fileID: 1460081874}
 --- !u!1 &917730762
@@ -18276,7 +18276,7 @@ MonoBehaviour:
   category: POSTER
   index: 0
   totalCount: 10
-  price: 5
+  price: 1
   description: {fileID: 1635786302}
   button: {fileID: 1186856782}
 --- !u!1 &1460081872
@@ -20032,7 +20032,7 @@ MonoBehaviour:
   category: CD
   index: 0
   totalCount: 14
-  price: 15
+  price: 3
   description: {fileID: 885801722}
   button: {fileID: 718130939}
 --- !u!1 &1679357436
