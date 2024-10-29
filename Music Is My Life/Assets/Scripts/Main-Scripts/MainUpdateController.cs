@@ -9,12 +9,14 @@ public class MainUpdateController : MonoBehaviour
     public GameObject roomPanel;
     public GameObject phonePanel;
     public GameObject storePanel;
+    public GameObject howToPanel;
 
     void Start()
     {
         roomPanel.SetActive(false);
         phonePanel.SetActive(false);
         storePanel.SetActive(false);
+        howToPanel.SetActive(false);
 
         // 날짜 업데이트
         StatusChanger.UpdateDay();
@@ -54,6 +56,7 @@ public class MainUpdateController : MonoBehaviour
             if (ydBehaviorId != -2)
                 snsController.ShowDayStartPanel(); // 하루 시작 패널 표시
         }
+
     }
 
     public void UpdateAfterStore() // Store Panel의 ExitBtn에서 호출
@@ -69,5 +72,11 @@ public class MainUpdateController : MonoBehaviour
         SceneMove sceneMove = gameObject.AddComponent<SceneMove>();
         sceneMove.targetScene = "Ending-GameOver";
         sceneMove.ChangeScene();
+    }
+
+    public void howTo(){
+        if (PlayerPrefs.GetInt("SeasonNum") == 1 && PlayerPrefs.GetInt("Dday") == 1){
+            howToPanel.SetActive(true);
+        }
     }
 }

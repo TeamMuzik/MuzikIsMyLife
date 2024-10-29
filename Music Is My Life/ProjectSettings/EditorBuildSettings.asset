@@ -41,9 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-Normal.unity
     guid: e4e3baa6611abfa40a0768f66e5471e4
-  - enabled: 1
-    path: Assets/Scenes/Ending-OpeningBand.unity
-    guid: 27a8cc58046f771498bd68d77f2eb723
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Ending-End.unity
     guid: ce717a77b80404c05a13c688de6d31c9
@@ -56,6 +56,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending-Narak.unity
     guid: 90e0fbca06185f34e9db004f76419762
+  - enabled: 1
+    path: Assets/Scenes/Ending-Collaboration.unity
+    guid: 5adbc54d51f48be4fbb11c2913a44f80
+  - enabled: 1
+    path: Assets/Scenes/Ending-BackStage.unity
+    guid: 54d63d08a36e0f14cbd0162476f636d6
+  - enabled: 1
+    path: Assets/Scenes/Ending-Entertainment.unity
+    guid: 617da809898c16541b2ce87ce203db41
+  - enabled: 1
+    path: Assets/Scenes/Ending-ExcellentBandFame.unity
+    guid: 75c9cfb52ed2e3247b6d50dca7df5019
+  - enabled: 1
+    path: Assets/Scenes/Ending-ExcellentMyFame.unity
+    guid: 72b40ae6271eb244ab6bf7fead52c12c
+  - enabled: 1
+    path: Assets/Scenes/Ending-GreatBandFame.unity
+    guid: 1d5e8933fdcb5e047af137ed9e289871
+  - enabled: 1
+    path: Assets/Scenes/Ending-GreatMyFame.unity
+    guid: 5a258299baedcb24184032bcb064e38e
+  - enabled: 1
+    path: Assets/Scenes/Ending-NormalBandFame.unity
+    guid: d6d027aa266786c4c8aacac1a1138983
+  - enabled: 1
+    path: Assets/Scenes/Ending-NormalMyFame.unity
+    guid: 1c63e5f9242e94a4d80e2fba549b8b76
+  - enabled: 1
+    path: Assets/Scenes/Ending-Wanduck.unity
+    guid: aa0951d295e01104ebb246d2e1c22fc4
   - enabled: 1
     path: Assets/Scenes/Nar-GoToEnding.unity
     guid: f3e4473b43899804ab8f0d0fff57f4ff

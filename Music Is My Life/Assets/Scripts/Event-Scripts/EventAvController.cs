@@ -55,6 +55,7 @@ public class EventAvController : MonoBehaviour
             nextButton.SetActive(false);
             scorePanel.SetActive(true);
             rivalWinPrize.SetActive(false);
+            bandWinPrize.SetActive(false);
         }
     }
 
@@ -64,6 +65,7 @@ public class EventAvController : MonoBehaviour
         int bandFame = PlayerPrefs.GetInt($"BandFame");
 
         int startPoint, endPoint;
+
         if (bandFame >= 100)
             (startPoint, endPoint) = (3, 6);
         else if (bandFame >= 70)

@@ -141,14 +141,15 @@ public class EventPtjController : MonoBehaviour
         int ptjMoney = PlayerPrefs.GetInt($"CumulativeIncome_{ptjName}");
 
         int startPoint, endPoint;
+
         if (ptjMoney >= 100)
             (startPoint, endPoint) = (3, 6);
         else if (ptjMoney >= 70)
-            (startPoint, endPoint) = (2, 5);
+            (startPoint, endPoint) = (3, 6);
         else if (ptjMoney >= 50)
-            (startPoint, endPoint) = (1, 4);
+            (startPoint, endPoint) = (2, 5);
         else
-            (startPoint, endPoint) = (1, 3);
+            (startPoint, endPoint) = (1, 4);
         Debug.Log($"Player's startPoint: {startPoint}, endPoint: {endPoint}");
         Debug.Log($"Extra's startPoint: 2, endPoint: 5");
 

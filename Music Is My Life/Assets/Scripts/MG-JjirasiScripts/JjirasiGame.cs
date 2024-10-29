@@ -62,7 +62,7 @@ public class JjirasiGame : MonoBehaviour
     private AudioSource audioSource;
 
     private static int highScore = 0;
-    private static int playCount = 0;
+    private static int playCount = 0; //플레이 횟수
 
     private int fortuneId;
     private string isFortune;
@@ -73,6 +73,17 @@ public class JjirasiGame : MonoBehaviour
     private float duelIncrement;
 
     private bool villainIndex;
+
+    //주인공 및 찌라시 버튼 위치 변수
+    private RectTransform charRect;
+    private RectTransform buttonRect;
+
+    //빌런 대사
+    public TMP_Text vilainTxt;
+
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
 
     void Start()
     {
@@ -92,15 +103,21 @@ public class JjirasiGame : MonoBehaviour
         ScorePanel.SetActive(false);
         DuelimagePrefab.SetActive(false);
         duelText.gameObject.SetActive(false);
-        PrepareGameStart();
+        howToPlay.SetActive(false);
+        Jjirasi.interactable = false; //찌라시 클릭 버튼 처음에는 비활성화
+        //PrepareGameStart();
 
         audioSource = GetComponent<AudioSource>();
         highScore = PlayerPrefs.GetInt("JjirasiGameHighScore", 0);
-        playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount", 0);
+
+        playCount = PlayerPrefs.GetInt("JjirasiGamePlayCount");
+        playCount++;
+        PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
 
         // Fetch and set fortune, and adjust duel difficulty accordingly
-        //fortuneId = DayFortune.GetTodayFortuneId();
-        fortuneId = 8;
+        fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
 
 
@@ -118,11 +135,45 @@ public class JjirasiGame : MonoBehaviour
         }
         isFortune = "";
 
-        foreach(GameObject v in villains)
+        foreach (GameObject v in villains)
         {
             v.SetActive(false);
         }
-        
+
+        //주인공 이미지 위치
+        charRect = jjirasi.GetComponent<RectTransform>();
+
+        //찌라시 버튼 위치
+        buttonRect = Jjirasi.GetComponent<RectTransform>();
+
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+
+    }
+
+    public void Tutorial()
+    {
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        PrepareGameStart();
+        Jjirasi.interactable = true;
+        ready.SetActive(false);
+        start.SetActive(false);
     }
 
     void StartGameplay()
@@ -130,11 +181,6 @@ public class JjirasiGame : MonoBehaviour
         isGameStarted = true;
         startMessageText.gameObject.SetActive(false);
         UpdateEventTriggerTime();
-
-        playCount++;
-        PlayerPrefs.SetInt("JjirasiGamePlayCount", playCount);
-        PlayerPrefs.Save();
-        Debug.Log("Current playCount: " + playCount);
 
         LimitTime = 30;
     }
@@ -153,11 +199,11 @@ public class JjirasiGame : MonoBehaviour
 
     private void TriggerEvent()
     {
-      if (!duelStarted)
-      {
-        StartCoroutine(StartDuelSequence());
-        duelStarted = true;
-      }
+        if (!duelStarted)
+        {
+            StartCoroutine(StartDuelSequence());
+            duelStarted = true;
+        }
     }
 
     IEnumerator StartDuelSequence()
@@ -213,6 +259,16 @@ public class JjirasiGame : MonoBehaviour
         villains[0].SetActive(true); //첫번쨰 빌런 이미지만 활성화
         duelSlider.value = 0.5f;
         StartCoroutine(DuelTimer());
+
+        //주인공 위치 변경
+        charRect.anchoredPosition = new Vector2(-240, -180);
+
+        //찌라시 버튼 위치 변경
+        buttonRect.anchoredPosition = new Vector2(-180, -110);
+
+        //빌런 대사
+        villainDialogue();
+
     }
 
     IEnumerator DuelTimer()
@@ -257,7 +313,7 @@ public class JjirasiGame : MonoBehaviour
             duelSlider.value += duelIncrement;  // Adjusted for fortune
             villainIndex = !villainIndex;
             if (villainIndex)
-            {    
+            {
                 villains[0].SetActive(true);
                 villains[1].SetActive(false);
             }
@@ -318,6 +374,14 @@ public class JjirasiGame : MonoBehaviour
         fameTxt.gameObject.SetActive(true);
         text_Timer.gameObject.SetActive(true);
         Jjirasi.gameObject.SetActive(true);
+
+        //주인공 원위치
+        charRect.anchoredPosition = new Vector2(-27.93f, -180.48f);
+        //버튼 원위치
+        buttonRect.anchoredPosition = new Vector2(-6.58f, -113.94f);
+        //빌런 대사 초기화
+        vilainTxt.text = null;
+
     }
 
     IEnumerator ShowFameIncrease()
@@ -411,5 +475,15 @@ public class JjirasiGame : MonoBehaviour
     {
         audioSource.clip = SuccessSound;
         audioSource.Play();
+    }
+
+    void villainDialogue()
+    {
+        string[] Dialogue = {"악의 무리는 죗값을 치르리라!!!",
+        "죄 지은 자는 고통을 받을지어다!!!",
+        "내게 자비란 없다!!!",
+        "이제 모든 걸 끝낼 시간이다!!!",
+        "이게 전력인가? 약해 빠진 놈!!!"};
+        vilainTxt.text = Dialogue[Random.Range(0, 5)];
     }
 }

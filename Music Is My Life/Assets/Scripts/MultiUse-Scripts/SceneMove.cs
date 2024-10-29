@@ -9,6 +9,11 @@ public class SceneMove : MonoBehaviour
 
     public void ChangeScene()
     {
+         // 현재 씬 이름을 PlayerPrefs에 저장
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("PreviousScene", currentSceneName);
+        Debug.Log("이전 씬: " + PlayerPrefs.GetString("PreviousScene"));
+
         // 페이드인&아웃
         fadeController = FindObjectOfType<FadeController>();
         if (fadeController != null)

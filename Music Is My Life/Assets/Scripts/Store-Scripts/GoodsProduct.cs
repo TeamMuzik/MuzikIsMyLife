@@ -89,13 +89,13 @@ public class GoodsProduct : MonoBehaviour
         int stress;
         switch (price)
         {
-            case 15:
+            case 3:
                 stress = -20;
                 break;
-            case 30:
+            case 5:
                 stress = -50;
                 break;
-            case 5:
+            case 1:
                 if (p < 0.7f)
                     stress = -5;
                 else if (p < 0.9f)
@@ -106,7 +106,7 @@ public class GoodsProduct : MonoBehaviour
                     stress = -50;
                 break;
             default:
-                throw new System.Exception("굿즈 상품 가격으로  15/30/5가 아닌 값이 입력되었습니다.");
+                throw new System.Exception("굿즈 상품 가격으로  3/5/1가 아닌 값이 입력되었습니다.");
         }
         StatusChanger.UpdateStress(stress); // 스트레스 업데이트
         Debug.Log("굿즈 구입 -> 스트레스 수치 업데이트 : " + stress);

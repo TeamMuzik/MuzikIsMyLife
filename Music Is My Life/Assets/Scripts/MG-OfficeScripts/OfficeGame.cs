@@ -15,6 +15,9 @@ public class OfficeGame : MonoBehaviour
     public TMP_Text stressText;
     public TMP_Text finalText;
     public GameObject EndPanel, StartPanel, TutorialPanel;
+    public GameObject howToPlay;
+    public GameObject ready;
+    public GameObject start;
     public GameObject pBlockText;
     public Transform BlockParent;
     public GameObject[] blockers; // 방해 요소 배열
@@ -48,6 +51,7 @@ public class OfficeGame : MonoBehaviour
         TutorialPanel.SetActive(true);
         StartPanel.SetActive(false);
         EndPanel.SetActive(false);
+        howToPlay.SetActive(false);
         canvasGameObject = GameObject.Find("Canvas"); // Initialize canvasGameObject
         if (!canvasGameObject)
         {
@@ -70,17 +74,46 @@ public class OfficeGame : MonoBehaviour
             }
         }
 
-        playCount = PlayerPrefs.GetInt("OfficeGamePlayCount", 0); // 플레이 횟수 불러오기
+        playCount = PlayerPrefs.GetInt("OfficeGamePlayCount"); // 플레이 횟수 불러오기
+        playCount++; // 플레이 횟수 증가
+        PlayerPrefs.SetInt("OfficeGamePlayCount", playCount); // 플레이 횟수 저장
+        PlayerPrefs.Save();
+        Debug.Log("Current playCount: " + playCount);
+
         highScore = PlayerPrefs.GetInt("OfficeGameHighScore", 0); // 최고 점수 불러오기
 
         WordInputField.onEndEdit.AddListener(delegate { GetInputFieldText(); });
 
         //오늘의 운세 가져오기
-        //fortuneId = DayFortune.GetTodayFortuneId();
-        fortuneId = 7;
+        fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
 
         isFortune = "";
+
+        // 처음 실행할 때는 게임 방법이 나오게
+        if (playCount == 1)
+        {
+            howToPlay.SetActive(true);
+        }
+        else
+        {
+            Tutorial();
+        }
+    }
+
+    public void Tutorial()
+    {
+        StartCoroutine(ReadyStart());
+    }
+
+    public IEnumerator ReadyStart()
+    {
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        start.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        InitializeGame();
     }
 
     public void InitializeGame()
@@ -92,11 +125,6 @@ public class OfficeGame : MonoBehaviour
         gameTimer = 60.0f;
         score = 0;
         scoreText.text = "점수: " + score;
-
-        playCount++; // 플레이 횟수 증가
-        PlayerPrefs.SetInt("OfficeGamePlayCount", playCount); // 플레이 횟수 저장
-        PlayerPrefs.Save();
-        Debug.Log("Current playCount: " + playCount);
 
         // 초기에 모든 블록커를 비활성화
         foreach (GameObject blocker in blockers)
@@ -190,7 +218,9 @@ public class OfficeGame : MonoBehaviour
 
     IEnumerator MoveTextDown(RectTransform rectTransform, GameObject block, bool isHardWord)
     {
-        float speed = isHardWord ? 60f : 80f; // 긴 단어의 경우 속도를 60f로, 짧은 단어의 경우 속도를 80f로 설정
+        // 기존 : 긴 단어의 경우 속도를 60f로, 짧은 단어의 경우 속도를 80f로 설정
+        // 변경 후 : 긴 단어 40f, 짧은 단어 60f
+        float speed = isHardWord ? 40f : 60f; 
         while (rectTransform != null && rectTransform.anchoredPosition.y > -309f && !gameEnded)
         {
             // Check if the GameObject still exists before accessing it

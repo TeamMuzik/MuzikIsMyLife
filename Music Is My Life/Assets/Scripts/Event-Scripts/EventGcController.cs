@@ -73,14 +73,15 @@ public class EventGcController : MonoBehaviour
         int myFame = PlayerPrefs.GetInt($"MyFame");
 
         int startPoint, endPoint;
+
         if (myFame >= 60)
             (startPoint, endPoint) = (3, 6);
         else if (myFame >= 40)
             (startPoint, endPoint) = (2, 5);
         else if (myFame >= 20)
-            (startPoint, endPoint) = (1, 4);
+            (startPoint, endPoint) = (1, 5);
         else
-            (startPoint, endPoint) = (1, 3);
+            (startPoint, endPoint) = (1, 4);
 
         for (int i = 0; i < 8; i++)
         {

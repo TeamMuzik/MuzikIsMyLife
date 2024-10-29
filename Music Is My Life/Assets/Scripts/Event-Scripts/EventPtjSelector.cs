@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class EventPtjSelector : MonoBehaviour
 {
@@ -35,10 +37,10 @@ public class EventPtjSelector : MonoBehaviour
         }
         int HandleSpecialCase(int[] array)
         {
-            return Random.Range(0, 3); // 특별한 경우 0~2 중 랜덤값 반환
+            return UnityEngine.Random.Range(0, 3); // 특별한 경우 0~2 중 랜덤값 반환
         }
-
-        int mostFreqPtjId = Mathf.Max(ptjBehavior[0], ptjBehavior[1], ptjBehavior[2]); // 가장 큰 값 반환
+        
+        int mostFreqPtjId = Array.IndexOf(ptjBehavior, ptjBehavior.Max()); // 가장 큰 값을 가진 인덱스
         if (AreAllElementsEqual(ptjBehavior) || AreAllElementsZero(ptjBehavior))
         {
             mostFreqPtjId = HandleSpecialCase(ptjBehavior);

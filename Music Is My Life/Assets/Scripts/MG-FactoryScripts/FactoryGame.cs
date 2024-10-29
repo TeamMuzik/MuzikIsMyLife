@@ -36,9 +36,6 @@ public class FactoryGame : MonoBehaviour
     public static int RandNum = 0;
     public int money = 0;
 
-    private static int playCount = 0; // 플레이 횟수
-
-
     private int fortuneId;
 
 
@@ -50,12 +47,6 @@ public class FactoryGame : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         // 손 스프라이트 인덱스
         currentHandIndex = 0;
-
-        playCount = PlayerPrefs.GetInt("FactoryGamePlayCount", 0);
-        playCount++; // 플레이 횟수 증가
-        PlayerPrefs.SetInt("FactoryGamePlayCount", playCount);
-        PlayerPrefs.Save();
-        Debug.Log("Current playCount: " + playCount);
 
         fortuneId = DayFortune.GetTodayFortuneId();
         Debug.Log("운세번호: " + fortuneId);
