@@ -6,7 +6,7 @@ public class CheatController : MonoBehaviour
 
     public void AddMoneyForTest()
     {
-        StatusChanger.EarnMoney(50);
+        StatusChanger.EarnMoney(30);
         statusController.UpdateStatus();
     }
 
@@ -18,7 +18,7 @@ public class CheatController : MonoBehaviour
 
     public void AddBandFameForTest()
     {
-        StatusChanger.UpdateBandFame(50);
+        StatusChanger.UpdateBandFame(30);
         statusController.UpdateStatus();
     }
 }
