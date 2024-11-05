@@ -138,18 +138,17 @@ public class EventPtjController : MonoBehaviour
 
     IEnumerator EventPtjCouroutine()
     {
-        int ptjMoney = PlayerPrefs.GetInt($"CumulativeIncome_{ptjName}");
-
+        int ptjMoney = PlayerPrefs.GetInt("Money");
+        Debug.Log(ptjMoney);
         int startPoint, endPoint;
 
-        if (ptjMoney >= 100)
-            (startPoint, endPoint) = (3, 6);
-        else if (ptjMoney >= 70)
+        if (ptjMoney >= 70)
             (startPoint, endPoint) = (3, 6);
         else if (ptjMoney >= 50)
-            (startPoint, endPoint) = (2, 5);
+            (startPoint, endPoint) = (3, 5);
         else
-            (startPoint, endPoint) = (1, 4);
+            (startPoint, endPoint) = (2, 5);
+
         Debug.Log($"Player's startPoint: {startPoint}, endPoint: {endPoint}");
         Debug.Log($"Extra's startPoint: 2, endPoint: 5");
 
@@ -161,8 +160,8 @@ public class EventPtjController : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             if (i % 2 == 1) // 1초에 한번씩 돈 증가
             {
-                playerScore += Random.Range(startPoint, endPoint);
-                extraScore += Random.Range(2, 5);
+                playerScore += Random.Range(startPoint, endPoint + 1) * 1000;
+                extraScore += Random.Range(2, 5 + 1) * 1000;
                 Debug.Log($"시간: {(float)(i+1)*0.5}초 | playerScore: {playerScore}, extraScore: {extraScore}");
             }
         }
