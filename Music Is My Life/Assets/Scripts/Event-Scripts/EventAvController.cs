@@ -69,11 +69,14 @@ public class EventAvController : MonoBehaviour
         if (bandFame >= 100)
             (startPoint, endPoint) = (3, 6);
         else if (bandFame >= 70)
-            (startPoint, endPoint) = (2, 5);
+            (startPoint, endPoint) = (3, 5);
         else if (bandFame >= 50)
-            (startPoint, endPoint) = (1, 4);
+            (startPoint, endPoint) = (2, 5);
         else
-            (startPoint, endPoint) = (1, 3);
+            (startPoint, endPoint) = (1, 5);
+
+        Debug.Log($"Player's startPoint: {startPoint}, endPoint: {endPoint}");
+        Debug.Log($"Extra's startPoint: 2, endPoint: 5");
 
         for (int i = 0; i < 8; i++)
         {
